@@ -16,6 +16,7 @@ import { BurgerIcon, CloseIcon } from '../../components/Svg'
 import Logo from '../../components/Svg/Icons/Logo'
 import en from '../../locales/en.json'
 import jp from '../../locales/jp.json'
+import { localStorageLanguageItem } from '../../constants'
 
 const Wrapper = styled.div`
   position: relative;
@@ -226,12 +227,12 @@ const Menu: React.FC<NavProps> = ({
   // const [showMenu, setShowMenu] = useState(true)
   const showMenu = true
 
-/*  useEffect(() => {
-    if(localStorage.getItem('gravisApplicationsLanguage') && availableLanguages.find(language=>language.name===localStorage.getItem('gravisApplicationsLanguage')))
-      setLanguage(localStorage.getItem('gravisApplicationsLanguage')?.toLocaleLowerCase() as string)
+  useEffect(() => {
+    if(localStorage.getItem(localStorageLanguageItem) && availableLanguages.find(language=>language.name===localStorage.getItem(localStorageLanguageItem)))
+      setLanguage(localStorage.getItem(localStorageLanguageItem)?.toLocaleLowerCase() as string)
     else
       setLanguage(availableLanguages[0].name.toLocaleLowerCase())
-  }, []) */
+  }, [])
 
   return (
     <Wrapper>
