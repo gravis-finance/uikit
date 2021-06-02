@@ -78,7 +78,7 @@ const UserBlock: React.FC<Props> = (props) => {
   const accountEllipsis = account ? `${account.substring(0, 4)}...${account.substring(account.length - 4)}` : null
   return (
     <Flex alignItems="center" style={{ pointerEvents: 'all' }}>
-      {/* <LanguageSwitch setSelectedLanguage={setSelectedLanguage} /> */}
+      <LanguageSwitch setSelectedLanguage={setSelectedLanguage} />
       <NetworkSwitch isProduction={isProduction} />
       {account ? (
         <StyledButton

@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import { setLanguage } from 'react-multi-lang'
 import { ArrowDropDownIcon, SvgProps } from '../../components/Svg'
 import { availableLanguages } from './config'
+import { localStorageLanguageItem } from '../../constants'
 
 const StyledDropDown = styled.div<{ showOptions?: boolean; toggleMobile?: boolean }>`
   width: 117px;
@@ -166,7 +167,7 @@ const LanguageSwitch: React.FC<Props> = ({ toggleMobile = true, setSelectedLangu
 
   const handleClick = (name : string) => {
     setSelectedOption(availableLanguages.find(language=>language.name === name) as languageType)
-    localStorage.setItem('gravisApplicationsLanguage', name);
+    localStorage.setItem(localStorageLanguageItem, name);
     setSelectedLanguage(name)
     setLanguage(name.toLowerCase())
   }
@@ -181,8 +182,8 @@ const LanguageSwitch: React.FC<Props> = ({ toggleMobile = true, setSelectedLangu
   })
 
   useEffect(() => {
-    if(localStorage.getItem('gravisApplicationsLanguage') && availableLanguages.find(language=>language.name===localStorage.getItem('gravisApplicationsLanguage')))
-      setSelectedOption(availableLanguages.find(language=>language.name===localStorage.getItem('gravisApplicationsLanguage')) as languageType)
+    if(localStorage.getItem(localStorageLanguageItem) && availableLanguages.find(language=>language.name===localStorage.getItem(localStorageLanguageItem)))
+      setSelectedOption(availableLanguages.find(language=>language.name===localStorage.getItem(localStorageLanguageItem)) as languageType)
     else
       setSelectedOption(availableLanguages[0])
   }, [])
