@@ -1,10 +1,10 @@
 import { ChainId } from '@gravis.finance/sdk'
 
 const NetworkLabels = {
-  '56': 'Binance Smart Chain',
-  '97': 'Binance Smart Chain',
-  '128': 'Huobi ECO Chain',
-  '256': 'Huobi ECO Chain',
+  '56': 'binanceSmartChain',
+  '97': 'binanceSmartChain',
+  '128': 'huobiEcoChain',
+  '256': 'huobiEcoChain',
 }
 
 export const NetworkSymbols: { [chainId in ChainId]: string } = {
