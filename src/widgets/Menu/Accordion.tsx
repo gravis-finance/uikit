@@ -161,7 +161,7 @@ const Accordion: React.FC<Props> = ({
   }, [initialOpenState, isPushed])
 
   return (
-    <Container isOpen={isOpen} fillStroke={label === t('mainMenu.analytics.analytics') || label === t('mainMenu.analytics.ino')} isPushed={isPushed}>
+    <Container isOpen={isOpen} fillStroke={label === t('mainMenu.analytics.analytics') || label === t('mainMenu.ino.ino')} isPushed={isPushed}>
       <MenuEntry
         onClick={handleClick}
         className={className}
