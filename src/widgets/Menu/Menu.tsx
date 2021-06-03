@@ -232,7 +232,7 @@ const Menu: React.FC<NavProps> = ({
   betaText = "This is the Beta version. You can't add liquidity here anymore. Press here to switch to the main version.",
   betaLink,
   balanceHook,
-                                    setSelectedLanguage, hideConnectAndNetwork=false
+                                    setSelectedLanguage, hideConnectAndNetwork=false, customLanguage
 }) => {
   const { isXl } = useMatchBreakpoints()
   const isMobile = isXl === false
@@ -246,6 +246,11 @@ const Menu: React.FC<NavProps> = ({
     else
       setLanguage(availableLanguages[0].name.toLocaleLowerCase())
   }, [])
+
+  useEffect(() => {
+    if(customLanguage)
+      setLanguage(customLanguage.toLowerCase())
+  }, [customLanguage])
 
   return (
     <Wrapper>
