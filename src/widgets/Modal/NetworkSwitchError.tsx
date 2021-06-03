@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
+import { useTranslation } from 'react-multi-lang'
 import { Button } from '../../components/Button'
 import Modal from './Modal'
 import { Text } from '../../components/Text'
@@ -43,27 +44,28 @@ const NetworkSwitchError: React.FC<Props> = ({
     if (changeNetwork) changeNetwork()
   }
 
+  const t = useTranslation()
+
   return (
-    <Modal title="Network switching error" onDismiss={onDismiss} hideCloseButton>
-      <StyledText style={{ marginTop: '-6px', marginBottom: '24px' }}>
-        We found that you have different networks <br />
-        selected in your wallet and on our site.
+    <Modal title={t('networkSwitchingError')} onDismiss={onDismiss} hideCloseButton>
+      <StyledText style={{ marginTop: '-6px', marginBottom: '24px', maxWidth: '430px' }}>
+        {t('differentNetworks')}
         {isSupportedChain ? (
           <>
-            <br /> Please choose what to do.
+            <br /> {t('pleaseChoose')}
           </>
         ) : (
           <>
-            <br /> Change network in your wallet manually or use the button below
+            <br /> {t('changeNetworkInTheWallet')}
           </>
         )}
       </StyledText>
       <Button onClick={handleClick} fullwidth data-id="change-network-button">
-        Change network in the wallet
+        {t('changeNetworkInTheWallet')}
       </Button>
       {isSupportedChain && (
         <>
-          <Text style={{ marginTop: '36px', marginBottom: '24px' }}>Or change network on our site</Text>
+          <Text style={{ marginTop: '36px', marginBottom: '24px' }}>{t('orChangeNetwork')}</Text>
           <StyledNetworkSwitch>
             <NetworkSwitch isProduction={isProduction} toggleMobile={false} />
           </StyledNetworkSwitch>

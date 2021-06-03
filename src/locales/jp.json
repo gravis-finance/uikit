@@ -278,9 +278,10 @@
   "priceAndCurrency": "価格と通貨",
   "networkSwitchingError": "ネットワーク切り替えエラー",
   "differentNetworks": "あなたのウォレットと弊社サイトで、異なるネットワークが選択されていることがわかりました。",
-  "changeNetworkInTheWallet": " ",
-  "orChangeNetwork": " 何をするか選択してください。",
-  "changeManually": "ウォレットのネットワークを変更する",
+  "pleaseChoose": "何をするか選択してください。",
+  "changeNetworkInTheWallet": "ウォレットのネットワークを変更する",
+  "orChangeNetwork": "または、当社サイトでネットワークを変更する",
+  "changeManually": "あなたのウォレットと弊社サイトで選択されているネットワークが異なることがわかりました\n \nウォレットと当社サイトで異なるネットワークが選択されています\n \n ウォレットのネットワークを手動で変更するか、下のボタンを使用してください",
 
   "time": {
     "time": "時間",
