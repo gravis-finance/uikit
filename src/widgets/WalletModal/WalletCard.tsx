@@ -1,5 +1,5 @@
 import React from 'react'
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 import Button from '../../components/Button/Button'
 import Text from '../../components/Text/Text'
 import { connectorLocalStorageKey } from './config'
@@ -31,14 +31,13 @@ const StyledButton = styled(Button)`
   }
 `
 
-const StyledFlex = styled(Flex)<{ isBlurred?: boolean }>`
+const StyledFlex = styled(Flex)<{ disabled?: boolean }>`
+  cursor: pointer;
   > button {
     border: 1px solid transparent !important;
-    ${({ isBlurred }) => (isBlurred ? 'opacity: 0.5;' : '')}
     transition: border 200ms ease-in-out;
   }
   > div {
-    ${({ isBlurred }) => (isBlurred ? 'opacity: 0.5;' : '')}
     transition: color 200ms ease-in-out;
   }
   > button {
@@ -53,28 +52,32 @@ const StyledFlex = styled(Flex)<{ isBlurred?: boolean }>`
     box-shadow: none !important;
     background: #353535 !important;
   }
-  ${({ isBlurred }) =>
-    isBlurred
-      ? `
+  :hover {
     > button {
-        background: #353535 !important;
+      background: #353535 !important;
+      border: 1px solid #009ce1 !important;
     }
-    :hover {
-      > button {
-        border: 1px solid transparent !important;
-      }
+
+    > div {
+      color: #009ce1;
     }
-  `
-      : `:hover {
+  }
+
+  ${({ disabled }) =>
+    disabled &&
+    css`
+      pointer-events: none;
+      opacity: 0.5;
+
       > button {
         background: #353535 !important;
-        border: 1px solid #009CE1 !important;
       }
-  
-      > div {
-        color: #009CE1;
+      :hover {
+        > button {
+          border: 1px solid transparent !important;
+        }
       }
-    }`}
+    `}
 `
 
 const StyledCheckMarkInCircle = styled(CheckmarkCircleIcon)`
@@ -84,6 +87,10 @@ const StyledCheckMarkInCircle = styled(CheckmarkCircleIcon)`
   width: 16px;
   height: 16px;
 `
+
+const isMobile = /Mobile|webOS|BlackBerry|IEMobile|MeeGo|mini|Fennec|Windows Phone|Android|iP(ad|od|hone)/i.test(
+  navigator.userAgent
+)
 
 const WalletCard: React.FC<Props> = ({
   login,
@@ -96,7 +103,14 @@ const WalletCard: React.FC<Props> = ({
 }) => {
   const { title, icon: Icon } = walletConfig
 
-  const onClickHandler = () => {
+  const disabled = (() => {
+    if (selectedNetwork === 'Binance') {
+      return ['Trust Wallet', 'Token Pocket'].indexOf(title) !== -1 || (isMobile && title === 'Wallet Connect')
+    }
+    return isMobile ? title !== 'Wallet Connect' : title !== 'Metamask'
+  })()
+
+  const onClick = () => {
     window.localStorage.setItem(connectorLocalStorageKey, walletConfig.connectorId)
     login(walletConfig.connectorId)
     setSelectedWallet(title)
@@ -108,12 +122,7 @@ const WalletCard: React.FC<Props> = ({
   }
 
   return (
-    <StyledFlex
-      flexDirection="column"
-      alignItems="center"
-      onClick={title !== 'Metamask' && selectedNetwork === 'Huobi' ? undefined : onClickHandler}
-      isBlurred={title !== 'Metamask' && selectedNetwork === 'Huobi'}
-    >
+    <StyledFlex flexDirection="column" alignItems="center" disabled={disabled} onClick={onClick}>
       <StyledButton
         fullwidth
         variant="tertiary"
