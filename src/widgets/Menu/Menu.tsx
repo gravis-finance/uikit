@@ -17,6 +17,7 @@ import Logo from '../../components/Svg/Icons/Logo'
 import en from '../../locales/en.json'
 import jp from '../../locales/jp.json'
 import { localStorageLanguageItem } from '../../constants'
+import LanguageSwitch from './LanguageSwitch'
 
 const Wrapper = styled.div`
   position: relative;
@@ -140,10 +141,6 @@ const StyledBetaIcon = styled.div<{ isPushed?: boolean }>`
   margin-left: -20px;
   ${({ isPushed }) => isPushed && 'margin-left: 152px;'}
 
-  svg {
-    margin-right: 10px;
-  }
-
   @media screen and (max-width: 968px) {
     position: relative;
     margin-left: 8px;
@@ -155,6 +152,22 @@ const StyledBetaIcon = styled.div<{ isPushed?: boolean }>`
         display: block;
       }
     }
+  }
+  @media screen and (max-width: 575px) {
+    margin-left: 20px;
+  }
+`
+
+const LanguageContainer = styled.div<{ isPushed?: boolean }>`
+  display: flex;
+  align-items: center;
+  margin-left: -20px;
+  pointer-events: all;
+  ${({ isPushed }) => isPushed && 'margin-left: 152px;'}
+
+  @media screen and (max-width: 968px) {
+    position: relative;
+    margin-left: 16px;
   }
   @media screen and (max-width: 575px) {
     margin-left: 20px;
@@ -254,6 +267,9 @@ const Menu: React.FC<NavProps> = ({
               </StyledText>
             </StyledBetaIcon>
           )}
+          <LanguageContainer isPushed={isPushed}>
+            <LanguageSwitch setSelectedLanguage={setSelectedLanguage} />
+          </LanguageContainer>
         </Flex>
         <Flex alignItems="center">
           {loginBlockVisible && (
@@ -268,8 +284,6 @@ const Menu: React.FC<NavProps> = ({
               explorerLink={explorerLink}
               onTransactionHistoryHandler={onTransactionHistoryHandler}
               balanceHook={balanceHook}
-              setSelectedLanguage={setSelectedLanguage}
-              hideConnectAndNetwork={hideConnectAndNetwork}
               {...options}
             />
           )}
