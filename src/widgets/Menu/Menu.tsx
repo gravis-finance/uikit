@@ -219,7 +219,7 @@ const Menu: React.FC<NavProps> = ({
   betaText = "This is the Beta version. You can't add liquidity here anymore. Press here to switch to the main version.",
   betaLink,
   balanceHook,
-                                    setSelectedLanguage
+                                    setSelectedLanguage, hideConnectAndNetwork=false
 }) => {
   const { isXl } = useMatchBreakpoints()
   const isMobile = isXl === false
@@ -269,6 +269,7 @@ const Menu: React.FC<NavProps> = ({
               onTransactionHistoryHandler={onTransactionHistoryHandler}
               balanceHook={balanceHook}
               setSelectedLanguage={setSelectedLanguage}
+              hideConnectAndNetwork={hideConnectAndNetwork}
               {...options}
             />
           )}
