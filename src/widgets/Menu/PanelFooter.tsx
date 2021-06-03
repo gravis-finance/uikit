@@ -1,11 +1,13 @@
 import React from 'react'
 import styled from 'styled-components'
+import { getLanguage } from 'react-multi-lang'
 import { SvgProps } from '../../components/Svg'
 import Flex from '../../components/Flex/Flex'
 import Link from '../../components/Link/Link'
 import * as IconModule from './icons'
 import { socials } from './config'
 import { PanelProps, PushedProps } from './types'
+import { getCurrentLanguage } from '../../util/getCurrentLanguage'
 
 interface Props extends PanelProps, PushedProps {}
 
@@ -57,6 +59,16 @@ const StyledExternalLink = styled(Link)`
 `
 
 const PanelFooter: React.FC<Props> = ({ isPushed }) => {
+
+  // eslint-disable-next-line consistent-return
+  const filterHref = (href : string) => {
+    if(href.includes('t.me')) {
+      if (getLanguage() === 'jp')
+      return 'https://t.me/gravis_finance_jp'
+    return 'https://t.me/gravis_finance'
+    }
+  }
+
   return (
     <Container isPushed={isPushed}>
       <SocialEntry>
@@ -65,7 +77,7 @@ const PanelFooter: React.FC<Props> = ({ isPushed }) => {
             const Icon = Icons[social.icon]
             const iconProps = { width: '16px', color: 'textSubtle', style: { cursor: 'pointer' } }
             return (
-              <StyledExternalLink external key={social.label} href={social.href} aria-label={social.label}>
+              <StyledExternalLink external key={social.label} href={filterHref(social.href)} aria-label={social.label}>
                 <Icon {...iconProps} />
               </StyledExternalLink>
             )
