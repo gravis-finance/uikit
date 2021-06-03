@@ -27,7 +27,7 @@ export const Wallet: React.FC = () => {
     '',
     '',
     later,
-    async () => null,
+    async () => null
   )
   return (
     <Flex>

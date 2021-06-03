@@ -55,27 +55,29 @@ const StyledFlex = styled(Flex)<{ disabled?: boolean }>`
   :hover {
     > button {
       background: #353535 !important;
-      border: 1px solid #009CE1 !important;
+      border: 1px solid #009ce1 !important;
     }
 
     > div {
-      color: #009CE1;
+      color: #009ce1;
     }
   }
-  
-  ${({disabled}) => disabled && css`
-    pointer-events: none;
-    opacity: 0.5;
 
-    > button {
-      background: #353535 !important;
-    }
-    :hover {
+  ${({ disabled }) =>
+    disabled &&
+    css`
+      pointer-events: none;
+      opacity: 0.5;
+
       > button {
-        border: 1px solid transparent !important;
+        background: #353535 !important;
       }
-    }
-  `}
+      :hover {
+        > button {
+          border: 1px solid transparent !important;
+        }
+      }
+    `}
 `
 
 const StyledCheckMarkInCircle = styled(CheckmarkCircleIcon)`
@@ -86,7 +88,9 @@ const StyledCheckMarkInCircle = styled(CheckmarkCircleIcon)`
   height: 16px;
 `
 
-const isMobile = /Mobile|webOS|BlackBerry|IEMobile|MeeGo|mini|Fennec|Windows Phone|Android|iP(ad|od|hone)/i.test(navigator.userAgent);
+const isMobile = /Mobile|webOS|BlackBerry|IEMobile|MeeGo|mini|Fennec|Windows Phone|Android|iP(ad|od|hone)/i.test(
+  navigator.userAgent
+)
 
 const WalletCard: React.FC<Props> = ({
   login,
@@ -101,10 +105,10 @@ const WalletCard: React.FC<Props> = ({
 
   const disabled = (() => {
     if (selectedNetwork === 'Binance') {
-      return ['Trust Wallet', 'Token Pocket'].indexOf(title) !== -1 || isMobile && title === 'Wallet Connect';
+      return ['Trust Wallet', 'Token Pocket'].indexOf(title) !== -1 || (isMobile && title === 'Wallet Connect')
     }
-    return isMobile ? title !== 'Wallet Connect' : title !== 'Metamask';
-  })();
+    return isMobile ? title !== 'Wallet Connect' : title !== 'Metamask'
+  })()
 
   const onClick = () => {
     window.localStorage.setItem(connectorLocalStorageKey, walletConfig.connectorId)
@@ -118,12 +122,7 @@ const WalletCard: React.FC<Props> = ({
   }
 
   return (
-    <StyledFlex
-      flexDirection="column"
-      alignItems="center"
-      disabled={disabled}
-      onClick={onClick}
-    >
+    <StyledFlex flexDirection="column" alignItems="center" disabled={disabled} onClick={onClick}>
       <StyledButton
         fullwidth
         variant="tertiary"
