@@ -1,5 +1,6 @@
 import React from 'react'
 import noop from 'lodash/noop'
+import { useTranslation } from 'react-multi-lang'
 import { BrowserRouter } from 'react-router-dom'
 import Flex from '../../components/Flex/Flex'
 import Heading from '../../components/Heading/Heading'
@@ -7,7 +8,7 @@ import Text from '../../components/Text/Text'
 import Menu from './Menu'
 import { MenuEntry } from './MenuEntry'
 import { links } from './config'
-import { useTranslation } from 'react-multi-lang'
+
 // import useModal from '../Modal/useModal'
 
 export default {
