@@ -84,7 +84,7 @@ const StyledMaxButton = styled(Button)<{ isFocused?: boolean }>`
   right: ${({ isFocused }) => (isFocused ? '88' : '55')}px;
   margin-top: auto;
   margin-bottom: auto;
-  width: 45px;
+  min-width: 45px;
 `
 
 const NumericalInput: React.FC<Props> = ({
@@ -194,8 +194,7 @@ const NumericalInput: React.FC<Props> = ({
       />
       {displayMaxButton && (
         <StyledMaxButton buttonType="max" onClick={onMaxButtonHandler} isFocused={isFocused}>
-          {/* {t('maxAmountLabel')} */}
-          最大
+           {t('maxAmountLabel')}
         </StyledMaxButton>
       )}
       {isFocused && (
