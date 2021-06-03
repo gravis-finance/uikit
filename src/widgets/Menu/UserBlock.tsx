@@ -40,9 +40,11 @@ const StyledButtonTitle = styled.div`
   font-size: 14px;
 `
 
-const StyledButton = styled(Button)`
+const StyledFlex = styled(Flex)`
   @media screen and (max-width: 968px) {
-    margin-right: 60px;
+    > *:last-child {
+      margin-right: 60px;
+    }
   }
 `
 
@@ -79,13 +81,13 @@ const UserBlock: React.FC<Props> = (props) => {
   )
   const accountEllipsis = account ? `${account.substring(0, 4)}...${account.substring(account.length - 4)}` : null
   return (
-    <Flex alignItems="center" style={{ pointerEvents: 'all' }}>
+    <StyledFlex alignItems="center" style={{ pointerEvents: 'all' }}>
       <LanguageSwitch setSelectedLanguage={setSelectedLanguage} />
       {!hideConnectAndNetwork &&
         <>
           <NetworkSwitch isProduction={isProduction} />
           {account ? (
-            <StyledButton
+            <Button
               size="md"
               onClick={() => {
                 onPresentAccountModal()
@@ -93,10 +95,10 @@ const UserBlock: React.FC<Props> = (props) => {
               data-id="account-button"
             >
               {accountEllipsis}
-            </StyledButton>
+            </Button>
           ) : (
             <StyledConnectButton>
-              <StyledButton
+              <Button
                 size="md"
                 onClick={() => {
                   onPresentConnectModal()
@@ -107,12 +109,12 @@ const UserBlock: React.FC<Props> = (props) => {
                   <AddIcon />
                 </StyledAddIcon>
                 <StyledButtonTitle>{buttonTitle}</StyledButtonTitle>
-              </StyledButton>
+              </Button>
             </StyledConnectButton>
           )}
         </>
       }
-    </Flex>
+    </StyledFlex>
   )
 }
 
