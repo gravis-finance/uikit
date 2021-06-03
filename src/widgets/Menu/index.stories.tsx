@@ -42,6 +42,7 @@ export const Connected: React.FC = () => {
         // onTransactionHistoryHandler={openModal}
         balanceHook={later}
         betaText=""
+        hideConnectAndNetwork
       >
         <div>
           <Heading as="h1" mb="8px">
