@@ -21,8 +21,6 @@ interface Props {
   explorerLink?: string
   onTransactionHistoryHandler?: any
   balanceHook?: any
-  setSelectedLanguage: (name: string) => void
-  hideConnectAndNetwork?: boolean
 }
 
 const StyledConnectButton = styled.div`
@@ -62,8 +60,6 @@ const UserBlock: React.FC<Props> = (props) => {
     explorerLink,
     onTransactionHistoryHandler,
     balanceHook,
-    setSelectedLanguage,
-    hideConnectAndNetwork
   } = props
 
   const { onPresentConnectModal, onPresentAccountModal } = useWalletModal(
@@ -82,38 +78,33 @@ const UserBlock: React.FC<Props> = (props) => {
   const accountEllipsis = account ? `${account.substring(0, 4)}...${account.substring(account.length - 4)}` : null
   return (
     <StyledFlex alignItems="center" style={{ pointerEvents: 'all' }}>
-      <LanguageSwitch setSelectedLanguage={setSelectedLanguage} />
-      {!hideConnectAndNetwork &&
-        <>
-          <NetworkSwitch isProduction={isProduction} />
-          {account ? (
-            <Button
-              size="md"
-              onClick={() => {
-                onPresentAccountModal()
-              }}
-              data-id="account-button"
-            >
-              {accountEllipsis}
-            </Button>
-          ) : (
-            <StyledConnectButton>
-              <Button
-                size="md"
-                onClick={() => {
-                  onPresentConnectModal()
-                }}
-                data-id="connect-button"
-              >
-                <StyledAddIcon>
-                  <AddIcon />
-                </StyledAddIcon>
-                <StyledButtonTitle>{buttonTitle}</StyledButtonTitle>
-              </Button>
-            </StyledConnectButton>
-          )}
-        </>
-      }
+      <NetworkSwitch isProduction={isProduction} />
+      {account ? (
+        <Button
+          size="md"
+          onClick={() => {
+            onPresentAccountModal()
+          }}
+          data-id="account-button"
+        >
+          {accountEllipsis}
+        </Button>
+      ) : (
+        <StyledConnectButton>
+          <Button
+            size="md"
+            onClick={() => {
+              onPresentConnectModal()
+            }}
+            data-id="connect-button"
+          >
+            <StyledAddIcon>
+              <AddIcon />
+            </StyledAddIcon>
+            <StyledButtonTitle>{buttonTitle}</StyledButtonTitle>
+          </Button>
+        </StyledConnectButton>
+      )}
     </StyledFlex>
   )
 }

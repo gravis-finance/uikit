@@ -101,7 +101,6 @@ const StyledOptionsContainer = styled.div<{ toggleMobile?: boolean }>`
   }
   @media screen and (max-width: 967px) {
     position: absolute;
-    right: 0;
     width: 180px;
     margin-top: 38px;
   }`
