@@ -152,7 +152,7 @@ const StyledArrowDropDownIcon = styled(ArrowDropDownIcon)<{ reversed?: boolean }
 
 interface Props {
   toggleMobile?: boolean
-  setSelectedLanguage: (name: string) => void
+  setSelectedLanguage?: (name: string) => void
 }
 
 interface languageType {
@@ -167,6 +167,8 @@ const LanguageSwitch: React.FC<Props> = ({ toggleMobile = true, setSelectedLangu
   const handleClick = (name : string) => {
     setSelectedOption(availableLanguages.find(language=>language.name === name) as languageType)
     localStorage.setItem(localStorageLanguageItem, name);
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
     setSelectedLanguage(name)
     setLanguage(name.toLowerCase())
   }
