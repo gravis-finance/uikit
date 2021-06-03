@@ -1,6 +1,6 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import noop from 'lodash/noop'
-import { useTranslation } from 'react-multi-lang'
+import { setLanguage, useTranslation } from 'react-multi-lang'
 import { BrowserRouter } from 'react-router-dom'
 import Flex from '../../components/Flex/Flex'
 import Heading from '../../components/Heading/Heading'
@@ -19,6 +19,12 @@ export default {
 
 export const Connected: React.FC = () => {
   // const [openModal] = useModal(<h1>Test</h1>)
+
+  const [selectedLanguage, setSelectedLanguage] = useState('')
+
+  useEffect(() => {
+    setLanguage(selectedLanguage.toLowerCase())
+  }, [selectedLanguage])
 
   function later() {
     return new Promise((resolve) => {
@@ -44,6 +50,7 @@ export const Connected: React.FC = () => {
         balanceHook={later}
         betaText=""
         hideConnectAndNetwork
+        setSelectedLanguage={setSelectedLanguage}
       >
         <div>
           <Heading as="h1" mb="8px">
