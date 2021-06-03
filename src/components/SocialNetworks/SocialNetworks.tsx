@@ -2,6 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 
 import { GithubIcon, TelegramIcon, TwitterIcon, MediumIcon } from './social-icons'
+import { getCurrentLanguage } from '../../util/getCurrentLanguage'
 
 const StyledWrapper = styled.div`
   margin-top: 20px;
@@ -33,7 +34,7 @@ const SocialNetworks: React.FC = () => {
       <LinkItem href="https://github.com/gravis-finance" target="_blank" rel="noopener  noreferrer">
         <GithubIcon />
       </LinkItem>
-      <LinkItem href="https://t.me/gravis_finance" target="_blank" rel="noopener  noreferrer">
+      <LinkItem href={`${getCurrentLanguage() === 'jp' ? 'https://t.me/gravis_finance_jp' : 'https://t.me/gravis_finance'}`} target="_blank" rel="noopener  noreferrer">
         <TelegramIcon />
       </LinkItem>
       <LinkItem href="https://twitter.com/gravis_finance" target="_blank" rel="noopener  noreferrer">

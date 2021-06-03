@@ -1,4 +1,5 @@
 import { EnglishIcon, JapaneseIcon } from './icons'
+import { getCurrentLanguage } from '../../util/getCurrentLanguage'
 
 export const links = [
   {
@@ -77,7 +78,7 @@ export const socials = [
   {
     label: 'Telegram',
     icon: 'TelegramIcon',
-    href: 'https://t.me/gravis_finance',
+    href: `${getCurrentLanguage() === 'jp' ? 'https://t.me/gravis_finance_jp' : 'https://t.me/gravis_finance'}`,
   },
   {
     label: 'Twitter',
