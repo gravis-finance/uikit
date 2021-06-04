@@ -42,6 +42,7 @@ export * from './theme'
 
 // Utils
 export * from './util/getNetworkId'
+export * from './util/getDefaultLanguage'
 
 // Constants
 export * from './constants'

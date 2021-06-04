@@ -18,6 +18,7 @@ import en from '../../locales/en.json'
 import jp from '../../locales/jp.json'
 import { localStorageLanguageItem } from '../../constants'
 import LanguageSwitch from './LanguageSwitch'
+import { getDefaultLanguage } from '../..'
 
 const Wrapper = styled.div`
   position: relative;
@@ -241,10 +242,7 @@ const Menu: React.FC<NavProps> = ({
   const showMenu = true
 
   useEffect(() => {
-    if(localStorage.getItem(localStorageLanguageItem) && availableLanguages.find(language=>language.name===localStorage.getItem(localStorageLanguageItem)))
-      setLanguage(localStorage.getItem(localStorageLanguageItem)?.toLocaleLowerCase() as string)
-    else
-      setLanguage(availableLanguages[0].name.toLocaleLowerCase())
+    setLanguage(getDefaultLanguage() as string)
   }, [])
 
   useEffect(() => {

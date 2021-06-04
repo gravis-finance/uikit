@@ -4,6 +4,7 @@ import { setLanguage } from 'react-multi-lang'
 import { ArrowDropDownIcon, SvgProps } from '../../components/Svg'
 import { availableLanguages } from './config'
 import { localStorageLanguageItem } from '../../constants'
+import { getDefaultLanguage } from '../../util/getDefaultLanguage'
 
 const StyledDropDown = styled.div<{ showOptions?: boolean; toggleMobile?: boolean }>`
   width: 117px;
@@ -183,10 +184,7 @@ const LanguageSwitch: React.FC<Props> = ({ toggleMobile = true, setSelectedLangu
   })
 
   useEffect(() => {
-    if(localStorage.getItem(localStorageLanguageItem) && availableLanguages.find(language=>language.name===localStorage.getItem(localStorageLanguageItem)))
-      setSelectedOption(availableLanguages.find(language=>language.name===localStorage.getItem(localStorageLanguageItem)) as languageType)
-    else
-      setSelectedOption(availableLanguages[0])
+    setSelectedOption(availableLanguages.find(language=>language.name===getDefaultLanguage()?.toUpperCase()) as languageType)
   }, [])
 
   return (
