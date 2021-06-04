@@ -68,5 +68,6 @@ export interface NavProps extends PanelProps {
   betaLink?: string
   balanceHook?: any
   withoutHeader?: boolean
-  setSelectedLanguage: (name: string) => void
+  setSelectedLanguage?: (name: string) => void
+  hideConnectAndNetwork?: boolean
 }

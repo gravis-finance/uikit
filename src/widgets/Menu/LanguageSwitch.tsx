@@ -13,9 +13,9 @@ const StyledDropDown = styled.div<{ showOptions?: boolean; toggleMobile?: boolea
   cursor: pointer;
   margin-right: 24px;
   background: ${({ showOptions }) =>
-    !showOptions
-      ? 'linear-gradient(90.28deg, #292929 0%, #242424 100%), #262626'
-      : 'linear-gradient(90.28deg, #242424 0%, #202020 100%), linear-gradient(90.28deg, #292929 0%, #242424 100%), #303030'};
+  !showOptions
+    ? 'linear-gradient(90.28deg, #292929 0%, #242424 100%), #262626'
+    : 'linear-gradient(90.28deg, #242424 0%, #202020 100%), linear-gradient(90.28deg, #292929 0%, #242424 100%), #303030'};
   border: 1px solid #2e2e2e;
   box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.4), -4px -4px 12px rgba(255, 255, 255, 0.05);
   border-radius: ${({ showOptions }) => (showOptions ? '6px 6px 0 0' : '55px')};
@@ -50,8 +50,8 @@ const StyledDropDown = styled.div<{ showOptions?: boolean; toggleMobile?: boolea
     top: 12px;
   }
   ${({ toggleMobile }) =>
-    toggleMobile
-      ? `
+  toggleMobile
+    ? `
     @media screen and (max-width: 967px) {
       width: 40px;
       height: 40px;
@@ -62,7 +62,7 @@ const StyledDropDown = styled.div<{ showOptions?: boolean; toggleMobile?: boolea
       }
     }
   `
-      : ''}
+    : ''}
 `
 
 const StyledSelectedOption = styled.p<{ showOptions?: boolean; toggleMobile?: boolean }>`
@@ -73,13 +73,13 @@ const StyledSelectedOption = styled.p<{ showOptions?: boolean; toggleMobile?: bo
   font-size: 14px;
 
   ${({ toggleMobile }) =>
-    toggleMobile
-      ? `
+  toggleMobile
+    ? `
     @media screen and (max-width: 967px) {
       display: none;
     }
   `
-      : ''}
+    : ''}
 `
 
 const StyledOptionsContainer = styled.div<{ toggleMobile?: boolean }>`
@@ -93,19 +93,18 @@ const StyledOptionsContainer = styled.div<{ toggleMobile?: boolean }>`
   border-radius: 0 0 6px 6px;
 
   ${({ toggleMobile }) =>
-    toggleMobile
-      ? `
+  toggleMobile
+    ? `
   @media screen and (max-width: 790px) {
     position: fixed;
     width: calc(100vw - 54px);
   }
   @media screen and (max-width: 967px) {
     position: absolute;
-    left: 0;
     width: 180px;
     margin-top: 38px;
   }`
-      : ''}
+    : ''}
 `
 
 const StyledOption = styled.div`
@@ -136,14 +135,14 @@ const StyledIconContainer = styled.div<{ toggleMobile?: boolean }>`
   left: 14px;
 
   ${({ toggleMobile }) =>
-    toggleMobile
-      ? `@media screen and (max-width: 967px) {
+  toggleMobile
+    ? `@media screen and (max-width: 967px) {
     margin: auto;
     position: initial;
     width: 24px;
     height: 24px;
   }`
-      : ''}
+    : ''}
 `
 
 const StyledArrowDropDownIcon = styled(ArrowDropDownIcon)<{ reversed?: boolean }>`
@@ -153,7 +152,7 @@ const StyledArrowDropDownIcon = styled(ArrowDropDownIcon)<{ reversed?: boolean }
 
 interface Props {
   toggleMobile?: boolean
-  setSelectedLanguage: (name: string) => void
+  setSelectedLanguage?: (name: string) => void
 }
 
 interface languageType {
@@ -165,9 +164,11 @@ const LanguageSwitch: React.FC<Props> = ({ toggleMobile = true, setSelectedLangu
   const [showOptions, setShowOptions] = useState(false)
   const [selectedOption, setSelectedOption] = useState<languageType>(availableLanguages[0])
 
-  const handleClick = (name: string) => {
-    setSelectedOption(availableLanguages.find((language) => language.name === name) as languageType)
-    localStorage.setItem(localStorageLanguageItem, name)
+  const handleClick = (name : string) => {
+    setSelectedOption(availableLanguages.find(language=>language.name === name) as languageType)
+    localStorage.setItem(localStorageLanguageItem, name);
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
     setSelectedLanguage(name)
     setLanguage(name.toLowerCase())
   }
@@ -182,16 +183,10 @@ const LanguageSwitch: React.FC<Props> = ({ toggleMobile = true, setSelectedLangu
   })
 
   useEffect(() => {
-    if (
-      localStorage.getItem(localStorageLanguageItem) &&
-      availableLanguages.find((language) => language.name === localStorage.getItem(localStorageLanguageItem))
-    )
-      setSelectedOption(
-        availableLanguages.find(
-          (language) => language.name === localStorage.getItem(localStorageLanguageItem)
-        ) as languageType
-      )
-    else setSelectedOption(availableLanguages[0])
+    if(localStorage.getItem(localStorageLanguageItem) && availableLanguages.find(language=>language.name===localStorage.getItem(localStorageLanguageItem)))
+      setSelectedOption(availableLanguages.find(language=>language.name===localStorage.getItem(localStorageLanguageItem)) as languageType)
+    else
+      setSelectedOption(availableLanguages[0])
   }, [])
 
   return (
@@ -210,12 +205,12 @@ const LanguageSwitch: React.FC<Props> = ({ toggleMobile = true, setSelectedLangu
       {!showOptions ? <StyledArrowDropDownIcon /> : <StyledArrowDropDownIcon reversed />}
       {showOptions && (
         <StyledOptionsContainer toggleMobile={toggleMobile}>
-          {availableLanguages.map((language) => (
-            <StyledOption id="en-switch-option" onClick={() => handleClick(language.name)}>
+          {availableLanguages.map(language =>
+            <StyledOption id='en-switch-option' onClick={()=>handleClick(language.name)}>
               <language.icon />
               {language.name}
             </StyledOption>
-          ))}
+          )}
         </StyledOptionsContainer>
       )}
     </StyledDropDown>
