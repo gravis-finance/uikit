@@ -188,7 +188,10 @@ const LanguageSwitch: React.FC<Props> = ({ toggleMobile = true, setSelectedLangu
   })
 
   useEffect(() => {
-    setSelectedOption(availableLanguages.find(language=>language.name===getDefaultLanguage()?.toUpperCase()) as languageType)
+    setSelectedOption(availableLanguages.find(
+      language=>language.name===getDefaultLanguage()?.toUpperCase()) ?
+      availableLanguages.find(language=>language.name===getDefaultLanguage()?.toUpperCase()) as languageType
+      : availableLanguages[0])
   }, [])
 
   return (
