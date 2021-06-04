@@ -1,6 +1,6 @@
 {
   "name": "@gravis.finance/uikit",
-  "version": "1.1.71",
+  "version": "1.1.72",
   "description": "Set of UI components for Gravis Finance projects",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
@@ -76,7 +76,7 @@
     "styled-components": "^5.2.0"
   },
   "dependencies": {
-    "@gravis.finance/sdk": "^1.0.3",
+    "@gravis.finance/sdk": "^1.0.9",
     "@types/lodash": "^4.14.162",
     "@types/styled-system": "^5.1.10",
     "lodash": "^4.17.20",
