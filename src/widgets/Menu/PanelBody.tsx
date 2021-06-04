@@ -11,13 +11,14 @@ import MenuButton from './MenuButton'
 import { HamburgerCloseIcon } from './icons'
 import Logo from './Logo'
 import { useTranslation } from 'react-multi-lang'
+import Tooltip from '../../components/Tooltip'
 
 interface Props extends PanelProps, PushedProps {
   isMobile?: boolean
   togglePush?: () => void
 }
 
-const Icons = (IconModule as unknown) as { [key: string]: React.FC<SvgProps> }
+const Icons = IconModule as unknown as { [key: string]: React.FC<SvgProps> }
 
 const Container = styled.div`
   display: flex;
@@ -163,49 +164,54 @@ const PanelBody: React.FC<Props> = ({ isPushed, pushNav, isMobile, links, toggle
           const Icon = Icons[entry.icon]
           const iconElement = <Icon width="24px" mr="8px" />
           const calloutClass = entry.calloutClass ? entry.calloutClass : undefined
+          const title = !isPushed ? entry.label : ''
 
           if (entry.items) {
             const itemsMatchIndex = entry.items.findIndex((item) => item.href === location.pathname)
             const initialOpenState = entry.initialOpenState === true ? entry.initialOpenState : itemsMatchIndex >= 0
 
             return (
-              <Accordion
-                key={entry.label}
-                isPushed={isPushed}
-                pushNav={pushNav}
-                icon={iconElement}
-                label={entry.label}
-                initialOpenState={initialOpenState}
-                className={calloutClass}
-              >
-                {isPushed &&
-                  entry.items.map((item) => (
-                    <MenuEntry
-                      key={item.href}
-                      secondary
-                      isactive={item.href === location.pathname}
-                      onClick={handleClick}
-                    >
-                      <MenuLink href={item.href}>{item.label}</MenuLink>
-                    </MenuEntry>
-                  ))}
-              </Accordion>
+              <Tooltip placement="left" title={title}>
+                <Accordion
+                  key={entry.label}
+                  isPushed={isPushed}
+                  pushNav={pushNav}
+                  icon={iconElement}
+                  label={entry.label}
+                  initialOpenState={initialOpenState}
+                  className={calloutClass}
+                >
+                  {isPushed &&
+                    entry.items.map((item) => (
+                      <MenuEntry
+                        key={item.href}
+                        secondary
+                        isactive={item.href === location.pathname}
+                        onClick={handleClick}
+                      >
+                        <MenuLink href={item.href}>{item.label}</MenuLink>
+                      </MenuEntry>
+                    ))}
+                </Accordion>
+              </Tooltip>
             )
           }
           return (
-            <MenuEntry
-              key={entry.label}
-              isactive={entry.href === location.pathname}
-              className={calloutClass}
-              fillStroke={entry.label === t('mainMenu.home')}
-              isPushed={isPushed}
-              single
-            >
-              <MenuLink href={entry.href} onClick={handleClick}>
-                {iconElement}
-                <LinkLabel isPushed={isPushed}>{entry.label}</LinkLabel>
-              </MenuLink>
-            </MenuEntry>
+            <Tooltip placement="left" title={title}>
+              <MenuEntry
+                key={entry.label}
+                isactive={entry.href === location.pathname}
+                className={calloutClass}
+                fillStroke={entry.label === t('mainMenu.home')}
+                isPushed={isPushed}
+                single
+              >
+                <MenuLink href={entry.href} onClick={handleClick}>
+                  {iconElement}
+                  <LinkLabel isPushed={isPushed}>{entry.label}</LinkLabel>
+                </MenuLink>
+              </MenuEntry>
+            </Tooltip>
           )
         })}
       </StyledLinksPanel>

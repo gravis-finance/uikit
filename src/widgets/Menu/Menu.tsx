@@ -197,7 +197,7 @@ const StyledClickableLink = styled.a`
   }
 `
 
-setTranslations({en, jp})
+setTranslations({ en, jp })
 setDefaultLanguage('en')
 
 const Menu: React.FC<NavProps> = ({
@@ -219,7 +219,7 @@ const Menu: React.FC<NavProps> = ({
   betaText = "This is the Beta version. You can't add liquidity here anymore. Press here to switch to the main version.",
   betaLink,
   balanceHook,
-                                    setSelectedLanguage
+  setSelectedLanguage,
 }) => {
   const { isXl } = useMatchBreakpoints()
   const isMobile = isXl === false
@@ -228,10 +228,12 @@ const Menu: React.FC<NavProps> = ({
   const showMenu = true
 
   useEffect(() => {
-    if(localStorage.getItem(localStorageLanguageItem) && availableLanguages.find(language=>language.name===localStorage.getItem(localStorageLanguageItem)))
+    if (
+      localStorage.getItem(localStorageLanguageItem) &&
+      availableLanguages.find((language) => language.name === localStorage.getItem(localStorageLanguageItem))
+    )
       setLanguage(localStorage.getItem(localStorageLanguageItem)?.toLocaleLowerCase() as string)
-    else
-      setLanguage(availableLanguages[0].name.toLocaleLowerCase())
+    else setLanguage(availableLanguages[0].name.toLocaleLowerCase())
   }, [])
 
   return (

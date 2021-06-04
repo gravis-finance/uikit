@@ -126,61 +126,61 @@ const StyledArrowDropDown = styled(ArrowDropDownIcon)<{ isOpen?: boolean }>`
       : ''}
 `
 
-const Accordion: React.FC<Props> = ({
-  label,
-  icon,
-  isPushed,
-  pushNav,
-  initialOpenState = false,
-  children,
-  className,
-}) => {
-  const [isOpen, setIsOpen] = useState(initialOpenState)
-  const t = useTranslation()
+const Accordion: React.FC<Props> = React.forwardRef(
+  ({ label, icon, isPushed, pushNav, initialOpenState = false, children, className, ...restProps }, ref: any) => {
+    const [isOpen, setIsOpen] = useState(initialOpenState)
+    const t = useTranslation()
 
-  const handleClick = () => {
-    if (isPushed) {
-      setIsOpen((prevState) => !prevState)
-    } else {
-      pushNav(true)
-      setIsOpen(true)
+    const handleClick = () => {
+      if (isPushed) {
+        setIsOpen((prevState) => !prevState)
+      } else {
+        pushNav(true)
+        setIsOpen(true)
+      }
     }
-  }
 
-  const onClickHandler = (event: any) => {
-    if (!event.target.closest(Container)) setIsOpen(false)
-  }
+    const onClickHandler = (event: any) => {
+      if (!event.target.closest(Container)) setIsOpen(false)
+    }
 
-  useEffect(() => {
-    document.addEventListener('click', onClickHandler)
-    return () => document.removeEventListener('click', onClickHandler)
-  })
+    useEffect(() => {
+      document.addEventListener('click', onClickHandler)
+      return () => document.removeEventListener('click', onClickHandler)
+    })
 
-  useEffect(() => {
-    setIsOpen(initialOpenState)
-  }, [initialOpenState, isPushed])
+    useEffect(() => {
+      setIsOpen(initialOpenState)
+    }, [initialOpenState, isPushed])
 
-  return (
-    <Container isOpen={isOpen} fillStroke={label === t('mainMenu.analytics.analytics') || label === t('mainMenu.analytics.ino')} isPushed={isPushed}>
-      <MenuEntry
-        onClick={handleClick}
-        className={className}
-        isPushed={isPushed}
-        fillStroke={label === t('mainMenu.analytics.analytics') || label === t('mainMenu.ino.ino')}
-      >
-        {icon}
-        <LinkLabel isPushed={isPushed}>{label}</LinkLabel>
-        <StyledArrowDropDown isOpen={isOpen} />
-      </MenuEntry>
-      <AccordionContent
+    return (
+      <Container
         isOpen={isOpen}
+        fillStroke={label === t('mainMenu.analytics.analytics') || label === t('mainMenu.analytics.ino')}
         isPushed={isPushed}
-        maxHeight={React.Children.count(children) * MENU_ENTRY_HEIGHT}
+        ref={ref}
+        {...restProps}
       >
-        {children}
-      </AccordionContent>
-    </Container>
-  )
-}
+        <MenuEntry
+          onClick={handleClick}
+          className={className}
+          isPushed={isPushed}
+          fillStroke={label === t('mainMenu.analytics.analytics') || label === t('mainMenu.ino.ino')}
+        >
+          {icon}
+          <LinkLabel isPushed={isPushed}>{label}</LinkLabel>
+          <StyledArrowDropDown isOpen={isOpen} />
+        </MenuEntry>
+        <AccordionContent
+          isOpen={isOpen}
+          isPushed={isPushed}
+          maxHeight={React.Children.count(children) * MENU_ENTRY_HEIGHT}
+        >
+          {children}
+        </AccordionContent>
+      </Container>
+    )
+  }
+)
 
 export default Accordion

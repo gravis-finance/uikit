@@ -59,7 +59,7 @@ const UserBlock: React.FC<Props> = (props) => {
     explorerLink,
     onTransactionHistoryHandler,
     balanceHook,
-    setSelectedLanguage
+    setSelectedLanguage,
   } = props
 
   const { onPresentConnectModal, onPresentAccountModal } = useWalletModal(
