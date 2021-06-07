@@ -154,12 +154,12 @@ const ConnectModal: React.FC<Props> = ({
           />
         )}
       </StyledWalletFlex>
-      <HelpLink href="" external>
+      {/* <HelpLink href="" external>
         <BigHelpIcon color="primary" mr="6px" height="18px" width="18px" />
         <Text fontSize="10px" color="#009CE1" style={{ fontWeight: 500 }}>
           {t('learnHowConnect')}
         </Text>
-      </HelpLink>
+      </HelpLink> */}
     </Modal>
   )
 }
