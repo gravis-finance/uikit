@@ -6,6 +6,7 @@ import Heading from '../Heading/Heading'
 import Input from './Input'
 import { scales } from './types'
 import NumericalInput from './NumericalInput'
+import NumberButtons from './NumberButtons'
 // import { Button } from '../Button'
 
 const Row = styled.div`
@@ -50,6 +51,20 @@ export const Numerical: React.FC = () => {
   return (
     <div>
       <NumericalInput inputRef={inputRef} onMaxButtonHandler={onClick} />
+      {/* <NumericalInput /> */}
+      {/* <Button onClick={onClick}>Click</Button> */}
+    </div>
+  )
+}
+
+export const PlusMinusButtons: React.FC = () => {
+  const inputRef = useRef<HTMLInputElement>(null)
+  const onClick = () => {
+    // console.log(inputRef.current.value)
+  }
+  return (
+    <div>
+      <NumberButtons />
       {/* <NumericalInput /> */}
       {/* <Button onClick={onClick}>Click</Button> */}
     </div>
