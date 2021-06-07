@@ -107,7 +107,7 @@ const WalletCard: React.FC<Props> = ({
     if (selectedNetwork === 'Binance') {
       return ['Trust Wallet', 'Token Pocket'].indexOf(title) !== -1 || (isMobile && title === 'Wallet Connect')
     }
-    return isMobile ? title !== 'Wallet Connect' : title !== 'Metamask'
+    return isMobile ? title !== 'Wallet Connect' : ['Metamask', 'Wallet Connect'].indexOf(title) === -1
   })()
 
   const onClick = () => {
