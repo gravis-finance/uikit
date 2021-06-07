@@ -67,6 +67,7 @@ const PanelFooter: React.FC<Props> = ({ isPushed }) => {
       return 'https://t.me/gravis_finance_jp'
     return 'https://t.me/gravis_finance'
     }
+    return href
   }
 
   return (
