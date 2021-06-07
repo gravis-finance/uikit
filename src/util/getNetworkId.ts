@@ -5,8 +5,8 @@ const NetworkLabels = {
   '97': 'binanceSmartChain',
   '128': 'huobiEcoChain',
   '256': 'huobiEcoChain',
-  '80001': 'Polygon',
-  '137': 'Polygon',
+  '80001': 'Polygon (Matic)',
+  '137': 'Polygon (Matic)',
 }
 
 export const NetworkSymbols: { [chainId in ChainId]: string } = {

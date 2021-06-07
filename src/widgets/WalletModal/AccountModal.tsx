@@ -16,7 +16,7 @@ import {
   TransactionHistoryIcon,
   ModalBackgroundIcon,
   ModalBackgroundIconMobile,
-  HecoIcon,
+  HecoIcon, MaticIcon
 } from '../../components/Svg'
 
 interface Props {
@@ -136,7 +136,7 @@ const AccountModal: React.FC<Props> = ({
   logout,
   onDismiss = () => null,
   balance,
-  explorerName = 'viewOnBscscan',
+  explorerName = 'MaticInfo',
   explorerLink,
   tokenSymbol = 'BNB',
   networkName = 'binanceSmartChain',
@@ -186,7 +186,7 @@ const AccountModal: React.FC<Props> = ({
       </StyledInputContainer>
       <StyledFlex mt="16px" justifyContent="space-between" buttonsList>
         <StyledButton size="md" variant="dark" onClick={() => window.open(explorerLink)} data-id="scan-button">
-          {explorerName.includes('Bsc') ? <BSCScanIcon mr={16} /> : <HecoIcon mr={16} />}
+          {explorerName.includes('Bsc') ? <BSCScanIcon mr={16} /> : explorerName.includes('Heco') ? <HecoIcon mr={16} /> : <MaticIcon mr={16} /> }
           {t(explorerName)}
         </StyledButton>
         {onTransactionHistoryHandler && (
