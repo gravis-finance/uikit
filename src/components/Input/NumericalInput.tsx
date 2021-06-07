@@ -4,6 +4,7 @@ import styled from 'styled-components'
 import Input  from './Input'
 import { NumericalArrow } from '../Svg'
 import { Button } from '../Button'
+import { useTranslation } from 'react-multi-lang'
 
 interface Props {
   inputHeight?: string
@@ -83,6 +84,7 @@ const StyledMaxButton = styled(Button)<{ isFocused?: boolean }>`
   right: ${({ isFocused }) => (isFocused ? '88' : '55')}px;
   margin-top: auto;
   margin-bottom: auto;
+  min-width: 45px;
 `
 
 const NumericalInput: React.FC<Props> = ({
@@ -166,6 +168,8 @@ const NumericalInput: React.FC<Props> = ({
     // event.target.value = inputRef.current.value
   }
 
+  const t = useTranslation()
+
   useEffect(() => {
     document.addEventListener('click', onClickHandler)
 
@@ -190,7 +194,7 @@ const NumericalInput: React.FC<Props> = ({
       />
       {displayMaxButton && (
         <StyledMaxButton buttonType="max" onClick={onMaxButtonHandler} isFocused={isFocused}>
-          MAX
+           {t('maxAmountLabel')}
         </StyledMaxButton>
       )}
       {isFocused && (

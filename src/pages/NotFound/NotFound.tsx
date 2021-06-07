@@ -28,6 +28,7 @@ const StyledWrapper = styled.div`
   }
   @media screen and (max-width: 768px) {
     padding: 8px;
+    overflow: hidden;
   }
 `
 
@@ -39,7 +40,7 @@ const InfoWrapper = styled.div`
   width: 700px;
 
   @media screen and (max-width: 1024px) {
-    width: 80%;
+    width: 100%;
   }
   @media screen and (max-width: 480px) {
     width: 100%;
@@ -100,6 +101,10 @@ const StyledHeading = styled(Heading)`
     font-size: 56px;
     line-height: 64px;
   }
+  @media screen and (max-width: 615px) {
+    font-size: 50px;
+    line-height: 40px;
+  }
   @media screen and (max-width: 480px) {
     font-size: 32px;
     line-height: 40px;
@@ -107,7 +112,7 @@ const StyledHeading = styled(Heading)`
 `
 
 const StyledText = styled(Text)`
-  width: 70%;
+  width: 100%;
   font-size: 24px;
   line-height: 30px;
   margin: 24px 0 30px 0;
@@ -122,7 +127,7 @@ const StyledText = styled(Text)`
   @media screen and (max-width: 1024px) {
     text-align: center;
     margin: 24px auto 32px auto;
-    width: 450px;
+    // width: 450px;
   }
 
   @media screen and (max-width: 480px) {
@@ -151,7 +156,7 @@ const NotFound: React.FC<PropsType> = ({ redirectURL = 'https://gravis.finance/'
     <StyledWrapper>
       <InfoWrapper>
         <StyledHeading>Something went wrong</StyledHeading>
-        <StyledText>The requested page found cannot be. May the force be with you!</StyledText>
+        <StyledText>The requested page found cannot be. <br />May the force be with you!</StyledText>
 
         <a href={redirectURL} rel="noreferrer noopener">
           <StyledButton>Go back to main site</StyledButton>

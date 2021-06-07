@@ -1972,10 +1972,10 @@
     eslint-plugin-react "^7.21.5"
     eslint-plugin-react-hooks "^4.0.0"
 
-"@gravis.finance/sdk@^1.0.3":
-  version "1.0.5"
-  resolved "https://registry.yarnpkg.com/@gravis.finance/sdk/-/sdk-1.0.5.tgz#167933ac74f988f8a8d79ab162efeeef7389a987"
-  integrity sha512-fzQ2dfojnPahuBb4LJdvfzpBem0ZHjDKjAtFODDLiaiSjvQoaValmt4dRvgCNtgT9K57RNNdP+TKuLXLXKyUyg==
+"@gravis.finance/sdk@^1.0.9":
+  version "1.0.9"
+  resolved "https://registry.yarnpkg.com/@gravis.finance/sdk/-/sdk-1.0.9.tgz#2b28032859ca03b75875d75ae731d4b816c22b16"
+  integrity sha512-LC3k2UKgnF+GDk37yjRXQRCzjunHbsOIlwzwpn7tSvoFlgLk8/RulwbaAR/Cb+uZAt/iTbyaF/gqnQ/983KYeQ==
   dependencies:
     "@pancakeswap-libs/pancake-swap-core" "^0.1.0"
     big.js "^5.2.2"

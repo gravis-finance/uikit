@@ -18,7 +18,8 @@ import en from '../../locales/en.json'
 import jp from '../../locales/jp.json'
 import { localStorageLanguageItem } from '../../constants'
 import LanguageSwitch from './LanguageSwitch'
-
+import { getDefaultLanguage } from '../..'
+        
 const Wrapper = styled.div`
   position: relative;
   width: 100%;
@@ -232,7 +233,7 @@ const Menu: React.FC<NavProps> = ({
   betaText = "This is the Beta version. You can't add liquidity here anymore. Press here to switch to the main version.",
   betaLink,
   balanceHook,
-                                    setSelectedLanguage, hideConnectAndNetwork=false
+                                    setSelectedLanguage, hideConnectAndNetwork=false, customLanguage
 }) => {
   const { isXl } = useMatchBreakpoints()
   const isMobile = isXl === false
@@ -241,11 +242,18 @@ const Menu: React.FC<NavProps> = ({
   const showMenu = true
 
   useEffect(() => {
-    if(localStorage.getItem(localStorageLanguageItem) && availableLanguages.find(language=>language.name===localStorage.getItem(localStorageLanguageItem)))
-      setLanguage(localStorage.getItem(localStorageLanguageItem)?.toLocaleLowerCase() as string)
-    else
-      setLanguage(availableLanguages[0].name.toLocaleLowerCase())
+    localStorage.setItem(localStorageLanguageItem, getDefaultLanguage()?.toUpperCase() as string);
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
+    setSelectedLanguage(getDefaultLanguage())
+    setLanguage(getDefaultLanguage() as string)
+    // eslint-disable-next-line
   }, [])
+
+  useEffect(() => {
+    if(customLanguage)
+      setLanguage(customLanguage.toLowerCase())
+  }, [customLanguage])
 
   return (
     <Wrapper>

@@ -198,7 +198,7 @@ const NetworkSwitch: React.FC<Props> = ({ isProduction, toggleMobile = true }) =
         <StyledOptionsContainer toggleMobile={toggleMobile}>
           {networks.map((item: any) => (
             <StyledOption key={item.title} onClick={() => handleClick(item)} id={`${item.label}-switch-option`}>
-              {item.label === 'HECO' ? <HuobiIcon /> : <BinanceIcon />}
+              <item.icon/>
               {item.label}
             </StyledOption>
           ))}

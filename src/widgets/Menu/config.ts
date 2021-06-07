@@ -1,4 +1,5 @@
 import { EnglishIcon, JapaneseIcon } from './icons'
+import { getCurrentLanguage } from '../../util/getCurrentLanguage'
 
 export const links = [
   {

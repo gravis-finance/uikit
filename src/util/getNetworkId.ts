@@ -5,6 +5,8 @@ const NetworkLabels = {
   '97': 'binanceSmartChain',
   '128': 'huobiEcoChain',
   '256': 'huobiEcoChain',
+  '80001': 'Polygon (Matic)',
+  '137': 'Polygon (Matic)',
 }
 
 export const NetworkSymbols: { [chainId in ChainId]: string } = {
@@ -12,6 +14,8 @@ export const NetworkSymbols: { [chainId in ChainId]: string } = {
   '97': 'BNB',
   '128': 'HT',
   '256': 'HT',
+  '80001': 'Matic',
+  '137': 'Matic',
 }
 
 export const NetworkTitles: { [chainId in ChainId]: string } = {
@@ -19,6 +23,8 @@ export const NetworkTitles: { [chainId in ChainId]: string } = {
   '97': 'Binance',
   '128': 'Huobi',
   '256': 'Huobi',
+  '80001': 'Polygon',
+  '137': 'Polygon',
 }
 
 const networkLocalStorageKey = 'network'

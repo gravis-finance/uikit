@@ -6,6 +6,7 @@ import WalletConnect from './icons/WalletConnect'
 import BinanceChain from './icons/BinanceChain'
 import Binance from './icons/Binance'
 import Huobi from './icons/Huobi'
+import Polygon from './icons/Polygon'
 
 import { WalletsConfig, ConnectorNames } from './types'
 
@@ -56,6 +57,12 @@ export const networks = {
       label: 'BSC',
       chainId: '56',
     },
+    {
+      title: 'Polygon',
+      icon: Polygon,
+      label: 'Polygon',
+      chainId: '137',
+    },
   ],
   development: [
     {
@@ -69,6 +76,12 @@ export const networks = {
       icon: Binance,
       label: 'BSC',
       chainId: '97',
+    },
+    {
+      title: 'Polygon',
+      icon: Polygon,
+      label: 'Polygon',
+      chainId: '80001',
     },
   ],
 }

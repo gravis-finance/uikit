@@ -62,6 +62,8 @@ export { default as ErrorCircleIcon } from './Icons/ErrorCircle'
 export { default as NumericalArrow } from './Icons/NumericalArrow'
 export { default as HecoIcon } from './Icons/Heco'
 export { default as HourGlassIcon } from './Icons/Hourglass'
+export { default as AddButton } from './Icons/AddButton'
+export { default as MaticIcon } from './Icons/MaticIcon'
 
 export { default as Svg } from './Svg'
 export type { SvgProps } from './types'
