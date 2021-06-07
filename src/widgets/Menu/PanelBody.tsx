@@ -171,9 +171,8 @@ const PanelBody: React.FC<Props> = ({ isPushed, pushNav, isMobile, links, toggle
             const initialOpenState = entry.initialOpenState === true ? entry.initialOpenState : itemsMatchIndex >= 0
 
             return (
-              <Tooltip placement="left" title={title}>
+              <Tooltip placement="left" title={title} key={entry.label}>
                 <Accordion
-                  key={entry.label}
                   isPushed={isPushed}
                   pushNav={pushNav}
                   icon={iconElement}
@@ -197,9 +196,8 @@ const PanelBody: React.FC<Props> = ({ isPushed, pushNav, isMobile, links, toggle
             )
           }
           return (
-            <Tooltip placement="left" title={title}>
+            <Tooltip placement="left" title={title} key={entry.label}>
               <MenuEntry
-                key={entry.label}
                 isactive={entry.href === location.pathname}
                 className={calloutClass}
                 fillStroke={entry.label === t('mainMenu.home')}
