@@ -11,7 +11,7 @@ import { getCurrentLanguage } from '../../util/getCurrentLanguage'
 
 interface Props extends PanelProps, PushedProps {}
 
-const Icons = (IconModule as unknown) as { [key: string]: React.FC<SvgProps> }
+const Icons = IconModule as unknown as { [key: string]: React.FC<SvgProps> }
 
 const Container = styled.div<{ isPushed?: boolean }>`
   flex: none;

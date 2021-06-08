@@ -95,12 +95,12 @@ export const socials = [
 export const availableLanguages = [
   {
     name: 'EN',
-    icon: EnglishIcon
+    icon: EnglishIcon,
   },
   {
     name: 'JP',
-    icon: JapaneseIcon
-  }
+    icon: JapaneseIcon,
+  },
 ]
 
 export const MENU_HEIGHT = 97
