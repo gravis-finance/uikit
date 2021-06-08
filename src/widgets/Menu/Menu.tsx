@@ -242,7 +242,9 @@ const Menu: React.FC<NavProps> = ({
   const showMenu = true
 
   useEffect(() => {
-    localStorage.setItem(localStorageLanguageItem, getDefaultLanguage()?.toUpperCase() as string);
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
+    localStorage.setItem(localStorageLanguageItem, getDefaultLanguage() ? getDefaultLanguage().toUpperCase() : 'EN');
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore
     setSelectedLanguage(getDefaultLanguage())

@@ -213,6 +213,12 @@ export const NotConnected: React.FC = () => {
     },
   ]
 
+  const [selectedLanguage, setSelectedLanguage] = useState('')
+
+  useEffect(() => {
+    setLanguage(selectedLanguage.toLowerCase())
+  }, [selectedLanguage])
+
   return (
     <BrowserRouter>
       <Menu
@@ -229,6 +235,7 @@ export const NotConnected: React.FC = () => {
           modelLogout: 'Test logout',
           modalBscScan: 'Test bsc',
         }}
+        setSelectedLanguage={setSelectedLanguage}
       >
         <div>
           <h1>Page body</h1>
