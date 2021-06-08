@@ -119,7 +119,9 @@ const Alert: React.FC<AlertProps> = ({ title, children, variant, onClick }) => {
         )}
       </Details>
       {onClick && (
-        <CloseHandler>
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-ignore
+        <CloseHandler onClick={onClick}>
           <StyledClose>
             <CloseIcon width="24px" color="currentColor" />
           </StyledClose>
