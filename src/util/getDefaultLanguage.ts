@@ -3,7 +3,7 @@ import { localStorageLanguageItem } from '../constants'
 
 // eslint-disable-next-line consistent-return,import/prefer-default-export
 export const getDefaultLanguage = () => {
-  if(localStorage.getItem(localStorageLanguageItem))
+  if(localStorage.getItem(localStorageLanguageItem) && localStorage.getItem(localStorageLanguageItem)?.toLowerCase() !== 'undefined')
     return localStorage.getItem(localStorageLanguageItem)?.toLowerCase() as string
   if (navigator.language) {
     if (navigator.language.includes('en')) {
