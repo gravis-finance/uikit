@@ -97,7 +97,7 @@ export const light: ButtonTheme = {
     backgroundActive:
       'linear-gradient(90.28deg, #242424 0%, #1F1F1F 100%), linear-gradient(90.28deg, #242424 0%, #202020 100%)', // 70% opacity
     backgroundHover: 'linear-gradient(90.28deg, #242424 0%, #202020 100%)', // 85% opacity
-    border: '2px solid transparent',
+    border: 'none',
     borderColorHover: 'transparent',
     boxShadow: '4px 4px 12px rgba(0, 0, 0, 0.4), -4px -4px 12px rgba(255, 255, 255, 0.05)',
     boxShadowActive:
