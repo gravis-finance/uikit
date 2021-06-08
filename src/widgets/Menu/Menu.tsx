@@ -19,7 +19,7 @@ import jp from '../../locales/jp.json'
 import { localStorageLanguageItem } from '../../constants'
 import LanguageSwitch from './LanguageSwitch'
 import { getDefaultLanguage } from '../..'
-
+        
 const Wrapper = styled.div`
   position: relative;
   width: 100%;

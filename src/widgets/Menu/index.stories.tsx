@@ -145,7 +145,7 @@ export const Connected: React.FC = () => {
 export const NotConnected: React.FC = () => {
   const t = useTranslation()
 
-  const newLinks =[
+  const newLinks = [
     {
       label: t('mainMenu.home'),
       icon: 'HomeIcon',
