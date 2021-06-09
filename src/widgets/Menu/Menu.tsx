@@ -219,6 +219,10 @@ function defaultBalanceHook() {
   })
 }
 
+const defaultSetSelectedLanguage = (name : string) => {
+  setLanguage(name.toLowerCase())
+}
+
 setTranslations({en, jp})
 setDefaultLanguage('en')
 
@@ -241,7 +245,7 @@ const Menu: React.FC<NavProps> = ({
   betaText = "This is the Beta version. You can't add liquidity here anymore. Press here to switch to the main version.",
   betaLink,
   balanceHook=defaultBalanceHook,
-                                    setSelectedLanguage, customLanguage
+                                    setSelectedLanguage=defaultSetSelectedLanguage, customLanguage
 }) => {
   const { isXl } = useMatchBreakpoints()
   const isMobile = isXl === false

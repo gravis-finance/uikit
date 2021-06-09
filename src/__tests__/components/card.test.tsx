@@ -13,20 +13,20 @@ it('renders correctly', () => {
   expect(asFragment()).toMatchInlineSnapshot(`
     <DocumentFragment>
       <div
-        class="sc-bdfBwQ gppsKf"
+        class="sc-bdnxRM isrlKA"
       >
         <div
-          class="sc-dlfnbm bwJRqk"
+          class="sc-dlnjwi dmRFWx"
         >
           Header
         </div>
         <div
-          class="sc-gsTCUz iMfsSF"
+          class="sc-gtsrHT dBbtWD"
         >
           Body
         </div>
         <div
-          class="sc-hKgILt gKiPqy"
+          class="sc-hKFxyN dlqeAV"
         >
           Footer
         </div>
