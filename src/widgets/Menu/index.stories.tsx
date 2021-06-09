@@ -49,7 +49,6 @@ export const Connected: React.FC = () => {
         // onTransactionHistoryHandler={openModal}
         balanceHook={later}
         betaText=""
-        hideConnectAndNetwork
         setSelectedLanguage={setSelectedLanguage}
       >
         <div>
@@ -263,6 +262,12 @@ export const WithNoProfile: React.FC = () => {
     })
   }
 
+  const [selectedLanguage, setSelectedLanguage] = useState('')
+
+  useEffect(() => {
+    setLanguage(selectedLanguage.toLowerCase())
+  }, [selectedLanguage])
+
   return (
     <BrowserRouter>
       <Menu
@@ -273,6 +278,7 @@ export const WithNoProfile: React.FC = () => {
         toggleTheme={noop}
         links={links}
         balanceHook={later}
+        setSelectedLanguage={setSelectedLanguage}
       >
         <div>
           <Heading as="h1" color="heading" mb="8px">
@@ -306,6 +312,12 @@ export const WithProfile: React.FC = () => {
     })
   }
 
+  const [selectedLanguage, setSelectedLanguage] = useState('')
+
+  useEffect(() => {
+    setLanguage(selectedLanguage.toLowerCase())
+  }, [selectedLanguage])
+
   return (
     <BrowserRouter>
       <Menu
@@ -316,6 +328,7 @@ export const WithProfile: React.FC = () => {
         toggleTheme={noop}
         links={links}
         balanceHook={later}
+        setSelectedLanguage={setSelectedLanguage}
       >
         <div>
           <Heading as="h1" mb="8px">
