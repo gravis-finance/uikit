@@ -19,7 +19,7 @@ import jp from '../../locales/jp.json'
 import { localStorageLanguageItem } from '../../constants'
 import LanguageSwitch from './LanguageSwitch'
 import { getDefaultLanguage } from '../..'
-        
+
 const Wrapper = styled.div`
   position: relative;
   width: 100%;
@@ -211,6 +211,18 @@ const StyledClickableLink = styled.a`
   }
 `
 
+function defaultBalanceHook() {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      resolve(100)
+    }, 3000)
+  })
+}
+
+const defaultSetSelectedLanguage = (name : string) => {
+  setLanguage(name.toLowerCase())
+}
+
 setTranslations({en, jp})
 setDefaultLanguage('en')
 
@@ -232,8 +244,8 @@ const Menu: React.FC<NavProps> = ({
   onTransactionHistoryHandler,
   betaText = "This is the Beta version. You can't add liquidity here anymore. Press here to switch to the main version.",
   betaLink,
-  balanceHook,
-                                    setSelectedLanguage, hideConnectAndNetwork=false, customLanguage
+  balanceHook=defaultBalanceHook,
+                                    setSelectedLanguage=defaultSetSelectedLanguage, customLanguage
 }) => {
   const { isXl } = useMatchBreakpoints()
   const isMobile = isXl === false

@@ -114,9 +114,9 @@ const NumericalInput: React.FC<Props> = ({
   const onBlurHandler = (event) => {
     if (!mustBlur) {
       event.preventDefault()
-      event.target.focus()
+      event?.target?.focus()
     } else {
-      event?.target.blur()
+      event?.target?.blur()
       setIsFocused(false)
       setMustBlur(false)
     }
@@ -127,7 +127,7 @@ const NumericalInput: React.FC<Props> = ({
     if (!event.target.closest(InputContainer)) {
       setMustBlur(true)
       // @ts-ignore
-      inputRef.current.blur()
+      inputRef?.current?.blur()
     }
   }
 
