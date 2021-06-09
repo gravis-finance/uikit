@@ -147,7 +147,8 @@ const AccountModal: React.FC<Props> = ({
   const [currentBalance, setBalance] = useState(balance)
 
   useEffect(() => {
-    balanceHook().then((result?: any) => setBalance(result?.toSignificant(6)))
+    if(balanceHook)
+      balanceHook().then((result?: any) => setBalance(result?.toSignificant(6)))
   }, [balanceHook])
 
   const t = useTranslation()

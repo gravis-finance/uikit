@@ -17,7 +17,7 @@ interface Props {
   login: Login
   onDismiss?: () => void
   title?: string
-  isProduction: boolean
+  isProduction?: boolean
   hecoOnly?: boolean
   withReload?: boolean
 }
