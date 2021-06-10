@@ -81,9 +81,3 @@ export const wallets: WalletsConfig[] = Object.keys(walletsConfig).map(
 export const networks = Object.keys(networksConfig).map(
   (networkKey) => networksConfig[networkKey as keyof typeof networksConfig]
 )
-
-// DEPRECATED. use import { networks }
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-export const getNetworks: any = (isProduction: any) => {
-  return networks
-}
