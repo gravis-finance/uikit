@@ -10,7 +10,7 @@ import Huobi from './icons/Huobi'
 import Polygon from './icons/Polygon'
 import { WalletsConfig, ConnectorNames } from './types'
 
-const production = process.env.REACT_APP_NODE_ENV === 'production' || process.env.NODE_ENV === 'production';
+const production = process.env.REACT_APP_NODE_ENV === 'production' || process.env.NODE_ENV === 'production'
 
 export const walletsConfig = {
   metamask: {
@@ -23,12 +23,12 @@ export const walletsConfig = {
     icon: TrustWallet,
     connectorId: ConnectorNames.Injected,
   },
-  tokenPocket:  {
+  tokenPocket: {
     title: 'Token Pocket',
     icon: TokenPocket,
     connectorId: ConnectorNames.Injected,
   },
-  walletConnect:  {
+  walletConnect: {
     title: 'Wallet Connect',
     icon: WalletConnect,
     connectorId: ConnectorNames.WalletConnect,
@@ -51,7 +51,9 @@ export const networksConfig = {
     icon: Huobi,
     label: 'HECO',
     chainId: production ? '128' : '256',
-    wallets: isMobile ? [walletsConfig.walletConnect, walletsConfig.tokenPocket] : [walletsConfig.metamask, walletsConfig.walletConnect]
+    wallets: isMobile
+      ? [walletsConfig.walletConnect, walletsConfig.tokenPocket]
+      : [walletsConfig.metamask, walletsConfig.walletConnect],
   },
   binance: {
     title: 'Binance',
@@ -60,7 +62,7 @@ export const networksConfig = {
     chainId: production ? '56' : '97',
     wallets: isMobile
       ? [walletsConfig.walletConnect, walletsConfig.trustWallet, walletsConfig.tokenPocket]
-      : [walletsConfig.metamask, walletsConfig.walletConnect, walletsConfig.binanceChain]
+      : [walletsConfig.metamask, walletsConfig.walletConnect, walletsConfig.binanceChain],
   },
   polygon: {
     title: 'Polygon',
@@ -68,18 +70,20 @@ export const networksConfig = {
     label: 'Polygon',
     chainId: production ? '137' : '80001',
     wallets: isMobile ? [walletsConfig.walletConnect] : [walletsConfig.metamask, walletsConfig.walletConnect],
-  }
+  },
 }
 
 export const connectorLocalStorageKey = 'connectorId'
 
-export const wallets: WalletsConfig[] = Object.keys(walletsConfig).map((walletKey) => walletsConfig[walletKey as keyof typeof walletsConfig]);
-export const networks = Object.keys(networksConfig).map((networkKey) => networksConfig[networkKey as keyof typeof networksConfig]);
-
+export const wallets: WalletsConfig[] = Object.keys(walletsConfig).map(
+  (walletKey) => walletsConfig[walletKey as keyof typeof walletsConfig]
+)
+export const networks = Object.keys(networksConfig).map(
+  (networkKey) => networksConfig[networkKey as keyof typeof networksConfig]
+)
 
 // DEPRECATED. use import { networks }
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 export const getNetworks: any = (isProduction: any) => {
-  return networks;
+  return networks
 }
-

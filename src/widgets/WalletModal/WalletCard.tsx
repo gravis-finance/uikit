@@ -98,7 +98,9 @@ const WalletCard: React.FC<Props> = ({
   withReload = true,
 }) => {
   const { title, icon: Icon } = walletConfig
-  const disabled = !(networks.some(network => network?.title === selectedNetwork && network?.wallets.some(wallet => wallet?.title === title)))
+  const disabled = !networks.some(
+    (network) => network?.title === selectedNetwork && network?.wallets.some((wallet) => wallet?.title === title)
+  )
 
   const onClick = () => {
     window.localStorage.setItem(connectorLocalStorageKey, walletConfig.connectorId)
