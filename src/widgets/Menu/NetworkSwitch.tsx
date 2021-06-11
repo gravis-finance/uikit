@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
 import { NetworksConfig } from '../WalletModal/types'
-import { getNetworks } from '../WalletModal/config'
+import { networks } from '../WalletModal/config'
 import { ArrowDropDownIcon } from '../../components/Svg'
 import switchNetwork from '../../util/switchNetwork'
 import { getNetworkTitles } from '../../util/getNetworkId'
@@ -155,14 +155,13 @@ const StyledArrowDropDownIcon = styled(ArrowDropDownIcon)<{ reversed?: boolean }
 `
 
 interface Props {
-  isProduction: boolean
+  isProduction?: boolean
   toggleMobile?: boolean
 }
 
-const NetworkSwitch: React.FC<Props> = ({ isProduction, toggleMobile = true }) => {
+const NetworkSwitch: React.FC<Props> = ({ toggleMobile = true }) => {
   const [showOptions, setShowOptions] = useState(false)
   const [selectedOption, setSelectedOption] = useState(getNetworkTitles() || 'Huobi')
-  const networks = getNetworks(isProduction)
 
   const handleClick = (item: NetworksConfig) => {
     setSelectedOption(item.label)
