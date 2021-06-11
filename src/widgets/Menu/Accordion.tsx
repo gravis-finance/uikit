@@ -156,7 +156,7 @@ const Accordion: React.FC<Props> = React.forwardRef(
     return (
       <Container
         isOpen={isOpen}
-        fillStroke={label === t('mainMenu.analytics.analytics') || label === t('mainMenu.analytics.ino')}
+        fillStroke={label === t('mainMenu.analytics.analytics') || label === t('mainMenu.ino.ino')}
         isPushed={isPushed}
         ref={ref}
         {...restProps}
