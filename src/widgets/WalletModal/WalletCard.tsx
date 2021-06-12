@@ -1,9 +1,8 @@
 import React from 'react'
 import styled, { css } from 'styled-components'
-import { isMobile } from 'react-device-detect'
 import Button from '../../components/Button/Button'
 import Text from '../../components/Text/Text'
-import { connectorLocalStorageKey } from './config'
+import { connectorLocalStorageKey, networks } from './config'
 import { Login, WalletsConfig } from './types'
 import Flex from '../../components/Flex/Flex'
 import { CheckmarkCircleIcon } from '../../components/Svg'
@@ -89,14 +88,6 @@ const StyledCheckMarkInCircle = styled(CheckmarkCircleIcon)`
   height: 16px;
 `
 
-const enabledWalletsConfig: { [key: string]: Array<string> } = {
-  Binance: isMobile
-    ? ['Wallet Connect', 'Trust Wallet', 'Token Pocket']
-    : ['Metamask', 'Wallet Connect', 'Binance Chain Wallet'],
-  Huobi: isMobile ? ['Wallet Connect', 'Token Pocket'] : ['Metamask', 'Wallet Connect'],
-  Polygon: isMobile ? ['Wallet Connect'] : ['Metamask', 'Wallet Connect'],
-}
-
 const WalletCard: React.FC<Props> = ({
   login,
   walletConfig,
@@ -107,7 +98,9 @@ const WalletCard: React.FC<Props> = ({
   withReload = true,
 }) => {
   const { title, icon: Icon } = walletConfig
-  const disabled = (enabledWalletsConfig[selectedNetwork] ?? []).indexOf(title) === -1
+  const disabled = !networks.some(
+    (network) => network?.title === selectedNetwork && network?.wallets.some((wallet) => wallet?.title === title)
+  )
 
   const onClick = () => {
     window.localStorage.setItem(connectorLocalStorageKey, walletConfig.connectorId)
