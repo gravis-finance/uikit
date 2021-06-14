@@ -4,7 +4,7 @@ import { Link } from '../../components/Link'
 import { BigHelpIcon } from '../../components/Svg'
 import { Modal } from '../Modal'
 import WalletCard from './WalletCard'
-import { wallets, getNetworks } from './config'
+import { wallets, networks } from './config'
 import { Login } from './types'
 import Flex from '../../components/Flex/Flex'
 import Text from '../../components/Text/Text'
@@ -77,7 +77,6 @@ const StyledWalletFlex = styled(StyledFlex)<{ hecoOnly?: boolean }>`
 `
 
 const ConnectModal: React.FC<Props> = ({
-  isProduction,
   login,
   onDismiss = () => null,
   title = 'Connect to a wallet',
@@ -85,8 +84,6 @@ const ConnectModal: React.FC<Props> = ({
   withReload,
 }) => {
   const id: string = getNetworkId()
-
-  const networks = getNetworks(isProduction)
 
   const [selectedNetwork, setSelectedNetwork] = useState(getNetworkTitles())
   const [selectedWallet, setSelectedWallet] = useState('')
