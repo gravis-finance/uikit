@@ -1,3 +1,4 @@
+import { isMobile } from 'react-device-detect'
 import Metamask from './icons/Metamask'
 // import MathWallet from './icons/MathWallet'
 import TokenPocket from './icons/TokenPocket'
@@ -7,87 +8,76 @@ import BinanceChain from './icons/BinanceChain'
 import Binance from './icons/Binance'
 import Huobi from './icons/Huobi'
 import Polygon from './icons/Polygon'
-
 import { WalletsConfig, ConnectorNames } from './types'
 
-export const wallets: WalletsConfig[] = [
-  {
+const production = process.env.REACT_APP_NODE_ENV === 'production' || process.env.NODE_ENV === 'production'
+
+export const walletsConfig = {
+  metamask: {
     title: 'Metamask',
     icon: Metamask,
     connectorId: ConnectorNames.Injected,
   },
-  {
+  trustWallet: {
     title: 'Trust Wallet',
     icon: TrustWallet,
     connectorId: ConnectorNames.Injected,
   },
-  // {
-  //   title: 'Math Wallet',
-  //   icon: MathWallet,
-  //   connectorId: ConnectorNames.Injected,
-  // },
-  {
+  tokenPocket: {
     title: 'Token Pocket',
     icon: TokenPocket,
     connectorId: ConnectorNames.Injected,
   },
-  {
+  walletConnect: {
     title: 'Wallet Connect',
     icon: WalletConnect,
     connectorId: ConnectorNames.WalletConnect,
   },
-  {
+  binanceChain: {
     title: 'Binance Chain Wallet',
     icon: BinanceChain,
     connectorId: ConnectorNames.BSC,
   },
-]
-
-export const networks = {
-  production: [
-    {
-      title: 'Huobi',
-      icon: Huobi,
-      label: 'HECO',
-      chainId: '128',
-    },
-    {
-      title: 'Binance',
-      icon: Binance,
-      label: 'BSC',
-      chainId: '56',
-    },
-    {
-      title: 'Polygon',
-      icon: Polygon,
-      label: 'Polygon',
-      chainId: '137',
-    },
-  ],
-  development: [
-    {
-      title: 'Huobi',
-      icon: Huobi,
-      label: 'HECO',
-      chainId: '256',
-    },
-    {
-      title: 'Binance',
-      icon: Binance,
-      label: 'BSC',
-      chainId: '97',
-    },
-    {
-      title: 'Polygon',
-      icon: Polygon,
-      label: 'Polygon',
-      chainId: '80001',
-    },
-  ],
+  // mathWallet:  {
+  //   title: 'Math Wallet',
+  //   icon: MathWallet,
+  //   connectorId: ConnectorNames.Injected,
+  // },
 }
 
-export const getNetworks: any = (isProduction: any) => {
-  return isProduction ? networks.production : networks.development
+export const networksConfig = {
+  huobi: {
+    title: 'Huobi',
+    icon: Huobi,
+    label: 'HECO',
+    chainId: production ? '128' : '256',
+    wallets: isMobile
+      ? [walletsConfig.walletConnect, walletsConfig.tokenPocket]
+      : [walletsConfig.metamask, walletsConfig.walletConnect],
+  },
+  binance: {
+    title: 'Binance',
+    icon: Binance,
+    label: 'BSC',
+    chainId: production ? '56' : '97',
+    wallets: isMobile
+      ? [walletsConfig.walletConnect, walletsConfig.trustWallet, walletsConfig.tokenPocket]
+      : [walletsConfig.metamask, walletsConfig.walletConnect, walletsConfig.binanceChain],
+  },
+  polygon: {
+    title: 'Polygon',
+    icon: Polygon,
+    label: 'Polygon',
+    chainId: production ? '137' : '80001',
+    wallets: isMobile ? [walletsConfig.walletConnect] : [walletsConfig.metamask, walletsConfig.walletConnect],
+  },
 }
 
 export const connectorLocalStorageKey = 'connectorId'
+
+export const wallets: WalletsConfig[] = Object.keys(walletsConfig).map(
+  (walletKey) => walletsConfig[walletKey as keyof typeof walletsConfig]
+)
+export const networks = Object.keys(networksConfig).map(
+  (networkKey) => networksConfig[networkKey as keyof typeof networksConfig]
+)
