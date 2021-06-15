@@ -2,8 +2,17 @@
 export const localStorageLanguageItem = 'gravisApplicationsLanguage'
 export const urlSearchLanguageParam = 'gravisLanguage'
 
-export const comparedNetworksIds = {
-  huobi: [128, 256],
-  binance: [56, 97],
-  polygon: [137, 80001],
-}
+export const comparedNetworksIds = [
+  {
+    name: "huobi",
+    networks: [128, 256],
+  },
+  {
+    name: "binance",
+    networks: [56, 97],
+  },
+  {
+    name: "polygon",
+    networks: [137, 80001],
+  }
+]

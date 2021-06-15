@@ -1,4 +1,5 @@
 import { ChainId } from '@gravis.finance/sdk'
+import { comparedNetworksIds } from '../constants'
 
 const NetworkLabels = {
   '56': 'binanceSmartChain',
@@ -55,4 +56,15 @@ export const getNetworkSymbol: any = () => {
   const symbol = NetworkSymbols[chainId]
 
   return symbol
+}
+
+export const getNetworkForAnalytics : any = (networkChainId : number) => {
+  let networkName = ''
+
+  comparedNetworksIds.map((network)=> {
+    if(network.networks.find((networkId)=> networkId === networkChainId))
+      networkName = network.name
+    return null
+  })
+  return networkName
 }
