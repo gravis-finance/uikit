@@ -10,7 +10,7 @@ import Huobi from './icons/Huobi'
 import Polygon from './icons/Polygon'
 import { WalletsConfig, ConnectorNames } from './types'
 
-const production = process.env.REACT_APP_NODE_ENV === 'production' || process.env.NODE_ENV === 'production'
+const production = process.env.REACT_APP_NODE_ENV === 'production'
 
 export const walletsConfig = {
   metamask: {
