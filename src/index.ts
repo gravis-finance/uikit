@@ -41,6 +41,7 @@ export { default as ResetCSS } from './ResetCSS'
 export * from './theme'
 
 // Utils
+export { default as switchNetwork } from './util/switchNetwork'
 export * from './util/getNetworkId'
 export * from './util/getDefaultLanguage'
 export * from './util/getLanguageSearchParam'
