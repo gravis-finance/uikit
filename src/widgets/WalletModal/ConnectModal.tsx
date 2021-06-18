@@ -1,5 +1,7 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
+import { useTranslation } from 'react-multi-lang'
+import { useHistory } from 'react-router-dom'
 import { Link } from '../../components/Link'
 import { BigHelpIcon } from '../../components/Svg'
 import { Modal } from '../Modal'
@@ -11,7 +13,6 @@ import Text from '../../components/Text/Text'
 import NetworkSelector from './NetworkSelector'
 import switchNetwork from '../../util/switchNetwork'
 import { getNetworkId, getNetworkTitles } from '../../util/getNetworkId'
-import { useTranslation } from 'react-multi-lang'
 
 interface Props {
   login: Login
@@ -84,14 +85,14 @@ const ConnectModal: React.FC<Props> = ({
   withReload,
 }) => {
   const id: string = getNetworkId()
-
+  const history = useHistory()
   const [selectedNetwork, setSelectedNetwork] = useState(getNetworkTitles())
   const [selectedWallet, setSelectedWallet] = useState('')
   const t = useTranslation()
 
   const handleClose = () => {
     const currentChainId = localStorage.getItem('chainId')
-    if (id && currentChainId && currentChainId !== id) switchNetwork(currentChainId, false)
+    if (id && currentChainId && currentChainId !== id) switchNetwork(currentChainId, false, history)
     onDismiss()
   }
 

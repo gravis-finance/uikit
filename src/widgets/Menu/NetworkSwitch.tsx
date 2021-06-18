@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
+import { useHistory } from 'react-router-dom'
 import { NetworksConfig } from '../WalletModal/types'
 import { networks } from '../WalletModal/config'
 import { ArrowDropDownIcon } from '../../components/Svg'
@@ -149,7 +150,7 @@ const StyledIconContainer = styled.div<{ toggleMobile?: boolean }>`
       : ''}
 `
 
-const StyledArrowDropDownIcon = styled(ArrowDropDownIcon)<{ reversed?: boolean }>`
+const StyledArrowDropDownIcon = styled(ArrowDropDownIcon) <{ reversed?: boolean }>`
   transition: transform 200ms;
   ${({ reversed }) => (reversed ? 'transform: rotate(180deg);' : '')}
 `
@@ -157,15 +158,17 @@ const StyledArrowDropDownIcon = styled(ArrowDropDownIcon)<{ reversed?: boolean }
 interface Props {
   isProduction?: boolean
   toggleMobile?: boolean
+  withReload?: boolean
 }
 
-const NetworkSwitch: React.FC<Props> = ({ toggleMobile = true }) => {
+const NetworkSwitch: React.FC<Props> = ({ toggleMobile = true, withReload = true }) => {
+  const history = useHistory()
   const [showOptions, setShowOptions] = useState(false)
   const [selectedOption, setSelectedOption] = useState(getNetworkTitles() || 'Huobi')
 
   const handleClick = (item: NetworksConfig) => {
-    setSelectedOption(item.label)
-    switchNetwork(item.chainId, true)
+    setSelectedOption(item.title)
+    switchNetwork(item.chainId, withReload, history)
   }
 
   const onClickHandler = (event: any) => {
@@ -197,7 +200,7 @@ const NetworkSwitch: React.FC<Props> = ({ toggleMobile = true }) => {
         <StyledOptionsContainer toggleMobile={toggleMobile}>
           {networks.map((item: any) => (
             <StyledOption key={item.title} onClick={() => handleClick(item)} id={`${item.label}-switch-option`}>
-              <item.icon/>
+              <item.icon />
               {item.label}
             </StyledOption>
           ))}
