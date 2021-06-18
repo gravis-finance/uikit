@@ -167,9 +167,14 @@ const NetworkSwitch: React.FC<Props> = ({ toggleMobile = true, withReload = fals
   const [selectedOption, setSelectedOption] = useState(getNetworkTitles() || 'Huobi')
 
   const handleClick = (item: NetworksConfig) => {
-    setSelectedOption(item.title)
     switchNetwork(item.chainId, withReload, history)
   }
+
+
+  useEffect(() => {
+    const network = (new URLSearchParams(history.location.search)).get('network')
+    setSelectedOption(networks.find((item) => item.chainId === network)?.title)
+  }, [history.location])
 
   const onClickHandler = (event: any) => {
     if (!event.target.closest(StyledDropDown)) setShowOptions(false)
