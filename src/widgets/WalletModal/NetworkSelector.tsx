@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
+import { useHistory } from 'react-router-dom'
 import { CheckmarkCircleIcon } from '../../components/Svg'
 import Flex from '../../components/Flex/Flex'
 import Text from '../../components/Text/Text'
@@ -70,11 +71,12 @@ interface Props {
 const NetworkSelector: React.FC<Props> = ({ chainId, selected, networkConfig, setSelectedNetwork }) => {
   const { title, icon: Icon } = networkConfig
   const id: string = getNetworkId()
-  if (selected && id !== chainId) switchNetwork(chainId, false)
+  const history = useHistory()
+  if (selected && id !== chainId) switchNetwork(chainId, false, history)
 
   const handleClick = () => {
     setSelectedNetwork(title)
-    switchNetwork(chainId, false)
+    switchNetwork(chainId, false, history)
   }
 
   return (

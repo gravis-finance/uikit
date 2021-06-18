@@ -1,11 +1,11 @@
-const switchNetwork = (value: string, withReload: boolean): void => {
-  const searchParams = new URLSearchParams(window.location.search)
+const switchNetwork = (value: string, withReload: boolean, history: { push: any, location: any }): void => {
+  const searchParams = new URLSearchParams(history.location.search)
   searchParams.set('network', value)
-  const newurl = `${window.location.protocol}//${window.location.host}${
-    window.location.pathname
-  }?${searchParams.toString()}`
-  window.history.pushState({ path: newurl }, '', newurl)
-  if (withReload) window.location.reload()
+  history.push({
+    pathname: history.location.pathname,
+    search: searchParams.toString(),
+  })
+  if (withReload) history.location.reload()
 }
 
 export default switchNetwork
