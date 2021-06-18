@@ -95,7 +95,7 @@ const WalletCard: React.FC<Props> = ({
   selected,
   setSelectedWallet,
   selectedNetwork,
-  withReload = true,
+  withReload = false,
 }) => {
   const { title, icon: Icon } = walletConfig
   const disabled = !networks.some(
