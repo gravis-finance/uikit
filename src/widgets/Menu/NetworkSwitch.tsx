@@ -161,7 +161,7 @@ interface Props {
   withReload?: boolean
 }
 
-const NetworkSwitch: React.FC<Props> = ({ toggleMobile = true, withReload = true }) => {
+const NetworkSwitch: React.FC<Props> = ({ toggleMobile = true, withReload = false }) => {
   const history = useHistory()
   const [showOptions, setShowOptions] = useState(false)
   const [selectedOption, setSelectedOption] = useState(getNetworkTitles() || 'Huobi')
