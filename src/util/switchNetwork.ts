@@ -5,7 +5,7 @@ const switchNetwork = (value: string, withReload: boolean, history: { push: any,
     pathname: history.location.pathname,
     search: searchParams.toString(),
   })
-  if (withReload) history.location.reload()
+  if (withReload) window.location.reload()
 }
 
 export default switchNetwork
