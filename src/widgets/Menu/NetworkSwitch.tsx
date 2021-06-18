@@ -173,7 +173,8 @@ const NetworkSwitch: React.FC<Props> = ({ toggleMobile = true, withReload = fals
 
   useEffect(() => {
     const network = (new URLSearchParams(history.location.search)).get('network')
-    setSelectedOption(networks.find((item) => item.chainId === network)?.title)
+    if (network)
+      setSelectedOption(networks.find((item) => item.chainId === network)?.title)
   }, [history.location])
 
   const onClickHandler = (event: any) => {
