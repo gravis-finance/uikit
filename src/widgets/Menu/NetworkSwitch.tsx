@@ -194,7 +194,7 @@ const NetworkSwitch: React.FC<Props> = ({
   useEffect(() => {
     const network = new URLSearchParams(history.location.search).get('network')
     if (network) setSelectedOption(networks.find((item) => item.chainId === network)?.title)
-  }, [history])
+  }, [history.location])
 
   useEffect(() => {
     const onClickHandler = (event: any) => {
