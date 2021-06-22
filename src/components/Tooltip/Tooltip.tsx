@@ -2,7 +2,7 @@ import React from 'react'
 import styled, { keyframes } from 'styled-components'
 
 // local files
-import Popper from './Popper'
+import Popper from '../Popper'
 import useControlled from './useControlled'
 
 type Props = Omit<React.ComponentProps<typeof Popper>, 'anchorEl' | 'children' | 'placement'> & {

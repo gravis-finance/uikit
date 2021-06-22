@@ -6,7 +6,6 @@ import { Login } from '../WalletModal/types'
 import { AddIcon } from '../../components/Svg'
 import NetworkSwitch from './NetworkSwitch'
 import Flex from '../../components/Flex/Flex'
-import LanguageSwitch from './LanguageSwitch'
 
 interface Props {
   isProduction: boolean
