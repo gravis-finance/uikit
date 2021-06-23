@@ -2,10 +2,10 @@ import React from 'react'
 import styled, { keyframes } from 'styled-components'
 
 // local files
-import Popper from '../Popper'
+import { Popper } from '../Popper'
 import useControlled from './useControlled'
 
-type Props = Omit<React.ComponentProps<typeof Popper>, 'anchorEl' | 'children' | 'placement'> & {
+export type TooltipProps = Omit<React.ComponentProps<typeof Popper>, 'anchorEl' | 'children' | 'placement'> & {
   children: React.ReactElement
   title?: React.ReactNode
   placement?:
@@ -128,7 +128,7 @@ const Arrow = styled.div`
   }
 `
 
-const Tooltip: React.FC<Props> = (props) => {
+const Tooltip: React.FC<TooltipProps> = (props) => {
   const {
     children,
     enterDelay = 100,
@@ -203,7 +203,7 @@ const Tooltip: React.FC<Props> = (props) => {
   const prevUserSelect = React.useRef()
   const stopTouchInteraction = React.useCallback(() => {
     if (prevUserSelect.current !== undefined) {
-      (document.body.style as any).WebkitUserSelect = prevUserSelect.current
+      ;(document.body.style as any).WebkitUserSelect = prevUserSelect.current
       prevUserSelect.current = undefined
     }
     clearTimeout(touchTimer.current)

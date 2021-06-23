@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import { useLocation } from 'react-router-dom'
+import { useTranslation } from 'react-multi-lang'
 import { SvgProps } from '../../components/Svg'
 import * as IconModule from './icons'
 import Accordion from './Accordion'
@@ -10,8 +11,7 @@ import { PanelProps, PushedProps } from './types'
 import MenuButton from './MenuButton'
 import { HamburgerCloseIcon } from './icons'
 import Logo from './Logo'
-import { useTranslation } from 'react-multi-lang'
-import Tooltip from '../../components/Tooltip'
+import { Tooltip } from '../../components/Tooltip'
 
 interface Props extends PanelProps, PushedProps {
   isMobile?: boolean
