@@ -22,6 +22,8 @@ export * from './components/Skeleton'
 export * from './components/Toggle'
 export * from './components/Table'
 export * from './components/SocialNetworks'
+export * from './components/Tooltip'
+export * from './components/Popper'
 
 // Hooks
 export * from './hooks'
