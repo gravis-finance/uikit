@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
 import { useHistory } from 'react-router-dom'
-import Popper from '../../components/Popper'
+import { Popper } from '../../components/Popper'
 import { NetworksConfig } from '../WalletModal/types'
 import { networks } from '../WalletModal/config'
 import { ArrowDropDownIcon } from '../../components/Svg'
