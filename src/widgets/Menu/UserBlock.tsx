@@ -21,6 +21,7 @@ interface Props {
   explorerLink?: string
   onTransactionHistoryHandler?: any
   balanceHook?: any
+  networkSwitchVisible?: boolean
 }
 
 const StyledConnectButton = styled.div`
@@ -60,6 +61,7 @@ const UserBlock: React.FC<Props> = (props) => {
     explorerLink,
     onTransactionHistoryHandler,
     balanceHook,
+    networkSwitchVisible
   } = props
 
   const { onPresentConnectModal, onPresentAccountModal } = useWalletModal(
@@ -79,7 +81,7 @@ const UserBlock: React.FC<Props> = (props) => {
 
   return (
     <StyledFlex alignItems="center" style={{ pointerEvents: 'all' }}>
-      <NetworkSwitch isProduction={isProduction} />
+      {networkSwitchVisible && <NetworkSwitch isProduction={isProduction} />}
       {account ? (
         <Button
           size="md"
