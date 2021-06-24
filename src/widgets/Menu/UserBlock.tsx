@@ -1,9 +1,10 @@
 import React from 'react'
 import styled from 'styled-components'
+import { useTranslation } from 'react-multi-lang'
 import Button from '../../components/Button/Button'
 import { useWalletModal } from '../WalletModal'
 import { Login } from '../WalletModal/types'
-import { AddIcon } from '../../components/Svg'
+import { AddIcon, ProfileIcon } from '../../components/Svg'
 import NetworkSwitch from './NetworkSwitch'
 import Flex from '../../components/Flex/Flex'
 
@@ -74,7 +75,8 @@ const UserBlock: React.FC<Props> = (props) => {
     onTransactionHistoryHandler,
     balanceHook
   )
-  const accountEllipsis = account ? `${account.substring(0, 4)}...${account.substring(account.length - 4)}` : null
+  const t = useTranslation()
+
   return (
     <StyledFlex alignItems="center" style={{ pointerEvents: 'all' }}>
       <NetworkSwitch isProduction={isProduction} />
@@ -85,8 +87,10 @@ const UserBlock: React.FC<Props> = (props) => {
             onPresentAccountModal()
           }}
           data-id="account-button"
+          style={{ padding: '0 24px 0 16px' }}
         >
-          {accountEllipsis}
+          <ProfileIcon style={{ marginRight: 12 }}/>
+          {t('profile')}
         </Button>
       ) : (
         <StyledConnectButton>
