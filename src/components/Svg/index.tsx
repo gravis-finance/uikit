@@ -66,6 +66,7 @@ export { default as AddButton } from './Icons/AddButton'
 export { default as MaticIcon } from './Icons/MaticIcon'
 export { default as SettingsIcon } from './Icons/Settings'
 export { default as HistoryIcon } from './Icons/History'
+export { default as ProfileIcon } from './Icons/Profile'
 
 export { default as Svg } from './Svg'
 export type { SvgProps } from './types'
