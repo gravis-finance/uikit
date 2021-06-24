@@ -5,6 +5,7 @@ import { RadioTheme } from '../components/Radio/types'
 import { ToggleTheme } from '../components/Toggle/types'
 import { NavTheme } from '../widgets/Menu/types'
 import { ModalTheme } from '../widgets/Modal/types'
+import { TooltipTheme } from "../components/Tooltip/types";
 import { Colors, Breakpoints, MediaQueries, Spacing, Shadows, Radii, ZIndices } from './types'
 
 export interface GravisTheme {
@@ -22,6 +23,7 @@ export interface GravisTheme {
   mediaQueries: MediaQueries
   spacing: Spacing
   shadows: Shadows
+  tooltip: TooltipTheme
   radii: Radii
   zIndices: ZIndices
 }
