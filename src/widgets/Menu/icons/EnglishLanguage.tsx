@@ -8,6 +8,7 @@ const Icon: React.FC<SvgProps> = (props) => {
       {...props}
       x="0"
       y="0"
+      width="24" height="24"
       enableBackground="new 0 0 512 512"
       version="1.1"
       viewBox="0 0 512 512"

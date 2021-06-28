@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
 import { setDefaultLanguage, setLanguage, setTranslations } from 'react-multi-lang'
 import Overlay from '../../components/Overlay/Overlay'
@@ -8,7 +8,7 @@ import { useMatchBreakpoints } from '../../hooks'
 import Panel from './Panel'
 import UserBlock from './UserBlock'
 import { NavProps } from './types'
-import { MENU_HEIGHT, SIDEBAR_WIDTH_REDUCED, SIDEBAR_WIDTH_FULL, availableLanguages } from './config'
+import { MENU_HEIGHT, SIDEBAR_WIDTH_FULL, SIDEBAR_WIDTH_REDUCED } from './config'
 import { LogoIcon as LogoWithText } from './icons'
 import MenuButton from './MenuButton'
 import { BurgerIcon, CloseIcon } from '../../components/Svg'
@@ -16,6 +16,7 @@ import { BurgerIcon, CloseIcon } from '../../components/Svg'
 import Logo from '../../components/Svg/Icons/Logo'
 import en from '../../locales/en.json'
 import jp from '../../locales/jp.json'
+import cn from '../../locales/cn.json'
 import { localStorageLanguageItem } from '../../constants'
 import LanguageSwitch from './LanguageSwitch'
 import { getDefaultLanguage } from '../..'
@@ -223,7 +224,7 @@ const defaultSetSelectedLanguage = (name : string) => {
   setLanguage(name.toLowerCase())
 }
 
-setTranslations({en, jp})
+setTranslations({en, jp, cn})
 setDefaultLanguage('en')
 
 const Menu: React.FC<NavProps> = ({
