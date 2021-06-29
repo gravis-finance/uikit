@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import Button from '../../components/Button/Button'
 import { useWalletModal } from '../WalletModal'
 import { Login } from '../WalletModal/types'
-import { AddIcon, ProfileIcon } from '../../components/Svg'
+import { AddIcon } from '../../components/Svg'
 import NetworkSwitch from './NetworkSwitch'
 import Flex from '../../components/Flex/Flex'
 
@@ -90,7 +90,6 @@ const UserBlock: React.FC<Props> = (props) => {
           data-id="account-button"
           style={{ padding: '0 24px 0 16px' }}
         >
-          <ProfileIcon style={{ marginRight: 12 }} />
           {accountEllipsis}
         </Button>
       ) : (
