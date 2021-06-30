@@ -1,6 +1,7 @@
 import React from 'react'
 import { Story } from '@storybook/react'
-import Tooltip from './Tooltip'
+import styled from 'styled-components'
+import { Tooltip, TooltipTitle, TooltipArrow } from './index'
 
 export default {
   title: 'Components/Tooltip',
@@ -21,3 +22,26 @@ export const Template: Story = (args) => (
   </Tooltip>
 )
 Template.storyName = 'Tooltip'
+
+const StyledTooltip = styled(Tooltip)`
+  background-color: red;
+
+  ${TooltipTitle} {
+    color: white;
+  }
+
+  ${TooltipArrow} {
+    &:before {
+      background: red;
+    }
+  }
+`
+
+export const Styled: Story = (args) => (
+  <StyledTooltip {...args}>
+    <span style={{ color: 'white' }}>Hover me</span>
+  </StyledTooltip>
+)
+Styled.args = {
+  title: 'background-color: red',
+}
