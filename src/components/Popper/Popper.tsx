@@ -17,7 +17,7 @@ export type PopperProps = Omit<React.ComponentProps<'div'>, 'children'> & {
 const Popper = React.forwardRef((props: PopperProps, ref) => {
   const {
     anchorEl,
-    placement,
+    placement = 'auto',
     disablePortal = false,
     container = document.body,
     open,
