@@ -170,6 +170,24 @@ export const NotConnected: React.FC = () => {
     //   href: '/account'
     // },
     {
+      label: 'NFT Market',
+      icon: 'NFTMarketIcon',
+      items: [
+        {
+          label: 'Buy NFT',
+          href: 'https://github.com/gravis',
+        },
+        {
+          label: 'Sell NFT',
+          href: 'https://github.com/gravis',
+        },
+        {
+          label: 'Transfer NFT',
+          href: 'https://github.com/gravis',
+        },
+      ]
+    },
+    {
       label: t('mainMenu.analytics.analytics'),
       icon: 'InfoIcon',
       items: [
