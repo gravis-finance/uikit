@@ -5,22 +5,9 @@ import styled, { keyframes } from 'styled-components'
 import { Popper } from '../Popper'
 import useControlled from './useControlled'
 
-export type TooltipProps = Omit<React.ComponentProps<typeof Popper>, 'anchorEl' | 'children' | 'placement'> & {
+export type TooltipProps = Omit<React.ComponentProps<typeof Popper>, 'anchorEl' | 'children'> & {
   children: React.ReactElement
   title?: React.ReactNode
-  placement?:
-    | 'bottom-end'
-    | 'bottom-start'
-    | 'bottom'
-    | 'left-end'
-    | 'left-start'
-    | 'left'
-    | 'right-end'
-    | 'right-start'
-    | 'right'
-    | 'top-end'
-    | 'top-start'
-    | 'top'
   interactive?: boolean
   open?: boolean
   leaveDelay?: number
@@ -51,25 +38,7 @@ const StyledPopper = styled(Popper)`
   z-index: 9999;
 `
 
-const StyledTooltip = styled.div`
-  background: rgb(61, 61, 61);
-  box-shadow: none;
-  border-radius: 6px;
-  position: relative;
-  animation: ${openAnimation} 150ms;
-
-  &[data-placement='top'],
-  &[data-placement='bottom'] {
-    margin: 8px 0;
-  }
-
-  &[data-placement='left'],
-  &[data-placement='right'] {
-    margin: 0 8px;
-  }
-`
-
-const TitleWrap = styled.div`
+export const TooltipTitle = styled.div`
   white-space: pre-wrap;
   padding: 0.6rem 1rem;
   line-height: 150%;
@@ -78,18 +47,17 @@ const TitleWrap = styled.div`
   border-radius: 6px;
 `
 
-const Arrow = styled.div`
+export const TooltipArrow = styled.div`
   width: 8px;
   height: 8px;
   z-index: 9998;
 
   ::before {
+    content: '';
     position: absolute;
     width: 8px;
     height: 8px;
     z-index: 9998;
-
-    content: '';
     border: 1px solid #3d3d3d;
     transform: rotate(45deg);
     background: #3d3d3d;
@@ -128,7 +96,7 @@ const Arrow = styled.div`
   }
 `
 
-const Tooltip: React.FC<TooltipProps> = (props) => {
+const TooltipInner: React.FC<TooltipProps> = (props) => {
   const {
     children,
     enterDelay = 100,
@@ -144,6 +112,7 @@ const Tooltip: React.FC<TooltipProps> = (props) => {
     modifiers: modifiersProp,
     disableHoverListener = false,
     disableTouchListener = false,
+    className,
     ...popperProps
   } = props
   const [childNode, setChildNode] = React.useState<any>()
@@ -375,25 +344,43 @@ const Tooltip: React.FC<TooltipProps> = (props) => {
         anchorEl={childNode}
       >
         {({ styles, attributes }) => (
-          <StyledTooltip data-placement={attributes.popper?.['data-popper-placement']}>
-            <TitleWrap>{title}</TitleWrap>
-            <Arrow
+          <div data-placement={attributes.popper?.['data-popper-placement']} className={className}>
+            <TooltipTitle>{title}</TooltipTitle>
+            <TooltipArrow
               ref={setArrowRef}
               style={styles.arrow}
               data-placement={attributes.popper?.['data-popper-placement']}
               {...attributes.arrow}
             />
-          </StyledTooltip>
+          </div>
         )}
       </StyledPopper>
     </>
   )
 }
 
-Tooltip.defaultProps = {
+TooltipInner.defaultProps = {
   enterDelay: 100,
   leaveDelay: 0,
-  placement: 'bottom',
+  placement: 'auto',
 }
+
+const Tooltip = styled(TooltipInner)`
+  background: rgb(61, 61, 61);
+  box-shadow: none;
+  border-radius: 6px;
+  position: relative;
+  animation: ${openAnimation} 150ms;
+
+  &[data-placement='top'],
+  &[data-placement='bottom'] {
+    margin: 8px 0;
+  }
+
+  &[data-placement='left'],
+  &[data-placement='right'] {
+    margin: 0 8px;
+  }
+`
 
 export default Tooltip
