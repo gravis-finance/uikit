@@ -22,6 +22,7 @@ interface Props {
   onTransactionHistoryHandler?: any
   balanceHook?: any
   networkSwitchVisible?: boolean
+  bscOnly?: boolean
 }
 
 const StyledConnectButton = styled.div`
@@ -61,7 +62,8 @@ const UserBlock: React.FC<Props> = (props) => {
     explorerLink,
     onTransactionHistoryHandler,
     balanceHook,
-    networkSwitchVisible
+    networkSwitchVisible,
+    bscOnly
   } = props
 
   const { onPresentConnectModal, onPresentAccountModal } = useWalletModal(
@@ -75,7 +77,8 @@ const UserBlock: React.FC<Props> = (props) => {
     explorerName,
     explorerLink,
     onTransactionHistoryHandler,
-    balanceHook
+    balanceHook,
+    bscOnly
   )
   const t = useTranslation()
 
