@@ -23,10 +23,11 @@ const useWalletModal = (
   onTransactionHistoryHandler?: void,
   balanceHook?: void,
   hecoOnly?: boolean,
+  bscOnly?: boolean,
   withReload?: boolean
 ): ReturnType => {
   const [onPresentConnectModal] = useModal(
-    <ConnectModal isProduction={isProduction} login={login} title={title} hecoOnly={hecoOnly} withReload={withReload} />
+    <ConnectModal isProduction={isProduction} login={login} title={title} hecoOnly={hecoOnly} withReload={withReload} bscOnly={bscOnly}/>
   )
   const [onPresentAccountModal] = useModal(
     <AccountModal
