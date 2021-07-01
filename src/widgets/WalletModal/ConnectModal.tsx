@@ -21,6 +21,7 @@ interface Props {
   isProduction?: boolean
   hecoOnly?: boolean
   withReload?: boolean
+  bscOnly?: boolean
 }
 
 const HelpLink = styled(Link)`
@@ -59,6 +60,7 @@ const StyledFlex = styled(Flex)<{ hecoOnly?: boolean }>`
   }
   @media screen and (max-width: 800px) {
     margin-left: 18px;
+    margin-left: ${({ hecoOnly }) => (hecoOnly ? '0' : '18px')};
   }
 `
 
@@ -83,10 +85,13 @@ const ConnectModal: React.FC<Props> = ({
   title = 'Connect to a wallet',
   hecoOnly,
   withReload,
+                                         bscOnly
 }) => {
   const id: string = getNetworkId()
   const history = useHistory()
-  const [selectedNetwork, setSelectedNetwork] = useState(getNetworkTitles())
+  const [selectedNetwork, setSelectedNetwork] = useState(
+    // bscOnly ? 'Binance' :
+      getNetworkTitles())
   const [selectedWallet, setSelectedWallet] = useState('')
   const t = useTranslation()
 
@@ -98,7 +103,7 @@ const ConnectModal: React.FC<Props> = ({
 
   return (
     <Modal title={t('connectToWallet')} onDismiss={handleClose}>
-      {!hecoOnly && (
+      {(!hecoOnly && !bscOnly) && (
         <>
           <StyledFlexPoint alignItems="center" marginBottom="5px">
             <StyledPoint>
@@ -106,7 +111,7 @@ const ConnectModal: React.FC<Props> = ({
             </StyledPoint>
             <Text style={{ fontSize: '14px', color: '#fff', marginLeft: '16px' }}>{t('chooseNetwork')}</Text>
           </StyledFlexPoint>
-          <StyledFlex hecoOnly={hecoOnly}>
+          <StyledFlex hecoOnly={hecoOnly || bscOnly}>
             {networks.map((entry: any) => (
               <NetworkSelector
                 key={entry.title}
@@ -125,8 +130,8 @@ const ConnectModal: React.FC<Props> = ({
           </StyledFlexPoint>
         </>
       )}
-      <StyledWalletFlex hecoOnly={hecoOnly}>
-        {!hecoOnly ? (
+      <StyledWalletFlex hecoOnly={hecoOnly || bscOnly}>
+        {!hecoOnly && !bscOnly ? (
           wallets.map((entry) => (
             <WalletCard
               key={entry.title}

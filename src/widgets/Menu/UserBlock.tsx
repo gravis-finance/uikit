@@ -21,6 +21,7 @@ interface Props {
   onTransactionHistoryHandler?: any
   balanceHook?: any
   networkSwitchVisible?: boolean
+  bscOnly?: boolean
 }
 
 const StyledConnectButton = styled.div`
@@ -61,6 +62,7 @@ const UserBlock: React.FC<Props> = (props) => {
     onTransactionHistoryHandler,
     balanceHook,
     networkSwitchVisible,
+    bscOnly
   } = props
 
   const { onPresentConnectModal, onPresentAccountModal } = useWalletModal(
@@ -74,7 +76,8 @@ const UserBlock: React.FC<Props> = (props) => {
     explorerName,
     explorerLink,
     onTransactionHistoryHandler,
-    balanceHook
+    balanceHook,
+    bscOnly
   )
   const accountEllipsis = account ? `${account.substring(0, 4)}...${account.substring(account.length - 4)}` : null
 

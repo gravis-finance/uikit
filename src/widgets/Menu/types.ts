@@ -71,4 +71,5 @@ export interface NavProps extends PanelProps {
   setSelectedLanguage?: (name: string) => void
   customLanguage?: string
   networkSwitchVisible?: boolean
+  bscOnly?: boolean
 }
