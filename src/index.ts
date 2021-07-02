@@ -14,9 +14,10 @@ export * from './components/Link'
 export * from './components/NotificationDot'
 export * from './components/Spinner'
 export * from './components/Skeleton'
-export * from './components/Table'
 export * from './components/SocialNetworks'
+export * from './components/Table'
 export * from './components/Tooltip'
+export * from './components/Toggle'
 export * from './components/Popper'
 
 // Hooks
