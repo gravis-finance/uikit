@@ -106,7 +106,7 @@ const TooltipInner: React.FC<TooltipProps> = (props) => {
     id,
     interactive = false,
     open: openProp,
-    placement = 'bottom',
+    placement = 'auto',
     title,
     forceOpen,
     modifiers: modifiersProp,

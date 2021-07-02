@@ -1,11 +1,9 @@
 import { AlertTheme } from '../components/Alert/types'
 import { ButtonTheme } from '../components/Button/types'
 import { CardTheme } from '../components/Card/types'
-import { RadioTheme } from '../components/Radio/types'
-import { ToggleTheme } from '../components/Toggle/types'
 import { NavTheme } from '../widgets/Menu/types'
 import { ModalTheme } from '../widgets/Modal/types'
-import { TooltipTheme } from "../components/Tooltip/types";
+import { TooltipTheme } from '../components/Tooltip/types'
 import { Colors, Breakpoints, MediaQueries, Spacing, Shadows, Radii, ZIndices } from './types'
 
 export interface GravisTheme {
@@ -17,8 +15,6 @@ export interface GravisTheme {
   card: CardTheme
   nav: NavTheme
   modal: ModalTheme
-  radio: RadioTheme
-  toggle: ToggleTheme
   breakpoints: Breakpoints
   mediaQueries: MediaQueries
   spacing: Spacing

@@ -91,7 +91,6 @@ const UserBlock: React.FC<Props> = (props) => {
             onPresentAccountModal()
           }}
           data-id="account-button"
-          style={{ padding: '0 24px 0 16px' }}
         >
           {accountEllipsis}
         </Button>
