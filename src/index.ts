@@ -1,4 +1,3 @@
-// Components
 export * from './components/Alert'
 export * from './components/Box'
 export * from './components/Breadcrumbs'
