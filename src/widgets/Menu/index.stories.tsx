@@ -164,6 +164,7 @@ export const NotConnected: React.FC = () => {
         },
       ],
     },
+
     // {
     //   label: 'Private Round NFTs',
     //   icon: 'PrivateRoundIcon',
