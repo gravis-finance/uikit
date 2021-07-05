@@ -5,9 +5,9 @@ import styled, { keyframes } from 'styled-components'
 import { Popper } from '../Popper'
 import useControlled from './useControlled'
 
-export type TooltipProps = Omit<React.ComponentProps<typeof Popper>, 'anchorEl' | 'children'> & {
+export type TooltipProps = Omit<React.ComponentProps<typeof Popper>, 'anchorEl' | 'children' | 'title'> & {
   children: React.ReactElement
-  title?: React.ReactNode
+  title?: React.ReactChild
   interactive?: boolean
   open?: boolean
   leaveDelay?: number
@@ -172,7 +172,7 @@ const TooltipInner: React.FC<TooltipProps> = (props) => {
   const prevUserSelect = React.useRef()
   const stopTouchInteraction = React.useCallback(() => {
     if (prevUserSelect.current !== undefined) {
-      ;(document.body.style as any).WebkitUserSelect = prevUserSelect.current
+      ; (document.body.style as any).WebkitUserSelect = prevUserSelect.current
       prevUserSelect.current = undefined
     }
     clearTimeout(touchTimer.current)
@@ -256,11 +256,11 @@ const TooltipInner: React.FC<TooltipProps> = (props) => {
     event.persist()
 
     prevUserSelect.current = (document.body.style as any).WebkitUserSelect
-    // Prevent iOS text selection on long-tap.
-    ;(document.body.style as any).WebkitUserSelect = 'none'
+      // Prevent iOS text selection on long-tap.
+      ; (document.body.style as any).WebkitUserSelect = 'none'
 
     touchTimer.current = setTimeout(() => {
-      ;(document.body.style as any).WebkitUserSelect = prevUserSelect.current
+      ; (document.body.style as any).WebkitUserSelect = prevUserSelect.current
       handleEnter(event)
     }, enterTouchDelay)
   }
