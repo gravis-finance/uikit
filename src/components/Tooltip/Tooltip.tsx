@@ -7,7 +7,7 @@ import useControlled from './useControlled'
 
 export type TooltipProps = Omit<React.ComponentProps<typeof Popper>, 'anchorEl' | 'children'> & {
   children: React.ReactElement
-  title?: React.ReactNode
+  title?: React.ReactElement | React.ReactNode
   interactive?: boolean
   open?: boolean
   leaveDelay?: number
