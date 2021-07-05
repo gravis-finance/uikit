@@ -3,8 +3,6 @@ import styled from 'styled-components'
 import { Text } from '../../components/Text'
 import { Heading } from '../../components/Heading'
 import { SocialNetworks } from '../../components/SocialNetworks'
-import MaintenanceCloudRight from './assets/background-cloud-right'
-import MaintenanceCloudLeft from './assets/background-cloud-left'
 
 const MaintenancePreview = lazy(() => import('./assets/maintenance-preview'))
 
@@ -16,7 +14,6 @@ const StyledWrapper = styled.div`
   width: 100vw;
   min-height: 100vh;
   height: 100%;
-  background: #f4f5fa;
   display: flex;
   align-items: center;
   padding: 32px;
@@ -27,7 +24,6 @@ const StyledWrapper = styled.div`
   @media screen and (max-width: 1024px) {
     display: flex;
     flex-direction: column-reverse;
-    justify-content: flex-end;
   }
   @media screen and (max-width: 768px) {
     padding: 8px;
@@ -39,9 +35,11 @@ const InfoWrapper = styled.div`
   flex-direction: column;
   z-index: 2;
   width: 40%;
+  margin: auto 0;
 
   @media screen and (max-width: 1024px) {
     width: 80%;
+    margin: 0 0 auto 0;
   }
   @media screen and (max-width: 480px) {
     width: 100%;
@@ -52,41 +50,6 @@ const ImageWrapper = styled.div`
   & > svg {
     width: 100%;
     height: auto;
-  }
-`
-
-const CloudsWrapper = styled.div`
-  top: 0;
-  left: 0;
-  position: absolute;
-  height: calc(100vh - 64px);
-  width: 100vw;
-  overflow: hidden;
-`
-
-const CloudWrapper = styled.div`
-  position: absolute;
-  z-index: -1;
-  & > img {
-    width: 100%;
-  }
-  &.left {
-    top: -200px;
-    left: -200px;
-  }
-  &.right {
-    right: -200px;
-    bottom: -200px;
-  }
-  @media screen and (max-width: 480px) {
-    &.left {
-      top: -300px;
-      left: -300px;
-    }
-    &.right {
-      right: -300px;
-      bottom: -300px;
-    }
   }
 `
 
@@ -114,7 +77,7 @@ const StyledText = styled(Text)`
   line-height: 30px;
   margin: 24px 0 30px 0;
   letter-spacing: 0.3px;
-  color: #8990a5;
+  color: rgba(255, 255, 255, 0.5);
   @media screen and (max-width: 1024px) {
     text-align: center;
     margin: 24px auto 32px auto;
@@ -140,15 +103,6 @@ const Maintenance: React.FC = () => {
           <MaintenancePreview />
         </Suspense>
       </ImageWrapper>
-
-      <CloudsWrapper>
-        <CloudWrapper className="left">
-          <MaintenanceCloudLeft />
-        </CloudWrapper>
-        <CloudWrapper className="right">
-          <MaintenanceCloudRight />
-        </CloudWrapper>
-      </CloudsWrapper>
     </StyledWrapper>
   )
 }
