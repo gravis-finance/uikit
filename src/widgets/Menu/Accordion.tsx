@@ -104,7 +104,7 @@ const AccordionContent = styled.div<{ isOpen: boolean; isPushed: boolean; maxHei
     padding-left: 28px;
     color: #909090;
     @media screen and (max-width: 967px) {
-      padding-left: 40px;
+      padding-left: 44px;
     }
   }
 
