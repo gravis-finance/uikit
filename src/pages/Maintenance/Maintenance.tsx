@@ -39,7 +39,7 @@ const InfoWrapper = styled.div`
 
   @media screen and (max-width: 1024px) {
     width: 80%;
-    margin: 0 0 auto 0;
+    margin: auto 0;
   }
   @media screen and (max-width: 480px) {
     width: 100%;
@@ -98,11 +98,6 @@ const Maintenance: React.FC = () => {
         <StyledText>We&apos;ll be back shortly. In the meantime, check out our social networks.</StyledText>
         <SocialNetworks />
       </InfoWrapper>
-      <ImageWrapper>
-        <Suspense fallback={null}>
-          <MaintenancePreview />
-        </Suspense>
-      </ImageWrapper>
     </StyledWrapper>
   )
 }
