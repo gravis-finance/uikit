@@ -20,7 +20,8 @@
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
     "test": "jest",
-    "release": "yarn build && np"
+    "release": "yarn build && np",
+    "locales": "babel --extensions \".tsx\" --config-file ./babel-locales.config.js ./src"
   },
   "jest": {
     "setupFilesAfterEnv": [
@@ -67,7 +68,8 @@
     "themeprovider-storybook": "^1.6.4",
     "ts-jest": "^26.5.1",
     "tslib": "^2.0.3",
-    "typescript": "^4.2.4"
+    "typescript": "^4.2.4",
+    "babel-plugin-parse-translation": "^1.0.2"
   },
   "peerDependencies": {
     "react": "^17.0.1",
