@@ -16,7 +16,6 @@
     },
     "more": "もっと見る"
   },
-  "swap": "スワップ",
   "networkSwitchingError": "ネットワーク切り替えエラー",
   "differentNetworks": "あなたのウォレットと弊社サイトで、異なるネットワークが選択されていることがわかりました。",
   "pleaseChoose": "何をするか選択してください。",
@@ -25,6 +24,7 @@
   "connectToWallet": "ウォレットと接続",
   "chooseNetwork": "ネットワークを選択",
   "chooseWallet": "ウォレットを選択",
+  "swap": "スワップ",
   "account": "アカウント",
   "balanceTitle": "残高",
   "networks": "ネットワーク",
