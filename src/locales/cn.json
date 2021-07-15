@@ -16,7 +16,6 @@
     },
     "more": "更多"
   },
-  "swap": "兑换",
   "networkSwitchingError": "网络切换错误",
   "differentNetworks": "我们发现您的钱包和我们的网站上选择了不同的网络。",
   "pleaseChoose": "请选择你想要的网络",
@@ -25,6 +24,7 @@
   "connectToWallet": "连接到钱包",
   "chooseNetwork": "选择网络",
   "chooseWallet": "选择钱包",
+  "swap": "兑换",
   "account": "账户",
   "balanceTitle": "余额",
   "networks": "网络",

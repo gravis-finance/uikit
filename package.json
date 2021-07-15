@@ -21,7 +21,7 @@
     "build-storybook": "build-storybook",
     "test": "jest",
     "release": "yarn build && np",
-    "locales": "babel --extensions \".tsx\" --config-file ./babel-locales.config.js ./src"
+    "locales": "babel --extensions \".tsx\",\".ts\" --config-file ./babel-locales.config.js ./src"
   },
   "jest": {
     "setupFilesAfterEnv": [

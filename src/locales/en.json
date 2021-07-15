@@ -16,7 +16,6 @@
     },
     "more": "More"
   },
-  "swap": "Swap",
   "networkSwitchingError": "Network switching error",
   "differentNetworks": "We found that you have different networks\nselected in your wallet and on our site.\nPlease choose what to do.",
   "pleaseChoose": "Please choose what to do.",
@@ -25,6 +24,7 @@
   "connectToWallet": "Connect to a wallet",
   "chooseNetwork": "Choose Network",
   "chooseWallet": "Choose Wallet",
+  "swap": "Swap",
   "account": "Account",
   "balanceTitle": "Balance",
   "networks": "Network",
