@@ -1,6 +1,15 @@
 {
   "copiedToClipBoard": "Copied to Clipboard",
   "maxAmountLabel": "MAX",
+  "maintenance": {
+    "title": "Sorry, we're under maintenance",
+    "text": "We'll be back shortly. In the meantime, check out our social networks."
+  },
+  "Something went wrong": "Something went wrong",
+  "pageNotFound": "The requested page found cannot be.",
+  "May the force be with you!": "May the force be with you!",
+  "Go back to main site": "Go back to main site",
+  "Or subscribe to our social networks": "Or subscribe to our social networks",
   "mainMenu": {
     "home": "Home",
     "trade": "Exchange",
@@ -16,6 +25,7 @@
     },
     "more": "More"
   },
+  "swap": "Swap",
   "networkSwitchingError": "Network switching error",
   "differentNetworks": "We found that you have different networks\nselected in your wallet and on our site.\nPlease choose what to do.",
   "pleaseChoose": "Please choose what to do.",
@@ -24,7 +34,6 @@
   "connectToWallet": "Connect to a wallet",
   "chooseNetwork": "Choose Network",
   "chooseWallet": "Choose Wallet",
-  "swap": "Swap",
   "account": "Account",
   "balanceTitle": "Balance",
   "networks": "Network",
