@@ -1,6 +1,15 @@
 {
   "copiedToClipBoard": "クリップボードへのコピー",
   "maxAmountLabel": "最大",
+  "maintenance": {
+    "title": "Sorry, we're under maintenance",
+    "text": "We'll be back shortly. In the meantime, check out our social networks."
+  },
+  "Something went wrong": "Something went wrong",
+  "pageNotFound": "The requested page found cannot be.",
+  "May the force be with you!": "May the force be with you!",
+  "Go back to main site": "Go back to main site",
+  "Or subscribe to our social networks": "Or subscribe to our social networks",
   "mainMenu": {
     "home": "ホーム",
     "trade": "交換",
@@ -16,6 +25,7 @@
     },
     "more": "もっと見る"
   },
+  "swap": "スワップ",
   "networkSwitchingError": "ネットワーク切り替えエラー",
   "differentNetworks": "あなたのウォレットと弊社サイトで、異なるネットワークが選択されていることがわかりました。",
   "pleaseChoose": "何をするか選択してください。",
@@ -24,7 +34,6 @@
   "connectToWallet": "ウォレットと接続",
   "chooseNetwork": "ネットワークを選択",
   "chooseWallet": "ウォレットを選択",
-  "swap": "スワップ",
   "account": "アカウント",
   "balanceTitle": "残高",
   "networks": "ネットワーク",

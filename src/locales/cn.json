@@ -1,6 +1,15 @@
 {
   "copiedToClipBoard": "复制到剪贴板",
   "maxAmountLabel": "最大",
+  "maintenance": {
+    "title": "Sorry, we're under maintenance",
+    "text": "We'll be back shortly. In the meantime, check out our social networks."
+  },
+  "Something went wrong": "Something went wrong",
+  "pageNotFound": "The requested page found cannot be.",
+  "May the force be with you!": "May the force be with you!",
+  "Go back to main site": "Go back to main site",
+  "Or subscribe to our social networks": "Or subscribe to our social networks",
   "mainMenu": {
     "home": "主页",
     "trade": "兑换",
@@ -16,6 +25,7 @@
     },
     "more": "更多"
   },
+  "swap": "兑换",
   "networkSwitchingError": "网络切换错误",
   "differentNetworks": "我们发现您的钱包和我们的网站上选择了不同的网络。",
   "pleaseChoose": "请选择你想要的网络",
@@ -24,7 +34,6 @@
   "connectToWallet": "连接到钱包",
   "chooseNetwork": "选择网络",
   "chooseWallet": "选择钱包",
-  "swap": "兑换",
   "account": "账户",
   "balanceTitle": "余额",
   "networks": "网络",

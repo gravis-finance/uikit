@@ -1,5 +1,5 @@
 import React from 'react'
-
+import { useTranslation } from 'react-multi-lang'
 import styled from 'styled-components'
 import { Button } from '../../components/Button'
 import { Text } from '../../components/Text'
@@ -152,17 +152,22 @@ type PropsType = {
 }
 
 const NotFound: React.FC<PropsType> = ({ redirectURL = 'https://gravis.finance/' }) => {
+  const t = useTranslation()
+
   return (
     <StyledWrapper>
       <InfoWrapper>
-        <StyledHeading>Something went wrong</StyledHeading>
-        <StyledText>The requested page found cannot be. <br />May the force be with you!</StyledText>
+        <StyledHeading>{t('Something went wrong')}</StyledHeading>
+        <StyledText>
+          {t('pageNotFound')} <br />
+          {t('May the force be with you!')}
+        </StyledText>
 
         <a href={redirectURL} rel="noreferrer noopener">
-          <StyledButton>Go back to main site</StyledButton>
+          <StyledButton>{t('Go back to main site')}</StyledButton>
         </a>
 
-        <StyledText className="small">Or subscribe to our social networks</StyledText>
+        <StyledText className="small">{t('Or subscribe to our social networks')}</StyledText>
 
         <SocialNetworks />
       </InfoWrapper>
