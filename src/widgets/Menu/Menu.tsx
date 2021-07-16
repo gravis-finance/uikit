@@ -228,6 +228,7 @@ setTranslations({en, jp, cn})
 setDefaultLanguage('en')
 
 const Menu: React.FC<NavProps> = ({
+  networks,
   isProduction,
   account,
   login,
@@ -297,6 +298,7 @@ const Menu: React.FC<NavProps> = ({
         <Flex alignItems="center">
           {loginBlockVisible && (
             <UserBlock
+              networks={networks}
               isProduction={isProduction as boolean}
               account={account}
               login={login}

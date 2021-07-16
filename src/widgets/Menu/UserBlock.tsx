@@ -6,8 +6,10 @@ import { Login } from '../WalletModal/types'
 import { AddIcon } from '../../components/Svg'
 import NetworkSwitch from './NetworkSwitch'
 import Flex from '../../components/Flex/Flex'
+import { networks as NETWORKS } from '../WalletModal/config'
 
 interface Props {
+  networks?: typeof NETWORKS
   isProduction: boolean
   account?: string
   login: Login
@@ -49,6 +51,7 @@ const StyledFlex = styled(Flex)`
 
 const UserBlock: React.FC<Props> = (props) => {
   const {
+    networks,
     isProduction,
     account,
     login,
@@ -83,7 +86,7 @@ const UserBlock: React.FC<Props> = (props) => {
 
   return (
     <StyledFlex alignItems="center" style={{ pointerEvents: 'all' }}>
-      {networkSwitchVisible && <NetworkSwitch isProduction={isProduction} />}
+      {networkSwitchVisible && <NetworkSwitch networks={networks} isProduction={isProduction} />}
       {account ? (
         <Button
           size="md"
