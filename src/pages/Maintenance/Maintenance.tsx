@@ -1,10 +1,9 @@
-import React, { lazy, Suspense } from 'react'
+import React from 'react'
 import styled from 'styled-components'
+import { useTranslation } from 'react-multi-lang'
 import { Text } from '../../components/Text'
 import { Heading } from '../../components/Heading'
 import { SocialNetworks } from '../../components/SocialNetworks'
-
-const MaintenancePreview = lazy(() => import('./assets/maintenance-preview'))
 
 const StyledWrapper = styled.div`
   z-index: 100;
@@ -91,11 +90,13 @@ const StyledText = styled(Text)`
 `
 
 const Maintenance: React.FC = () => {
+  const t = useTranslation()
+
   return (
     <StyledWrapper>
       <InfoWrapper>
-        <StyledHeading>Sorry, we&apos;re under maintenance</StyledHeading>
-        <StyledText>We&apos;ll be back shortly. In the meantime, check out our social networks.</StyledText>
+        <StyledHeading>{t('maintenance.title')}</StyledHeading>
+        <StyledText>{t('maintenance.text')}</StyledText>
         <SocialNetworks />
       </InfoWrapper>
     </StyledWrapper>

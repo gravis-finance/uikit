@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import { useHistory } from 'react-router-dom'
 import { Popper } from '../../components/Popper'
 import { NetworksConfig } from '../WalletModal/types'
-import { networks } from '../WalletModal/config'
+import { networks as NETWORKS } from '../WalletModal/config'
 import { ArrowDropDownIcon } from '../../components/Svg'
 import switchNetwork from '../../util/switchNetwork'
 import { getNetworkTitles } from '../../util/getNetworkId'
@@ -171,6 +171,7 @@ type Props = {
   toggleMobile?: boolean
   asIcon?: boolean
   withReload?: boolean
+  networks?: typeof NETWORKS
 } & React.ComponentProps<typeof StyledDropDown>
 
 const NetworkSwitch: React.FC<Props> = ({
@@ -178,6 +179,7 @@ const NetworkSwitch: React.FC<Props> = ({
   toggleMobile = true,
   asIcon,
   withReload = false,
+  networks = NETWORKS,
   ...restProps
 }) => {
   const history = useHistory()
