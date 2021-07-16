@@ -1,4 +1,5 @@
 import { Login } from '../WalletModal/types'
+import { networks as NETWORKS } from '../WalletModal/config'
 
 export interface LangType {
   code: string
@@ -53,6 +54,7 @@ export interface PanelProps {
 }
 
 export interface NavProps extends PanelProps {
+  networks?: typeof NETWORKS
   isProduction?: boolean
   account?: string
   login: Login
