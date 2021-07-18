@@ -13,20 +13,21 @@ export const Arrow = styled.div`
   &::before {
     content: "";
     transform: rotate(45deg);
-    background: ${({ theme }) => theme.tooltip.background};
+    background: #292929;
   }
 `;
 
 export const StyledTooltip = styled.div`
-  padding: 16px;
+  padding: 10px;
   font-size: 16px;
   line-height: 130%;
-  border-radius: 16px;
+  border-radius: 6px;
   max-width: 320px;
   z-index: 101;
-  background: ${({ theme }) => theme.tooltip.background};
-  color: ${({ theme }) => theme.tooltip.text};
+  background: #292929;
+  color: rgba(255, 255, 255, 0.5);
   box-shadow: ${({ theme }) => theme.tooltip.boxShadow};
+  border: 1px solid #2E2E2E;
 
   &[data-popper-placement^="top"] > ${Arrow} {
     bottom: -4px;
