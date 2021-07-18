@@ -200,7 +200,7 @@ const PanelBody: React.FC<Props> = ({ isPushed, pushNav, isMobile, links, toggle
               <MenuEntry
                 isactive={entry.href === location.pathname}
                 className={calloutClass}
-                fillStroke={entry.label === t('mainMenu.home')}
+                fillStroke={entry.label === t('mainMenu.home') || entry.label === t('mainMenu.NFTFarming')}
                 isPushed={isPushed}
                 single
               >
