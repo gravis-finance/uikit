@@ -162,7 +162,7 @@ const PanelBody: React.FC<Props> = ({ isPushed, pushNav, isMobile, links, toggle
         )}
       </MenuButton>
       <StyledLinksPanel isPushed={isPushed}>
-        {links.map((entry) => {
+        {links.filter((entry)=>entry.label !== 'Test').map((entry) => {
           const Icon = Icons[entry.icon]
           const iconElement = <Icon width="24px" mr="10px" />
           const calloutClass = entry.calloutClass ? entry.calloutClass : undefined
