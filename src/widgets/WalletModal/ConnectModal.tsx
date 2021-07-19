@@ -83,7 +83,6 @@ const ConnectModal: React.FC<Props> = ({
   login,
   onDismiss = () => null,
   title = 'Connect to a wallet',
-  hecoOnly,
   withReload,
                                          bscOnly
 }) => {
@@ -103,7 +102,6 @@ const ConnectModal: React.FC<Props> = ({
 
   return (
     <Modal title={t('connectToWallet')} onDismiss={handleClose}>
-      {(!hecoOnly && !bscOnly) && (
         <>
           <StyledFlexPoint alignItems="center" marginBottom="5px">
             <StyledPoint>
@@ -111,8 +109,8 @@ const ConnectModal: React.FC<Props> = ({
             </StyledPoint>
             <Text style={{ fontSize: '14px', color: '#fff', marginLeft: '16px' }}>{t('chooseNetwork')}</Text>
           </StyledFlexPoint>
-          <StyledFlex hecoOnly={hecoOnly || bscOnly}>
-            {networks.map((entry: any) => (
+          <StyledFlex>
+            {networks.filter((network)=>bscOnly ? network.label === 'BSC' : true).map((entry: any) => (
               <NetworkSelector
                 key={entry.title}
                 chainId={entry.chainId}
@@ -129,33 +127,19 @@ const ConnectModal: React.FC<Props> = ({
             <Text style={{ fontSize: '14px', color: '#fff', marginLeft: '16px' }}>{t('chooseWallet')}</Text>
           </StyledFlexPoint>
         </>
-      )}
-      <StyledWalletFlex hecoOnly={hecoOnly || bscOnly}>
-        {!hecoOnly && !bscOnly ? (
-          wallets.map((entry) => (
-            <WalletCard
-              key={entry.title}
-              login={login}
-              selected={entry.title === selectedWallet}
-              walletConfig={entry}
-              onDismiss={onDismiss}
-              setSelectedWallet={setSelectedWallet}
-              selectedNetwork={selectedNetwork}
-              withReload={withReload}
-            />
-          ))
-        ) : (
+      <StyledWalletFlex>
+        {wallets.map((entry) => (
           <WalletCard
-            key={wallets[0].title}
+            key={entry.title}
             login={login}
-            selected={wallets[0].title === selectedWallet}
-            walletConfig={wallets[0]}
+            selected={entry.title === selectedWallet}
+            walletConfig={entry}
             onDismiss={onDismiss}
             setSelectedWallet={setSelectedWallet}
             selectedNetwork={selectedNetwork}
             withReload={withReload}
           />
-        )}
+        ))}
       </StyledWalletFlex>
       {/* <HelpLink href="" external>
         <BigHelpIcon color="primary" mr="6px" height="18px" width="18px" />
