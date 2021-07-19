@@ -61,7 +61,7 @@ export const networksConfig = {
     label: 'BSC',
     chainId: production ? '56' : '97',
     wallets: isMobile
-      ? [walletsConfig.walletConnect, walletsConfig.trustWallet, walletsConfig.tokenPocket]
+      ? [walletsConfig.metamask, walletsConfig.walletConnect, walletsConfig.trustWallet, walletsConfig.tokenPocket]
       : [walletsConfig.metamask, walletsConfig.walletConnect, walletsConfig.binanceChain],
   },
   polygon: {
