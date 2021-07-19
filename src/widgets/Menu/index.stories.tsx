@@ -258,6 +258,7 @@ export const NotConnected: React.FC = () => {
           modalBscScan: 'Test bsc',
         }}
         setSelectedLanguage={setSelectedLanguage}
+        bscOnly
       >
         <div>
           <h1>Page body</h1>
