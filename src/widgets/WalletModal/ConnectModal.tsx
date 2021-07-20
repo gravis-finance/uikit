@@ -110,7 +110,7 @@ const ConnectModal: React.FC<Props> = ({
             <Text style={{ fontSize: '14px', color: '#fff', marginLeft: '16px' }}>{t('chooseNetwork')}</Text>
           </StyledFlexPoint>
           <StyledFlex>
-            {networks.filter((network)=>bscOnly ? network.label === 'BSC' : !ethereum ? network.label !== 'Ethereum' : ethereum ? network.label !== 'Polygon' : true).map((entry: any) => (
+            {networks.filter((network)=>bscOnly ? network.label === 'BSC' : !ethereum ? network.label !== 'Ethereum' : ethereum ? network.label !== 'HECO' : true).map((entry: any) => (
               <NetworkSelector
                 key={entry.title}
                 chainId={entry.chainId}
