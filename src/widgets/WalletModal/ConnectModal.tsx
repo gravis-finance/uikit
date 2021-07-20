@@ -22,6 +22,7 @@ interface Props {
   hecoOnly?: boolean
   withReload?: boolean
   bscOnly?: boolean
+  ethereum?: boolean
 }
 
 const HelpLink = styled(Link)`
@@ -83,8 +84,7 @@ const ConnectModal: React.FC<Props> = ({
   login,
   onDismiss = () => null,
   title = 'Connect to a wallet',
-  withReload,
-                                         bscOnly
+                                         bscOnly, ethereum
 }) => {
   const id: string = getNetworkId()
   const history = useHistory()
@@ -110,7 +110,7 @@ const ConnectModal: React.FC<Props> = ({
             <Text style={{ fontSize: '14px', color: '#fff', marginLeft: '16px' }}>{t('chooseNetwork')}</Text>
           </StyledFlexPoint>
           <StyledFlex>
-            {networks.filter((network)=>bscOnly ? network.label === 'BSC' : true).map((entry: any) => (
+            {networks.filter((network)=>bscOnly ? network.label === 'BSC' : !ethereum ? network.label !== 'Ethereum' : true).map((entry: any) => (
               <NetworkSelector
                 key={entry.title}
                 chainId={entry.chainId}
@@ -137,7 +137,6 @@ const ConnectModal: React.FC<Props> = ({
             onDismiss={onDismiss}
             setSelectedWallet={setSelectedWallet}
             selectedNetwork={selectedNetwork}
-            withReload={withReload}
           />
         ))}
       </StyledWalletFlex>

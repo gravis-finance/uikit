@@ -1972,10 +1972,10 @@
     eslint-plugin-react "^7.21.5"
     eslint-plugin-react-hooks "^4.0.0"
 
-"@gravis.finance/sdk@^1.0.9":
-  version "1.0.9"
-  resolved "https://registry.yarnpkg.com/@gravis.finance/sdk/-/sdk-1.0.9.tgz#2b28032859ca03b75875d75ae731d4b816c22b16"
-  integrity sha512-LC3k2UKgnF+GDk37yjRXQRCzjunHbsOIlwzwpn7tSvoFlgLk8/RulwbaAR/Cb+uZAt/iTbyaF/gqnQ/983KYeQ==
+"@gravis.finance/sdk@^1.0.13":
+  version "1.0.13"
+  resolved "https://registry.yarnpkg.com/@gravis.finance/sdk/-/sdk-1.0.13.tgz#e4844d8ac6259054a8f48feb4a9d8339fecefd67"
+  integrity sha512-ZTXjWG3y0p9L7mWp0R6e/lxXWJS7kVPlvyiv7BDjKDScuI04N43UL5XIDaZZe4/8RrkYDt4WdNvdm1knt3ivMA==
   dependencies:
     "@pancakeswap-libs/pancake-swap-core" "^0.1.0"
     big.js "^5.2.2"
@@ -5714,13 +5714,6 @@ babel-plugin-named-asset-import@^0.3.1:
   version "0.3.7"
   resolved "https://registry.yarnpkg.com/babel-plugin-named-asset-import/-/babel-plugin-named-asset-import-0.3.7.tgz#156cd55d3f1228a5765774340937afc8398067dd"
   integrity sha512-squySRkf+6JGnvjoUtDEjSREJEBirnXi9NqP6rjSYsylxQxqBTz+pkmf395i9E2zsvmYUaI40BHo6SqZUdydlw==
-
-babel-plugin-parse-translation@^1.0.2:
-  version "1.0.2"
-  resolved "https://registry.yarnpkg.com/babel-plugin-parse-translation/-/babel-plugin-parse-translation-1.0.2.tgz#0c67593e4cd83f3a597a393d77c54a242b336553"
-  integrity sha512-XK+ZwkMExdkl7TIZG2pYA93UGRYjk0reN/YXwR7aGe191U5r6YjJTLjsntqBsopb+x2NtEMYM4ltEeeIctWnhQ==
-  dependencies:
-    glob "^7.1.7"
 
 babel-plugin-polyfill-corejs2@^0.2.0:
   version "0.2.1"
@@ -10221,7 +10214,7 @@ glob@^5.0.3:
     once "^1.3.0"
     path-is-absolute "^1.0.0"
 
-glob@^7.1.1, glob@^7.1.2, glob@^7.1.3, glob@^7.1.4, glob@^7.1.6, glob@^7.1.7:
+glob@^7.1.1, glob@^7.1.2, glob@^7.1.3, glob@^7.1.4, glob@^7.1.6:
   version "7.1.7"
   resolved "https://registry.yarnpkg.com/glob/-/glob-7.1.7.tgz#3b193e9233f01d42d0b3f78294bbeeb418f94a90"
   integrity sha512-OvD9ENzPLbegENnYP5UUfJIirTg4+XwMWGaQfQTY0JenxNvvIKP3U3/tAQSPIu/lHxXYSZmpXlUHeqAIdKzBLQ==

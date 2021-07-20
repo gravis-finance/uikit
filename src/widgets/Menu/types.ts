@@ -74,4 +74,5 @@ export interface NavProps extends PanelProps {
   customLanguage?: string
   networkSwitchVisible?: boolean
   bscOnly?: boolean
+  ethereum?: boolean
 }
