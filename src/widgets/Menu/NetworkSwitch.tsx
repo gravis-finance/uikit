@@ -244,7 +244,7 @@ const NetworkSwitch: React.FC<Props> = ({
         inheritWidth
         ref={optionsContainer}
       >
-        {networks.filter((network) => !ethereum ? network.label !== 'Ethereum' : ethereum ? network.label !== 'Polygon' : true).map((item: any) => (
+        {networks.filter((network) => !ethereum ? network.label !== 'Ethereum' : ethereum ? network.label !== 'HECO' : true).map((item: any) => (
           <StyledOption key={item.title} onClick={() => handleClick(item)} id={`${item.label}-switch-option`}>
             <item.icon />
             {item.label}
