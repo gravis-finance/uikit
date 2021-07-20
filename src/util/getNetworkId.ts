@@ -8,6 +8,8 @@ const NetworkLabels = {
   '256': 'huobiEcoChain',
   '80001': 'Polygon (Matic)',
   '137': 'Polygon (Matic)',
+  '1': 'Ethereum',
+  '4': 'Ethereum',
 }
 
 export const NetworkSymbols: { [chainId in ChainId]: string } = {
@@ -17,6 +19,8 @@ export const NetworkSymbols: { [chainId in ChainId]: string } = {
   '256': 'HT',
   '80001': 'Matic',
   '137': 'Matic',
+  '1': 'Ethereum',
+  '4': 'Ethereum',
 }
 
 export const NetworkTitles: { [chainId in ChainId]: string } = {
@@ -26,6 +30,8 @@ export const NetworkTitles: { [chainId in ChainId]: string } = {
   '256': 'Huobi',
   '80001': 'Polygon',
   '137': 'Polygon',
+  '1': 'Ethereum',
+  '4': 'Ethereum',
 }
 
 const networkLocalStorageKey = 'network'
