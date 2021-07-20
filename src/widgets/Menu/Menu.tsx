@@ -220,35 +220,35 @@ function defaultBalanceHook() {
   })
 }
 
-const defaultSetSelectedLanguage = (name : string) => {
+const defaultSetSelectedLanguage = (name: string) => {
   setLanguage(name.toLowerCase())
 }
 
-setTranslations({en, jp, cn})
+setTranslations({ en, jp, cn })
 setDefaultLanguage('en')
 
 const Menu: React.FC<NavProps> = ({
-  networks,
-  isProduction,
-  account,
-  login,
-  logout,
-  isDark,
-  toggleTheme,
-  links,
-  loginBlockVisible = true,
-  buttonTitle = 'Connect',
-  options,
-  children,
-  balance,
-  explorerName,
-  explorerLink,
-  onTransactionHistoryHandler,
-  betaText = "This is the Beta version. You can't add liquidity here anymore. Press here to switch to the main version.",
-  betaLink,
-  balanceHook=defaultBalanceHook,
-                                    setSelectedLanguage=defaultSetSelectedLanguage, customLanguage, networkSwitchVisible=true, bscOnly
-}) => {
+                                    networks,
+                                    isProduction,
+                                    account,
+                                    login,
+                                    logout,
+                                    isDark,
+                                    toggleTheme,
+                                    links,
+                                    loginBlockVisible = true,
+                                    buttonTitle = 'Connect',
+                                    options,
+                                    children,
+                                    balance,
+                                    explorerName,
+                                    explorerLink,
+                                    onTransactionHistoryHandler,
+                                    betaText = 'This is the Beta version. You can\'t add liquidity here anymore. Press here to switch to the main version.',
+                                    betaLink,
+                                    balanceHook = defaultBalanceHook,
+                                    setSelectedLanguage = defaultSetSelectedLanguage, customLanguage, networkSwitchVisible = true, bscOnly, ethereum
+                                  }) => {
   const { isXl } = useMatchBreakpoints()
   const isMobile = isXl === false
   const [isPushed, setIsPushed] = useState(!isMobile)
@@ -258,7 +258,7 @@ const Menu: React.FC<NavProps> = ({
   useEffect(() => {
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore
-    localStorage.setItem(localStorageLanguageItem, getDefaultLanguage() ? getDefaultLanguage().toUpperCase() : 'EN');
+    localStorage.setItem(localStorageLanguageItem, getDefaultLanguage() ? getDefaultLanguage().toUpperCase() : 'EN')
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore
     setSelectedLanguage(getDefaultLanguage())
@@ -267,7 +267,7 @@ const Menu: React.FC<NavProps> = ({
   }, [])
 
   useEffect(() => {
-    if(customLanguage)
+    if (customLanguage)
       setLanguage(customLanguage.toLowerCase())
   }, [customLanguage])
 
@@ -311,6 +311,7 @@ const Menu: React.FC<NavProps> = ({
               balanceHook={balanceHook}
               networkSwitchVisible={networkSwitchVisible}
               bscOnly={bscOnly}
+              ethereum={ethereum}
               {...options}
             />
           )}

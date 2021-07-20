@@ -24,6 +24,7 @@ interface Props {
   balanceHook?: any
   networkSwitchVisible?: boolean
   bscOnly?: boolean
+  ethereum?: boolean
 }
 
 const StyledConnectButton = styled.div`
@@ -65,7 +66,8 @@ const UserBlock: React.FC<Props> = (props) => {
     onTransactionHistoryHandler,
     balanceHook,
     networkSwitchVisible,
-    bscOnly
+    bscOnly,
+    ethereum
   } = props
 
   const { onPresentConnectModal, onPresentAccountModal } = useWalletModal(
@@ -80,13 +82,14 @@ const UserBlock: React.FC<Props> = (props) => {
     explorerLink,
     onTransactionHistoryHandler,
     balanceHook,
-    bscOnly
+    bscOnly,
+    ethereum
   )
   const accountEllipsis = account ? `${account.substring(0, 4)}...${account.substring(account.length - 4)}` : null
 
   return (
     <StyledFlex alignItems="center" style={{ pointerEvents: 'all' }}>
-      {networkSwitchVisible && <NetworkSwitch networks={networks} isProduction={isProduction} />}
+      {networkSwitchVisible && <NetworkSwitch networks={networks} isProduction={isProduction} ethereum={ethereum} />}
       {account ? (
         <Button
           size="md"

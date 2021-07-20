@@ -8,6 +8,7 @@ import BinanceChain from './icons/BinanceChain'
 import Binance from './icons/Binance'
 import Huobi from './icons/Huobi'
 import Polygon from './icons/Polygon'
+import Ethereum from './icons/Ethereum'
 import { WalletsConfig, ConnectorNames } from './types'
 
 const production = process.env.REACT_APP_NODE_ENV === 'production'
@@ -69,6 +70,13 @@ export const networksConfig = {
     icon: Polygon,
     label: 'Polygon',
     chainId: production ? '137' : '80001',
+    wallets: isMobile ? [walletsConfig.walletConnect] : [walletsConfig.metamask, walletsConfig.walletConnect],
+  },
+  ethereum: {
+    title: 'Ethereum',
+    icon: Ethereum,
+    label: 'Ethereum',
+    chainId: production ? '1' : '4',
     wallets: isMobile ? [walletsConfig.walletConnect] : [walletsConfig.metamask, walletsConfig.walletConnect],
   },
 }
