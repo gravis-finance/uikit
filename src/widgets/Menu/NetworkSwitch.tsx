@@ -9,7 +9,7 @@ import switchNetwork from '../../util/switchNetwork'
 import { getNetworkTitles } from '../../util/getNetworkId'
 
 const StyledDropDown = styled.div<{ $showOptions?: boolean; $toggleMobile?: boolean; $asIcon?: boolean }>`
-  width: 150px;
+  width: 165px;
   box-sizing: border-box;
   height: 48px;
   position: relative;
@@ -172,6 +172,7 @@ type Props = {
   asIcon?: boolean
   withReload?: boolean
   networks?: typeof NETWORKS
+  ethereum?: boolean
 } & React.ComponentProps<typeof StyledDropDown>
 
 const NetworkSwitch: React.FC<Props> = ({
@@ -180,6 +181,7 @@ const NetworkSwitch: React.FC<Props> = ({
   asIcon,
   withReload = false,
   networks = NETWORKS,
+                                          ethereum,
   ...restProps
 }) => {
   const history = useHistory()
@@ -196,7 +198,7 @@ const NetworkSwitch: React.FC<Props> = ({
   useEffect(() => {
     const network = new URLSearchParams(history.location.search).get('network')
     if (network) setSelectedOption(networks.find((item) => item.chainId === network)?.title)
-  }, [history.location])
+  }, [history.location, networks])
 
   useEffect(() => {
     const onClickHandler = (event: any) => {
@@ -242,7 +244,7 @@ const NetworkSwitch: React.FC<Props> = ({
         inheritWidth
         ref={optionsContainer}
       >
-        {networks.map((item: any) => (
+        {networks.filter((network) => !ethereum ? network.label !== 'Ethereum' : ethereum ? network.label !== 'HECO' : true).map((item: any) => (
           <StyledOption key={item.title} onClick={() => handleClick(item)} id={`${item.label}-switch-option`}>
             <item.icon />
             {item.label}

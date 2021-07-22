@@ -188,6 +188,11 @@ export const NotConnected: React.FC = () => {
       ]
     },
     {
+      label: t('mainMenu.NFTFarming'),
+      icon: 'NFTFarmingIcon',
+      href: 'https://nftfarmingdev.gravis.finance',
+    },
+    {
       label: t('mainMenu.analytics.analytics'),
       icon: 'InfoIcon',
       items: [

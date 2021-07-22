@@ -23,7 +23,8 @@
     "ino": {
       "ino": "INO"
     },
-    "more": "More"
+    "more": "More",
+    "NFTFarming": "NFT Farming"
   },
   "swap": "Swap",
   "networkSwitchingError": "Network switching error",

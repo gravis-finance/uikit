@@ -82,7 +82,7 @@ export const socials = [
   {
     label: 'Twitter',
     icon: 'TwitterIcon',
-    href: 'https://twitter.com/gravis_finance',
+    href: 'https://twitter.com/gammarosigma',
   },
   {
     label: 'Medium',

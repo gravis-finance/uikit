@@ -23,7 +23,8 @@
     "ino": {
       "ino": "INO"
     },
-    "more": "更多"
+    "more": "更多",
+    "NFTFarming": "NFT Farming"
   },
   "swap": "兑换",
   "networkSwitchingError": "网络切换错误",
