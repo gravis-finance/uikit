@@ -1,12 +1,14 @@
 /* eslint-disable */
 import React, { useEffect, useState } from 'react'
-import styled from 'styled-components'
+import styled, { CSSProperties } from 'styled-components'
 import Input  from './Input'
 import { NumericalArrow } from '../Svg'
 import { Button } from '../Button'
 import { useTranslation } from 'react-multi-lang'
 
 interface Props {
+  value?: number
+  containerStyle?: CSSProperties
   inputHeight?: string
   labelPlaceholder?: string
   balancePlaceholder?: string
@@ -88,6 +90,7 @@ const StyledMaxButton = styled(Button)<{ isFocused?: boolean }>`
 `
 
 const NumericalInput: React.FC<Props> = ({
+  value,
   labelPlaceholder,
   balancePlaceholder,
   inputHeight = '50px',
@@ -101,6 +104,7 @@ const NumericalInput: React.FC<Props> = ({
   maxAmount,
   minAmount,
   setCurrentValue,
+  containerStyle,
   ...props
 }) => {
   const [isFocused, setIsFocused] = useState(false)
@@ -179,10 +183,11 @@ const NumericalInput: React.FC<Props> = ({
   })
 
   return (
-    <InputContainer>
+    <InputContainer style={containerStyle}>
       {labelPlaceholder && <LabelPlaceholder>{labelPlaceholder}</LabelPlaceholder>}
       {balancePlaceholder && <BalancePlaceholder title={balanceTitle}>{balancePlaceholder}</BalancePlaceholder>}
       <Input
+        value={value}
         placeholder={inputPlaceholder}
         ref={inputRef}
         style={{ height: inputHeight }}
