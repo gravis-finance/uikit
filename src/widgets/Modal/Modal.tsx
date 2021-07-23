@@ -53,22 +53,18 @@ const StyledHeading = styled(Heading)`
   font-weight: 500;
 `
 
-// const StyledButton = styled.button`
-//   cursor: pointer;
-//   outline: none;
-//   padding: 8px;
-//   display: flex;
-//   align-items: center;
-//   justify-content: center;
-//   border: 1px solid #d2d6e5;
-//   border-radius: 4px;
-//   background: #fff;
-//   transition: background-color 200ms ease-in-out;
-
-//   :hover {
-//     background-color: #d2d6e5;
-//   }
-// `
+const StyledIconButton = styled(IconButton)`
+   > svg * {
+     transition: stroke 200ms ease-in-out;
+   }
+  :hover {
+    background: transparent !important;
+    
+    > svg * {
+      stroke: white;
+    }
+  }
+`
 
 const Modal: React.FC<Props> = ({
   title,
@@ -83,9 +79,9 @@ const Modal: React.FC<Props> = ({
     <ModalHeader>
       <ModalTitle hideCloseButton={hideCloseButton}>
         {onBack && (
-          <IconButton variant="text" onClick={onBack} area-label="go back" mr="8px">
+          <StyledIconButton variant="text" onClick={onBack} area-label="go back" mr="8px">
             <ArrowBackIcon color="primary" />
-          </IconButton>
+          </StyledIconButton>
         )}
         <StyledHeading>{title}</StyledHeading>
       </ModalTitle>
