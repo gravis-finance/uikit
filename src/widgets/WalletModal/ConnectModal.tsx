@@ -3,7 +3,6 @@ import styled from 'styled-components'
 import { useTranslation } from 'react-multi-lang'
 import { useHistory } from 'react-router-dom'
 import { Link } from '../../components/Link'
-import { BigHelpIcon } from '../../components/Svg'
 import { Modal } from '../Modal'
 import WalletCard from './WalletCard'
 import { wallets, networks } from './config'
@@ -17,6 +16,7 @@ import { getNetworkId, getNetworkTitles } from '../../util/getNetworkId'
 interface Props {
   login: Login
   onDismiss?: () => void
+  onSelect?: () => void
   title?: string
   isProduction?: boolean
   hecoOnly?: boolean
@@ -81,6 +81,7 @@ const StyledWalletFlex = styled(StyledFlex)<{ hecoOnly?: boolean }>`
 `
 
 const ConnectModal: React.FC<Props> = ({
+  onSelect = () => null,
   login,
   onDismiss = () => null,
   title = 'Connect to a wallet',
@@ -98,6 +99,11 @@ const ConnectModal: React.FC<Props> = ({
     const currentChainId = localStorage.getItem('chainId')
     if (id && currentChainId && currentChainId !== id) switchNetwork(currentChainId, false, history)
     onDismiss()
+  }
+
+  const handleSelect = () => {
+    onDismiss()
+    onSelect()
   }
 
   return (
@@ -134,7 +140,7 @@ const ConnectModal: React.FC<Props> = ({
             login={login}
             selected={entry.title === selectedWallet}
             walletConfig={entry}
-            onDismiss={onDismiss}
+            onDismiss={handleSelect}
             setSelectedWallet={setSelectedWallet}
             selectedNetwork={selectedNetwork}
           />
