@@ -75,4 +75,5 @@ export interface NavProps extends PanelProps {
   networkSwitchVisible?: boolean
   bscOnly?: boolean
   ethereum?: boolean
+  subscribePushEvent?: (isPushed: boolean) => void
 }
