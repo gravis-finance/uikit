@@ -23,11 +23,12 @@ const useWalletModal = (
   onTransactionHistoryHandler?: void,
   balanceHook?: void,
   bscOnly?: boolean,
-  ethereum?: boolean
+  ethereum?: boolean,
+  onSelectConnectModal?: () => void
 ): ReturnType => {
 
   const [onPresentConnectModal] = useModal(
-    <ConnectModal isProduction={isProduction} login={login} title={title} bscOnly={bscOnly} ethereum={ethereum} />
+    <ConnectModal onSelect={onSelectConnectModal} isProduction={isProduction} login={login} title={title} bscOnly={bscOnly} ethereum={ethereum} />
   )
   const [onPresentAccountModal] = useModal(
     <AccountModal

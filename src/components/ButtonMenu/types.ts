@@ -1,3 +1,4 @@
+import { CSSProperties } from 'styled-components'
 import { ButtonProps, Sizes, variants } from '../Button/types'
 
 export type ButtonMenuItemProps = {
@@ -10,5 +11,6 @@ export interface ButtonMenuProps {
   activeIndex?: number
   onClick?: (index: number) => void
   size?: Sizes
-  children: React.ReactElement[]
+  children: React.ReactElement[],
+  style?: CSSProperties,
 }

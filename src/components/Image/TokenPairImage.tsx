@@ -13,7 +13,9 @@ const TokenPairImage: React.FC<TokenPairImageProps> = ({
   secondaryImageProps = {},
   ...props
 }) => {
-  const secondaryImageSize = Math.floor(width / 2);
+  const secondaryImageSize = variant !== variants.EQUIVAlENT ?
+    Math.floor(width / 2) :
+    width;
 
   return (
     <Wrapper position="relative" width={width} height={height} {...props}>
