@@ -1,5 +1,5 @@
 import React from 'react'
-import styled from 'styled-components'
+import styled, { CSSProperties } from 'styled-components'
 import Heading from '../../components/Heading/Heading'
 import Flex from '../../components/Flex/Flex'
 import { ArrowBackIcon, CloseIcon } from '../../components/Svg'
@@ -7,7 +7,8 @@ import { IconButton } from '../../components/Button'
 import { InjectedProps } from './types'
 
 interface Props extends InjectedProps {
-  title: string
+  title: React.ReactChild
+  style?: CSSProperties
   hideCloseButton?: boolean
   onBack?: () => void
   bodyPadding?: string
@@ -67,6 +68,7 @@ const StyledIconButton = styled(IconButton)`
 `
 
 const Modal: React.FC<Props> = ({
+  style,
   title,
   onDismiss,
   onBack,
@@ -75,7 +77,7 @@ const Modal: React.FC<Props> = ({
   bodyPadding = '24px',
   styledModalContent,
 }) => (
-  <StyledModal>
+  <StyledModal style={style}>
     <ModalHeader>
       <ModalTitle hideCloseButton={hideCloseButton}>
         {onBack && (

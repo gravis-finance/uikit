@@ -15,6 +15,7 @@ export interface ImageProps extends ContainerProps, SpaceProps {
 export const variants = {
   DEFAULT: "default",
   INVERTED: "inverted",
+  EQUIVAlENT: "equivalent"
 } as const
 
 export type Variant = typeof variants[keyof typeof variants]
