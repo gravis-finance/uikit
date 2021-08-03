@@ -56,6 +56,9 @@ const MenuEntry = styled.div<Props>`
       stroke: white;
       opacity: 1;
     }
+    :after {
+       background: linear-gradient(90.28deg, #242424 0%, #202020 100%);
+    }
   }
   &:active {
     background: linear-gradient(90.28deg, #242424 0%, #1f1f1f 100%), #212121;
@@ -149,20 +152,32 @@ const MenuEntry = styled.div<Props>`
   position: relative;
   overflow: hidden;
   
-  :hover:before {
-    animation: move-light 5.5s linear forwards; 
-  }
-  
   ${({ blink }) => blink ? `
     :before {
+      animation: move-light 11.5s linear infinite; 
       content: '';
       position: absolute;
       top: 0;
       left: 0;
-      width: 1.5em;
+      width: 60px;
       height: 100%;
-      background-color: rgba(255, 255, 255, 0.6);
-      transform: translateX(-4em) skewX(-45deg);
+      background-color: rgba(255, 159, 47, 0.6);
+      transform: translateX(-4em) skewX(-45deg);g
+      z-index: 1;
+    }
+    :after {
+      content: '';
+      position: absolute;
+      top: 1px;
+      left: 1px;
+      border-radius: inherit;
+      width: 99%;
+      height: 95%;
+      background: linear-gradient(90.28deg, #292929 0%,#242424 100%),#303030;
+      z-index: 1;
+    }
+    > * {
+      z-index: 2;
     }
   ` : ''}
   
@@ -170,13 +185,13 @@ const MenuEntry = styled.div<Props>`
     0% {
       transform: translateX(-4em) skewX(-45deg)
       }
-    10% {
-      transform: translateX(15em) skewX(-45deg)
+    4% {
+      transform: translateX(15.5em) skewX(-45deg)
       }
     100% {
-      transform: translateX(15em) skewX(-45deg)
+      transform: translateX(15.5em) skewX(-45deg)
     }
-    }
+   }
 
   @media screen and (max-width: 967px) {
     box-shadow: none;
