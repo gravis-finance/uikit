@@ -43,6 +43,7 @@
   "Polygon (Matic)": "Polygon (Matic)",
   "viewOnBscscan": "View on BSCScan",
   "viewOnHecoInfo": "View on HecoInfo",
+  "viewOnEtherScan": "View on EtherScan",
   "MaticInfo": "View on Matic",
   "transactionHistory": "Transaction History",
   "disconnect": "Disconnect"

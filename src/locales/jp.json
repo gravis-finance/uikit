@@ -43,6 +43,7 @@
   "Polygon (Matic)": "Polygon (Matic)",
   "viewOnBscscan": "BSCScanで見る",
   "viewOnHecoInfo": "HecoInfoで見る",
+  "viewOnEtherScan": "EtherScanで見る",
   "MaticInfo": "Maticで見る",
   "transactionHistory": "トランザクション履歴",
   "disconnect": "接続解除"
