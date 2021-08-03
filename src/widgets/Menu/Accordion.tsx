@@ -153,10 +153,12 @@ const Accordion: React.FC<Props> = React.forwardRef(
       setIsOpen(initialOpenState)
     }, [initialOpenState, isPushed])
 
+    const fillStokeTranslations = [t('mainMenu.analytics.analytics'), t('mainMenu.ino.ino'), t('mainMenu.asteroidMining')]
+
     return (
       <Container
         isOpen={isOpen}
-        fillStroke={label === t('mainMenu.analytics.analytics') || label === t('mainMenu.ino.ino')}
+        fillStroke={fillStokeTranslations.includes(label)}
         isPushed={isPushed}
         ref={ref}
         {...restProps}
@@ -165,7 +167,7 @@ const Accordion: React.FC<Props> = React.forwardRef(
           onClick={handleClick}
           className={className}
           isPushed={isPushed}
-          fillStroke={label === t('mainMenu.analytics.analytics') || label === t('mainMenu.ino.ino')}
+          fillStroke={fillStokeTranslations.includes(label)}
         >
           {icon}
           <LinkLabel isPushed={isPushed}>{label}</LinkLabel>

@@ -216,6 +216,11 @@ export const NotConnected: React.FC = () => {
       items: [{ label: 'Big Bang Round', href: 'https://gravis.finance' }],
     },
     {
+      label: t('mainMenu.asteroidMining'),
+      icon: 'AsteroidMiningIcon',
+      items: [{label: t('mainMenu.captainsIno'), href: 'https://gravis.finance'}]
+    },
+    {
       label: t('mainMenu.more'),
       icon: 'MoreIcon',
       items: [

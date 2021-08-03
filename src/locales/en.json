@@ -24,7 +24,9 @@
       "ino": "INO"
     },
     "more": "More",
-    "NFTFarming": "NFT Farming"
+    "NFTFarming": "NFT Farming",
+    "asteroidMining": "(A)steroid Mining",
+    "captainsIno": "Captains INO"
   },
   "swap": "Swap",
   "networkSwitchingError": "Network switching error",
