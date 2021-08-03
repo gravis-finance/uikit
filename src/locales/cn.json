@@ -43,6 +43,7 @@
   "Polygon (Matic)": "Polygon (Matic)",
   "viewOnBscscan": "在BSCScan浏览器上查看",
   "viewOnHecoInfo": "在HecoInfo浏览器上查看",
+  "viewOnEtherScan": "在EtherScan浏览器上查看",
   "MaticInfo": "在Matic浏览器上查看",
   "transactionHistory": "交易历史记录",
   "disconnect": "链接断开"

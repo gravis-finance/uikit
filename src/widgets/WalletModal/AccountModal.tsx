@@ -17,7 +17,7 @@ import {
   ModalBackgroundIcon,
   ModalBackgroundIconMobile,
   HecoIcon,
-  MaticIcon,
+  MaticIcon, Ether
 } from '../../components/Svg'
 
 interface Props {
@@ -137,7 +137,7 @@ const AccountModal: React.FC<Props> = ({
   logout,
   onDismiss = () => null,
   balance,
-  explorerName = 'MaticInfo',
+  explorerName = 'viewOnEtherScan',
   explorerLink,
   tokenSymbol = 'BNB',
   networkName = 'binanceSmartChain',
@@ -191,7 +191,9 @@ const AccountModal: React.FC<Props> = ({
             <BSCScanIcon mr={16} />
           ) : explorerName.includes('Heco') ? (
             <HecoIcon mr={16} />
-          ) : (
+          ) : explorerName.includes('Ether') ?
+            <Ether mr={12} />
+            : (
             <MaticIcon mr={16} />
           )}
           {t(explorerName)}
