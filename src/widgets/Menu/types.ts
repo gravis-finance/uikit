@@ -28,6 +28,7 @@ export interface MenuSubEntry {
   label: string
   href?: string
   calloutClass?: string
+  external?: boolean
 }
 
 export interface MenuEntry {
@@ -35,6 +36,7 @@ export interface MenuEntry {
   icon: string
   items?: MenuSubEntry[]
   href?: string
+  blink?: boolean
   calloutClass?: string
   initialOpenState?: boolean
 }

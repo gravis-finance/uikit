@@ -182,6 +182,7 @@ const PanelBody: React.FC<Props> = ({ isPushed, pushNav, isMobile, links, toggle
                   label={entry.label}
                   initialOpenState={initialOpenState}
                   className={calloutClass}
+                  blink={entry.blink}
                 >
                   {isPushed &&
                     entry.items.map((item) => (
@@ -191,7 +192,7 @@ const PanelBody: React.FC<Props> = ({ isPushed, pushNav, isMobile, links, toggle
                         isactive={item.href === location.pathname}
                         onClick={handleClick}
                       >
-                        <MenuLink href={item.href}>{item.label}</MenuLink>
+                        <MenuLink href={item.href} target={item.external ? '_blank' : ''}>{item.label}</MenuLink>
                       </MenuEntry>
                     ))}
                 </Accordion>

@@ -218,7 +218,8 @@ export const NotConnected: React.FC = () => {
     {
       label: t('mainMenu.asteroidMining'),
       icon: 'AsteroidMiningIcon',
-      items: [{label: t('mainMenu.captainsIno'), href: 'https://gravis.finance'}]
+      blink: true,
+      items: [{label: t('mainMenu.captainsIno'), href: 'https://gravis.finance', external: true}]
     },
     {
       label: t('mainMenu.more'),

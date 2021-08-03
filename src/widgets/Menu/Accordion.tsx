@@ -11,6 +11,7 @@ interface Props extends PushedProps {
   icon: React.ReactElement
   initialOpenState?: boolean
   className?: string
+  blink?: boolean
 }
 
 const Container = styled.div<{ isOpen: boolean; fillStroke?: boolean; isPushed?: boolean }>`
@@ -127,7 +128,7 @@ const StyledArrowDropDown = styled(ArrowDropDownIcon)<{ isOpen?: boolean }>`
 `
 
 const Accordion: React.FC<Props> = React.forwardRef(
-  ({ label, icon, isPushed, pushNav, initialOpenState = false, children, className, ...restProps }, ref: any) => {
+  ({ label, icon, isPushed, pushNav, initialOpenState = false, children, className, blink, ...restProps }, ref: any) => {
     const [isOpen, setIsOpen] = useState(initialOpenState)
     const t = useTranslation()
 
@@ -168,6 +169,7 @@ const Accordion: React.FC<Props> = React.forwardRef(
           className={className}
           isPushed={isPushed}
           fillStroke={fillStokeTranslations.includes(label)}
+          blink={blink}
         >
           {icon}
           <LinkLabel isPushed={isPushed}>{label}</LinkLabel>

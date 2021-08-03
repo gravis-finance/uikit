@@ -8,6 +8,7 @@ export interface Props {
   fillStroke?: boolean
   isPushed?: boolean
   single?: boolean
+  blink?: boolean
 }
 
 const rainbowAnimation = keyframes`
@@ -144,6 +145,38 @@ const MenuEntry = styled.div<Props>`
     background-size: 200% 100%;
     font-weight: bold;
   }
+  
+  position: relative;
+  overflow: hidden;
+  
+  :hover:before {
+    animation: move-light 5.5s linear forwards; 
+  }
+  
+  ${({ blink }) => blink ? `
+    :before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 1.5em;
+      height: 100%;
+      background-color: rgba(255, 255, 255, 0.6);
+      transform: translateX(-4em) skewX(-45deg);
+    }
+  ` : ''}
+  
+  @keyframes move-light {
+    0% {
+      transform: translateX(-4em) skewX(-45deg)
+      }
+    10% {
+      transform: translateX(15em) skewX(-45deg)
+      }
+    100% {
+      transform: translateX(15em) skewX(-45deg)
+    }
+    }
 
   @media screen and (max-width: 967px) {
     box-shadow: none;
