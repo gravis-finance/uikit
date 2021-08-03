@@ -144,6 +144,8 @@ const PanelBody: React.FC<Props> = ({ isPushed, pushNav, isMobile, links, toggle
   const handleClick = isMobile ? () => pushNav(false) : undefined
   const homeLink = links.find((link) => link.label === 'Home')
 
+  const fillStokeTranslations = [t('mainMenu.home'), t('mainMenu.NFTFarming')]
+
   return (
     <Container>
       <StyledLogoIcon>
@@ -201,7 +203,7 @@ const PanelBody: React.FC<Props> = ({ isPushed, pushNav, isMobile, links, toggle
               <MenuEntry
                 isactive={entry.href === location.pathname}
                 className={calloutClass}
-                fillStroke={entry.label === t('mainMenu.home') || entry.label === t('mainMenu.NFTFarming')}
+                fillStroke={fillStokeTranslations.includes(entry.label)}
                 isPushed={isPushed}
                 single
               >
