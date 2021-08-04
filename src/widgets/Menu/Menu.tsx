@@ -17,6 +17,7 @@ import Logo from '../../components/Svg/Icons/Logo'
 import en from '../../locales/en.json'
 import jp from '../../locales/jp.json'
 import cn from '../../locales/cn.json'
+import ru from '../../locales/ru.json'
 import { localStorageLanguageItem } from '../../constants'
 import LanguageSwitch from './LanguageSwitch'
 import { getDefaultLanguage } from '../..'
@@ -224,7 +225,7 @@ const defaultSetSelectedLanguage = (name: string) => {
   setLanguage(name.toLowerCase())
 }
 
-setTranslations({ en, jp, cn })
+setTranslations({ en, jp, cn, ru })
 setDefaultLanguage('en')
 
 const Menu: React.FC<NavProps> = ({

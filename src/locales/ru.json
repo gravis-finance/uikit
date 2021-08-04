@@ -1,0 +1,52 @@
+{
+  "copiedToClipBoard": "Скопировано",
+  "maxAmountLabel": "MAX",
+  "maintenance": {
+    "title": "Sorry, we're under maintenance",
+    "text": "We'll be back shortly. In the meantime, check out our social networks."
+  },
+  "Something went wrong": "Что-то пошло не так",
+  "pageNotFound": "Страница запрашиваемая найдена не может быть.",
+  "May the force be with you!": "Да прибудет с тобой сила!",
+  "Go back to main site": "Вернуться на главную страницу",
+  "Or subscribe to our social networks": "Или подпишитесь на наши социальные сети",
+  "mainMenu": {
+    "home": "Главная",
+    "trade": "Биржа",
+    "liquidity": "Ликвидность",
+    "analytics": {
+      "analytics": "Аналитика",
+      "overview": "Обзор",
+      "tokens": "Токены",
+      "pairs": "Пары"
+    },
+    "ino": {
+      "ino": "INO"
+    },
+    "more": "Подробнее",
+    "NFTFarming": "NFT Фарминг",
+    "asteroidMining": "(A)steroid Mining",
+    "captainsIno": "Капитаны INO"
+  },
+  "swap": "Обменять",
+  "networkSwitchingError": "Ошибка переключения сети",
+  "differentNetworks": "Мы обнаружили, что у вас разные сети\nвыбранные в вашем кошельке и на нашем сайте.\nПожалуйста, выберите, что делать.",
+  "pleaseChoose": "Пожалуйста, выберите, что делать.",
+  "changeNetworkInTheWallet": "Изменить сеть в кошельке",
+  "orChangeNetwork": "Или изменить сеть на нашем сайте",
+  "connectToWallet": "Подключиться к кошельку",
+  "chooseNetwork": "Выберите сеть",
+  "chooseWallet": "Выберите кошелек",
+  "account": "Аккаунт",
+  "balanceTitle": "Баланс",
+  "networks": "Сеть",
+  "binanceSmartChain": "Binance Smart Chain",
+  "huobiEcoChain": "Huobi ECO Chain",
+  "Polygon (Matic)": "Polygon (Matic)",
+  "viewOnBscscan": "Просмотр на BSCScan",
+  "viewOnHecoInfo": "Просмотр на HecoInfo",
+  "viewOnEtherScan": "Просмотр на EtherScan",
+  "MaticInfo": "Просмотр на Matic",
+  "transactionHistory": "История транзакций",
+  "disconnect": "Отключиться"
+}
