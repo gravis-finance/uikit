@@ -185,7 +185,7 @@ const MenuEntry = styled.div<Props>`
     0% {
       transform: translateX(-4em) skewX(-45deg)
       }
-    4% {
+    3% {
       transform: translateX(15.5em) skewX(-45deg)
       }
     100% {
