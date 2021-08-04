@@ -154,7 +154,7 @@ const MenuEntry = styled.div<Props>`
   
   ${({ blink }) => blink ? `
     :before {
-      animation: move-light 11.5s linear infinite; 
+      animation: move-light 6.5s linear infinite; 
       content: '';
       position: absolute;
       top: 0;
@@ -162,8 +162,12 @@ const MenuEntry = styled.div<Props>`
       width: 60px;
       height: 100%;
       background-color: rgba(255, 159, 47, 0.6);
-      transform: translateX(-4em) skewX(-45deg);g
-      z-index: 1;
+      transform: translateX(-4em) skewX(-45deg);
+    }
+    @media screen and (max-width: 967px) {
+      :before {
+        animation: mobile-move-light 6.5s linear infinite; 
+      }
     }
     :after {
       content: '';
@@ -185,15 +189,28 @@ const MenuEntry = styled.div<Props>`
     0% {
       transform: translateX(-4em) skewX(-45deg)
       }
-    3% {
+    8% {
       transform: translateX(15.5em) skewX(-45deg)
       }
     100% {
       transform: translateX(15.5em) skewX(-45deg)
     }
    }
+   
+   @keyframes mobile-move-light {
+    0% {
+      transform: translateX(-4em) skewX(-45deg)
+      }
+    8% {
+      transform: translateX(22.5em) skewX(-45deg)
+      }
+    100% {
+      transform: translateX(22.5em) skewX(-45deg)
+    }
+   }
 
   @media screen and (max-width: 967px) {
+    border-radius: 0;
     box-shadow: none;
     border: none !important;
     border-bottom: ${({ single }) => (single ? '1px solid #313131' : '')} !important;
