@@ -154,7 +154,7 @@ const MenuEntry = styled.div<Props>`
   
   ${({ blink }) => blink ? `
     :before {
-      animation: move-light 6.5s linear infinite; 
+      animation: move-light 5s linear infinite; 
       content: '';
       position: absolute;
       top: 0;
