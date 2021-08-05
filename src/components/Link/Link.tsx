@@ -22,7 +22,7 @@ const StyledLink = styled(Text)<LinkProps>`
 `
 
 const Link: React.FC<LinkProps> = ({ external, ...props }) => {
-  const internalProps = external ? getExternalLinkProps() : {}
+  const internalProps: any = external ? getExternalLinkProps() : {}
   return <StyledLink as="a" {...internalProps} {...props} />
 }
 
