@@ -1,7 +1,7 @@
 /* eslint-disable */
 import React, { useEffect, useState } from 'react'
 import styled, { CSSProperties } from 'styled-components'
-import Input  from './Input'
+import Input from './Input'
 import { NumericalArrow } from '../Svg'
 import { Button } from '../Button'
 import { useTranslation } from 'react-multi-lang'
@@ -54,11 +54,10 @@ const BalancePlaceholder = styled.div`
   cursor: default;
 `
 
-const NumbersContainer = styled.div`
-  position: inherit;
-  right: 75px;
-  margin-top: auto;
-  margin-bottom: auto;
+const NumbersContainer = styled.div<{ displayMaxButton: boolean }>`
+  position: absolute;
+  right: ${({ displayMaxButton }) => displayMaxButton ? '75px' : '15px'};
+  top: calc(50% - 14px);
 `
 
 const NumericalArrowContainer = styled.div<{ reversed?: boolean }>`
@@ -81,7 +80,7 @@ const NumericalArrowContainer = styled.div<{ reversed?: boolean }>`
   }
 `
 
-const StyledMaxButton = styled(Button)<{ isFocused?: boolean }>`
+const StyledMaxButton = styled(Button) <{ isFocused?: boolean }>`
   position: relative;
   right: ${({ isFocused }) => (isFocused ? '88' : '55')}px;
   margin-top: auto;
@@ -199,11 +198,11 @@ const NumericalInput: React.FC<Props> = ({
       />
       {displayMaxButton && (
         <StyledMaxButton buttonType="max" onClick={onMaxButtonHandler} isFocused={isFocused}>
-           {t('maxAmountLabel')}
+          {t('maxAmountLabel')}
         </StyledMaxButton>
       )}
       {isFocused && (
-        <NumbersContainer>
+        <NumbersContainer displayMaxButton={displayMaxButton}>
           <NumericalArrowContainer onClick={() => onArrowClickHandler('up')}>
             <NumericalArrow />
           </NumericalArrowContainer>

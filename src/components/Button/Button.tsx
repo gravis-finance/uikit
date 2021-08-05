@@ -4,7 +4,7 @@ import StyledButton from './StyledButton'
 import { ButtonProps, variants, sizes } from './types'
 
 const Button: React.FC<ButtonProps> = ({ startIcon, endIcon, children, external, isloading, disabled, ...props }) => {
-  const internalProps = external ? getExternalLinkProps() : {}
+  const internalProps: any = external ? getExternalLinkProps() : {}
   const isDisabled = isloading || disabled
 
   return (
