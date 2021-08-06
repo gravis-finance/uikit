@@ -6,7 +6,7 @@ import { availableLanguages } from '../widgets/Menu/config'
 export const getLanguageSearchParam = () => {
   const {search} = window.location
   if(search.includes(urlSearchLanguageParam)) {
-    const language = search.slice(search.indexOf(urlSearchLanguageParam)+urlSearchLanguageParam.length+1)
+    const language = search.slice(search.indexOf(urlSearchLanguageParam)+urlSearchLanguageParam.length+1).slice(0, 2)
     if(availableLanguages.find((availableLanguage) => availableLanguage.name.toLowerCase() === language.toLowerCase())) {
       localStorage.setItem(localStorageLanguageItem, language.toUpperCase())
       return language.toLowerCase()
