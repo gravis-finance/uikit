@@ -18,6 +18,10 @@ export const getDefaultLanguage = () => {
       localStorage.setItem(localStorageLanguageItem, 'CN')
       return 'cn'
     }
+    if (navigator.language.includes('ru')) {
+      localStorage.setItem(localStorageLanguageItem, 'RU')
+      return 'ru'
+    }
   }
   else {
     localStorage.setItem(localStorageLanguageItem, 'EN')

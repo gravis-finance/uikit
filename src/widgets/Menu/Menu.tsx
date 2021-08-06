@@ -20,7 +20,7 @@ import cn from '../../locales/cn.json'
 import ru from '../../locales/ru.json'
 import { localStorageLanguageItem } from '../../constants'
 import LanguageSwitch from './LanguageSwitch'
-import { getDefaultLanguage } from '../..'
+import { getDefaultLanguage, getLanguageSearchParam } from '../..'
 
 const Wrapper = styled.div`
   position: relative;
@@ -260,6 +260,8 @@ const Menu: React.FC<NavProps> = ({
     if(subscribePushEvent)
       subscribePushEvent(isPushed)
   }, [isPushed, subscribePushEvent])
+
+  console.log(getLanguageSearchParam())
 
   useEffect(() => {
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
