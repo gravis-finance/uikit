@@ -13,6 +13,7 @@ export default {
 
 interface CustomModalProps extends InjectedProps {
   title: string
+  onDismiss: () => void
 }
 
 const CustomModal: React.FC<CustomModalProps> = ({ title, onDismiss }) => (
@@ -23,7 +24,7 @@ const CustomModal: React.FC<CustomModalProps> = ({ title, onDismiss }) => (
 )
 
 export const Default: React.FC = () => {
-  const [onPresent1] = useModal(<CustomModal title="Modal 1" />)
+  const [onPresent1] = useModal(<CustomModal title="Modal 1" onDismiss={()=>console.log('fuck')}/>)
   const [onPresent2] = useModal(<CustomModal title="Modal 2" />)
   const [onPresent3] = useModal(<NetworkSwitchError />, false)
   return (

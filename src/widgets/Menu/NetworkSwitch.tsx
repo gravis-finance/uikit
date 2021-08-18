@@ -173,6 +173,7 @@ type Props = {
   withReload?: boolean
   networks?: typeof NETWORKS
   ethereum?: boolean
+  disableEthereum?: boolean
 } & React.ComponentProps<typeof StyledDropDown>
 
 const NetworkSwitch: React.FC<Props> = ({
@@ -182,6 +183,7 @@ const NetworkSwitch: React.FC<Props> = ({
   withReload = false,
   networks = NETWORKS,
                                           ethereum,
+  disableEthereum,
   ...restProps
 }) => {
   const history = useHistory()
@@ -244,7 +246,7 @@ const NetworkSwitch: React.FC<Props> = ({
         inheritWidth
         ref={optionsContainer}
       >
-        {networks.filter((network) => !ethereum ? network.label !== 'Ethereum' : ethereum ? network.label !== 'HECO' : true).map((item: any) => (
+        {networks.filter((network) => !ethereum ? network.label !== 'Ethereum' : ethereum ? network.label !== 'HECO' : true).filter((network)=> disableEthereum ? network.label !== 'Ethereum' : true).map((item: any) => (
           <StyledOption key={item.title} onClick={() => handleClick(item)} id={`${item.label}-switch-option`}>
             <item.icon />
             {item.label}

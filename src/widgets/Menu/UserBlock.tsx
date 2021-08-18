@@ -25,6 +25,7 @@ interface Props {
   networkSwitchVisible?: boolean
   bscOnly?: boolean
   ethereum?: boolean
+  disableEthereum?: boolean
 }
 
 const StyledConnectButton = styled.div`
@@ -67,7 +68,8 @@ const UserBlock: React.FC<Props> = (props) => {
     balanceHook,
     networkSwitchVisible,
     bscOnly,
-    ethereum
+    ethereum,
+    disableEthereum
   } = props
 
   const { onPresentConnectModal, onPresentAccountModal } = useWalletModal(
@@ -89,7 +91,7 @@ const UserBlock: React.FC<Props> = (props) => {
 
   return (
     <StyledFlex alignItems="center" style={{ pointerEvents: 'all' }}>
-      {networkSwitchVisible && <NetworkSwitch networks={networks} isProduction={isProduction} ethereum={ethereum} />}
+      {networkSwitchVisible && <NetworkSwitch networks={networks} isProduction={isProduction} ethereum={ethereum} disableEthereum={disableEthereum} />}
       {account ? (
         <Button
           size="md"

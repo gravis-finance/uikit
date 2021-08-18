@@ -248,7 +248,7 @@ const Menu: React.FC<NavProps> = ({
                                     betaText = 'This is the Beta version. You can\'t add liquidity here anymore. Press here to switch to the main version.',
                                     betaLink,
                                     balanceHook = defaultBalanceHook,
-                                    setSelectedLanguage = defaultSetSelectedLanguage, customLanguage, networkSwitchVisible = true, bscOnly, ethereum, subscribePushEvent
+                                    setSelectedLanguage = defaultSetSelectedLanguage, customLanguage, networkSwitchVisible = true, bscOnly, ethereum, subscribePushEvent, disableEthereum
                                   }) => {
   const { isXl } = useMatchBreakpoints()
   const isMobile = isXl === false
@@ -318,6 +318,7 @@ const Menu: React.FC<NavProps> = ({
               networkSwitchVisible={networkSwitchVisible}
               bscOnly={bscOnly}
               ethereum={ethereum}
+              disableEthereum={disableEthereum}
               {...options}
             />
           )}

@@ -12,6 +12,7 @@ interface Props {
   isSupportedChain?: boolean
   changeNetwork?: () => void
   ethereum?: boolean
+  disableEthereum?: boolean
 }
 
 const StyledNetworkSwitch = styled.div`
@@ -40,7 +41,7 @@ const NetworkSwitchError: React.FC<Props> = ({
   isProduction = false,
   isSupportedChain = true,
   changeNetwork,
-                                               ethereum=false
+                                               ethereum=false, disableEthereum
 }) => {
   const handleClick = () => {
     if (changeNetwork) changeNetwork()
@@ -69,7 +70,7 @@ const NetworkSwitchError: React.FC<Props> = ({
         <>
           <Text style={{ marginTop: '36px', marginBottom: '24px' }}>{t('orChangeNetwork')}</Text>
           <StyledNetworkSwitch>
-            <NetworkSwitch isProduction={isProduction} toggleMobile={false} ethereum={ethereum}/>
+            <NetworkSwitch isProduction={isProduction} toggleMobile={false} ethereum={ethereum} disableEthereum={disableEthereum}/>
           </StyledNetworkSwitch>
         </>
       )}
