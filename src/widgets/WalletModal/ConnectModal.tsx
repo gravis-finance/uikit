@@ -23,6 +23,7 @@ interface Props {
   withReload?: boolean
   bscOnly?: boolean
   ethereum?: boolean
+  bscAndPoly?: boolean
 }
 
 const HelpLink = styled(Link)`
@@ -81,17 +82,17 @@ const StyledWalletFlex = styled(StyledFlex)<{ hecoOnly?: boolean }>`
 `
 
 const ConnectModal: React.FC<Props> = ({
-  onSelect = () => null,
-  login,
-  onDismiss = () => null,
-  title = 'Connect to a wallet',
-                                         bscOnly, ethereum
-}) => {
+                                         onSelect = () => null,
+                                         login,
+                                         onDismiss = () => null,
+                                         title = 'Connect to a wallet',
+                                         bscOnly, ethereum, bscAndPoly
+                                       }) => {
   const id: string = getNetworkId()
   const history = useHistory()
   const [selectedNetwork, setSelectedNetwork] = useState(
     // bscOnly ? 'Binance' :
-      getNetworkTitles())
+    getNetworkTitles())
   const [selectedWallet, setSelectedWallet] = useState('')
   const t = useTranslation()
 
@@ -108,31 +109,31 @@ const ConnectModal: React.FC<Props> = ({
 
   return (
     <Modal title={t('connectToWallet')} onDismiss={handleClose}>
-        <>
-          <StyledFlexPoint alignItems="center" marginBottom="5px">
-            <StyledPoint>
-              <p>1</p>
-            </StyledPoint>
-            <Text style={{ fontSize: '14px', color: '#fff', marginLeft: '16px' }}>{t('chooseNetwork')}</Text>
-          </StyledFlexPoint>
-          <StyledFlex>
-            {networks.filter((network)=>bscOnly ? network.label === 'BSC' : !ethereum ? network.label !== 'Ethereum' : ethereum ? network.label !== 'HECO' : true).map((entry: any) => (
-              <NetworkSelector
-                key={entry.title}
-                chainId={entry.chainId}
-                selected={entry.title === selectedNetwork}
-                networkConfig={entry}
-                setSelectedNetwork={setSelectedNetwork}
-              />
-            ))}
-          </StyledFlex>
-          <StyledFlexPoint alignItems="center" marginTop="30px" marginBottom="5px">
-            <StyledPoint>
-              <p>2</p>
-            </StyledPoint>
-            <Text style={{ fontSize: '14px', color: '#fff', marginLeft: '16px' }}>{t('chooseWallet')}</Text>
-          </StyledFlexPoint>
-        </>
+      <>
+        <StyledFlexPoint alignItems="center" marginBottom="5px">
+          <StyledPoint>
+            <p>1</p>
+          </StyledPoint>
+          <Text style={{ fontSize: '14px', color: '#fff', marginLeft: '16px' }}>{t('chooseNetwork')}</Text>
+        </StyledFlexPoint>
+        <StyledFlex>
+          {networks.filter((network) => bscOnly ? network.label === 'BSC' : !ethereum ? network.label !== 'Ethereum' : ethereum ? network.label !== 'HECO' : true).filter((network) => bscAndPoly ? (network.label !== 'HECO' && network.label !== 'Ethereum') : true).map((entry: any) => (
+            <NetworkSelector
+              key={entry.title}
+              chainId={entry.chainId}
+              selected={entry.title === selectedNetwork}
+              networkConfig={entry}
+              setSelectedNetwork={setSelectedNetwork}
+            />
+          ))}
+        </StyledFlex>
+        <StyledFlexPoint alignItems="center" marginTop="30px" marginBottom="5px">
+          <StyledPoint>
+            <p>2</p>
+          </StyledPoint>
+          <Text style={{ fontSize: '14px', color: '#fff', marginLeft: '16px' }}>{t('chooseWallet')}</Text>
+        </StyledFlexPoint>
+      </>
       <StyledWalletFlex>
         {wallets.map((entry) => (
           <WalletCard

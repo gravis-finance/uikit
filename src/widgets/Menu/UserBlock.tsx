@@ -26,6 +26,7 @@ interface Props {
   bscOnly?: boolean
   ethereum?: boolean
   disableEthereum?: boolean
+  bscAndPoly?: boolean
 }
 
 const StyledConnectButton = styled.div`
@@ -69,7 +70,8 @@ const UserBlock: React.FC<Props> = (props) => {
     networkSwitchVisible,
     bscOnly,
     ethereum,
-    disableEthereum
+    disableEthereum,
+    bscAndPoly
   } = props
 
   const { onPresentConnectModal, onPresentAccountModal } = useWalletModal(
@@ -85,7 +87,8 @@ const UserBlock: React.FC<Props> = (props) => {
     onTransactionHistoryHandler,
     balanceHook,
     bscOnly,
-    ethereum
+    ethereum,
+    bscAndPoly
   )
   const accountEllipsis = account ? `${account.substring(0, 4)}...${account.substring(account.length - 4)}` : null
 

@@ -79,4 +79,5 @@ export interface NavProps extends PanelProps {
   ethereum?: boolean
   subscribePushEvent?: (isPushed: boolean) => void
   disableEthereum?: boolean
+  bscAndPoly?: boolean
 }
