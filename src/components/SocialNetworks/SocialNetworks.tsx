@@ -34,7 +34,7 @@ const SocialNetworks: React.FC = () => {
       <LinkItem href="https://github.com/gravis-finance" target="_blank" rel="noopener  noreferrer">
         <GithubIcon />
       </LinkItem>
-      <LinkItem href={`${getCurrentLanguage() === 'jp' ? 'https://t.me/gravis_finance_jp' : 'https://t.me/gravis_finance'}`} target="_blank" rel="noopener  noreferrer">
+      <LinkItem href={`${getCurrentLanguage() === 'jp' ? 'https://t.me/gravis_finance_jp' : 'https://t.me/gravisfinance'}`} target="_blank" rel="noopener  noreferrer">
         <TelegramIcon />
       </LinkItem>
       <LinkItem href="https://twitter.com/gravis_finance" target="_blank" rel="noopener  noreferrer">

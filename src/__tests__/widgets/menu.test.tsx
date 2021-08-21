@@ -681,7 +681,7 @@ it('renders correctly', () => {
                     aria-label="Telegram"
                     class="sc-dlnjwi sc-bkbkJK cYkXYA cHpusX sc-hHEiqL hXrWfP"
                     color="primary"
-                    href="https://t.me/gravis_finance"
+                    href="https://t.me/gravisfinance"
                     rel="noreferrer noopener"
                     target="_blank"
                   >

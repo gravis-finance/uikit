@@ -65,7 +65,7 @@ const PanelFooter: React.FC<Props> = ({ isPushed }) => {
     if(href.includes('t.me')) {
       if (getLanguage() === 'jp')
       return 'https://t.me/gravis_finance_jp'
-    return 'https://t.me/gravis_finance'
+    return 'https://t.me/gravisfinance'
     }
     return href
   }
