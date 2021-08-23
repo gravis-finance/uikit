@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 
-import { GithubIcon, TelegramIcon, TwitterIcon, MediumIcon } from './social-icons'
+import { GithubIcon, TelegramIcon, TwitterIcon, MediumIcon, DiscordIcon } from './social-icons'
 import { getCurrentLanguage } from '../../util/getCurrentLanguage'
 
 const StyledWrapper = styled.div`
@@ -42,6 +42,9 @@ const SocialNetworks: React.FC = () => {
       </LinkItem>
       <LinkItem href="https://gravis-finance.medium.com/" target="_blank" rel="noopener  noreferrer">
         <MediumIcon />
+      </LinkItem>
+      <LinkItem href="https://discord.gg/Mg2rQcFx" target="_blank" rel="noopener  noreferrer">
+        <DiscordIcon/>
       </LinkItem>
     </StyledWrapper>
   )

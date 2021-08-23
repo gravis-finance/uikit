@@ -89,6 +89,11 @@ export const socials = [
     icon: 'MediumIcon',
     href: 'https://gravis-finance.medium.com/',
   },
+  {
+    label: 'Discord',
+    icon: 'DiscordIcon',
+    href: 'https://discord.gg/Mg2rQcFx',
+  }
 ]
 
 export const availableLanguages = [
