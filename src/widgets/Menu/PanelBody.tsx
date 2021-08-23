@@ -148,7 +148,7 @@ const PanelBody: React.FC<Props> = ({ isPushed, pushNav, isMobile, links, toggle
 
   // Close the menu when a user clicks a link on mobile
   const handleClick = isMobile ? () => pushNav(false) : undefined
-  const homeLink = links.find((link) => link.label === 'Home')
+  const homeLink = links?.find((link) => link.label === 'Home')
 
   const fillStokeTranslations = [t('mainMenu.home'), t('mainMenu.NFTFarming')]
 
