@@ -12,6 +12,7 @@ import MenuButton from './MenuButton'
 import { HamburgerCloseIcon } from './icons'
 import Logo from './Logo'
 import { Tooltip } from '../../components/Tooltip'
+import { Spinner } from '../../components/Spinner'
 
 interface Props extends PanelProps, PushedProps {
   isMobile?: boolean
@@ -57,11 +58,11 @@ const StyledIcon = styled.div`
     transition: transform 200ms ease-in-out;
   }
   ${(props: StyledIconProps) =>
-    props.reverse
-      ? `> svg *:last-child {
+  props.reverse
+    ? `> svg *:last-child {
     transform: rotate(180deg) translate(-44px, -135px);
   }`
-      : ''}
+    : ''}
 `
 
 const StyledLinksPanel = styled.div<{ isPushed?: boolean }>`
@@ -104,8 +105,8 @@ const StyledLinksPanel = styled.div<{ isPushed?: boolean }>`
   
   @media screen and (max-height: 650px) {
     ${({ isPushed }) =>
-      !isPushed
-        ? `
+  !isPushed
+    ? `
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -124,7 +125,7 @@ const StyledLinksPanel = styled.div<{ isPushed?: boolean }>`
         }
       }
     `
-        : ''}
+    : ''}
   }
 `
 
@@ -134,6 +135,11 @@ const StyledLogoIcon = styled.div`
   ${({ theme }) => theme.mediaQueries.nav} {
     display: block;
   }
+`
+
+const SpinnerContainer = styled.div`
+  display: flex;
+  justify-content: center;
 `
 
 const PanelBody: React.FC<Props> = ({ isPushed, pushNav, isMobile, links, togglePush, isDark }) => {
@@ -163,28 +169,28 @@ const PanelBody: React.FC<Props> = ({ isPushed, pushNav, isMobile, links, toggle
         )}
       </MenuButton>
       <StyledLinksPanel isPushed={isPushed}>
-        {links.filter((entry)=>entry.label !== 'Test').map((entry) => {
-          const Icon = Icons[entry.icon]
-          const iconElement = <Icon width="24px" mr="10px" />
-          const calloutClass = entry.calloutClass ? entry.calloutClass : undefined
-          const title = !isPushed ? entry.label : ''
+        {links ? links.filter((entry) => entry.label !== 'Test').map((entry) => {
+            const Icon = Icons[entry.icon]
+            const iconElement = <Icon width="24px" mr="10px" />
+            const calloutClass = entry.calloutClass ? entry.calloutClass : undefined
+            const title = !isPushed ? entry.label : ''
 
-          if (entry.items) {
-            const itemsMatchIndex = entry.items.findIndex((item) => item.href === location.pathname)
-            const initialOpenState = entry.initialOpenState === true ? entry.initialOpenState : itemsMatchIndex >= 0
+            if (entry.items) {
+              const itemsMatchIndex = entry.items.findIndex((item) => item.href === location.pathname)
+              const initialOpenState = entry.initialOpenState === true ? entry.initialOpenState : itemsMatchIndex >= 0
 
-            return (
-              <Tooltip placement="left" title={title} key={entry.label}>
-                <Accordion
-                  isPushed={isPushed}
-                  pushNav={pushNav}
-                  icon={iconElement}
-                  label={entry.label}
-                  initialOpenState={initialOpenState}
-                  className={calloutClass}
-                  blink={entry.blink}
-                >
-                  {isPushed &&
+              return (
+                <Tooltip placement="left" title={title} key={entry.label}>
+                  <Accordion
+                    isPushed={isPushed}
+                    pushNav={pushNav}
+                    icon={iconElement}
+                    label={entry.label}
+                    initialOpenState={initialOpenState}
+                    className={calloutClass}
+                    blink={entry.blink}
+                  >
+                    {isPushed &&
                     entry.items.map((item) => (
                       <MenuEntry
                         key={item.href}
@@ -195,27 +201,30 @@ const PanelBody: React.FC<Props> = ({ isPushed, pushNav, isMobile, links, toggle
                         <MenuLink href={item.href} target={item.external ? '_blank' : ''}>{item.label}</MenuLink>
                       </MenuEntry>
                     ))}
-                </Accordion>
+                  </Accordion>
+                </Tooltip>
+              )
+            }
+            return (
+              <Tooltip placement="left" title={title} key={entry.label}>
+                <MenuEntry
+                  isactive={entry.href === location.pathname}
+                  className={calloutClass}
+                  fillStroke={fillStokeTranslations.includes(entry.label)}
+                  isPushed={isPushed}
+                  single
+                >
+                  <MenuLink href={entry.href} onClick={handleClick}>
+                    {iconElement}
+                    <LinkLabel isPushed={isPushed}>{entry.label}</LinkLabel>
+                  </MenuLink>
+                </MenuEntry>
               </Tooltip>
             )
-          }
-          return (
-            <Tooltip placement="left" title={title} key={entry.label}>
-              <MenuEntry
-                isactive={entry.href === location.pathname}
-                className={calloutClass}
-                fillStroke={fillStokeTranslations.includes(entry.label)}
-                isPushed={isPushed}
-                single
-              >
-                <MenuLink href={entry.href} onClick={handleClick}>
-                  {iconElement}
-                  <LinkLabel isPushed={isPushed}>{entry.label}</LinkLabel>
-                </MenuLink>
-              </MenuEntry>
-            </Tooltip>
-          )
-        })}
+          }) :
+          <SpinnerContainer>
+            <Spinner size={100} />
+          </SpinnerContainer>}
       </StyledLinksPanel>
     </Container>
   )
