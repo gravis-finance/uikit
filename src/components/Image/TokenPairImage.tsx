@@ -1,7 +1,7 @@
-import React from "react";
-import { TokenPairImageProps, variants } from "./types";
-import { StyledPrimaryImage, StyledSecondaryImage } from "./styles";
-import Wrapper from "./Wrapper";
+import React from 'react'
+import { TokenPairImageProps, variants } from './types'
+import { StyledPrimaryImage, StyledSecondaryImage } from './styles'
+import Wrapper from './Wrapper'
 
 const TokenPairImage: React.FC<TokenPairImageProps> = ({
   primarySrc,
@@ -13,12 +13,10 @@ const TokenPairImage: React.FC<TokenPairImageProps> = ({
   secondaryImageProps = {},
   ...props
 }) => {
-  const secondaryImageSize = variant !== variants.EQUIVAlENT ?
-    Math.floor(width / 2) :
-    width;
+  const secondaryImageSize = variant !== variants.EQUIVAlENT ? Math.floor(width / 2) : width
 
   return (
-    <Wrapper position="relative" width={width} height={height} {...props}>
+    <Wrapper width={width} height={height} {...props}>
       <StyledPrimaryImage variant={variant} src={primarySrc} width={width} height={height} {...primaryImageProps} />
       <StyledSecondaryImage
         variant={variant}
@@ -28,7 +26,7 @@ const TokenPairImage: React.FC<TokenPairImageProps> = ({
         {...secondaryImageProps}
       />
     </Wrapper>
-  );
-};
+  )
+}
 
-export default TokenPairImage;
+export default TokenPairImage
