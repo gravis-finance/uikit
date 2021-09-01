@@ -1,22 +1,24 @@
-import React from "react";
-import BoxComponent from "./Box";
-import { Link } from "../Link";
+import React from 'react'
+import { Story } from '@storybook/react'
+import Box from './Box'
+import { Link } from '../Link'
 
 export default {
-  title: "Components/Primitives",
-  component: BoxComponent,
+  title: 'Components/Primitives',
+  component: Box,
   argTypes: {},
-};
+}
 
-export const Box: React.FC = () => {
+export const BoxStory: Story = () => {
   return (
     <div>
-      <BoxComponent as="p">
-        Contains background, border, layout, position, and space from{" "}
+      <Box as="p" color="white" fontWeight="bold">
+        Contains background, border, layout, position, typography, color and space from{' '}
         <Link href="https://styled-system.com/api" target="_blank">
           Styled System&lsquo;s API
         </Link>
-      </BoxComponent>
+      </Box>
     </div>
-  );
-};
+  )
+}
+BoxStory.storyName = 'Box'
