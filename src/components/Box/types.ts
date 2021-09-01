@@ -1,4 +1,4 @@
-import { HTMLAttributes } from "react";
+import { HTMLAttributes } from 'react'
 import {
   BackgroundProps,
   BorderProps,
@@ -6,8 +6,11 @@ import {
   PositionProps,
   SpaceProps,
   ColorProps,
-  TypographyProps
-} from "styled-system";
+  TypographyProps,
+  DisplayProps,
+  FlexboxProps,
+  GridProps,
+} from 'styled-system'
 
 export interface BoxProps
   extends BackgroundProps,
@@ -17,4 +20,7 @@ export interface BoxProps
     SpaceProps,
     ColorProps,
     TypographyProps,
+    DisplayProps,
+    FlexboxProps,
+    GridProps,
     Omit<HTMLAttributes<HTMLDivElement>, 'color'> {}

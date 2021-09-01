@@ -13,7 +13,7 @@ export const BoxStory: Story = () => {
   return (
     <div>
       <Box as="p" color="white" fontWeight="bold">
-        Contains background, border, layout, position, typography, color and space from{' '}
+        Contains everything from{' '}
         <Link href="https://styled-system.com/api" target="_blank">
           Styled System&lsquo;s API
         </Link>
