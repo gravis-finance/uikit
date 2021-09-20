@@ -67,10 +67,14 @@ export { default as MaticIcon } from './Icons/MaticIcon'
 export { default as SettingsIcon } from './Icons/Settings'
 export { default as HistoryIcon } from './Icons/History'
 export { default as ProfileIcon } from './Icons/Profile'
-export { default as RefreshIcon } from './Icons/Refresh';
-export { default as MetamaskIcon } from './Icons/MetaMask';
-export { default as TimerIcon } from './Icons/Timer';
-export { default as Ether } from './Icons/Ether';
+export { default as RefreshIcon } from './Icons/Refresh'
+export { default as MetamaskIcon } from './Icons/MetaMask'
+export { default as TimerIcon } from './Icons/Timer'
+export { default as Ether } from './Icons/Ether'
+export { default as BinanceNetwork } from './Icons/BinanceNetwork'
+export { default as PolygonNetwork } from './Icons/PolygonNetwork'
+export { default as HuobiNetwork } from './Icons/HuobiNetwork'
+export { default as EthereumNetwork } from './Icons/EthereumNetwork'
 
 export { default as Svg } from './Svg'
 export type { SvgProps } from './types'
