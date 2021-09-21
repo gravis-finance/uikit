@@ -46,7 +46,7 @@ export const links = [
   {
     label: 'INO',
     icon: 'BigBangIcon',
-    items: [{ label: 'Big Bang Round', href: 'https://gravis.finance' }],
+    items: [{ label: 'Big Bang Round', href: 'https://gravis.finance', external: true }],
   },
   {
     label: 'More',
@@ -55,14 +55,17 @@ export const links = [
       {
         label: 'Github',
         href: 'https://github.com/gravis',
+        external: true,
       },
       {
         label: 'Docs',
         href: 'https://docs.gravis.finance',
+        external: true,
       },
       {
         label: 'Blog',
         href: 'https://gravis-finance.medium.com/',
+        external: true,
       },
     ],
   },

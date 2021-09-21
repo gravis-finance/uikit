@@ -162,7 +162,7 @@ const ConnectModal: React.FC<Props> = ({
               disabled={!termsChecked}
               key={entry.title}
               chainId={entry.chainId}
-              selected={entry.title === selectedNetwork}
+              selected={termsChecked ? entry.title === selectedNetwork : undefined}
               networkConfig={entry}
               setSelectedNetwork={setSelectedNetwork}
             />
@@ -181,7 +181,7 @@ const ConnectModal: React.FC<Props> = ({
             disabled={!termsChecked}
             key={entry.title}
             login={login}
-            selected={entry.title === selectedWallet}
+            selected={termsChecked ? entry.title === selectedWallet : undefined}
             walletConfig={entry}
             onDismiss={handleSelect}
             setSelectedWallet={setSelectedWallet}
