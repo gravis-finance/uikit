@@ -1,5 +1,5 @@
 import React from 'react'
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 import { useHistory } from 'react-router-dom'
 import { CheckmarkCircleIcon } from '../../components/Svg'
 import Flex from '../../components/Flex/Flex'
@@ -31,7 +31,7 @@ const StyledCheckMarkInCircle = styled(CheckmarkCircleIcon)`
   height: 16px;
 `
 
-const StyledFlex = styled(Flex)`
+const StyledFlex = styled(Flex) <{ disabled?: boolean }>`
   > div {
     transition: color 200ms ease-in-out;
   }
@@ -58,6 +58,22 @@ const StyledFlex = styled(Flex)`
       color: #009ce1;
     }
   }
+
+  ${({ disabled }) =>
+    disabled &&
+    css`
+      pointer-events: none;
+      opacity: 0.5;
+
+      > button {
+        background: #353535 !important;
+      }
+      :hover {
+        > button {
+          border: 1px solid transparent !important;
+        }
+      }
+    `}
 `
 
 interface Props {
@@ -66,9 +82,16 @@ interface Props {
   setSelectedNetwork: (arg0: string) => void
   networkConfig: NetworksConfig
   chainId: string
+  disabled: boolean
 }
 
-const NetworkSelector: React.FC<Props> = ({ chainId, selected, networkConfig, setSelectedNetwork }) => {
+const NetworkSelector: React.FC<Props> = ({
+  chainId,
+  selected,
+  networkConfig,
+  setSelectedNetwork,
+  disabled
+}) => {
   const { title, icon: Icon } = networkConfig
   const id: string = getNetworkId()
   const history = useHistory()
@@ -81,7 +104,7 @@ const NetworkSelector: React.FC<Props> = ({ chainId, selected, networkConfig, se
   }
 
   return (
-    <StyledFlex flexDirection="column" alignItems="center" onClick={handleClick}>
+    <StyledFlex disabled={disabled} flexDirection="column" alignItems="center" onClick={handleClick}>
       <StyledNetworkSelector>
         {selected && <StyledCheckMarkInCircle />}
         <Icon />

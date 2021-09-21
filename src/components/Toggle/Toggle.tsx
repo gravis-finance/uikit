@@ -2,12 +2,12 @@ import React from 'react'
 import styled from 'styled-components'
 import { ToggleProps } from './types'
 
-const Container = styled.div<{ width?: number}>`
+const Container = styled.div<{ width?: number }>`
   width: ${({ width }) => width || ''}px;
-  height: ${({ width }) => width ? width/2 : ''}px;
+  height: ${({ width }) => width ? width / 2 : ''}px;
 `
 
-const ToggleInput = styled.input<{ width?: number}>`
+const ToggleInput = styled.input<{ width?: number }>`
  appearance: none;
  position: relative;
  display: inline-block;
@@ -29,8 +29,8 @@ const ToggleInput = styled.input<{ width?: number}>`
     left: 6px;
     top: 6px;
     
-    width: 28px;
-    height: 28px;
+    width: ${({ width }) => (width || 0) * 0.35}px;
+    height: ${({ width }) => (width || 0) * 0.35}px;
     background-color: #242424;
     border-radius: 50%;
     box-shadow: inset 0px -1px 0px rgba(129, 129, 129, 0.15), inset 0px 4px 25px rgba(0, 0, 0, 0.25);
@@ -47,7 +47,7 @@ const ToggleInput = styled.input<{ width?: number}>`
   }
 `
 
-const Toggle: React.FC<ToggleProps> = ({ checked, width=80, ...props }) => {
+const Toggle: React.FC<ToggleProps> = ({ checked, width = 80, ...props }) => {
   const isChecked = !!checked
 
   return (

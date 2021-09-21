@@ -16,3 +16,6 @@ export const comparedNetworksIds = [
     networks: [137, 80001],
   }
 ]
+
+export const termsOfUseLink = 'https://gateway.pinata.cloud/ipfs/QmZkaXtp5Qzwnxh4NCHxwYy6ZzYM3RSAfHKzcsv9U8z5CU'
+export const privacyAndPoliceLink = 'https://gateway.pinata.cloud/ipfs/QmPLLfThJAabGwGxEx9xSwJLcjp8bfRe5MccT38enm9YQq'
