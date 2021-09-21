@@ -1,15 +1,15 @@
 import React from 'react'
 import styled from 'styled-components'
-import { getLanguage } from 'react-multi-lang'
-import { SvgProps } from '../../components/Svg'
+import { getLanguage, t } from 'react-multi-lang'
+import { SvgProps, DocumentIcon, PadlockIcon } from '../../components/Svg'
 import Flex from '../../components/Flex/Flex'
 import Link from '../../components/Link/Link'
 import * as IconModule from './icons'
 import { socials } from './config'
+import { privacyAndPoliceLink, termsOfUseLink } from '../../constants'
 import { PanelProps, PushedProps } from './types'
-import { getCurrentLanguage } from '../../util/getCurrentLanguage'
 
-interface Props extends PanelProps, PushedProps {}
+interface Props extends PanelProps, PushedProps { }
 
 const Icons = IconModule as unknown as { [key: string]: React.FC<SvgProps> }
 
@@ -39,8 +39,32 @@ const SocialEntry = styled.div`
   align-items: center;
   justify-content: center;
   padding: 0 28px;
+
+  &:not(:last-child){
+    margin-bottom: 50px;
+  }
   @media screen and (max-width: 967px) {
     padding: 0;
+  }
+`
+
+const DocumentEntry = styled.div<{ isPushed: boolean }>`
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  padding: 0 ${({ isPushed }) => isPushed ? '45px': '28px'};
+  margin-bottom: 50px;
+
+  a {
+    &:hover{
+      svg {
+        opacity: 0.5;
+        color: #009CE1;
+        * {
+          stroke: #009CE1;
+        }
+      }
+    }
   }
 `
 
@@ -61,8 +85,8 @@ const StyledExternalLink = styled(Link)`
 const PanelFooter: React.FC<Props> = ({ isPushed }) => {
 
   // eslint-disable-next-line consistent-return
-  const filterHref = (href : string) => {
-    if(href.includes('t.me')) {
+  const filterHref = (href: string) => {
+    if (href.includes('t.me')) {
       if (getLanguage() === 'jp')
       return 'https://t.me/gravis_finance_jp'
     return 'https://t.me/gravisfinance'
@@ -70,8 +94,20 @@ const PanelFooter: React.FC<Props> = ({ isPushed }) => {
     return href
   }
 
+  console.log('isPushed', isPushed)
+
   return (
     <Container isPushed={isPushed}>
+      <DocumentEntry isPushed={isPushed}>
+        <Link href={termsOfUseLink} fontSize="14px">
+          <DocumentIcon />
+          {isPushed && <span style={{ opacity: 0.5, marginLeft: 12 }}>{t('Terms of Use')}</span>}
+        </Link>
+        <Link mt="20px" href={privacyAndPoliceLink} fontSize="14px">
+          <PadlockIcon />
+          {isPushed && <span style={{ opacity: 0.5, marginLeft: 12 }}>{t('Privacy Policy')}</span>}
+        </Link>
+      </DocumentEntry>
       <SocialEntry>
         <Flex flexWrap="wrap" justifyContent="space-evenly" style={{ width: '100%' }}>
           {socials.map((social) => {
