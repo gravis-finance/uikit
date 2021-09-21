@@ -8,6 +8,7 @@ import * as IconModule from './icons'
 import { socials } from './config'
 import { privacyAndPoliceLink, termsOfUseLink } from '../../constants'
 import { PanelProps, PushedProps } from './types'
+import { Tooltip } from '../../components/Tooltip'
 
 interface Props extends PanelProps, PushedProps { }
 
@@ -52,7 +53,7 @@ const DocumentEntry = styled.div<{ isPushed: boolean }>`
   display: flex;
   align-items: flex-start;
   flex-direction: column;
-  padding: 0 ${({ isPushed }) => isPushed ? '45px': '28px'};
+  padding: 0 ${({ isPushed }) => isPushed ? '45px' : '28px'};
   margin-bottom: 50px;
 
   a {
@@ -88,8 +89,8 @@ const PanelFooter: React.FC<Props> = ({ isPushed }) => {
   const filterHref = (href: string) => {
     if (href.includes('t.me')) {
       if (getLanguage() === 'jp')
-      return 'https://t.me/gravis_finance_jp'
-    return 'https://t.me/gravisfinance'
+        return 'https://t.me/gravis_finance_jp'
+      return 'https://t.me/gravisfinance'
     }
     return href
   }
@@ -97,12 +98,26 @@ const PanelFooter: React.FC<Props> = ({ isPushed }) => {
   return (
     <Container isPushed={isPushed}>
       <DocumentEntry isPushed={isPushed}>
-        <Link href={termsOfUseLink} fontSize="14px">
-          <DocumentIcon />
+        <Link href={termsOfUseLink} fontSize="14px" target="_blank">
+          {isPushed ?
+            <DocumentIcon /> :
+            <Tooltip title={t('Terms of Use')}>
+              <div>
+                <DocumentIcon />
+              </div>
+            </Tooltip>
+          }
           {isPushed && <span style={{ opacity: 0.5, marginLeft: 12 }}>{t('Terms of Use')}</span>}
         </Link>
-        <Link mt="20px" href={privacyAndPoliceLink} fontSize="14px">
-          <PadlockIcon />
+        <Link mt="20px" href={privacyAndPoliceLink} fontSize="14px" target="_blank">
+          {isPushed ?
+            <PadlockIcon /> :
+            <Tooltip title={t('Privacy Policy')}>
+              <div>
+                <PadlockIcon />
+              </div>
+            </Tooltip>
+          }
           {isPushed && <span style={{ opacity: 0.5, marginLeft: 12 }}>{t('Privacy Policy')}</span>}
         </Link>
       </DocumentEntry>

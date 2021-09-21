@@ -228,14 +228,17 @@ export const NotConnected: React.FC = () => {
         {
           label: 'Github',
           href: 'https://github.com/gravis',
+          external: true,
         },
         {
           label: 'Docs',
           href: 'https://docs.gravis.finance',
+          external: true,
         },
         {
           label: 'Blog',
           href: 'https://gravis-finance.medium.com/',
+          external: true,
         },
       ],
     },
