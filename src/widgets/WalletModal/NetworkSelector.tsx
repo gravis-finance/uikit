@@ -98,7 +98,6 @@ const NetworkSelector: React.FC<Props> = ({
   if (selected && id !== chainId) switchNetwork(chainId, false, history)
 
   const handleClick = () => {
-    console.log(title)
     setSelectedNetwork(title)
     switchNetwork(chainId, false, history)
   }

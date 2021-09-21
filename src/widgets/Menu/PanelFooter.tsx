@@ -94,8 +94,6 @@ const PanelFooter: React.FC<Props> = ({ isPushed }) => {
     return href
   }
 
-  console.log('isPushed', isPushed)
-
   return (
     <Container isPushed={isPushed}>
       <DocumentEntry isPushed={isPushed}>
