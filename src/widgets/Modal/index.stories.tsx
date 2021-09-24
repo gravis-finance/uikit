@@ -24,14 +24,14 @@ const CustomModal: React.FC<CustomModalProps> = ({ title, onDismiss }) => (
 )
 
 export const Default: React.FC = () => {
-  const [onPresent1] = useModal(<CustomModal title="Modal 1" onDismiss={()=>console.log('fuck')}/>)
+  const [onPresent1] = useModal(<CustomModal title="Modal 1" />)
   const [onPresent2] = useModal(<CustomModal title="Modal 2" />)
   const [onPresent3] = useModal(<NetworkSwitchError />, false)
   return (
     <div>
       <Button onClick={onPresent1}>Open modal 1</Button>
       <Button onClick={onPresent2}>Open modal 2</Button>
-      <Button onClick={onPresent3}>Open modal 3</Button>
+      <Button onClick={onPresent3}>Open NetworkSwitchError modal</Button>
     </div>
   )
 }

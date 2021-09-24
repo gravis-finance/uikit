@@ -174,6 +174,7 @@ type Props = {
   networks?: typeof NETWORKS
   ethereum?: boolean
   disableEthereum?: boolean
+  networkSwitchItemCallback?: (chainId: string) => void
 } & React.ComponentProps<typeof StyledDropDown>
 
 const NetworkSwitch: React.FC<Props> = ({
@@ -182,8 +183,9 @@ const NetworkSwitch: React.FC<Props> = ({
   asIcon,
   withReload = false,
   networks = NETWORKS,
-                                          ethereum,
+  ethereum,
   disableEthereum,
+  networkSwitchItemCallback,
   ...restProps
 }) => {
   const history = useHistory()
@@ -194,13 +196,16 @@ const NetworkSwitch: React.FC<Props> = ({
   const showOptions = !!anchorEl
 
   const handleClick = (item: NetworksConfig) => {
+    if (networkSwitchItemCallback) {
+      networkSwitchItemCallback(item.chainId)
+    }
     switchNetwork(item.chainId, withReload, history)
   }
 
   useEffect(() => {
-    const network = new URLSearchParams(history.location.search).get('network')
+    const network = new URLSearchParams(history?.location.search).get('network')
     if (network) setSelectedOption(networks.find((item) => item.chainId === network)?.title)
-  }, [history.location, networks])
+  }, [history?.location, networks])
 
   useEffect(() => {
     const onClickHandler = (event: any) => {
@@ -246,12 +251,15 @@ const NetworkSwitch: React.FC<Props> = ({
         inheritWidth
         ref={optionsContainer}
       >
-        {networks.filter((network) => !ethereum ? network.label !== 'Ethereum' : ethereum ? network.label !== 'HECO' : true).filter((network)=> disableEthereum ? network.label !== 'Ethereum' : true).map((item: any) => (
-          <StyledOption key={item.title} onClick={() => handleClick(item)} id={`${item.label}-switch-option`}>
-            <item.icon />
-            {item.label}
-          </StyledOption>
-        ))}
+        {networks
+          .filter((network) => (!ethereum ? network.label !== 'Ethereum' : ethereum ? network.label !== 'HECO' : true))
+          .filter((network) => (disableEthereum ? network.label !== 'Ethereum' : true))
+          .map((item: any) => (
+            <StyledOption key={item.title} onClick={() => handleClick(item)} id={`${item.label}-switch-option`}>
+              <item.icon />
+              {item.label}
+            </StyledOption>
+          ))}
       </StyledOptionsContainer>
     </StyledDropDown>
   )
