@@ -13,6 +13,7 @@ interface Props {
   changeNetwork?: () => void
   ethereum?: boolean
   disableEthereum?: boolean
+  networkSwitchItemCallback?: (chainId: string) => void
 }
 
 const StyledNetworkSwitch = styled.div`
@@ -41,13 +42,19 @@ const NetworkSwitchError: React.FC<Props> = ({
   isProduction = false,
   isSupportedChain = true,
   changeNetwork,
-                                               ethereum=false, disableEthereum
+  ethereum = false,
+  disableEthereum,
+  networkSwitchItemCallback
 }) => {
   const handleClick = () => {
     if (changeNetwork) changeNetwork()
   }
 
   const t = useTranslation()
+
+  // const networkSwitchItemCallback = (item: string): void => {
+  //   console.log('item', item)
+  // }
 
   return (
     <Modal title={t('networkSwitchingError')} onDismiss={onDismiss} hideCloseButton>
@@ -70,7 +77,13 @@ const NetworkSwitchError: React.FC<Props> = ({
         <>
           <Text style={{ marginTop: '36px', marginBottom: '24px' }}>{t('orChangeNetwork')}</Text>
           <StyledNetworkSwitch>
-            <NetworkSwitch isProduction={isProduction} toggleMobile={false} ethereum={ethereum} disableEthereum={disableEthereum}/>
+            <NetworkSwitch
+              isProduction={isProduction}
+              toggleMobile={false}
+              ethereum={ethereum}
+              disableEthereum={disableEthereum}
+              networkSwitchItemCallback={networkSwitchItemCallback}
+            />
           </StyledNetworkSwitch>
         </>
       )}
