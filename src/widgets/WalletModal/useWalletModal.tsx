@@ -27,9 +27,16 @@ const useWalletModal = (
   bscAndPoly?: boolean,
   onSelectConnectModal?: () => void
 ): ReturnType => {
-
   const [onPresentConnectModal] = useModal(
-    <ConnectModal onSelect={onSelectConnectModal} isProduction={isProduction} login={login} title={title} bscOnly={bscOnly} ethereum={ethereum} bscAndPoly={bscAndPoly}/>
+    <ConnectModal
+      onSelect={onSelectConnectModal}
+      isProduction={isProduction}
+      login={login}
+      title={title}
+      bscOnly={bscOnly}
+      ethereum={ethereum}
+      bscAndPoly={bscAndPoly}
+    />
   )
   const [onPresentAccountModal] = useModal(
     <AccountModal

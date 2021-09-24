@@ -229,36 +229,42 @@ setTranslations({ en, jp, cn, ru })
 setDefaultLanguage('en')
 
 const Menu: React.FC<NavProps> = ({
-                                    networks,
-                                    isProduction,
-                                    account,
-                                    login,
-                                    logout,
-                                    isDark,
-                                    toggleTheme,
-                                    links,
-                                    loginBlockVisible = true,
-                                    buttonTitle = 'Connect',
-                                    options,
-                                    children,
-                                    balance,
-                                    explorerName,
-                                    explorerLink,
-                                    onTransactionHistoryHandler,
-                                    betaText = 'This is the Beta version. You can\'t add liquidity here anymore. Press here to switch to the main version.',
-                                    betaLink,
-                                    balanceHook = defaultBalanceHook,
-                                    setSelectedLanguage = defaultSetSelectedLanguage, customLanguage, networkSwitchVisible = true, bscOnly, ethereum, subscribePushEvent, disableEthereum, bscAndPoly=true
-                                  }) => {
+  networks,
+  isProduction,
+  account,
+  login,
+  logout,
+  isDark,
+  toggleTheme,
+  links,
+  loginBlockVisible = true,
+  buttonTitle = 'Connect',
+  options,
+  children,
+  balance,
+  explorerName,
+  explorerLink,
+  onTransactionHistoryHandler,
+  betaText = "This is the Beta version. You can't add liquidity here anymore. Press here to switch to the main version.",
+  betaLink,
+  balanceHook = defaultBalanceHook,
+  setSelectedLanguage = defaultSetSelectedLanguage,
+  customLanguage,
+  networkSwitchVisible = true,
+  bscOnly,
+  ethereum,
+  subscribePushEvent,
+  disableEthereum,
+  bscAndPoly,
+}) => {
   const { isXl } = useMatchBreakpoints()
   const isMobile = isXl === false
   const [isPushed, setIsPushed] = useState(!isMobile)
   // const [showMenu, setShowMenu] = useState(true)
   const showMenu = true
 
-  useEffect(()=>{
-    if(subscribePushEvent)
-      subscribePushEvent(isPushed)
+  useEffect(() => {
+    if (subscribePushEvent) subscribePushEvent(isPushed)
   }, [isPushed, subscribePushEvent])
 
   useEffect(() => {
@@ -273,8 +279,7 @@ const Menu: React.FC<NavProps> = ({
   }, [])
 
   useEffect(() => {
-    if (customLanguage)
-      setLanguage(customLanguage.toLowerCase())
+    if (customLanguage) setLanguage(customLanguage.toLowerCase())
   }, [customLanguage])
 
   return (
