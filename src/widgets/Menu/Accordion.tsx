@@ -128,7 +128,10 @@ const StyledArrowDropDown = styled(ArrowDropDownIcon)<{ isOpen?: boolean }>`
 `
 
 const Accordion: React.FC<Props> = React.forwardRef(
-  ({ label, icon, isPushed, pushNav, initialOpenState = false, children, className, blink, ...restProps }, ref: any) => {
+  (
+    { label, icon, isPushed, pushNav, initialOpenState = false, children, className, blink, ...restProps },
+    ref: any
+  ) => {
     const [isOpen, setIsOpen] = useState(initialOpenState)
     const t = useTranslation()
 
@@ -154,7 +157,11 @@ const Accordion: React.FC<Props> = React.forwardRef(
       setIsOpen(initialOpenState)
     }, [initialOpenState, isPushed])
 
-    const fillStokeTranslations = [t('mainMenu.analytics.analytics'), t('mainMenu.ino.ino'), t('mainMenu.asteroidMining')]
+    const fillStokeTranslations = [
+      t('mainMenu.analytics.analytics'),
+      t('mainMenu.ino.ino'),
+      t('mainMenu.asteroidMining'),
+    ]
 
     return (
       <Container
