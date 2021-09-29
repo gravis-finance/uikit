@@ -31,7 +31,7 @@ export const Default: React.FC = () => {
         <>
           <Heading mb="16px">{key}</Heading>
           <Row>
-            <Input type="text" scale={scales[key]} value="Value" />
+            <Input type="text" scale={scales[key]} value="Value" onChange={(e) => console.log(e.target.value)} />
             <Input type="text" scale={scales[key]} placeholder="Placeholder..." />
             <Input type="text" scale={scales[key]} value="Disabled" disabled />
             <Input type="text" scale={scales[key]} value="Success" isSuccess />

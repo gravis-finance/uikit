@@ -43,7 +43,7 @@ const SocialNetworks: React.FC = () => {
       <LinkItem href="https://gravis-finance.medium.com/" target="_blank" rel="noopener  noreferrer">
         <MediumIcon />
       </LinkItem>
-      <LinkItem href="https://discord.gg/rvausqT5DV" target="_blank" rel="noopener  noreferrer">
+      <LinkItem href="https://discord.gg/rvausqT5DV" target="_blank" rel="noopener  noreferrer" style={{ padding: '16px 13.5px 12px 13.5px' }}>
         <DiscordIcon/>
       </LinkItem>
     </StyledWrapper>

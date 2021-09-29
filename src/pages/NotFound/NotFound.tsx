@@ -12,6 +12,7 @@ import { SocialNetworks } from '../../components/SocialNetworks'
 const StyledWrapper = styled.div`
   width: 100%;
   min-height: calc(100vh - 64px);
+  justify-content: center;
   height: 100%;
   position: relative;
   display: flex;
@@ -38,6 +39,8 @@ const InfoWrapper = styled.div`
   z-index: 2;
   // width: 55%;
   width: 700px;
+  align-items: center;
+  text-align: center;
 
   @media screen and (max-width: 1024px) {
     width: 100%;
