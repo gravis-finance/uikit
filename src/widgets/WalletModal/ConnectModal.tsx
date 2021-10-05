@@ -15,7 +15,7 @@ import { getNetworkId, getNetworkTitles } from '../../util/getNetworkId'
 import { Checkbox } from '../../components/Checkbox'
 import { ButtonBase } from '../../components/Button'
 import { privacyAndPoliceLink, termsOfUseLink } from '../../constants'
-import { NetworksConfigObject } from '../../index'
+import { NetworksConfigObject } from '../..'
 
 interface Props {
   login: Login

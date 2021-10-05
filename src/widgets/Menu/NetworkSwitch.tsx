@@ -7,7 +7,7 @@ import { networks as NETWORKS } from '../WalletModal/config'
 import { ArrowDropDownIcon } from '../../components/Svg'
 import switchNetwork from '../../util/switchNetwork'
 import { getNetworkTitles } from '../../util/getNetworkId'
-import { NetworksConfigObject } from '../../index'
+import { NetworksConfigObject } from '../..'
 
 const StyledDropDown = styled.div<{ $showOptions?: boolean; $toggleMobile?: boolean; $asIcon?: boolean }>`
   width: 165px;

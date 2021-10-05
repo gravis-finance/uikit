@@ -46,4 +46,4 @@ export * from './util/getLanguageSearchParam'
 // Constants
 export * from './constants'
 
-export { default as NetworksConfigObject } from './config/networks'
+export * from './config/networks'

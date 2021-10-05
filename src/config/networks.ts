@@ -9,7 +9,7 @@ export enum networksName {
 }
 
 
-const NetworksConfigObject = {
+export const NetworksConfigObject = {
   networksConfig: [networksName.BINANCE, networksName.POLYGON] as string[],
 
   // eslint-disable-next-line
@@ -26,5 +26,3 @@ const NetworksConfigObject = {
     this.networksConfig = networks;
   }
 }
-
-export default NetworksConfigObject

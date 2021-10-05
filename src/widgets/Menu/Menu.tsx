@@ -20,7 +20,7 @@ import cn from '../../locales/cn.json'
 import ru from '../../locales/ru.json'
 import { localStorageLanguageItem } from '../../constants'
 import LanguageSwitch from './LanguageSwitch'
-import { getDefaultLanguage, NetworksConfigObject } from '../..'
+import { getDefaultLanguage } from '../..'
 
 const Wrapper = styled.div`
   position: relative;
