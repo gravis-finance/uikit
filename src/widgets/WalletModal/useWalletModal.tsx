@@ -32,10 +32,6 @@ const useWalletModal = (
       onSelect={onSelectConnectModal}
       isProduction={isProduction}
       login={login}
-      title={title}
-      bscOnly={bscOnly}
-      ethereum={ethereum}
-      bscAndPoly={bscAndPoly}
     />
   )
   const [onPresentAccountModal] = useModal(

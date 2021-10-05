@@ -58,7 +58,7 @@ export const Checkbox = ({ className, size = 20, onChange, checked, ...props }: 
     <StyledCheckbox size={size} checked={checked}>
       <Icon viewBox={`0 0 ${size} ${size}`}>
         <svg width={size} height={size} viewBox={`-${size * 0.25} -${size * 0.25} ${size} ${size}`} fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M9 1L3.5 9L1 5.36364" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+          <path d="M9 1L3.5 9L1 5.36364" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
         </svg>
       </Icon>
     </StyledCheckbox>

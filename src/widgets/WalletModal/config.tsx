@@ -9,7 +9,7 @@ import Binance from './icons/Binance'
 import Huobi from './icons/Huobi'
 import Polygon from './icons/Polygon'
 import Ethereum from './icons/Ethereum'
-import { WalletsConfig, ConnectorNames } from './types'
+import { WalletsConfig, ConnectorNames, NetworksConfig } from './types'
 
 const production = process.env.REACT_APP_NODE_ENV === 'production'
 
@@ -86,6 +86,6 @@ export const connectorLocalStorageKey = 'connectorId'
 export const wallets: WalletsConfig[] = Object.keys(walletsConfig).map(
   (walletKey) => walletsConfig[walletKey as keyof typeof walletsConfig]
 )
-export const networks = Object.keys(networksConfig).map(
+export const networks: NetworksConfig[] = Object.keys(networksConfig).map(
   (networkKey) => networksConfig[networkKey as keyof typeof networksConfig]
 )

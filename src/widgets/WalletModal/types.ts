@@ -19,5 +19,6 @@ export interface NetworksConfig {
   title: string
   label: string
   chainId: string
-  icon: FC<SvgProps>
+  icon: FC<SvgProps>,
+  wallets: WalletsConfig[]
 }

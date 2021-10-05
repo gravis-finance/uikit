@@ -5,7 +5,7 @@ import { useHistory } from 'react-router-dom'
 import { Link } from '../../components/Link'
 import { Modal } from '../Modal'
 import WalletCard from './WalletCard'
-import { wallets, networks } from './config'
+import { wallets } from './config'
 import { Login } from './types'
 import Flex from '../../components/Flex/Flex'
 import Text from '../../components/Text/Text'
@@ -15,6 +15,7 @@ import { getNetworkId, getNetworkTitles } from '../../util/getNetworkId'
 import { Checkbox } from '../../components/Checkbox'
 import { ButtonBase } from '../../components/Button'
 import { privacyAndPoliceLink, termsOfUseLink } from '../../constants'
+import { NetworksConfigObject } from '../../index'
 
 interface Props {
   login: Login
@@ -85,11 +86,8 @@ const ConnectModal: React.FC<Props> = ({
   onSelect = () => null,
   login,
   onDismiss = () => null,
-  title = 'Connect to a wallet',
-  bscOnly,
-  ethereum,
-  bscAndPoly,
 }) => {
+  const {networks} = NetworksConfigObject
   const [termsChecked, setTermsChecked] = useState(false)
   const id: string = getNetworkId()
   const history = useHistory()
@@ -149,16 +147,6 @@ const ConnectModal: React.FC<Props> = ({
         </StyledFlexPoint>
         <StyledFlex>
           {networks
-            .filter((network) =>
-              bscOnly
-                ? network.label === 'BSC'
-                : !ethereum
-                ? network.label !== 'Ethereum'
-                : ethereum
-                ? network.label !== 'HECO'
-                : true
-            )
-            .filter((network) => (bscAndPoly ? network.label !== 'HECO' && network.label !== 'Ethereum' : true))
             .map((entry: any) => (
               <NetworkSelector
                 disabled={!termsChecked}
