@@ -1,7 +1,7 @@
 import { networksConfig } from '../widgets/WalletModal'
 import { NetworksConfig } from '../widgets/WalletModal/types'
 
-enum networksName {
+export enum networksName {
   HUOBI = 'huobi',
   BINANCE = 'binance',
   POLYGON = 'polygon',
