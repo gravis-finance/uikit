@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
-import InputCopy from '../Svg/Icons/InputCopy'
 import { useTranslation } from 'react-multi-lang'
+import InputCopy from '../Svg/Icons/InputCopy'
 
 export type CopyButtonType = {
   textToCopy: string

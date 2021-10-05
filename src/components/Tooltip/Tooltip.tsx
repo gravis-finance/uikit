@@ -172,7 +172,7 @@ const TooltipInner: React.FC<TooltipProps> = (props) => {
   const prevUserSelect = React.useRef()
   const stopTouchInteraction = React.useCallback(() => {
     if (prevUserSelect.current !== undefined) {
-      ; (document.body.style as any).WebkitUserSelect = prevUserSelect.current
+       (document.body.style as any).WebkitUserSelect = prevUserSelect.current
       prevUserSelect.current = undefined
     }
     clearTimeout(touchTimer.current)
@@ -260,7 +260,7 @@ const TooltipInner: React.FC<TooltipProps> = (props) => {
       ; (document.body.style as any).WebkitUserSelect = 'none'
 
     touchTimer.current = setTimeout(() => {
-      ; (document.body.style as any).WebkitUserSelect = prevUserSelect.current
+       (document.body.style as any).WebkitUserSelect = prevUserSelect.current
       handleEnter(event)
     }, enterTouchDelay)
   }

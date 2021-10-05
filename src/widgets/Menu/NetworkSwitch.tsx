@@ -7,6 +7,7 @@ import { networks as NETWORKS } from '../WalletModal/config'
 import { ArrowDropDownIcon } from '../../components/Svg'
 import switchNetwork from '../../util/switchNetwork'
 import { getNetworkTitles } from '../../util/getNetworkId'
+import { NetworksConfigObject } from '../../index'
 
 const StyledDropDown = styled.div<{ $showOptions?: boolean; $toggleMobile?: boolean; $asIcon?: boolean }>`
   width: 165px;
@@ -182,7 +183,7 @@ const NetworkSwitch: React.FC<Props> = ({
   toggleMobile = true,
   asIcon,
   withReload = false,
-  networks = NETWORKS,
+  networks = NetworksConfigObject.networks,
   ethereum,
   disableEthereum,
   networkSwitchItemCallback,
@@ -192,7 +193,7 @@ const NetworkSwitch: React.FC<Props> = ({
   const container = React.useRef<HTMLDivElement>()
   const optionsContainer = React.useRef<HTMLDivElement>()
   const [anchorEl, setAnchorEl] = useState<HTMLDivElement | null>(null)
-  const [selectedOption, setSelectedOption] = useState(getNetworkTitles() || 'Huobi')
+  const [selectedOption, setSelectedOption] = useState(getNetworkTitles() || networks[0].title)
   const showOptions = !!anchorEl
 
   const handleClick = (item: NetworksConfig) => {
@@ -252,8 +253,6 @@ const NetworkSwitch: React.FC<Props> = ({
         ref={optionsContainer}
       >
         {networks
-          .filter((network) => (!ethereum ? network.label !== 'Ethereum' : ethereum ? network.label !== 'HECO' : true))
-          .filter((network) => (disableEthereum ? network.label !== 'Ethereum' : true))
           .map((item: any) => (
             <StyledOption key={item.title} onClick={() => handleClick(item)} id={`${item.label}-switch-option`}>
               <item.icon />

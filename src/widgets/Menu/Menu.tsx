@@ -20,7 +20,7 @@ import cn from '../../locales/cn.json'
 import ru from '../../locales/ru.json'
 import { localStorageLanguageItem } from '../../constants'
 import LanguageSwitch from './LanguageSwitch'
-import { getDefaultLanguage, getLanguageSearchParam } from '../..'
+import { getDefaultLanguage, NetworksConfigObject } from '../..'
 
 const Wrapper = styled.div`
   position: relative;
@@ -279,7 +279,9 @@ const Menu: React.FC<NavProps> = ({
   }, [])
 
   useEffect(() => {
+    // networksConfig.networks('test')
     if (customLanguage) setLanguage(customLanguage.toLowerCase())
+    // eslint-disable-next-line
   }, [customLanguage])
 
   return (
