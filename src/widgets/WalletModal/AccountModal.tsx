@@ -37,7 +37,7 @@ interface Props {
 const StyledBackGround = styled.div<{ image?: string; mobileImage?: string }>`
   background-image: ${({ image }) => image};
   height: 128px;
-  width: 694px;
+  min-width: 694px;
   margin: 0 -25px;
   display: flex;
   align-items: center;
@@ -125,6 +125,12 @@ const StyledInfoFlex = styled(Flex)`
     margin-left: 24px;
   }
 `
+
+const StyledFlexContainer = styled(StyledFlex)`
+  > button:not(:last-child) {
+    margin-right: 16px;
+  }
+`
 // <LinkExternal small href={`https://bscscan.com/address/${account}`} mr="16px">
 // {explorerName}
 // </LinkExternal>
@@ -185,7 +191,7 @@ const AccountModal: React.FC<Props> = ({
         <StyledInput value={account} />
         <CopyButton textToCopy={account} />
       </StyledInputContainer>
-      <StyledFlex mt="16px" justifyContent="space-between" buttonsList>
+      <StyledFlexContainer mt="16px" justifyContent="space-between" buttonsList>
         <StyledButton size="md" variant="dark" onClick={() => window.open(explorerLink)} data-id="scan-button">
           {explorerName.includes('Bsc') ? (
             <BSCScanIcon mr={16} />
@@ -221,7 +227,7 @@ const AccountModal: React.FC<Props> = ({
           <ExitIcon mr={16} />
           {t('disconnect')}
         </StyledButton>
-      </StyledFlex>
+      </StyledFlexContainer>
     </Modal>
   )
 }
