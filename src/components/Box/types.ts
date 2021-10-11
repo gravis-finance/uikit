@@ -23,4 +23,6 @@ export interface BoxProps
     DisplayProps,
     FlexboxProps,
     GridProps,
-    Omit<HTMLAttributes<HTMLDivElement>, 'color'> {}
+    Omit<HTMLAttributes<HTMLDivElement>, 'color'> {
+  textTransform?: 'capitalize' | 'uppercase' | 'lowercase' | 'none'
+}

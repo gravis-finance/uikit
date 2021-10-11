@@ -19,6 +19,8 @@ export * from './components/Table'
 export * from './components/Tooltip'
 export * from './components/Toggle'
 export * from './components/Popper'
+export * from './components/DataTable'
+export * from './components/Select'
 
 // Hooks
 export * from './hooks'

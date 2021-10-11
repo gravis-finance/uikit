@@ -1,7 +1,7 @@
 import styled from 'styled-components'
-import { space, SpaceProps } from 'styled-system'
+import { space, SpaceProps, layout, LayoutProps } from 'styled-system'
 
-const ButtonBase = styled.button<SpaceProps>`
+const ButtonBase = styled.button<SpaceProps & LayoutProps>`
   font: inherit;
   font-size: 1em;
   display: inline-flex;
@@ -23,6 +23,11 @@ const ButtonBase = styled.button<SpaceProps>`
   touch-action: manipulation;
   box-sizing: border-box;
   ${space}
+  ${layout}
+  
+  &[disabled] {
+    pointer-events: none;
+  }
 
   ${({ disabled }) =>
     disabled &&

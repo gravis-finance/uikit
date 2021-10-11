@@ -3,6 +3,9 @@
   "rules": {
     "@typescript-eslint/no-explicit-any": "off",
     "no-nested-ternary": "off",
+    "import/prefer-default-export": 0,
+    "no-plusplus": 0,
+    "react/no-array-index-key": 0,
     "import/no-extraneous-dependencies": [
       "error",
       {
@@ -10,6 +13,7 @@
           "src/setupTests.[jt]s?(x)",
           "src/testHelpers.[jt]s?(x)",
           "**/*.test.[jt]s?(x)",
+          "**/*.stories.[jt]s?(x)",
           "rollup.config.js"
         ]
       }
