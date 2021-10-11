@@ -1,6 +1,6 @@
 import React from 'react'
 import { Story } from '@storybook/react'
-import { Column } from 'cb-datatable'
+import { Column } from './Column'
 import { Table, UnstyledTable } from './Table'
 
 const data = []

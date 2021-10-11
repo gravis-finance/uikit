@@ -2,6 +2,7 @@ import React from 'react'
 import { Table as CbTable, TableProps as CbTableProps, HeaderCell, useSortBy, SortBy } from 'cb-datatable'
 import styled from 'styled-components'
 import { SortIcon } from './SortIcon'
+import { TableCell } from './TableCell'
 import 'cb-datatable/styles/core.css'
 
 export type TableProps = CbTableProps & {
@@ -18,6 +19,7 @@ export const UnstyledTable: React.FC<TableProps> = ({ defaultSortBy, onSort, ...
       headerCell={
         <HeaderCell setSortBy={setSortBy} sortBy={sortBy} sortIconDesc={<SortIcon />} sortIconAsc={<SortIcon asc />} />
       }
+      cell={<TableCell />}
       {...restProps}
     />
   )

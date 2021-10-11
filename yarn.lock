@@ -6761,10 +6761,10 @@ caseless@~0.12.0:
   resolved "https://registry.yarnpkg.com/caseless/-/caseless-0.12.0.tgz#1b681c21ff84033c826543090689420d187151dc"
   integrity sha1-G2gcIf+EAzyCZUMJBolCDRhxUdw=
 
-cb-datatable@^4.0.6:
-  version "4.0.6"
-  resolved "https://registry.yarnpkg.com/cb-datatable/-/cb-datatable-4.0.6.tgz#b188520dc66247f04be86ca171f66ed770547d01"
-  integrity sha512-7CclCTrX2mGrkMz/BB1qJSUX/nuEpebBZISKOYC7ayXlGljyCnpp/5tyNZrphfvyolmM4HQSoxDlxy+OAMGPBQ==
+cb-datatable@^4.0.7:
+  version "4.0.7"
+  resolved "https://registry.yarnpkg.com/cb-datatable/-/cb-datatable-4.0.7.tgz#1ae1953b22ede396075647ea0c479f0ab5fece6c"
+  integrity sha512-wId2UV25yQhQgGpcQQzyMIROZuzhJa+o8c3Ibo3xmfsKMI+pk/O13umm5FtpZYAe+bI+Yql6HENPa1qDhW/fPA==
   dependencies:
     "@types/react-is" "^17.0.2"
     clsx "^1.1.1"
