@@ -6,7 +6,7 @@ import Button from '../../components/Button/Button'
 import Text from '../../components/Text/Text'
 import Flex from '../../components/Flex/Flex'
 import { Modal } from '../Modal'
-import { connectorLocalStorageKey } from './config'
+import { connectorLocalStorageKey, walletsConfig } from './config'
 import CopyButton from '../../components/Button/CopyButton'
 import DefaultAvatar from '../../components/Svg/Icons/DefaultAvatar'
 import MetaMask from '../../components/Svg/Icons/MetaMask'
@@ -19,6 +19,7 @@ import {
   HecoIcon,
   MaticIcon, Ether
 } from '../../components/Svg'
+import { ConnectorNames } from './types'
 
 interface Props {
   account: string
@@ -131,12 +132,40 @@ const StyledFlexContainer = styled(StyledFlex)`
     margin-right: 16px;
   }
 `
+
+const IconContainer = styled.div`
+  position: absolute;
+  left: 8px;
+  top: 8px;
+  background: white;
+  padding: 7px 6px;
+  border-radius: 100%;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  justify-content: center;
+`
 // <LinkExternal small href={`https://bscscan.com/address/${account}`} mr="16px">
 // {explorerName}
 // </LinkExternal>
 
 const svgString = encodeURIComponent(renderToStaticMarkup(<ModalBackgroundIcon />))
 const svgStringMobile = encodeURIComponent(renderToStaticMarkup(<ModalBackgroundIconMobile />))
+
+
+
+const getAccountIcon = () => {
+  const connectorId = localStorage.getItem('connectorId')
+
+  if(connectorId)
+    if(Object.entries(ConnectorNames).find(name=>name[1] === connectorId)) {
+      const foundWalletConfig = Object.entries(walletsConfig).find(configName=>configName[1].connectorId === connectorId)
+      if (foundWalletConfig)
+        return foundWalletConfig[1]
+      }
+
+  return walletsConfig.metamask
+}
 
 const AccountModal: React.FC<Props> = ({
   account,
@@ -152,11 +181,14 @@ const AccountModal: React.FC<Props> = ({
 }) => {
   const [currentBalance, setBalance] = useState(balance)
 
+  getAccountIcon()
   useEffect(() => {
     if (balanceHook) balanceHook().then((result?: any) => setBalance(result?.toSignificant(6)))
   }, [balanceHook])
 
   const t = useTranslation()
+
+  const { icon: Icon } = getAccountIcon()
 
   return (
     <Modal title={t('account')} onDismiss={onDismiss} styledModalContent={{ padding: '0 24px 32px 24px' }}>
@@ -187,7 +219,9 @@ const AccountModal: React.FC<Props> = ({
         </StyledInfo>
       </StyledBackGround>
       <StyledInputContainer>
-        <MetaMask width="32" height="32" />
+        <IconContainer>
+          <Icon width={18} height={18} />
+        </IconContainer>
         <StyledInput value={account} />
         <CopyButton textToCopy={account} />
       </StyledInputContainer>
