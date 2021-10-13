@@ -222,6 +222,11 @@ export const NotConnected: React.FC = () => {
       items: [{label: t('mainMenu.captainsIno'), href: 'https://gravis.finance', external: true}]
     },
     {
+      label: t('mainMenu.bridge'),
+      icon: 'BridgeIcon',
+      href: 'https://gravis.finance'
+    },
+    {
       label: t('mainMenu.more'),
       icon: 'MoreIcon',
       items: [
