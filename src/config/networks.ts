@@ -10,14 +10,28 @@ export enum networksName {
 
 
 export const NetworksConfigObject = {
-  networksConfig: [networksName.BINANCE, networksName.POLYGON] as string[],
+  networksConfig: [networksName.BINANCE, networksName.POLYGON, networksName.HUOBI] as string[],
 
   // eslint-disable-next-line
   // @ts-ignore
   get networks(): NetworksConfig[] {
     const newNetworks = Object.fromEntries(Object.entries(networksConfig).filter(network => this.networksConfig.includes(network[0])))
 
-    return Object.keys(newNetworks).map(
+    // eslint-disable-next-line
+    // @ts-ignore
+    const result = []
+
+    this.networksConfig.forEach((network)=>{
+      if(Object.entries(newNetworks).find(n=>n[0] === network)) {
+        result.push(Object.entries(newNetworks).find(n=>n[0] === network))
+      }
+    })
+
+    // eslint-disable-next-line
+    // @ts-ignore
+    const sortedNetworks = Object.fromEntries(result)
+
+    return Object.keys(sortedNetworks).map(
       (networkKey) => newNetworks[networkKey as keyof typeof newNetworks]
     );
   },
