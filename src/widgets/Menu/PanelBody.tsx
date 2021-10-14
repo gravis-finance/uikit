@@ -150,7 +150,7 @@ const PanelBody: React.FC<Props> = ({ isPushed, pushNav, isMobile, links, toggle
   const handleClick = isMobile ? () => pushNav(false) : undefined
   const homeLink = links?.find((link) => link.label === 'Home')
 
-  const fillStokeTranslations = [t('mainMenu.home'), t('mainMenu.NFTFarming'), t('mainMenu.bridge')]
+  const fillStokeTranslations = [t('mainMenu.home'), t('mainMenu.farming'), t('mainMenu.bridge')]
 
   return (
     <Container>
