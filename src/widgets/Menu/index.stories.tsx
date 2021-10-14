@@ -8,6 +8,7 @@ import Text from '../../components/Text/Text'
 import Menu from './Menu'
 import { MenuEntry } from './MenuEntry'
 import { links } from './config'
+import { urlSearchLanguageParam } from '../../constants'
 
 // import useModal from '../Modal/useModal'
 
@@ -190,7 +191,24 @@ export const NotConnected: React.FC = () => {
     {
       label: t('mainMenu.farming'),
       icon: 'NFTFarmingIcon',
-      href: 'https://nftfarmingdev.gravis.finance',
+      items: [
+        {
+          label: t('mainMenu.farms'),
+          href: `${process.env.REACT_APP_FARMING_URL}/farms?${urlSearchLanguageParam}=${t('language')}`,
+        },
+        {
+          label: t('mainMenu.staking'),
+          href: `${process.env.REACT_APP_FARMING_URL}/staking?${urlSearchLanguageParam}=${t('language')}`,
+        },
+        // {
+        //   label: t('mainMenu.farming.autoFarms'),
+        //   href: `/auto-farms`,
+        // },
+        {
+          label: t('mainMenu.NFTFarming'),
+          href: `${process.env.REACT_APP_NFTFARMING_URL}?${urlSearchLanguageParam}=${t('language')}`,
+        },
+      ],
     },
     {
       label: t('mainMenu.analytics.analytics'),

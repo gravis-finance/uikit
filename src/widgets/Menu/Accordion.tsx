@@ -161,6 +161,7 @@ const Accordion: React.FC<Props> = React.forwardRef(
       t('mainMenu.analytics.analytics'),
       t('mainMenu.ino.ino'),
       t('mainMenu.asteroidMining'),
+      t('mainMenu.farming')
     ]
 
     return (
