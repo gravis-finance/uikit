@@ -10,7 +10,7 @@ export enum networksName {
 
 
 export const NetworksConfigObject = {
-  networksConfig: [networksName.BINANCE, networksName.POLYGON, networksName.HUOBI] as string[],
+  networksConfig: [networksName.BINANCE, networksName.POLYGON] as string[],
 
   // eslint-disable-next-line
   // @ts-ignore
