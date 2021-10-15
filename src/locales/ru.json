@@ -27,7 +27,9 @@
     "farming": "Фарминг",
     "asteroidMining": "(A)steroid Mining",
     "captainsIno": "Капитаны INO",
-    "bridge": "GRVX Bridge"
+    "bridge": "GRVX Bridge",
+    "staking": "Стейкинг GRVX",
+    "farms": "Фермы"
   },
   "swap": "Обменять",
   "networkSwitchingError": "Ошибка переключения сети",

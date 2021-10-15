@@ -29,6 +29,7 @@ export interface MenuSubEntry {
   href?: string
   calloutClass?: string
   external?: boolean
+  hot?: boolean
 }
 
 export interface MenuEntry {

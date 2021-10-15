@@ -9,6 +9,7 @@ export interface Props {
   isPushed?: boolean
   single?: boolean
   blink?: boolean
+  hot?: boolean
 }
 
 const rainbowAnimation = keyframes`
@@ -35,7 +36,7 @@ const MenuEntry = styled.div<Props>`
   height: ${MENU_ENTRY_HEIGHT}px;
   padding: ${({ secondary }) => (secondary ? '0 32px' : '0 22px 0 18px')};
   font-size: ${({ secondary }) => (secondary ? '14px' : '16px')};
-  ${({ isPushed }) => (!isPushed ? `padding: 0 22px 0 10.3px; width: ${MENU_ENTRY_HEIGHT}px` : '')}
+  ${({ isPushed, hot }) => (!isPushed ? `padding: 0 ${hot ? '12' : '22'}px 0 10.3px; width: ${MENU_ENTRY_HEIGHT}px` : '')}
 
   background: linear-gradient(90.28deg, #292929 0%, #242424 100%), #303030;
   border: 1px solid #2e2e2e;

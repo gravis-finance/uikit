@@ -27,7 +27,9 @@
     "farming": "Farming",
     "asteroidMining": "(A)steroid Mining",
     "captainsIno": "Captains INO",
-    "bridge": "GRVX Bridge"
+    "bridge": "GRVX Bridge",
+    "staking": "GRVX Staking",
+    "farms": "Farms"
   },
   "swap": "Swap",
   "networkSwitchingError": "Network switching error",

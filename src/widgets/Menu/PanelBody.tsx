@@ -142,6 +142,51 @@ const SpinnerContainer = styled.div`
   justify-content: center;
 `
 
+const HotContainer = styled.div`
+  height: auto;
+  padding: 0px 4px;
+  color: white;
+  align-items: center;
+  background-color: transparent;
+  border: 2px solid rgb(235, 149, 0);
+  border-radius: 16px;
+  display: inline-flex;
+  font-size: 11px;
+  font-weight: 400;
+  height: 22px;
+  line-height: 1.5;
+  padding: 0px 8px;
+  white-space: nowrap;
+  position: relative;
+  overflow: hidden;
+  width: 50px;
+  // margin-left: 8px;
+  
+  :after {
+    content: '';
+    position: absolute;
+    left: -12px;
+    top: -1px;
+    width: 10px;
+    height: 22px;
+    background: rgba(255, 255, 255, 0.5);
+    transform: skew(-30deg);
+    animation: shine-hot 2s ease-in-out infinite;
+  }
+  
+  @keyframes shine-hot {
+    0% {
+      left: -12px;
+    }
+    50% {
+      left: 100%;
+    }
+    100% {
+      left: 100%;
+    }
+  }
+`
+
 const PanelBody: React.FC<Props> = ({ isPushed, pushNav, isMobile, links, togglePush, isDark }) => {
   const location = useLocation()
   const t = useTranslation()
@@ -200,10 +245,12 @@ const PanelBody: React.FC<Props> = ({ isPushed, pushNav, isMobile, links, toggle
                             secondary
                             isactive={item.href === location.pathname}
                             onClick={handleClick}
+                            hot={item.hot}
                           >
                             <MenuLink href={item.href} target={item.external ? '_blank' : ''}>
                               {item.label}
                             </MenuLink>
+                            {item.hot && <HotContainer>HOT</HotContainer>}
                           </MenuEntry>
                         ))}
                     </Accordion>
