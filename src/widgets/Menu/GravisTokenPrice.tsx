@@ -27,10 +27,14 @@ const Price = styled.p`
   text-overflow: ellipsis;
 `
 
-const GravisTokenPrice: React.FC = ({ mobile }) => {
+interface Props {
+  mobile?: boolean;
+}
+
+const GravisTokenPrice: React.FC<Props> = ({ mobile }) => {
 
   return (
-    <StyledFlex alignItems="center" title={TokenConfig.tokenPrice} mobile={mobile}>
+    <StyledFlex alignItems="center" title={TokenConfig.tokenPrice ? TokenConfig.tokenPrice : ''} mobile={mobile}>
       <GravisLogo src={grvxImage} />
       <Price>{TokenConfig.tokenPrice ? `${TokenConfig.tokenPrice}` : 'Loading...'}</Price>
     </StyledFlex>

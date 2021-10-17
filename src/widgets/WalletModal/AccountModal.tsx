@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
-import { setLanguage, useTranslation } from 'react-multi-lang'
+import { useTranslation } from 'react-multi-lang'
 import { renderToStaticMarkup } from 'react-dom/server'
 import Button from '../../components/Button/Button'
 import Text from '../../components/Text/Text'
@@ -9,15 +9,15 @@ import { Modal } from '../Modal'
 import { connectorLocalStorageKey, walletsConfig } from './config'
 import CopyButton from '../../components/Button/CopyButton'
 import DefaultAvatar from '../../components/Svg/Icons/DefaultAvatar'
-import MetaMask from '../../components/Svg/Icons/MetaMask'
 import {
   BSCScanIcon,
+  Ether,
   ExitIcon,
-  TransactionHistoryIcon,
+  HecoIcon,
+  MaticIcon,
   ModalBackgroundIcon,
   ModalBackgroundIconMobile,
-  HecoIcon,
-  MaticIcon, Ether
+  TransactionHistoryIcon
 } from '../../components/Svg'
 import { ConnectorNames } from './types'
 
