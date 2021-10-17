@@ -9,6 +9,8 @@ import { socials } from './config'
 import { privacyAndPoliceLink, termsOfUseLink } from '../../constants'
 import { PanelProps, PushedProps } from './types'
 import { Tooltip } from '../../components/Tooltip'
+import GravisTokenPrice from './GravisTokenPrice'
+import { TokenConfig } from '../../config/tokenPrice'
 
 interface Props extends PanelProps, PushedProps { }
 
@@ -95,9 +97,29 @@ const PanelFooter: React.FC<Props> = ({ isPushed }) => {
     return href
   }
 
+  const TokenContainer = styled.div`
+    display: none;
+    @media screen and (max-width: 700px) {
+      display: block;
+      > div {
+        width: 100%;
+        background: transparent;
+        padding: 0;
+        margin-bottom: 20px;
+        width: 100%;
+        > p {
+          max-width: unset;
+        }
+      }
+    }
+  `
+
   return (
     <Container isPushed={isPushed}>
       <DocumentEntry isPushed={isPushed}>
+        <TokenContainer>
+          {TokenConfig.showToken && <GravisTokenPrice />}
+        </TokenContainer>
         <Link href={termsOfUseLink} fontSize="14px" target="_blank">
           {isPushed ?
             <DocumentIcon /> :

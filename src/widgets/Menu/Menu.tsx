@@ -21,6 +21,8 @@ import ru from '../../locales/ru.json'
 import { localStorageLanguageItem } from '../../constants'
 import LanguageSwitch from './LanguageSwitch'
 import { getDefaultLanguage } from '../..'
+import GravisTokenPrice from './GravisTokenPrice'
+import { TokenConfig } from '../../config/tokenPrice'
 
 const Wrapper = styled.div`
   position: relative;
@@ -309,6 +311,7 @@ const Menu: React.FC<NavProps> = ({
           </LanguageContainer>
         </Flex>
         <Flex alignItems="center">
+          {TokenConfig.showToken && <GravisTokenPrice mobile />}
           {loginBlockVisible && (
             <UserBlock
               networks={networks}
