@@ -1,16 +1,4 @@
 {
-  "settings": {
-    "import/resolver": {
-      "node": {
-        "paths": ["./src"]
-      }
-    }
-  },
-  "env": {
-    "es6": true,
-    "browser": true,
-    "jest": true
-  },
   "extends": "@pancakeswap-libs/eslint-config-pancake",
   "rules": {
     "@typescript-eslint/no-explicit-any": "off",
