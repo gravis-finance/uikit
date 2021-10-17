@@ -49,3 +49,4 @@ export * from './util/getLanguageSearchParam'
 export * from './constants'
 
 export * from './config/networks'
+export * from './config/tokenPrice'
