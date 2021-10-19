@@ -26,11 +26,23 @@ interface Props {
   mobile?: boolean;
 }
 
+const GRVXIconContainer = styled.div`
+  width: fit-content;
+  height: fit-content;
+  background: #29D98F;
+  border-radius: 100%;
+  display: flex;
+  justify-content: center;
+  padding-right: 1px;
+`
+
 const GravisTokenPrice: React.FC<Props> = ({ mobile }) => {
 
   return (
     <StyledFlex alignItems="center" title={TokenConfig.tokenPrice ? TokenConfig.tokenPrice : ''} mobile={mobile}>
-       <GRVXIcon width="28px" height="28px"/>
+      <GRVXIconContainer>
+        <GRVXIcon width="28px" height="28px"/>
+      </GRVXIconContainer>
       <Price>{TokenConfig.tokenPrice ? `${TokenConfig.tokenPrice}` : 'Loading...'}</Price>
     </StyledFlex>
   )
