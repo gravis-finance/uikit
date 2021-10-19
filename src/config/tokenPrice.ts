@@ -1,6 +1,6 @@
 export const TokenConfig = {
   tokenPriceInfo: null as string | null,
-  showTokenInfo: true,
+  showTokenInfo: false,
 
   get showToken(): boolean {
     return this.showTokenInfo
