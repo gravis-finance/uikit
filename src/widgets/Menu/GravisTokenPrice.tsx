@@ -1,8 +1,8 @@
 import React from 'react'
 import styled from 'styled-components'
 import { Flex } from '../../components/Flex'
-// import grvxImage from '../../assets/images/GRVX.png'
-import { TokenConfig } from '../../config/tokenPrice'
+import grvxImage from '../../assets/images/GRVX.png'
+import { TokenConfig } from '../..'
 
 const StyledFlex = styled(Flex)<{ mobile?: boolean }>`
   margin-right: 16px;
@@ -35,7 +35,7 @@ const GravisTokenPrice: React.FC<Props> = ({ mobile }) => {
 
   return (
     <StyledFlex alignItems="center" title={TokenConfig.tokenPrice ? TokenConfig.tokenPrice : ''} mobile={mobile}>
-      {/* <GravisLogo src={grvxImage} /> */}
+       <GravisLogo src={grvxImage} />
       <Price>{TokenConfig.tokenPrice ? `${TokenConfig.tokenPrice}` : 'Loading...'}</Price>
     </StyledFlex>
   )
