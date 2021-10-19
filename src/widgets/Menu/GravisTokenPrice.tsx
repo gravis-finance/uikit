@@ -1,8 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import { Flex } from '../../components/Flex'
-import grvxImage from '../../assets/images/GRVX.png'
-import { TokenConfig } from '../..'
+import { GRVXIcon, TokenConfig } from '../..'
 
 const StyledFlex = styled(Flex)<{ mobile?: boolean }>`
   margin-right: 16px;
@@ -13,10 +12,6 @@ const StyledFlex = styled(Flex)<{ mobile?: boolean }>`
   @media screen and (max-width: 700px) {
     ${({ mobile }) => mobile ? 'display: none;' : ''}
   }
-`
-
-const GravisLogo = styled.img`
-  width: 28px;
 `
 
 const Price = styled.p`
@@ -35,7 +30,7 @@ const GravisTokenPrice: React.FC<Props> = ({ mobile }) => {
 
   return (
     <StyledFlex alignItems="center" title={TokenConfig.tokenPrice ? TokenConfig.tokenPrice : ''} mobile={mobile}>
-       <GravisLogo src={grvxImage} />
+       <GRVXIcon width="28px" height="28px"/>
       <Price>{TokenConfig.tokenPrice ? `${TokenConfig.tokenPrice}` : 'Loading...'}</Price>
     </StyledFlex>
   )
