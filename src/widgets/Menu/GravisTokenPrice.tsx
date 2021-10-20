@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import { Flex } from '../../components/Flex'
-import { GRVXIcon, TokenConfig } from '../..'
+import { Button, GRVXIcon, TokenConfig } from '../..'
 
 const StyledFlex = styled(Flex)<{ mobile?: boolean }>`
   margin-right: 16px;
@@ -9,6 +9,22 @@ const StyledFlex = styled(Flex)<{ mobile?: boolean }>`
   padding: 10px;
   border-radius: 20px;
   position: relative;
+  pointer-events: all;
+  
+  > a {
+    opacity: 0;
+    pointer-events: none;
+    position: absolute;
+    transition: opacity 400ms ease-in-out;
+  }
+  
+  :hover {
+    > a {
+      opacity: 1;
+      pointer-events: all;
+    }
+  }
+  
   @media screen and (max-width: 700px) {
     ${({ mobile }) => mobile ? 'display: none;' : ''}
   }
@@ -40,6 +56,10 @@ const GravisTokenPrice: React.FC<Props> = ({ mobile }) => {
 
   return (
     <StyledFlex alignItems="center" title={TokenConfig.tokenPrice ? TokenConfig.tokenPrice : ''} mobile={mobile}>
+      {TokenConfig.tokenLinkInfo.length > 0 &&
+        <Button as="a" href={TokenConfig.tokenLinkInfo} target="_blank">
+          Buy GRVX
+        </Button>}
       <GRVXIconContainer>
         <GRVXIcon width="28px" height="28px"/>
       </GRVXIconContainer>
