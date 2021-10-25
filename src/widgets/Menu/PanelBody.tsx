@@ -266,7 +266,7 @@ const PanelBody: React.FC<Props> = ({ isPushed, pushNav, isMobile, links, toggle
                     isPushed={isPushed}
                     single
                   >
-                    <MenuLink href={entry.href} onClick={handleClick}>
+                    <MenuLink href={entry.href} onClick={handleClick} target={entry.external ? '_blank' : ''}>
                       {iconElement}
                       <LinkLabel isPushed={isPushed}>{entry.label}</LinkLabel>
                     </MenuLink>
