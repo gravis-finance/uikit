@@ -38,6 +38,7 @@ export const HeaderCell = styled(CbHeaderCell)`
   padding: 21px 28px;
   text-align: left;
   background-color: rgba(53, 53, 53, 1);
+  vertical-align: middle;
 
   &:first-child {
     border-top-left-radius: 6px;
