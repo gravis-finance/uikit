@@ -8,7 +8,7 @@ import {
   useSortBy,
   SortBy,
 } from 'cb-datatable'
-import { layout, LayoutProps } from 'styled-system'
+import { layout, LayoutProps, system, typography, TypographyProps, padding, PaddingProps } from 'styled-system'
 import styled from 'styled-components'
 import { SortIcon } from './SortIcon'
 import 'cb-datatable/styles/core.css'
@@ -22,8 +22,14 @@ export type TableProps = CbTableProps & {
   RowComponent?: React.ElementType
 }
 
-// add ability to use layout props inside the Column component
-export const TableCell = styled(CbTableCell)<LayoutProps>`
+const textTransform = system({
+  textTransform: true,
+})
+
+// add ability to use layout,background,padding,typography props inside the Column component
+export const TableCell = styled(CbTableCell)<
+  LayoutProps & TypographyProps & PaddingProps & { textTransform?: 'capitalize' | 'uppercase' | 'lowercase' | 'none' }
+>`
   padding: 21px 28px;
   font-family: Inter;
   font-size: 18px;
@@ -32,6 +38,9 @@ export const TableCell = styled(CbTableCell)<LayoutProps>`
   border-bottom: 1px solid rgba(255, 255, 255, 0.05);
   vertical-align: middle;
   ${layout}
+  ${typography}
+  ${textTransform}
+  ${padding}
 `
 
 export const HeaderCell = styled(CbHeaderCell)`
