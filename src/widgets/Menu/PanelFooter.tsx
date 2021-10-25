@@ -12,7 +12,7 @@ import { Tooltip } from '../../components/Tooltip'
 import GravisTokenPrice from './GravisTokenPrice'
 import { TokenConfig } from '../../config/tokenPrice'
 
-interface Props extends PanelProps, PushedProps { }
+interface Props extends PanelProps, PushedProps {}
 
 const Icons = IconModule as unknown as { [key: string]: React.FC<SvgProps> }
 
@@ -43,7 +43,7 @@ const SocialEntry = styled.div`
   justify-content: center;
   padding: 0 28px;
 
-  &:not(:last-child){
+  &:not(:last-child) {
     margin-bottom: 50px;
   }
   @media screen and (max-width: 967px) {
@@ -55,16 +55,16 @@ const DocumentEntry = styled.div<{ isPushed: boolean }>`
   display: flex;
   align-items: flex-start;
   flex-direction: column;
-  padding: 0 ${({ isPushed }) => isPushed ? '45px' : '28px'};
+  padding: 0 ${({ isPushed }) => (isPushed ? '45px' : '28px')};
   margin-bottom: 50px;
 
   a {
-    &:hover{
+    &:hover {
       svg {
         opacity: 0.5;
-        color: #009CE1;
+        color: #009ce1;
         * {
-          stroke: #009CE1;
+          stroke: #009ce1;
         }
       }
     }
@@ -85,61 +85,59 @@ const StyledExternalLink = styled(Link)`
   }
 `
 
-const PanelFooter: React.FC<Props> = ({ isPushed }) => {
+const TokenContainer = styled.div`
+  display: none;
+  @media screen and (max-width: 700px) {
+    display: block;
+    > div {
+      width: 100%;
+      background: transparent;
+      padding: 0;
+      margin-bottom: 20px;
+      width: 100%;
+      > p {
+        max-width: unset;
+      }
+    }
+  }
+`
 
+const PanelFooter: React.FC<Props> = ({ isPushed }) => {
   // eslint-disable-next-line consistent-return
   const filterHref = (href: string) => {
     if (href.includes('t.me')) {
-      if (getLanguage() === 'jp')
-        return 'https://t.me/gravis_finance_jp'
+      if (getLanguage() === 'jp') return 'https://t.me/gravis_finance_jp'
       return 'https://t.me/gravisfinance'
     }
     return href
   }
 
-  const TokenContainer = styled.div`
-    display: none;
-    @media screen and (max-width: 700px) {
-      display: block;
-      > div {
-        width: 100%;
-        background: transparent;
-        padding: 0;
-        margin-bottom: 20px;
-        width: 100%;
-        > p {
-          max-width: unset;
-        }
-      }
-    }
-  `
-
   return (
     <Container isPushed={isPushed}>
       <DocumentEntry isPushed={isPushed}>
-        <TokenContainer>
-          {TokenConfig.showToken && <GravisTokenPrice />}
-        </TokenContainer>
+        <TokenContainer>{TokenConfig.showToken && <GravisTokenPrice />}</TokenContainer>
         <Link href={termsOfUseLink} fontSize="14px" target="_blank">
-          {isPushed ?
-            <DocumentIcon /> :
+          {isPushed ? (
+            <DocumentIcon />
+          ) : (
             <Tooltip title={t('Terms of Use')}>
               <div>
                 <DocumentIcon />
               </div>
             </Tooltip>
-          }
+          )}
           {isPushed && <span style={{ opacity: 0.5, marginLeft: 12 }}>{t('Terms of Use')}</span>}
         </Link>
         <Link mt="20px" href={privacyAndPoliceLink} fontSize="14px" target="_blank">
-          {isPushed ?
-            <PadlockIcon /> :
+          {isPushed ? (
+            <PadlockIcon />
+          ) : (
             <Tooltip title={t('Privacy Policy')}>
               <div>
                 <PadlockIcon />
               </div>
             </Tooltip>
-          }
+          )}
           {isPushed && <span style={{ opacity: 0.5, marginLeft: 12 }}>{t('Privacy Policy')}</span>}
         </Link>
       </DocumentEntry>
