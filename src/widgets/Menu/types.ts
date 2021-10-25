@@ -40,6 +40,7 @@ export interface MenuEntry {
   blink?: boolean
   calloutClass?: string
   initialOpenState?: boolean
+  external?: boolean
 }
 
 export interface ModalOptions {

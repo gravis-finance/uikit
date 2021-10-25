@@ -149,7 +149,8 @@ export const NotConnected: React.FC = () => {
     {
       label: t('mainMenu.home'),
       icon: 'HomeIcon',
-      href: '/',
+      href: 'https://exchange.gravis.finance',
+      external: true
     },
     {
       label: t('mainMenu.trade'),
@@ -158,6 +159,7 @@ export const NotConnected: React.FC = () => {
         {
           label: t('swap'),
           href: 'https://exchange.gravis.finance',
+          external: true
         },
         {
           label: t('mainMenu.liquidity'),
