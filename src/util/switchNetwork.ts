@@ -5,6 +5,7 @@ const switchNetwork = (value: string, withReload: boolean, history: { push: any,
     pathname: history.location.pathname,
     search: searchParams.toString(),
   })
+  localStorage.setItem('chainId', value)
   if (withReload) window.location.reload()
 }
 
