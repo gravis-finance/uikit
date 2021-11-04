@@ -258,6 +258,7 @@ const Menu: React.FC<NavProps> = ({
   subscribePushEvent,
   disableEthereum,
   bscAndPoly,
+                                    networkSwitchItemCallback
 }) => {
   const { isXl } = useMatchBreakpoints()
   const isMobile = isXl === false
@@ -330,6 +331,7 @@ const Menu: React.FC<NavProps> = ({
               ethereum={ethereum}
               disableEthereum={disableEthereum}
               bscAndPoly={bscAndPoly}
+              networkSwitchItemCallback={networkSwitchItemCallback}
               {...options}
             />
           )}
