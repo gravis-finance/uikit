@@ -36,7 +36,7 @@ export const walletsConfig = {
     icon: Metamask,
     connectorId: ConnectorNames.Injected,
     connection: {
-      disabled: !(window as any).ethereum,
+      disabled: !(window as any).ethereum || !(window as any).ethereum?.isMetaMask,
       errorModalProps: {
         supportedBrowsers: Object.keys(INSTALL_LINKS.METAMASK),
         installLink: INSTALL_LINKS.METAMASK[browserName]
@@ -53,7 +53,9 @@ export const walletsConfig = {
     icon: TrustWallet,
     connectorId: osName === OsTypes.IOS ? ConnectorNames.WalletConnect : ConnectorNames.Injected,
     connection: {
-      disabled: !(window as any).ethereum,
+      disabled: osName !== OsTypes.IOS ?
+        (!(window as any).ethereum || !(window as any).ethereum?.isTrustWallet) :
+        browserName !== BrowserTypes.MobileSafari,
       errorModal: IncorrectBrowserModal
     }
   },
@@ -62,7 +64,7 @@ export const walletsConfig = {
     icon: TokenPocket,
     connectorId: ConnectorNames.Injected,
     connection: {
-      disabled: !(window as any).ethereum,
+      disabled: !(window as any).ethereum || !(window as any).ethereum?.isTokenPocket,
       errorModal: IncorrectBrowserModal
     }
   },
@@ -80,10 +82,10 @@ export const walletsConfig = {
     icon: BinanceChain,
     connectorId: ConnectorNames.BSC,
     connection: {
-      disabled: !(window as any).ethereum,
+      disabled: !(window as any).BinanceChain,
       errorModalProps: {
         supportedBrowsers: Object.keys(INSTALL_LINKS.BINANCE_CHAIN),
-        installLink: INSTALL_LINKS.METAMASK[browserName]
+        installLink: INSTALL_LINKS.BINANCE_CHAIN[browserName]
       },
       errorModal: isMobile ?
         IncorrectBrowserModal :
@@ -97,7 +99,7 @@ export const walletsConfig = {
     icon: SafePal,
     connectorId: ConnectorNames.Injected,
     connection: {
-      disabled: !(window as any).ethereum,
+      disabled: !(window as any).ethereum || !(window as any).ethereum?.isSafePal,
       errorModal: IncorrectBrowserModal
     }
   },
@@ -124,7 +126,7 @@ export const networksConfig = {
     label: 'BSC',
     chainId: production ? '56' : '97',
     wallets: isMobile
-      ? [walletsConfig.metamask, walletsConfig.walletConnect, walletsConfig.trustWallet, walletsConfig.tokenPocket]
+      ? [walletsConfig.metamask, walletsConfig.walletConnect, walletsConfig.trustWallet, walletsConfig.tokenPocket, walletsConfig.safePal]
       : [walletsConfig.metamask, walletsConfig.walletConnect, walletsConfig.binanceChain],
   },
   polygon: {
@@ -132,7 +134,7 @@ export const networksConfig = {
     icon: Polygon,
     label: 'Polygon',
     chainId: production ? '137' : '80001',
-    wallets: isMobile ? [walletsConfig.walletConnect] : [walletsConfig.metamask, walletsConfig.walletConnect],
+    wallets: isMobile ? [walletsConfig.walletConnect, walletsConfig.safePal] : [walletsConfig.metamask, walletsConfig.walletConnect],
   },
   ethereum: {
     title: 'Ethereum',
