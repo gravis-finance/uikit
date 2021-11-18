@@ -10,7 +10,6 @@
 /dist
 /storybook-static
 
-.npmrc
 # misc
 .DS_Store
 .idea
