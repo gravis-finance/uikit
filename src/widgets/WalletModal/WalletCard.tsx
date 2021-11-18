@@ -1,11 +1,14 @@
 import React from 'react'
 import styled, { css } from 'styled-components'
+
 import Button from '../../components/Button/Button'
 import Text from '../../components/Text/Text'
 import { connectorLocalStorageKey, networks } from './config'
 import { Login, WalletsConfig } from './types'
 import Flex from '../../components/Flex/Flex'
 import { CheckmarkCircleIcon } from '../../components/Svg'
+import { useModal } from '../Modal'
+import { ConnectorNames } from '.'
 
 interface Props {
   walletConfig: WalletsConfig
@@ -103,16 +106,26 @@ const WalletCard: React.FC<Props> = ({
   const disabled = disabledProp || !networks.some(
     (network) => network?.title === selectedNetwork && network?.wallets.some((wallet) => wallet?.title === title)
   )
-
-  const onClick = () => {
-    window.localStorage.setItem(connectorLocalStorageKey, walletConfig.connectorId)
-    login(walletConfig.connectorId)
+  const ErrorModal = walletConfig.connection.errorModal
+  const connect = (connectorId: ConnectorNames) => {
+    window.localStorage.setItem(connectorLocalStorageKey, connectorId)
+    login(connectorId)
     setSelectedWallet(title)
     onDismiss()
     if (withReload)
       setTimeout(() => {
         window.location.reload()
       }, 1000)
+  }
+  const [openModal] = useModal(<ErrorModal connect={connect} {...walletConfig.connection.errorModalProps} />)
+
+  const onClick = () => {
+    if (walletConfig.connection.disabled) {
+      openModal()
+
+      return
+    }
+    connect(walletConfig.connectorId)
   }
 
   return (

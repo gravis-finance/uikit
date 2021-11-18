@@ -1,43 +1,105 @@
-import { isMobile } from 'react-device-detect'
+import { isMobile, browserName, osName, BrowserTypes, OsTypes } from 'react-device-detect'
+
 import Metamask from './icons/Metamask'
 // import MathWallet from './icons/MathWallet'
 import TokenPocket from './icons/TokenPocket'
 import TrustWallet from './icons/TrustWallet'
 import WalletConnect from './icons/WalletConnect'
 import BinanceChain from './icons/BinanceChain'
+import SafePal from './icons/SafePal'
 import Binance from './icons/Binance'
 import Huobi from './icons/Huobi'
 import Polygon from './icons/Polygon'
 import Ethereum from './icons/Ethereum'
 import { WalletsConfig, ConnectorNames, NetworksConfig } from './types'
+import IsNotSafariModal from './IsNotSafariModal'
+import IncorrectBrowserModal from './IncorrectBrowserModal'
+import WalletExtensionInstallModal from './WalletExtensionInstallModal'
+import BrowserNotSupported from './BrowserNotSupported'
 
 const production = process.env.REACT_APP_NODE_ENV === 'production'
+
+export const INSTALL_LINKS = {
+  METAMASK: {
+    [BrowserTypes.Chrome]: 'https://chrome.google.com/webstore/detail/metamask/nkbihfbeogaeaoehlefnkodbefgpgknn',
+    [BrowserTypes.Firefox]: 'https://addons.mozilla.org/en-US/firefox/addon/ether-metamask/'
+  } as any,
+  BINANCE_CHAIN: {
+    [BrowserTypes.Chrome]: 'https://chrome.google.com/webstore/detail/binance-wallet/fhbohimaelbohpjbbldcngcnapndodjp',
+    [BrowserTypes.Firefox]: 'https://addons.mozilla.org/en-US/firefox/addon/binance-chain/'
+  } as any
+}
 
 export const walletsConfig = {
   metamask: {
     title: 'Metamask',
     icon: Metamask,
     connectorId: ConnectorNames.Injected,
+    connection: {
+      disabled: !(window as any).ethereum,
+      errorModalProps: {
+        supportedBrowsers: Object.keys(INSTALL_LINKS.METAMASK),
+        installLink: INSTALL_LINKS.METAMASK[browserName]
+      },
+      errorModal: isMobile ?
+        IncorrectBrowserModal :
+        browserName in INSTALL_LINKS.METAMASK ?
+          WalletExtensionInstallModal :
+          BrowserNotSupported
+    }
   },
   trustWallet: {
     title: 'Trust Wallet',
     icon: TrustWallet,
-    connectorId: ConnectorNames.Injected,
+    connectorId: osName === OsTypes.IOS ? ConnectorNames.WalletConnect : ConnectorNames.Injected,
+    connection: {
+      disabled: !(window as any).ethereum,
+      errorModal: IncorrectBrowserModal
+    }
   },
   tokenPocket: {
     title: 'Token Pocket',
     icon: TokenPocket,
     connectorId: ConnectorNames.Injected,
+    connection: {
+      disabled: !(window as any).ethereum,
+      errorModal: IncorrectBrowserModal
+    }
   },
   walletConnect: {
     title: 'Wallet Connect',
     icon: WalletConnect,
     connectorId: ConnectorNames.WalletConnect,
+    connection: {
+      disabled: osName === OsTypes.IOS && browserName !== BrowserTypes.MobileSafari,
+      errorModal: IsNotSafariModal
+    }
   },
   binanceChain: {
     title: 'Binance Chain Wallet',
     icon: BinanceChain,
     connectorId: ConnectorNames.BSC,
+    connection: {
+      disabled: !(window as any).ethereum,
+      errorModalProps: {
+        supportedBrowsers: Object.keys(INSTALL_LINKS.BINANCE_CHAIN),
+        installLink: INSTALL_LINKS.METAMASK[browserName]
+      },
+      errorModal: isMobile ?
+        IncorrectBrowserModal :
+        browserName in INSTALL_LINKS.BINANCE_CHAIN ?
+          WalletExtensionInstallModal :
+          BrowserNotSupported
+    }
+  },
+  safePal: {
+    title: 'SafePal',
+    icon: SafePal,
+    connectorId: ConnectorNames.Injected,
+    connection: {
+      disabled: !(window as any).ethereum,
+      errorModal: IncorrectBrowserModal
+    }
   },
   // mathWallet:  {
   //   title: 'Math Wallet',

@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import styled from 'styled-components'
 import { useTranslation } from 'react-multi-lang'
 import { useHistory } from 'react-router-dom'
+
 import { Link } from '../../components/Link'
 import { Modal } from '../Modal'
 import WalletCard from './WalletCard'
@@ -48,7 +49,7 @@ const StyledPoint = styled.div`
   }
 `
 
-const StyledFlex = styled(Flex)<{ hecoOnly?: boolean }>`
+const StyledFlex = styled(Flex) <{ hecoOnly?: boolean }>`
   margin-left: ${({ hecoOnly }) => (hecoOnly ? '0' : '60px')};
   flex-wrap: wrap;
   > * {
@@ -71,7 +72,7 @@ const StyledFlexPoint = styled(Flex)`
   }
 `
 
-const StyledWalletFlex = styled(StyledFlex)<{ hecoOnly?: boolean }>`
+const StyledWalletFlex = styled(StyledFlex) <{ hecoOnly?: boolean }>`
   > div:last-child {
     margin-right: ${({ hecoOnly }) => (hecoOnly ? '0' : '64px')};
     margin: ${({ hecoOnly }) => (hecoOnly ? 'auto' : '')};
@@ -87,7 +88,7 @@ const ConnectModal: React.FC<Props> = ({
   login,
   onDismiss = () => null,
 }) => {
-  const {networks} = NetworksConfigObject
+  const { networks } = NetworksConfigObject
   const [termsChecked, setTermsChecked] = useState(false)
   const id: string = getNetworkId()
   const history = useHistory()

@@ -61,18 +61,12 @@ const UserBlock: React.FC<Props> = (props) => {
     login,
     logout,
     buttonTitle,
-    modalTitle,
-    modelLogout,
     balance,
     explorerName,
     explorerLink,
     onTransactionHistoryHandler,
     balanceHook,
     networkSwitchVisible,
-    bscOnly,
-    ethereum,
-    disableEthereum,
-    bscAndPoly,
     networkSwitchItemCallback
   } = props
 
@@ -81,22 +75,17 @@ const UserBlock: React.FC<Props> = (props) => {
     login,
     logout,
     account,
-    modalTitle,
-    modelLogout,
     balance,
     explorerName,
     explorerLink,
     onTransactionHistoryHandler,
     balanceHook,
-    bscOnly,
-    ethereum,
-    bscAndPoly
   )
   const accountEllipsis = account ? `${account.substring(0, 4)}...${account.substring(account.length - 4)}` : null
 
   return (
     <StyledFlex alignItems="center" style={{ pointerEvents: 'all' }}>
-      {networkSwitchVisible && <NetworkSwitch networks={networks} isProduction={isProduction} ethereum={ethereum} disableEthereum={disableEthereum} networkSwitchItemCallback={networkSwitchItemCallback}/>}
+      {networkSwitchVisible && <NetworkSwitch networks={networks} isProduction={isProduction} networkSwitchItemCallback={networkSwitchItemCallback} />}
       {account ? (
         <Button
           size="md"

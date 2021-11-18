@@ -1,5 +1,7 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
+import copy from 'copy-to-clipboard'
+
 import Text from '../../components/Text/Text'
 import { CopyIcon } from '../../components/Svg'
 
@@ -35,13 +37,11 @@ const CopyToClipboard: React.FC<Props> = ({ toCopy, children, ...props }) => {
       small
       bold
       onClick={() => {
-        if (navigator.clipboard) {
-          navigator.clipboard.writeText(toCopy)
-          setIsTooltipDisplayed(true)
-          setTimeout(() => {
-            setIsTooltipDisplayed(false)
-          }, 1000)
-        }
+        copy(toCopy)
+        setIsTooltipDisplayed(true)
+        setTimeout(() => {
+          setIsTooltipDisplayed(false)
+        }, 1000)
       }}
       {...props}
     >

@@ -173,8 +173,6 @@ type Props = {
   asIcon?: boolean
   withReload?: boolean
   networks?: typeof NETWORKS
-  ethereum?: boolean
-  disableEthereum?: boolean
   networkSwitchItemCallback?: (chainId: string) => void
 } & React.ComponentProps<typeof StyledDropDown>
 
@@ -184,8 +182,6 @@ const NetworkSwitch: React.FC<Props> = ({
   asIcon,
   withReload = false,
   networks = NetworksConfigObject.networks,
-  ethereum,
-  disableEthereum,
   networkSwitchItemCallback,
   ...restProps
 }) => {

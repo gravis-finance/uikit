@@ -1,13 +1,15 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
 import { useTranslation } from 'react-multi-lang'
+import copy from 'copy-to-clipboard'
+
 import InputCopy from '../Svg/Icons/InputCopy'
 
 export type CopyButtonType = {
   textToCopy: string
 }
 
-const StyledInputCopy = styled(InputCopy)<{ isCopyTriggered?: boolean }>`
+const StyledInputCopy = styled(InputCopy) <{ isCopyTriggered?: boolean }>`
   cursor: pointer;
 
   > * {
@@ -57,11 +59,9 @@ const CopyButton: React.FC<CopyButtonType> = ({ textToCopy }) => {
   const t = useTranslation()
 
   const CopyToClipboard = () => {
-    if (navigator.clipboard) {
-      navigator.clipboard.writeText(textToCopy)
-      setCopyTriggered(true)
-      setTimeout(() => setCopyTriggered(false), 2000)
-    }
+    copy(textToCopy)
+    setCopyTriggered(true)
+    setTimeout(() => setCopyTriggered(false), 2000)
   }
 
   return (

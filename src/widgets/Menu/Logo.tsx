@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
+
 import { LogoIcon } from '../../components/Svg'
 import Flex from '../../components/Flex/Flex'
 import { LogoIcon as LogoWithText } from './icons'
@@ -46,7 +47,7 @@ const Logo: React.FC<Props> = ({ isDark, href, isPushed }) => {
   return (
     <Flex>
       {isAbsoluteUrl ? (
-        <StyledLink as="a" to={href} aria-label="gravis home page">
+        <StyledLink as="a" href={href} aria-label="gravis home page">
           {innerLogo}
         </StyledLink>
       ) : (

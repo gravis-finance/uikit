@@ -78,6 +78,7 @@ export { default as EthereumNetworkIcon } from './Icons/EthereumNetwork'
 export { default as DocumentIcon } from "./Icons/Document"
 export { default as PadlockIcon } from "./Icons/Padlock"
 export { default as GRVXIcon } from "./Icons/GRVX"
+export { default as InputCopyIcon } from "./Icons/InputCopy"
 
 export { default as Svg } from './Svg'
 export type { SvgProps } from './types'

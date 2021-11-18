@@ -1,4 +1,5 @@
 import { FC } from 'react'
+
 import { SvgProps } from '../../components/Svg/types'
 
 export enum ConnectorNames {
@@ -13,6 +14,11 @@ export interface WalletsConfig {
   title: string
   icon: FC<SvgProps>
   connectorId: ConnectorNames
+  connection: {
+    disabled: boolean,
+    errorModalProps?: any,
+    errorModal: any
+  }
 }
 
 export interface NetworksConfig {

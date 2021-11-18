@@ -1,4 +1,5 @@
 import React from 'react'
+
 import Button from '../../components/Button/Button'
 import Flex from '../../components/Flex/Flex'
 import useWalletModal from './useWalletModal'
@@ -17,16 +18,15 @@ export const Wallet: React.FC = () => {
     })
   }
   const { onPresentConnectModal, onPresentAccountModal } = useWalletModal(
+    false,
     () => null,
     () => null,
     '0xbdda50183d817c3289f895a4472eb475967dc980',
     '',
     '',
     '',
-    '',
-    '',
-    '',
-    later,
+    null,
+    null,
     async () => null
   )
   return (
