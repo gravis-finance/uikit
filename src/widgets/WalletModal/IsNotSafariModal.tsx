@@ -33,17 +33,15 @@ const IsNotSafariModal: React.FC<{ onDismiss?: any }> = ({
   const [toasts, setToasts] = useState<any>([])
 
   const copyToClipboard = () => {
-    if (navigator.clipboard) {
-      const now = Date.now()
-      const toast = {
-        id: `id-${now}`,
-        title: `Copied`,
-        description: 'Page address copied to clipboard.',
-        type: alertVariants.SUCCESS,
-      }
-      setToasts([toast])
-      copy(window.location.href)
+    const now = Date.now()
+    const toast = {
+      id: `id-${now}`,
+      title: `Copied`,
+      description: 'Page address copied to clipboard.',
+      type: alertVariants.SUCCESS,
     }
+    setToasts([toast])
+    copy(window.location.href)
   }
 
   const handleRemove = (id: string) => {
