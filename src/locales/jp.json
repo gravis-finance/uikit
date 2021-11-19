@@ -50,5 +50,11 @@
   "viewOnEtherScan": "EtherScanで見る",
   "MaticInfo": "Maticで見る",
   "transactionHistory": "トランザクション履歴",
-  "disconnect": "接続解除"
+  "disconnect": "接続解除",
+
+  "Terms of Use": "利用規約",
+  "Privacy Policy": "プライバシーポリシー",
+  "Accept": "受け入れる",
+  "and": "と",
+  "I read and accept": "私は読んで受け入れます"
 }

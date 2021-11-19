@@ -1,0 +1,61 @@
+{
+  "copiedToClipBoard": "Copiado al portapapeles",
+  "maxAmountLabel": "Máximo",
+  "maintenance": {
+    "title": "Lo sentimos, estamos en mantenimiento",
+    "text": "Volveremos en breve. Mientras tanto, echa un vistazo a nuestras redes sociales."
+  },
+  "Something went wrong": "Algo salió mal",
+  "pageNotFound": "La página solicitada encontrada no puede ser.",
+  "May the force be with you!": "¡Que la fuerza esté con ustedes!",
+  "Go back to main site": "Volver al sitio principal",
+  "Or subscribe to our social networks": "O suscríbete a nuestras redes sociales",
+  "mainMenu": {
+    "home": "Hogar",
+    "trade": "Intercambio",
+    "liquidity": "Reserva",
+    "analytics": {
+      "analytics": "Analítica",
+      "overview": "Visión general",
+      "tokens": "Tokens",
+      "pairs": "Pares"
+    },
+    "ino": {
+      "ino": "INO"
+    },
+    "more": "Más",
+    "farming": "Agricultura",
+    "asteroidMining": "Evervoid",
+    "captainsIno": "Captains INO",
+    "bridge": "GRVX Puente",
+    "staking": "GRVX Staking",
+    "farms": "Granja"
+  },
+  "swap": "Intercambio",
+  "networkSwitchingError": "Error de conmutación de red",
+  "differentNetworks": "Descubrimos que tienes diferentes redes\nseleccionado en su billetera y en nuestro sitio.",
+  "pleaseChoose": "Elija qué hacer.",
+  "changeNetworkInTheWallet": "Cambiar de red en la billetera",
+  "orChangeNetwork": "O cambia de red en nuestro sitio",
+  "connectToWallet": "Conectarse a una billetera",
+  "chooseNetwork": "Seleccione Red",
+  "chooseWallet": "Seleccione Billetera",
+  "account": "Cuenta",
+  "balanceTitle": "Balance",
+  "networks": "La red",
+  "binanceSmartChain": "Cadena Inteligente de Binance",
+  "huobiEcoChain": "Cadena Huobi ECO",
+  "Polygon (Matic)": "Polygon (Matic)",
+  "viewOnBscscan": "Ver en BSCScan",
+  "viewOnHecoInfo": "Ver en HecoInfo",
+  "viewOnEtherScan": "View on EtherScan",
+  "MaticInfo": "Ver en PolygonScan",
+  "transactionHistory": "Historial de transacciones",
+  "disconnect": "Desconectar",
+
+  "Terms of Use": "Condiciones de uso",
+  "Privacy Policy": "Política de Privacidad",
+  "Accept": "Aceptar",
+  "and": "e",
+  "I read and accept": "Leo y acepto"
+}

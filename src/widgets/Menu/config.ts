@@ -1,4 +1,4 @@
-import { EnglishIcon, JapaneseIcon, ChineseIcon, RussianIcon } from './icons'
+import { EnglishIcon, JapaneseIcon, ChineseIcon, RussianIcon, SpanishIcon } from './icons'
 
 export const links = [
   {
@@ -115,6 +115,10 @@ export const availableLanguages = [
   {
     name: 'RU',
     icon: RussianIcon,
+  },
+  {
+    name: 'ES',
+    icon: SpanishIcon,
   },
 ]
 
