@@ -49,5 +49,11 @@
   "viewOnEtherScan": "在EtherScan浏览器上查看",
   "MaticInfo": "在Matic浏览器上查看",
   "transactionHistory": "交易历史记录",
-  "disconnect": "链接断开"
+  "disconnect": "链接断开",
+
+  "Terms of Use": "使用条款",
+  "Privacy Policy": "隐私政策",
+  "Accept": "接受",
+  "and": "和",
+  "I read and accept": "我阅读并接受"
 }

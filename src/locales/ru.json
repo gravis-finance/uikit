@@ -25,7 +25,7 @@
     },
     "more": "Подробнее",
     "farming": "Фарминг",
-    "asteroidMining": "(A)steroid Mining",
+    "asteroidMining": "Evervoid",
     "captainsIno": "Капитаны INO",
     "bridge": "GRVX Bridge",
     "staking": "Стейкинг GRVX",
@@ -51,5 +51,11 @@
   "viewOnEtherScan": "Просмотр на EtherScan",
   "MaticInfo": "Просмотр на Matic",
   "transactionHistory": "История транзакций",
-  "disconnect": "Отключиться"
+  "disconnect": "Отключиться",
+
+  "Terms of Use": "Условия Использования",
+  "Privacy Policy": "Политика Конфиденциальности",
+  "Accept": "Принять",
+  "and": "и",
+  "I read and accept": "Прочитал и принял"
 }

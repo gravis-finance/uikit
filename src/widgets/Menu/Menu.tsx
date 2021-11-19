@@ -18,6 +18,7 @@ import en from '../../locales/en.json'
 import jp from '../../locales/jp.json'
 import cn from '../../locales/cn.json'
 import ru from '../../locales/ru.json'
+import es from '../../locales/es.json'
 import { localStorageLanguageItem } from '../../constants'
 import LanguageSwitch from './LanguageSwitch'
 import { getDefaultLanguage } from '../..'
@@ -227,7 +228,7 @@ const defaultSetSelectedLanguage = (name: string) => {
   setLanguage(name.toLowerCase())
 }
 
-setTranslations({ en, jp, cn, ru })
+setTranslations({ en, jp, cn, ru, es })
 setDefaultLanguage('en')
 
 const Menu: React.FC<NavProps> = ({
@@ -247,8 +248,6 @@ const Menu: React.FC<NavProps> = ({
   explorerName,
   explorerLink,
   onTransactionHistoryHandler,
-  betaText = "This is the Beta version. You can't add liquidity here anymore. Press here to switch to the main version.",
-  betaLink,
   balanceHook = defaultBalanceHook,
   setSelectedLanguage = defaultSetSelectedLanguage,
   customLanguage,
@@ -297,16 +296,6 @@ const Menu: React.FC<NavProps> = ({
           <StyledLogoWithoutText>
             <Logo width="40px" height="40px" />
           </StyledLogoWithoutText>
-          {betaText && (
-            <StyledBetaIcon isPushed={isPushed}>
-              {/* <BetaIcon height="28px" width="43px" /> */}
-              <StyledText color="#8990A5">
-                {betaText.slice(0, betaText?.lastIndexOf('here'))}
-                <StyledClickableLink href={betaLink}>here</StyledClickableLink>
-                {betaText.slice(betaText?.lastIndexOf('here') + 4)}
-              </StyledText>
-            </StyledBetaIcon>
-          )}
           <LanguageContainer isPushed={isPushed}>
             <LanguageSwitch setSelectedLanguage={setSelectedLanguage} />
           </LanguageContainer>
