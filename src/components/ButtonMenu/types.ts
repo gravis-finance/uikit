@@ -13,4 +13,5 @@ export interface ButtonMenuProps {
   size?: Sizes
   children: React.ReactElement[],
   style?: CSSProperties,
+  className?: string
 }
