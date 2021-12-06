@@ -56,8 +56,9 @@ const BalancePlaceholder = styled.div`
 
 const NumbersContainer = styled.div<{ displayMaxButton: boolean }>`
   position: absolute;
-  right: ${({ displayMaxButton }) => displayMaxButton ? '75px' : '15px'};
-  top: calc(50% - 14px);
+  right: ${({ displayMaxButton }) => (displayMaxButton ? '75px' : '15px')};
+  top: 50%;
+  transform: translateY(-50%);
 `
 
 const NumericalArrowContainer = styled.div<{ reversed?: boolean }>`
@@ -80,11 +81,11 @@ const NumericalArrowContainer = styled.div<{ reversed?: boolean }>`
   }
 `
 
-const StyledMaxButton = styled(Button) <{ isFocused?: boolean }>`
-  position: relative;
-  right: ${({ isFocused }) => (isFocused ? '88' : '55')}px;
-  margin-top: auto;
-  margin-bottom: auto;
+const StyledMaxButton = styled(Button)<{ isFocused?: boolean }>`
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
   min-width: 45px;
 `
 
@@ -143,12 +144,11 @@ const NumericalInput: React.FC<Props> = ({
         inputElement.value = 0
       }
       // @ts-ignore
-      else if (parseInt(inputRef.current.value, 10) < maxAmount)
-        {
-          // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-          // @ts-ignore
-          inputElement.value = parseInt(inputRef.current.value, 10) + 1
-        }
+      else if (parseInt(inputRef.current.value, 10) < maxAmount) {
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-ignore
+        inputElement.value = parseInt(inputRef.current.value, 10) + 1
+      }
     } else if (!inputRef?.current?.value)
       // @ts-ignore
       inputElement.value = 0

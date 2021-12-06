@@ -20,6 +20,7 @@ const ButtonMenuItem: React.FC<ButtonMenuItemProps> = ({
   size = sizes.MD,
   variant = variants.PRIMARY,
   as,
+  style,
   ...props
 }) => {
   return (
@@ -28,7 +29,7 @@ const ButtonMenuItem: React.FC<ButtonMenuItemProps> = ({
       size={size}
       variant={variant}
       isactive={isactive}
-      style={!isactive ? { color: '#909090' } : {}}
+      style={!isactive ? { color: '#909090', ...style } : { ...style }}
       {...props}
     />
   )
