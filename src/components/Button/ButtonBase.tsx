@@ -1,7 +1,7 @@
 import styled from 'styled-components'
-import { space, SpaceProps, layout, LayoutProps, typography, TypographyProps } from 'styled-system'
+import { space, SpaceProps, layout, LayoutProps, typography, TypographyProps, color, ColorProps } from 'styled-system'
 
-const ButtonBase = styled.button<SpaceProps & LayoutProps & TypographyProps>`
+const ButtonBase = styled.button<SpaceProps & LayoutProps & TypographyProps & ColorProps>`
   font: inherit;
   font-size: 1em;
   display: inline-flex;
@@ -25,6 +25,7 @@ const ButtonBase = styled.button<SpaceProps & LayoutProps & TypographyProps>`
   ${space}
   ${layout}
   ${typography}
+  ${color}
   
   &[disabled] {
     pointer-events: none;
