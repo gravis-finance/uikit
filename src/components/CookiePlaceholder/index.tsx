@@ -2,9 +2,11 @@ import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
 import { Button } from '../Button'
 import { cookiesAcceptedParam } from '../../constants'
+import { useTranslation } from 'react-multi-lang'
 
 const Wrapper = styled.div<{ isPushed: boolean, isHidden: boolean }>`
   position: fixed;
+  z-index: 123;
   bottom: 20px;
   left: 0;
   width: 100%;
@@ -21,6 +23,22 @@ const Wrapper = styled.div<{ isPushed: boolean, isHidden: boolean }>`
   padding: 24px;
   align-items: center;
   transition: visibility 300ms ease-in-out, opacity 300ms ease-in-out;
+  
+  @media screen and (max-width: 968px) {
+    margin-left: 20px;
+    ${({ isPushed }) => isPushed ? `
+    width: calc(100% - 348px);
+  ` : `
+    width: calc(100% - 40px);
+  `}
+  }
+  
+  @media screen and (max-width: 890px) {
+    flex-direction: column;
+    > div {
+      margin-bottom: 12px;
+    }
+  }
   
   ${({ isHidden }) => isHidden ? `
     visibility: hidden;
@@ -81,15 +99,16 @@ const CookiePlaceholder: React.FC<Props> = ({ isPushed }) => {
     else setIsHidden(false)
   }, [])
 
+  const t = useTranslation()
+
   return (
     <Wrapper isPushed={isPushed} isHidden={isHidden}>
       <Info>
-        <Title>This website uses cookies</Title>
-        <Description>We use cookies and similar technologies on our website and process personal data about you, such as your IP address.
-          We also share this data with third parties. <Link href="https://en.wikipedia.org/wiki/HTTP_cookie" target="_blank">Learn more</Link></Description>
+        <Title>{t('This website uses cookies')}</Title>
+        <Description>{t('cookiesDescription')} <Link href="https://en.wikipedia.org/wiki/HTTP_cookie" target="_blank">{t('Learn more')}</Link></Description>
       </Info>
       <Button variant="primary" style={{ whiteSpace: 'pre', marginLeft: 16 }} onClick={acceptCookies}>
-        Accept all and close
+        {t('Accept all and close')}
       </Button>
     </Wrapper>
   )
