@@ -20,6 +20,7 @@ const Wrapper = styled.div<{ isPushed: boolean, isHidden: boolean }>`
     width: calc(100% - 128px);
   `}
   display: flex;
+  justify-content: space-between;
   padding: 24px;
   align-items: center;
   transition: visibility 300ms ease-in-out, opacity 300ms ease-in-out;
