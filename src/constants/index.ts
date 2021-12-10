@@ -1,6 +1,7 @@
 // eslint-disable-next-line import/prefer-default-export
 export const localStorageLanguageItem = 'gravisApplicationsLanguage'
 export const urlSearchLanguageParam = 'gravisLanguage'
+export const cookiesAcceptedParam = 'cookiesAccepted'
 
 export const comparedNetworksIds = [
   {
