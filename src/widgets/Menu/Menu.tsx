@@ -24,6 +24,7 @@ import LanguageSwitch from './LanguageSwitch'
 import { getDefaultLanguage } from '../..'
 import GravisTokenPrice from './GravisTokenPrice'
 import { TokenConfig } from '../../config/tokenPrice'
+import CookiePlaceholder from '../../components/CookiePlaceholder'
 
 const Wrapper = styled.div`
   position: relative;
@@ -180,42 +181,6 @@ const LanguageContainer = styled.div<{ isPushed?: boolean }>`
   }
 `
 
-const StyledText = styled(Text)`
-  font-size: 14px;
-  font-weight: 500;
-  @media screen and (max-width: 968px) {
-    position: absolute;
-    width: 142px;
-    background: #ffffff;
-    box-shadow: 0px 2px 16px rgba(185, 189, 208, 0.48);
-    border-radius: 6px;
-    font-size: 11px;
-    text-align: center;
-    top: 40px;
-    left: -50px;
-    padding: 14px;
-    :before {
-      content: '\\A';
-      border-style: solid;
-      border-width: 15px 15px 15px 0;
-      border-color: transparent white transparent transparent;
-      position: absolute;
-      top: -15px;
-      left: 65px;
-      transform: rotate(90deg);
-    }
-  }
-`
-
-const StyledClickableLink = styled.a`
-  color: #6c5dd3;
-  cursor: pointer;
-
-  :hover {
-    color: #8677f0;
-  }
-`
-
 function defaultBalanceHook() {
   return new Promise((resolve) => {
     setTimeout(() => {
@@ -340,6 +305,7 @@ const Menu: React.FC<NavProps> = ({
         <Inner isPushed={isPushed} showMenu={showMenu}>
           {children}
         </Inner>
+        <CookiePlaceholder isPushed={isPushed} />
         <MobileOnlyOverlay show={isPushed} onClick={() => setIsPushed(false)} role="presentation" />
       </BodyWrapper>
       {/* HERE */}
