@@ -57,5 +57,10 @@
   "Privacy Policy": "Política de Privacidad",
   "Accept": "Aceptar",
   "and": "e",
-  "I read and accept": "Leo y acepto"
+  "I read and accept": "Leo y acepto",
+
+  "This website uses cookies": "Este sitio web utiliza cookies",
+  "cookiesDescription": "Utilizamos cookies y tecnologías similares en nuestro sitio web y procesamos datos personales sobre usted, como su dirección IP. También compartimos estos datos con terceros.",
+  "Learn more": "Más información",
+  "Accept all and close": "Aceptar todo y cerrar"
 }

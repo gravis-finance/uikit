@@ -55,5 +55,10 @@
   "Privacy Policy": "隐私政策",
   "Accept": "接受",
   "and": "和",
-  "I read and accept": "我阅读并接受"
+  "I read and accept": "我阅读并接受",
+
+  "This website uses cookies": "本网站使用曲奇档案",
+  "cookiesDescription": "我们在我们的网站上使用cookie和类似技术，并处理有关您的个人数据，例如您的IP地址。 我们还与第三方共享这些数据。",
+  "Learn more": "了解更多",
+  "Accept all and close": "接受所有并关闭"
 }
