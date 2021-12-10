@@ -55,12 +55,12 @@ const Info = styled.div`
 const Title = styled.div`
   color: white;
   font-weight: 600;
-  font-size: 18px;
+  font-size: 19px;
   margin-bottom: 8px;
 `
 
 const Description = styled.div`
-  font-size: 13px;
+  font-size: 15px;
   line-height: 19px;
   color: rgba(255, 255, 255, 0.5);
 `
