@@ -41,6 +41,11 @@ const Wrapper = styled.div<{ isPushed: boolean, isHidden: boolean }>`
     }
   }
   
+  @media screen and (max-width: 685px) {
+    margin: 0;
+    width: 100%;
+  }
+  
   ${({ isHidden }) => isHidden ? `
     visibility: hidden;
     opacity: 0;
