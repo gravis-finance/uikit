@@ -42,6 +42,7 @@ export interface MenuEntry {
   calloutClass?: string
   initialOpenState?: boolean
   external?: boolean
+  beta?: boolean
 }
 
 export interface ModalOptions {
