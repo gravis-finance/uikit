@@ -245,7 +245,8 @@ export const NotConnected: React.FC = () => {
     {
       label: t('mainMenu.bridge'),
       icon: 'BridgeIcon',
-      href: 'https://gravis.finance'
+      href: 'https://gravis.finance',
+      beta: true
     },
     {
       label: t('mainMenu.more'),

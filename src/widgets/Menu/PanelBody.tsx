@@ -187,6 +187,27 @@ const HotContainer = styled.div`
   }
 `
 
+const BetaContainer = styled.div`
+  color: white;
+  align-items: center;
+  background-color: transparent;
+  border: 2px solid #009CE1;
+  border-radius: 16px;
+  display: inline-flex;
+  font-size: 10px;
+  font-weight: 400;
+  height: auto;
+  //line-height: 1.5;
+  //padding: 0px 8px;
+  padding: 2px 0;
+  justify-content: center;
+  white-space: nowrap;
+  position: relative;
+  overflow: hidden;
+  width: 42px;
+  // margin-left: 8px;
+`
+
 const PanelBody: React.FC<Props> = ({ isPushed, pushNav, isMobile, links, togglePush, isDark }) => {
   const location = useLocation()
   const t = useTranslation()
@@ -269,6 +290,7 @@ const PanelBody: React.FC<Props> = ({ isPushed, pushNav, isMobile, links, toggle
                     <MenuLink href={entry.href} onClick={handleClick} target={entry.external ? '_blank' : ''}>
                       {iconElement}
                       <LinkLabel isPushed={isPushed}>{entry.label}</LinkLabel>
+                      {entry.beta && <BetaContainer>BETA</BetaContainer>}
                     </MenuLink>
                   </MenuEntry>
                 </Tooltip>

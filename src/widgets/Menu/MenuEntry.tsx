@@ -10,6 +10,7 @@ export interface Props {
   single?: boolean
   blink?: boolean
   hot?: boolean
+  beta?: boolean
 }
 
 const rainbowAnimation = keyframes`

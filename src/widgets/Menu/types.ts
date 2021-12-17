@@ -30,6 +30,7 @@ export interface MenuSubEntry {
   calloutClass?: string
   external?: boolean
   hot?: boolean
+  beta?: boolean
 }
 
 export interface MenuEntry {
