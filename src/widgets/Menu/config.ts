@@ -49,6 +49,11 @@ export const links = [
     items: [{ label: 'Big Bang Round', href: 'https://gravis.finance', external: true }],
   },
   {
+    label: 'Public Round',
+    icon: 'TeamsIcon',
+    href: `/`,
+  },
+  {
     label: 'More',
     icon: 'MoreIcon',
     items: [
@@ -96,7 +101,7 @@ export const socials = [
     label: 'Discord',
     icon: 'DiscordIcon',
     href: 'http://discord.io/GravisFinance',
-  }
+  },
 ]
 
 export const availableLanguages = [

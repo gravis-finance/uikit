@@ -9,6 +9,50 @@ import Menu from './Menu'
 import { MenuEntry } from './MenuEntry'
 import { links } from './config'
 import { urlSearchLanguageParam } from '../../constants'
+import { Svg } from '../../components/Svg'
+
+export const Default: React.FC = () => {
+  return (
+    <div>
+      <Svg viewBox="0 0 18 13">
+        <path d="M6 10.2001L2.5 6.70007C2.11 6.31007 1.49 6.31007 1.1 6.70007C0.709995 7.09007 0.709995 7.71007 1.1 8.10007L5.29 12.2901C5.68 12.6801 6.31 12.6801 6.7 12.2901L17.3 1.70007C17.69 1.31007 17.69 0.690068 17.3 0.300068C16.91 -0.0899316 16.29 -0.0899316 15.9 0.300068L6 10.2001Z" />
+      </Svg>
+      <Svg color="red" viewBox="0 0 18 13">
+        <path d="M6 10.2001L2.5 6.70007C2.11 6.31007 1.49 6.31007 1.1 6.70007C0.709995 7.09007 0.709995 7.71007 1.1 8.10007L5.29 12.2901C5.68 12.6801 6.31 12.6801 6.7 12.2901L17.3 1.70007C17.69 1.31007 17.69 0.690068 17.3 0.300068C16.91 -0.0899316 16.29 -0.0899316 15.9 0.300068L6 10.2001Z" />
+      </Svg>
+      <Svg color="primary" width="50px" viewBox="0 0 18 13">
+        <path d="M6 10.2001L2.5 6.70007C2.11 6.31007 1.49 6.31007 1.1 6.70007C0.709995 7.09007 0.709995 7.71007 1.1 8.10007L5.29 12.2901C5.68 12.6801 6.31 12.6801 6.7 12.2901L17.3 1.70007C17.69 1.31007 17.69 0.690068 17.3 0.300068C16.91 -0.0899316 16.29 -0.0899316 15.9 0.300068L6 10.2001Z" />
+      </Svg>
+    </div>
+  )
+}
+
+const context = require.context('./icons', true, /.tsx$/)
+const components = context.keys().reduce((accum, path) => {
+  const file = path.substring(2).replace('.tsx', '')
+  return {
+    ...accum,
+    [file]: context(path),
+  }
+}, {})
+
+export const Icons: React.FC = () => {
+  return (
+    <Flex justifyContent="start" alignItems="center" flexWrap="wrap" style={{ maxWidth: '800px' }}>
+      {Object.keys(components).map((file) => {
+        const Icon = components[file].default
+        return (
+          <Flex key={file} flexDirection="column" alignItems="center" py="4px" px="8px" mb="32px">
+            <Icon size="32px" />
+            <Text color="textSubtle" fontSize="12px">
+              {file}
+            </Text>
+          </Flex>
+        )
+      })}
+    </Flex>
+  )
+}
 
 // import useModal from '../Modal/useModal'
 
@@ -150,7 +194,7 @@ export const NotConnected: React.FC = () => {
       label: t('mainMenu.home'),
       icon: 'HomeIcon',
       href: 'https://exchange.gravis.finance',
-      external: true
+      external: true,
     },
     {
       label: t('mainMenu.trade'),
@@ -159,7 +203,7 @@ export const NotConnected: React.FC = () => {
         {
           label: t('swap'),
           href: 'https://exchange.gravis.finance',
-          external: true
+          external: true,
         },
         {
           label: t('mainMenu.liquidity'),
@@ -188,7 +232,7 @@ export const NotConnected: React.FC = () => {
           label: 'Transfer NFT',
           href: 'https://github.com/gravis',
         },
-      ]
+      ],
     },
     {
       label: t('mainMenu.farming'),
@@ -201,7 +245,7 @@ export const NotConnected: React.FC = () => {
         {
           label: t('mainMenu.staking'),
           href: `${process.env.REACT_APP_FARMING_URL}/staking?${urlSearchLanguageParam}=${t('language')}`,
-          hot: true
+          hot: true,
         },
         // {
         //   label: t('mainMenu.farming.autoFarms'),
@@ -240,13 +284,13 @@ export const NotConnected: React.FC = () => {
       label: t('mainMenu.asteroidMining'),
       icon: 'AsteroidMiningIcon',
       blink: true,
-      items: [{label: t('mainMenu.captainsIno'), href: 'https://gravis.finance', external: true}]
+      items: [{ label: t('mainMenu.captainsIno'), href: 'https://gravis.finance', external: true }],
     },
     {
       label: t('mainMenu.bridge'),
       icon: 'BridgeIcon',
       href: 'https://gravis.finance',
-      beta: true
+      beta: true,
     },
     {
       label: t('mainMenu.more'),

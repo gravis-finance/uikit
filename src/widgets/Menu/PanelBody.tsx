@@ -161,7 +161,7 @@ const HotContainer = styled.div`
   overflow: hidden;
   width: 50px;
   // margin-left: 8px;
-  
+
   :after {
     content: '';
     position: absolute;
@@ -173,7 +173,7 @@ const HotContainer = styled.div`
     transform: skew(-30deg);
     animation: shine-hot 2s ease-in-out infinite;
   }
-  
+
   @keyframes shine-hot {
     0% {
       left: -12px;
@@ -191,7 +191,7 @@ const BetaContainer = styled.div`
   color: white;
   align-items: center;
   background-color: transparent;
-  border: 2px solid #009CE1;
+  border: 2px solid #009ce1;
   border-radius: 16px;
   display: inline-flex;
   font-size: 10px;
@@ -216,7 +216,7 @@ const PanelBody: React.FC<Props> = ({ isPushed, pushNav, isMobile, links, toggle
   const handleClick = isMobile ? () => pushNav(false) : undefined
   const homeLink = links?.find((link) => link.label === 'Home')
 
-  const fillStokeTranslations = [t('mainMenu.home'), t('mainMenu.bridge')]
+  const fillStokeIcons = ['HomeIcon', 'BridgeIcon', 'TeamsIcon']
 
   return (
     <Container>
@@ -283,7 +283,7 @@ const PanelBody: React.FC<Props> = ({ isPushed, pushNav, isMobile, links, toggle
                   <MenuEntry
                     isactive={entry.href === location.pathname}
                     className={calloutClass}
-                    fillStroke={fillStokeTranslations.includes(entry.label)}
+                    fillStroke={fillStokeIcons.includes(entry.icon)}
                     isPushed={isPushed}
                     single
                   >
