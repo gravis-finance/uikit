@@ -27,6 +27,9 @@ export interface NavTheme {
 export interface ChipProps {
   title: string
   color: string
+}
+
+export interface SubChipProps extends ChipProps {
   animation?: boolean
 }
 
@@ -35,7 +38,7 @@ export interface MenuSubEntry {
   href?: string
   calloutClass?: string
   external?: boolean
-  chip?: ChipProps
+  chip?: SubChipProps
 }
 
 export interface MenuEntry {
@@ -47,7 +50,7 @@ export interface MenuEntry {
   calloutClass?: string
   initialOpenState?: boolean
   external?: boolean
-  chip?: Chip
+  chip?: ChipProps
 }
 
 export interface ModalOptions {
