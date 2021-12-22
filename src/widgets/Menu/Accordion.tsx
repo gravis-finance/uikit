@@ -3,8 +3,9 @@ import styled from 'styled-components'
 import { useTranslation } from 'react-multi-lang'
 import { MENU_ENTRY_HEIGHT } from './config'
 import { MenuEntry, LinkLabel } from './MenuEntry'
-import { PushedProps } from './types'
+import { PushedProps, ChipProps } from './types'
 import { ArrowDropDownIcon } from '../../components/Svg'
+import { ChipContainer } from './Chip'
 
 interface Props extends PushedProps {
   label: string
@@ -12,6 +13,7 @@ interface Props extends PushedProps {
   initialOpenState?: boolean
   className?: string
   blink?: boolean
+  chip?: ChipProps
 }
 
 const Container = styled.div<{ isOpen: boolean; fillStroke?: boolean; isPushed?: boolean }>`
@@ -129,7 +131,7 @@ const StyledArrowDropDown = styled(ArrowDropDownIcon)<{ isOpen?: boolean }>`
 
 const Accordion: React.FC<Props> = React.forwardRef(
   (
-    { label, icon, isPushed, pushNav, initialOpenState = false, children, className, blink, ...restProps },
+    { label, icon, isPushed, pushNav, initialOpenState = false, children, className, blink, chip, ...restProps },
     ref: any
   ) => {
     const [isOpen, setIsOpen] = useState(initialOpenState)
@@ -161,7 +163,7 @@ const Accordion: React.FC<Props> = React.forwardRef(
       t('mainMenu.analytics.analytics'),
       t('mainMenu.ino.ino'),
       t('mainMenu.asteroidMining'),
-      t('mainMenu.farming')
+      t('mainMenu.farming'),
     ]
 
     return (
@@ -181,6 +183,11 @@ const Accordion: React.FC<Props> = React.forwardRef(
         >
           {icon}
           <LinkLabel isPushed={isPushed}>{label}</LinkLabel>
+          {chip && (
+            <ChipContainer style={{ marginRight: 5 }} color={chip.color}>
+              {t(chip.title)}
+            </ChipContainer>
+          )}
           <StyledArrowDropDown isOpen={isOpen} />
         </MenuEntry>
         <AccordionContent

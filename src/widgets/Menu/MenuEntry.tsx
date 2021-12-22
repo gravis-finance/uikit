@@ -37,7 +37,7 @@ const MenuEntry = styled.div<Props>`
   height: ${MENU_ENTRY_HEIGHT}px;
   padding: ${({ secondary }) => (secondary ? '0 32px' : '0 22px 0 18px')};
   font-size: ${({ secondary }) => (secondary ? '14px' : '16px')};
-  ${({ isPushed, hot }) => (!isPushed ? `padding: 0 ${hot ? '12' : '22'}px 0 10.3px; width: ${MENU_ENTRY_HEIGHT}px` : '')}
+  ${({ isPushed }) => (!isPushed ? `padding: 0 12px 0 10.3px; width: ${MENU_ENTRY_HEIGHT}px` : '')}
 
   background: linear-gradient(90.28deg, #292929 0%, #242424 100%), #303030;
   border: 1px solid #2e2e2e;
@@ -59,7 +59,7 @@ const MenuEntry = styled.div<Props>`
       opacity: 1;
     }
     :after {
-       background: linear-gradient(90.28deg, #242424 0%, #202020 100%);
+      background: linear-gradient(90.28deg, #242424 0%, #202020 100%);
     }
   }
   &:active {
@@ -150,11 +150,13 @@ const MenuEntry = styled.div<Props>`
     background-size: 200% 100%;
     font-weight: bold;
   }
-  
+
   position: relative;
   overflow: hidden;
-  
-  ${({ blink }) => blink ? `
+
+  ${({ blink }) =>
+    blink
+      ? `
     :before {
       animation: move-light 5s linear infinite; 
       content: '';
@@ -185,31 +187,32 @@ const MenuEntry = styled.div<Props>`
     > * {
       z-index: 2;
     }
-  ` : ''}
-  
+  `
+      : ''}
+
   @keyframes move-light {
     0% {
-      transform: translateX(-4em) skewX(-45deg)
-      }
-    8% {
-      transform: translateX(15.5em) skewX(-45deg)
-      }
-    100% {
-      transform: translateX(15.5em) skewX(-45deg)
+      transform: translateX(-4em) skewX(-45deg);
     }
-   }
-   
-   @keyframes mobile-move-light {
+    8% {
+      transform: translateX(15.5em) skewX(-45deg);
+    }
+    100% {
+      transform: translateX(15.5em) skewX(-45deg);
+    }
+  }
+
+  @keyframes mobile-move-light {
     0% {
-      transform: translateX(-4em) skewX(-45deg)
-      }
-    8% {
-      transform: translateX(22.5em) skewX(-45deg)
-      }
-    100% {
-      transform: translateX(22.5em) skewX(-45deg)
+      transform: translateX(-4em) skewX(-45deg);
     }
-   }
+    8% {
+      transform: translateX(22.5em) skewX(-45deg);
+    }
+    100% {
+      transform: translateX(22.5em) skewX(-45deg);
+    }
+  }
 
   @media screen and (max-width: 967px) {
     border-radius: 0;

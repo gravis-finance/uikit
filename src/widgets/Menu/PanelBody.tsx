@@ -13,6 +13,7 @@ import { HamburgerCloseIcon } from './icons'
 import Logo from './Logo'
 import { Tooltip } from '../../components/Tooltip'
 import { Spinner } from '../../components/Spinner'
+import { ChipContainer, SubitemsChipContainer } from './Chip'
 
 interface Props extends PanelProps, PushedProps {
   isMobile?: boolean
@@ -142,72 +143,6 @@ const SpinnerContainer = styled.div`
   justify-content: center;
 `
 
-const HotContainer = styled.div`
-  height: auto;
-  padding: 0px 4px;
-  color: white;
-  align-items: center;
-  background-color: transparent;
-  border: 2px solid rgb(235, 149, 0);
-  border-radius: 16px;
-  display: inline-flex;
-  font-size: 11px;
-  font-weight: 400;
-  height: 22px;
-  line-height: 1.5;
-  padding: 0px 8px;
-  white-space: nowrap;
-  position: relative;
-  overflow: hidden;
-  width: 50px;
-  // margin-left: 8px;
-
-  :after {
-    content: '';
-    position: absolute;
-    left: -12px;
-    top: -1px;
-    width: 10px;
-    height: 22px;
-    background: rgba(255, 255, 255, 0.5);
-    transform: skew(-30deg);
-    animation: shine-hot 2s ease-in-out infinite;
-  }
-
-  @keyframes shine-hot {
-    0% {
-      left: -12px;
-    }
-    50% {
-      left: 100%;
-    }
-    100% {
-      left: 100%;
-    }
-  }
-`
-
-const BetaContainer = styled.div`
-  color: white;
-  align-items: center;
-  background-color: transparent;
-  border: 2px solid #009ce1;
-  border-radius: 16px;
-  display: inline-flex;
-  font-size: 10px;
-  font-weight: 400;
-  height: auto;
-  //line-height: 1.5;
-  //padding: 0px 8px;
-  padding: 2px 0;
-  justify-content: center;
-  white-space: nowrap;
-  position: relative;
-  overflow: hidden;
-  width: 42px;
-  // margin-left: 8px;
-`
-
 const PanelBody: React.FC<Props> = ({ isPushed, pushNav, isMobile, links, togglePush, isDark }) => {
   const location = useLocation()
   const t = useTranslation()
@@ -258,6 +193,7 @@ const PanelBody: React.FC<Props> = ({ isPushed, pushNav, isMobile, links, toggle
                       initialOpenState={initialOpenState}
                       className={calloutClass}
                       blink={entry.blink}
+                      chip={entry.chip}
                     >
                       {isPushed &&
                         entry.items.map((item) => (
@@ -266,12 +202,15 @@ const PanelBody: React.FC<Props> = ({ isPushed, pushNav, isMobile, links, toggle
                             secondary
                             isactive={item.href === location.pathname}
                             onClick={handleClick}
-                            hot={item.hot}
                           >
                             <MenuLink href={item.href} target={item.external ? '_blank' : ''}>
                               {item.label}
                             </MenuLink>
-                            {item.hot && <HotContainer>HOT</HotContainer>}
+                            {item.chip && (
+                              <SubitemsChipContainer animation={item.chip.animation} color={item.chip.color}>
+                                {t(item.chip.title)}
+                              </SubitemsChipContainer>
+                            )}
                           </MenuEntry>
                         ))}
                     </Accordion>
@@ -290,7 +229,7 @@ const PanelBody: React.FC<Props> = ({ isPushed, pushNav, isMobile, links, toggle
                     <MenuLink href={entry.href} onClick={handleClick} target={entry.external ? '_blank' : ''}>
                       {iconElement}
                       <LinkLabel isPushed={isPushed}>{entry.label}</LinkLabel>
-                      {entry.beta && <BetaContainer>BETA</BetaContainer>}
+                      {entry.chip && <ChipContainer color={entry.chip.color}>{t(entry.chip.title)}</ChipContainer>}
                     </MenuLink>
                   </MenuEntry>
                 </Tooltip>

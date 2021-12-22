@@ -24,13 +24,18 @@ export interface NavTheme {
   hover: string
 }
 
+export interface ChipProps {
+  title: string
+  color: string
+  animation?: boolean
+}
+
 export interface MenuSubEntry {
   label: string
   href?: string
   calloutClass?: string
   external?: boolean
-  hot?: boolean
-  beta?: boolean
+  chip?: ChipProps
 }
 
 export interface MenuEntry {
@@ -42,7 +47,7 @@ export interface MenuEntry {
   calloutClass?: string
   initialOpenState?: boolean
   external?: boolean
-  beta?: boolean
+  chip?: Chip
 }
 
 export interface ModalOptions {

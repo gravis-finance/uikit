@@ -245,7 +245,10 @@ export const NotConnected: React.FC = () => {
         {
           label: t('mainMenu.staking'),
           href: `${process.env.REACT_APP_FARMING_URL}/staking?${urlSearchLanguageParam}=${t('language')}`,
-          hot: true,
+          chip: {
+            title: 'HOT',
+            color: 'rgb(235, 149, 0)',
+          },
         },
         // {
         //   label: t('mainMenu.farming.autoFarms'),
@@ -262,6 +265,11 @@ export const NotConnected: React.FC = () => {
       icon: 'InfoIcon',
       items: [
         {
+          chip: {
+            title: 'HOT',
+            color: 'rgb(235, 149, 0)',
+            animation: true,
+          },
           label: t('mainMenu.analytics.overview'),
           href: 'https://github.com/gravis',
         },
@@ -279,6 +287,10 @@ export const NotConnected: React.FC = () => {
       label: t('mainMenu.ino.ino'),
       icon: 'BigBangIcon',
       items: [{ label: 'Big Bang Round', href: 'https://gravis.finance' }],
+      chip: {
+        title: 'BETA',
+        color: '#009ce1',
+      },
     },
     {
       label: t('mainMenu.asteroidMining'),
@@ -290,7 +302,10 @@ export const NotConnected: React.FC = () => {
       label: t('mainMenu.bridge'),
       icon: 'BridgeIcon',
       href: 'https://gravis.finance',
-      beta: true,
+      chip: {
+        title: 'BETA',
+        color: '#009ce1',
+      },
     },
     {
       label: t('mainMenu.more'),
