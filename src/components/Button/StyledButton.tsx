@@ -136,7 +136,7 @@ const StyledButton = styled.button<ButtonProps>`
     flex-direction: row;
     align-items: flex-start;
     padding: 7px 8px;
-    width: 40px;
+    min-width: 40px;
     height: 24px;
     background: #2D4F5D;
     border-radius: 30px;
