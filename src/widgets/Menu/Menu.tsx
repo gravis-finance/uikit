@@ -19,6 +19,7 @@ import jp from '../../locales/jp.json'
 import cn from '../../locales/cn.json'
 import ru from '../../locales/ru.json'
 import es from '../../locales/es.json'
+import vie from '../../locales/vie.json'
 import { localStorageLanguageItem } from '../../constants'
 import LanguageSwitch from './LanguageSwitch'
 import { getDefaultLanguage } from '../..'
@@ -193,7 +194,7 @@ const defaultSetSelectedLanguage = (name: string) => {
   setLanguage(name.toLowerCase())
 }
 
-setTranslations({ en, jp, cn, ru, es })
+setTranslations({ en, jp, cn, ru, es, vie })
 setDefaultLanguage('en')
 
 const Menu: React.FC<NavProps> = ({

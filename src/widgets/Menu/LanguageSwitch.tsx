@@ -214,7 +214,7 @@ const LanguageSwitch: React.FC<Props> = ({ toggleMobile = true, setSelectedLangu
         <StyledOptionsContainer toggleMobile={toggleMobile}>
           {availableLanguages.map((language) => (
             <StyledOption id="en-switch-option" onClick={() => handleClick(language.name)} key={language.name}>
-              <language.icon />
+              <language.icon width={24} height={24} />
               {language.name}
             </StyledOption>
           ))}
