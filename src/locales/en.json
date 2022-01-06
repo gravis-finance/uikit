@@ -55,6 +55,11 @@
   "disconnect": "Disconnect",
   "This website uses cookies": "This website uses cookies",
   "cookiesDescription": "We use cookies and similar technologies on our website and process personal data about you, such as your IP address. We also share this data with third parties.",
-  "Learn more": "Learn more",
-  "Accept all and close": "Accept all and close"
+  "Learn More": "Learn More",
+  "Accept all and close": "Accept all and close",
+  "Terms of Use": "Terms of Use",
+  "Privacy Policy": "Privacy Policy",
+  "I read and accept": "I read and accept",
+  "Accept": "Accept",
+  "and": "and"
 }
