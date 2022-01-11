@@ -54,11 +54,11 @@ export const links = [
     items: [
       {
         label: 'Staking',
-        href: '/',
+        href: 'https://public.gravis.finance/staking',
       },
       {
         label: 'Sale',
-        href: '/',
+        href: 'https://public.gravis.finance/sale',
       },
     ]
   },

@@ -169,6 +169,7 @@ const Accordion: React.FC<Props> = React.forwardRef(
         {...restProps}
       >
         <MenuEntry
+          isactive={isOpen}
           onClick={handleClick}
           className={className}
           isPushed={isPushed}
