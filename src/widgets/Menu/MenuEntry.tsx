@@ -9,8 +9,6 @@ export interface Props {
   isPushed?: boolean
   single?: boolean
   blink?: boolean
-  hot?: boolean
-  beta?: boolean
 }
 
 const rainbowAnimation = keyframes`

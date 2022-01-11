@@ -14,6 +14,7 @@ interface Props extends PushedProps {
   className?: string
   blink?: boolean
   chip?: ChipProps
+  fillStroke?: boolean
 }
 
 const Container = styled.div<{ isOpen: boolean; fillStroke?: boolean; isPushed?: boolean }>`
@@ -131,7 +132,7 @@ const StyledArrowDropDown = styled(ArrowDropDownIcon)<{ isOpen?: boolean }>`
 
 const Accordion: React.FC<Props> = React.forwardRef(
   (
-    { label, icon, isPushed, pushNav, initialOpenState = false, children, className, blink, chip, ...restProps },
+    { fillStroke, label, icon, isPushed, pushNav, initialOpenState = false, children, className, blink, chip, ...restProps },
     ref: any
   ) => {
     const [isOpen, setIsOpen] = useState(initialOpenState)
@@ -159,17 +160,10 @@ const Accordion: React.FC<Props> = React.forwardRef(
       setIsOpen(initialOpenState)
     }, [initialOpenState, isPushed])
 
-    const fillStokeTranslations = [
-      t('mainMenu.analytics.analytics'),
-      t('mainMenu.ino.ino'),
-      t('mainMenu.asteroidMining'),
-      t('mainMenu.farming'),
-    ]
-
     return (
       <Container
         isOpen={isOpen}
-        fillStroke={fillStokeTranslations.includes(label)}
+        fillStroke={fillStroke}
         isPushed={isPushed}
         ref={ref}
         {...restProps}
@@ -178,7 +172,7 @@ const Accordion: React.FC<Props> = React.forwardRef(
           onClick={handleClick}
           className={className}
           isPushed={isPushed}
-          fillStroke={fillStokeTranslations.includes(label)}
+          fillStroke={fillStroke}
           blink={blink}
         >
           {icon}

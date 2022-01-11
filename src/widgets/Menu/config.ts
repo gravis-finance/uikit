@@ -51,7 +51,16 @@ export const links = [
   {
     label: 'Public Round',
     icon: 'TeamsIcon',
-    href: `/`,
+    items: [
+      {
+        label: 'Staking',
+        href: '/',
+      },
+      {
+        label: 'Sale',
+        href: '/',
+      },
+    ]
   },
   {
     label: 'More',
