@@ -77,6 +77,10 @@ export const HeaderCell = styled(CbHeaderCell)`
     display: flex;
     align-items: center;
 
+    &__label {
+      width: 100%;
+    }
+
     &__icon {
       display: inline-flex;
       margin-left: 6px;
