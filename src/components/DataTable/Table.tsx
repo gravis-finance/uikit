@@ -13,6 +13,14 @@ import styled from 'styled-components'
 import { SortIcon } from './SortIcon'
 import 'cb-datatable/styles/core.css'
 
+const textTransform = system({
+  textTransform: true,
+})
+
+const table = system({
+  tableLayout: true,
+})
+
 export type TableProps = CbTableProps & {
   fullWidth?: boolean
   defaultSortBy?: SortBy[]
@@ -20,11 +28,8 @@ export type TableProps = CbTableProps & {
   HeaderCellComponent?: React.ElementType
   CellComponent?: React.ElementType
   RowComponent?: React.ElementType
+  tableLayout?: 'auto' | 'fixed'
 }
-
-const textTransform = system({
-  textTransform: true,
-})
 
 // add ability to use layout,background,padding,typography props inside the Column component
 export const TableCell = styled(CbTableCell)<
@@ -117,4 +122,5 @@ export const UnstyledTable: React.FC<TableProps> = ({
 export const Table = styled(UnstyledTable)`
   background-color: rgba(41, 41, 41, 1);
   width: ${(props) => (props.fullWidth ? '100%' : 'auto')};
+  ${table}
 `
