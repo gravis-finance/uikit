@@ -109,7 +109,7 @@ export const socials = [
   {
     label: 'Discord',
     icon: 'DiscordIcon',
-    href: 'http://discord.io/GravisFinance',
+    href: 'https://discord.gg/GravisFinance',
   },
 ]
 
