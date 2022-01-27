@@ -94,7 +94,7 @@ export const socials = [
   {
     label: 'Telegram',
     icon: 'TelegramIcon',
-    href: 'https://t.me/gravisfinance',
+    href: 'https://t.me/Gravis_Finance_En',
   },
   {
     label: 'Twitter',
