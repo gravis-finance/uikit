@@ -1,5 +1,6 @@
 import { Login } from '../WalletModal/types'
 import { networks as NETWORKS } from '../WalletModal/config'
+import { ReactElement } from 'react'
 
 export interface LangType {
   code: string
@@ -93,4 +94,5 @@ export interface NavProps extends PanelProps {
   disableEthereum?: boolean
   bscAndPoly?: boolean
   networkSwitchItemCallback?: (chainId: string) => void
+  gravisLogo?: ReactElement
 }

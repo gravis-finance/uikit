@@ -223,7 +223,8 @@ const Menu: React.FC<NavProps> = ({
   subscribePushEvent,
   disableEthereum,
   bscAndPoly,
-                                    networkSwitchItemCallback
+                                    networkSwitchItemCallback,
+  gravisLogo=<Logo />
 }) => {
   const { isXl } = useMatchBreakpoints()
   const isMobile = isXl === false
@@ -257,10 +258,10 @@ const Menu: React.FC<NavProps> = ({
       <StyledNav showMenu={showMenu}>
         <Flex>
           <StyledLogoWithText>
-            <LogoWithText className="desktop-icon" isDark={isDark} withText />
+            {gravisLogo}
           </StyledLogoWithText>
           <StyledLogoWithoutText>
-            <Logo width="40px" height="40px" />
+            {gravisLogo}
           </StyledLogoWithoutText>
           <LanguageContainer isPushed={isPushed}>
             <LanguageSwitch setSelectedLanguage={setSelectedLanguage} />
@@ -301,6 +302,7 @@ const Menu: React.FC<NavProps> = ({
           toggleTheme={toggleTheme}
           pushNav={setIsPushed}
           links={links}
+          gravisLogo={gravisLogo}
           togglePush={() => setIsPushed((prevState: boolean) => !prevState)}
         />
         <Inner isPushed={isPushed} showMenu={showMenu}>
