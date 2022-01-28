@@ -10,6 +10,7 @@ interface Props extends PanelProps, PushedProps {
   isMobile: boolean
   togglePush?: () => void
   gravisLogo?: React.ReactNode
+  gravisLogoText?: string
 }
 
 const StyledPanel = styled.div<{ isPushed: boolean; showMenu: boolean }>`

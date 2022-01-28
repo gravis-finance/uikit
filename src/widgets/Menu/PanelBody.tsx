@@ -19,6 +19,7 @@ interface Props extends PanelProps, PushedProps {
   isMobile?: boolean
   togglePush?: () => void
   gravisLogo?: ReactNode
+  gravisLogoText?: string
 }
 
 const Icons = IconModule as unknown as { [key: string]: React.FC<SvgProps> }
@@ -144,7 +145,7 @@ const SpinnerContainer = styled.div`
   justify-content: center;
 `
 
-const PanelBody: React.FC<Props> = ({ isPushed, pushNav, isMobile, links, togglePush, isDark, gravisLogo}) => {
+const PanelBody: React.FC<Props> = ({ isPushed, pushNav, isMobile, links, togglePush, isDark, gravisLogo, gravisLogoText}) => {
   const location = useLocation()
   const t = useTranslation()
 
@@ -165,7 +166,7 @@ const PanelBody: React.FC<Props> = ({ isPushed, pushNav, isMobile, links, toggle
   return (
     <Container>
       <StyledLogoIcon>
-        <Logo isDark={isDark} href={homeLink?.href ?? '/'} isPushed={isPushed} gravisLogo={gravisLogo} />
+        <Logo isDark={isDark} href={homeLink?.href ?? '/'} isPushed={isPushed} gravisLogo={gravisLogo} gravisLogoText={gravisLogoText}/>
       </StyledLogoIcon>
       <MenuButton aria-label="Toggle menu" onClick={togglePush}>
         {isPushed ? (
