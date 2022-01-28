@@ -33,9 +33,10 @@ const StyledLink = styled(Link)`
 
 const LogoText = styled(Text)`
   font-family: "Gotham Pro", sans-serif;
-  font-weight: 700;
-  font-size: 18px;
-  line-height: 20px;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 19px;
+  letter-spacing: 1px;
 `
 
 const StyledLogoIcon = styled(LogoIcon)`
