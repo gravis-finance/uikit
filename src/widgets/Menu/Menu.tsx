@@ -128,11 +128,11 @@ const StyledLogoWithText = styled.div`
   ${({ theme }) => theme.mediaQueries.nav} {
     opacity: 0;
   }
-  
+
   @media screen and (max-width: 968px) {
     margin-right: 0;
   }
-  
+
   @media screen and (max-width: 575px) {
     display: none;
   }
@@ -229,8 +229,9 @@ const Menu: React.FC<NavProps> = ({
   subscribePushEvent,
   disableEthereum,
   bscAndPoly,
-                                    networkSwitchItemCallback,
-  gravisLogo=<Logo />
+  networkSwitchItemCallback,
+  gravisLogo = <Logo />,
+  gravisLogoText,
 }) => {
   const { isXl } = useMatchBreakpoints()
   const isMobile = isXl === false
@@ -263,12 +264,8 @@ const Menu: React.FC<NavProps> = ({
     <Wrapper>
       <StyledNav showMenu={showMenu}>
         <Flex>
-          <StyledLogoWithText>
-            {gravisLogo}
-          </StyledLogoWithText>
-          <StyledLogoWithoutText>
-            {gravisLogo}
-          </StyledLogoWithoutText>
+          <StyledLogoWithText>{gravisLogo}</StyledLogoWithText>
+          <StyledLogoWithoutText>{gravisLogo}</StyledLogoWithoutText>
           <LanguageContainer isPushed={isPushed}>
             <LanguageSwitch setSelectedLanguage={setSelectedLanguage} />
           </LanguageContainer>
@@ -309,6 +306,7 @@ const Menu: React.FC<NavProps> = ({
           pushNav={setIsPushed}
           links={links}
           gravisLogo={gravisLogo}
+          gravisLogoText={gravisLogoText}
           togglePush={() => setIsPushed((prevState: boolean) => !prevState)}
         />
         <Inner isPushed={isPushed} showMenu={showMenu}>

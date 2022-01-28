@@ -10,6 +10,7 @@ interface Props {
   href: string
   isPushed?: boolean
   gravisLogo?: ReactNode
+  gravisLogoText?: string
 }
 
 const StyledLink = styled(Link)`
@@ -32,7 +33,7 @@ const StyledLink = styled(Link)`
 `
 
 const LogoText = styled(Text)`
-  font-family: "Gotham Pro", sans-serif;
+  font-family: 'Gotham Pro', sans-serif;
   font-weight: 600;
   font-size: 16px;
   line-height: 19px;
@@ -51,13 +52,9 @@ const StyledFlex = styled(Flex)`
   }
 `
 
-const Logo: React.FC<Props> = ({ isDark, href, isPushed, gravisLogo }) => {
+const Logo: React.FC<Props> = ({ isDark, href, isPushed, gravisLogo, gravisLogoText }) => {
   const isAbsoluteUrl = href.startsWith('http')
-  const innerLogo = (
-    <>
-      {gravisLogo}
-    </>
-  )
+  const innerLogo = <>{gravisLogo}</>
 
   return (
     <Flex>
@@ -65,28 +62,42 @@ const Logo: React.FC<Props> = ({ isDark, href, isPushed, gravisLogo }) => {
         <StyledLink as="a" href={href} aria-label="gravis home page">
           <Flex>
             {innerLogo}
-            {isPushed && <StyledFlex flexDirection="column" ml="10px">
-              <LogoText>
-                Gravis
-              </LogoText>
-              <LogoText>
-                Finance
-              </LogoText>
-            </StyledFlex>}
+            {isPushed && (
+              <StyledFlex flexDirection="column" ml="10px">
+                {!gravisLogoText ? (
+                  <>
+                    <LogoText>Gravis</LogoText>
+                    <LogoText>Finance</LogoText>
+                  </>
+                ) : (
+                  <>
+                    <LogoText>{gravisLogoText}</LogoText>
+                    <LogoText>by Gravis Finance</LogoText>
+                  </>
+                )}
+              </StyledFlex>
+            )}
           </Flex>
         </StyledLink>
       ) : (
         <StyledLink to={href} aria-label="gravis home page">
           <Flex>
             {innerLogo}
-            {isPushed && <StyledFlex flexDirection="column" ml="10px">
-              <LogoText>
-                Gravis
-              </LogoText>
-              <LogoText>
-                Finance
-              </LogoText>
-            </StyledFlex>}
+            {isPushed && (
+              <StyledFlex flexDirection="column" ml="10px">
+                {!gravisLogoText ? (
+                  <>
+                    <LogoText>Gravis</LogoText>
+                    <LogoText>Finance</LogoText>
+                  </>
+                ) : (
+                  <>
+                    <LogoText>{gravisLogoText}</LogoText>
+                    <LogoText>by Gravis Finance</LogoText>
+                  </>
+                )}
+              </StyledFlex>
+            )}
           </Flex>
         </StyledLink>
       )}
