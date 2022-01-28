@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { ReactNode } from 'react'
 import styled from 'styled-components'
 import { useLocation } from 'react-router-dom'
 import { useTranslation } from 'react-multi-lang'
@@ -18,6 +18,7 @@ import { ChipContainer, SubitemsChipContainer } from './Chip'
 interface Props extends PanelProps, PushedProps {
   isMobile?: boolean
   togglePush?: () => void
+  gravisLogo?: ReactNode
 }
 
 const Icons = IconModule as unknown as { [key: string]: React.FC<SvgProps> }
@@ -133,6 +134,7 @@ const StyledLinksPanel = styled.div<{ isPushed?: boolean }>`
 const StyledLogoIcon = styled.div`
   display: none;
   margin-left: 24px;
+  margin-bottom: 24px;
   ${({ theme }) => theme.mediaQueries.nav} {
     display: block;
   }
@@ -143,7 +145,7 @@ const SpinnerContainer = styled.div`
   justify-content: center;
 `
 
-const PanelBody: React.FC<Props> = ({ isPushed, pushNav, isMobile, links, togglePush, isDark }) => {
+const PanelBody: React.FC<Props> = ({ isPushed, pushNav, isMobile, links, togglePush, isDark, gravisLogo}) => {
   const location = useLocation()
   const t = useTranslation()
 
@@ -164,7 +166,7 @@ const PanelBody: React.FC<Props> = ({ isPushed, pushNav, isMobile, links, toggle
   return (
     <Container>
       <StyledLogoIcon>
-        <Logo isDark={isDark} href={homeLink?.href ?? '/'} isPushed={isPushed} />
+        <Logo isDark={isDark} href={homeLink?.href ?? '/'} isPushed={isPushed} gravisLogo={gravisLogo} />
       </StyledLogoIcon>
       <MenuButton aria-label="Toggle menu" onClick={togglePush}>
         {isPushed ? (

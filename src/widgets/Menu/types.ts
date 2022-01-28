@@ -1,3 +1,4 @@
+import { ReactNode } from 'react'
 import { Login } from '../WalletModal/types'
 import { networks as NETWORKS } from '../WalletModal/config'
 
@@ -93,4 +94,5 @@ export interface NavProps extends PanelProps {
   disableEthereum?: boolean
   bscAndPoly?: boolean
   networkSwitchItemCallback?: (chainId: string) => void
+  gravisLogo?: ReactNode
 }
