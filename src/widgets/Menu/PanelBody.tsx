@@ -134,7 +134,6 @@ const StyledLinksPanel = styled.div<{ isPushed?: boolean }>`
 const StyledLogoIcon = styled.div`
   display: none;
   margin-left: 24px;
-  margin-bottom: 24px;
   ${({ theme }) => theme.mediaQueries.nav} {
     display: block;
   }
