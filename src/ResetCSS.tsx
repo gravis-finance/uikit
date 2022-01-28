@@ -1,5 +1,4 @@
 import { createGlobalStyle } from 'styled-components'
-import GothamPro from './fonts/GothamPro.woff';
 
 const ResetCSS = createGlobalStyle`
   /* prettier-ignore */
@@ -81,14 +80,6 @@ const ResetCSS = createGlobalStyle`
   ::-webkit-scrollbar-track {
     background-color: #3D3D3D;
     border-radius: 6px;
-  }
-
-  @font-face {
-    font-family: 'Gotham Pro';
-    src: local('Gotham Pro'), local('FontName'),
-    url(${GothamPro}) format('woff');
-    font-weight: 300;
-    font-style: normal;
   }
 `
 
