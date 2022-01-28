@@ -124,9 +124,15 @@ const StyledIcon = styled.div<{ reverse?: boolean }>`
 const StyledLogoWithText = styled.div`
   opacity: 1;
   margin-left: 8px;
+  margin-right: 72px;
   ${({ theme }) => theme.mediaQueries.nav} {
     opacity: 0;
   }
+  
+  @media screen and (max-width: 968px) {
+    margin-right: 0;
+  }
+  
   @media screen and (max-width: 575px) {
     display: none;
   }
