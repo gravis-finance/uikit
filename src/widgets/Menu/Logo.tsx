@@ -1,17 +1,16 @@
-import React, { ReactElement } from 'react'
+import React, { ReactNode } from 'react'
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
 
 import { LogoIcon } from '../../components/Svg'
 import Flex from '../../components/Flex/Flex'
-import { LogoIcon as LogoWithText } from './icons'
 import { Text } from '../../components/Text'
 
 interface Props {
   isDark: boolean
   href: string
   isPushed?: boolean
-  gravisLogo?: ReactElement
+  gravisLogo?: ReactNode
 }
 
 const StyledLink = styled(Link)`

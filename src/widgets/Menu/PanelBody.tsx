@@ -1,4 +1,4 @@
-import React, { ReactElement } from 'react'
+import React, { ReactNode } from 'react'
 import styled from 'styled-components'
 import { useLocation } from 'react-router-dom'
 import { useTranslation } from 'react-multi-lang'
@@ -18,7 +18,7 @@ import { ChipContainer, SubitemsChipContainer } from './Chip'
 interface Props extends PanelProps, PushedProps {
   isMobile?: boolean
   togglePush?: () => void
-  gravisLogo?: ReactElement
+  gravisLogo?: ReactNode
 }
 
 const Icons = IconModule as unknown as { [key: string]: React.FC<SvgProps> }
