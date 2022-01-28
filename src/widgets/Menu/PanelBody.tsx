@@ -107,8 +107,8 @@ const StyledLinksPanel = styled.div<{ isPushed?: boolean }>`
   
   @media screen and (max-height: 650px) {
     ${({ isPushed }) =>
-      !isPushed
-        ? `
+    !isPushed
+      ? `
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -127,7 +127,7 @@ const StyledLinksPanel = styled.div<{ isPushed?: boolean }>`
         }
       }
     `
-        : ''}
+      : ''}
   }
 `
 
@@ -153,7 +153,15 @@ const PanelBody: React.FC<Props> = ({ isPushed, pushNav, isMobile, links, toggle
   const handleClick = isMobile ? () => pushNav(false) : undefined
   const homeLink = links?.find((link) => link.label === 'Home')
 
-  const fillStokeIcons = ['HomeIcon', 'BridgeIcon', 'TeamsIcon']
+  const fillStokeIcons = [
+    'HomeIcon',
+    'BridgeIcon',
+    'TeamsIcon',
+    'InfoIcon',
+    'BigBangIcon',
+    'AsteroidMiningIcon',
+    'NFTFarmingIcon'
+  ]
 
   return (
     <Container>
@@ -188,6 +196,7 @@ const PanelBody: React.FC<Props> = ({ isPushed, pushNav, isMobile, links, toggle
                 return (
                   <Tooltip placement="left" title={title} key={entry.label}>
                     <Accordion
+                      fillStroke={fillStokeIcons.includes(entry.icon)}
                       isPushed={isPushed}
                       pushNav={pushNav}
                       icon={iconElement}
