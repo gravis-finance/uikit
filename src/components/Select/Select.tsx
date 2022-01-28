@@ -106,6 +106,7 @@ const UnstyledSelect: React.FC<SelectProps> = React.forwardRef((props, ref: any)
     disablePortal,
     renderValue,
     label,
+    disabled,
     ...restProps
   } = props
   const [value, setValue] = useControlled({
@@ -181,8 +182,16 @@ const UnstyledSelect: React.FC<SelectProps> = React.forwardRef((props, ref: any)
   return (
     <div className={className} aria-expanded={open} ref={ref}>
       {!!label && <Label>{label}</Label>}
-      <Input as={InputComponent} value={value} onChange={handleChange} ref={inputRef} {...inputProps} {...restProps} />
-      <SelectButton as={ButtonComponent} onMouseDown={toggleOptions}>
+      <Input
+        as={InputComponent}
+        value={value}
+        onChange={handleChange}
+        ref={inputRef}
+        disabled={disabled}
+        {...inputProps}
+        {...restProps}
+      />
+      <SelectButton as={ButtonComponent} onMouseDown={toggleOptions} disabled={disabled}>
         {display}
       </SelectButton>
       <ClickAwayListener onClickAway={open ? toggleOptions : undefined} mouseEvent="onMouseDown">
@@ -220,8 +229,6 @@ export const Select = styled(UnstyledSelect)<LayoutProps & SpaceProps>`
   font-size: 14px;
   ${layout}
   ${space}
-
-  ${(props) => props.disabled && `pointer-events: none`}
   
   &:hover {
     background: linear-gradient(90.28deg, #242424 0%, #202020 100%), linear-gradient(90.28deg, #292929 0%, #242424 100%),

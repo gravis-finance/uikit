@@ -51,7 +51,16 @@ export const links = [
   {
     label: 'Public Round',
     icon: 'TeamsIcon',
-    href: `/`,
+    items: [
+      {
+        label: 'Staking',
+        href: 'https://public.gravis.finance/staking',
+      },
+      {
+        label: 'Sale',
+        href: 'https://public.gravis.finance/sale',
+      },
+    ]
   },
   {
     label: 'More',
@@ -85,7 +94,7 @@ export const socials = [
   {
     label: 'Telegram',
     icon: 'TelegramIcon',
-    href: 'https://t.me/gravisfinance',
+    href: 'https://t.me/Gravis_Finance_En',
   },
   {
     label: 'Twitter',
@@ -100,7 +109,7 @@ export const socials = [
   {
     label: 'Discord',
     icon: 'DiscordIcon',
-    href: 'http://discord.io/GravisFinance',
+    href: 'https://discord.gg/GravisFinance',
   },
 ]
 

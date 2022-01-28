@@ -34,7 +34,7 @@ const SocialNetworks: React.FC = () => {
       <LinkItem href="https://github.com/gravis-finance" target="_blank" rel="noopener  noreferrer">
         <GithubIcon />
       </LinkItem>
-      <LinkItem href={`${getCurrentLanguage() === 'jp' ? 'https://t.me/gravis_finance_jp' : 'https://t.me/gravisfinance'}`} target="_blank" rel="noopener  noreferrer">
+      <LinkItem href={`${getCurrentLanguage() === 'jp' ? 'https://t.me/gravis_finance_jp' : 'https://t.me/Gravis_Finance_En'}`} target="_blank" rel="noopener  noreferrer">
         <TelegramIcon />
       </LinkItem>
       <LinkItem href="https://twitter.com/gravis_finance" target="_blank" rel="noopener  noreferrer">
@@ -43,7 +43,7 @@ const SocialNetworks: React.FC = () => {
       <LinkItem href="https://gravis-finance.medium.com/" target="_blank" rel="noopener  noreferrer">
         <MediumIcon />
       </LinkItem>
-      <LinkItem href="http://discord.io/GravisFinance" target="_blank" rel="noopener  noreferrer" style={{ padding: '16px 13.5px 12px 13.5px' }}>
+      <LinkItem href="https://discord.gg/GravisFinance" target="_blank" rel="noopener  noreferrer" style={{ padding: '16px 13.5px 12px 13.5px' }}>
         <DiscordIcon/>
       </LinkItem>
     </StyledWrapper>
