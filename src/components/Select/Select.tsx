@@ -129,6 +129,7 @@ const UnstyledSelect: React.FC<SelectProps> = React.forwardRef((props, ref: any)
   const toggleOptions = React.useCallback(
     (event?: any) => {
       event?.stopPropagation()
+      event?.preventDefault()
       const newAnchorEl = anchorEl ? null : event?.target
       setAnchorEl(newAnchorEl)
       if (onToggle) {
@@ -162,6 +163,7 @@ const UnstyledSelect: React.FC<SelectProps> = React.forwardRef((props, ref: any)
     }
 
     const handleClick = (event: any) => {
+      event.preventDefault()
       onSelectOption(childValue === undefined ? childProps.children : childValue)
       if (childClick) {
         childClick(event)
