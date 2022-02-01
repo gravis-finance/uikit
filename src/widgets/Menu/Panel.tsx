@@ -9,6 +9,7 @@ interface Props extends PanelProps, PushedProps {
   showMenu: boolean
   isMobile: boolean
   togglePush?: () => void
+  providedLogoLink?: string
 }
 
 const StyledPanel = styled.div<{ isPushed: boolean; showMenu: boolean }>`
