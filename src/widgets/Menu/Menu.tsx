@@ -87,24 +87,24 @@ const MobileOnlyOverlay = styled(Overlay)`
 `
 
 const StyledIcon = styled.div<{ reverse?: boolean }>`
-   {
-    margin-left: 20px;
-    cursor: pointer;
-    outline: none;
-    padding: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: linear-gradient(90.28deg, #292929 0%, #242424 100%);
-    border: 1px solid #2e2e2e;
-    box-sizing: border-box;
-    box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.4), -4px -4px 12px rgba(255, 255, 255, 0.05);
-    border-radius: 34px;
-  }
+{
+  margin-left: 20px;
+  cursor: pointer;
+  outline: none;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(90.28deg, #292929 0%, #242424 100%);
+  border: 1px solid #2e2e2e;
+  box-sizing: border-box;
+  box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.4), -4px -4px 12px rgba(255, 255, 255, 0.05);
+  border-radius: 34px;
+}
 
   :hover {
     background: linear-gradient(90.28deg, #242424 0%, #202020 100%), linear-gradient(90.28deg, #292929 0%, #242424 100%),
-      #303030;
+    #303030;
   }
 
   @media screen and (max-width: 968px) {
@@ -156,17 +156,17 @@ const StyledBetaIcon = styled.div<{ isPushed?: boolean }>`
   ${({ isPushed }) => isPushed && 'margin-left: 152px;'}
 
   @media screen and (max-width: 968px) {
-    position: relative;
-    margin-left: 8px;
+  position: relative;
+  margin-left: 8px;
+  > div {
+    display: none;
+  }
+  :hover {
     > div {
-      display: none;
-    }
-    :hover {
-      > div {
-        display: block;
-      }
+      display: block;
     }
   }
+}
   @media screen and (max-width: 575px) {
     margin-left: 20px;
   }
@@ -180,9 +180,9 @@ const LanguageContainer = styled.div<{ isPushed?: boolean }>`
   ${({ isPushed }) => isPushed && 'margin-left: 152px;'}
 
   @media screen and (max-width: 968px) {
-    position: relative;
-    margin-left: 16px;
-  }
+  position: relative;
+  margin-left: 16px;
+}
   @media screen and (max-width: 575px) {
     margin-left: 20px;
   }
@@ -204,35 +204,36 @@ setTranslations({ en, jp, cn, ru, es, vie })
 setDefaultLanguage('en')
 
 const Menu: React.FC<NavProps> = ({
-  networks,
-  isProduction,
-  account,
-  login,
-  logout,
-  isDark,
-  toggleTheme,
-  links,
-  loginBlockVisible = true,
-  buttonTitle = 'Connect',
-  options,
-  children,
-  balance,
-  explorerName,
-  explorerLink,
-  onTransactionHistoryHandler,
-  balanceHook = defaultBalanceHook,
-  setSelectedLanguage = defaultSetSelectedLanguage,
-  customLanguage,
-  networkSwitchVisible = true,
-  bscOnly,
-  ethereum,
-  subscribePushEvent,
-  disableEthereum,
-  bscAndPoly,
-  networkSwitchItemCallback,
-  gravisLogo = <Logo />,
-  gravisLogoText,
-}) => {
+                                    networks,
+                                    isProduction,
+                                    account,
+                                    login,
+                                    logout,
+                                    isDark,
+                                    toggleTheme,
+                                    links,
+                                    loginBlockVisible = true,
+                                    buttonTitle = 'Connect',
+                                    options,
+                                    children,
+                                    balance,
+                                    explorerName,
+                                    explorerLink,
+                                    onTransactionHistoryHandler,
+                                    balanceHook = defaultBalanceHook,
+                                    setSelectedLanguage = defaultSetSelectedLanguage,
+                                    customLanguage,
+                                    networkSwitchVisible = true,
+                                    bscOnly,
+                                    ethereum,
+                                    subscribePushEvent,
+                                    disableEthereum,
+                                    bscAndPoly,
+                                    networkSwitchItemCallback,
+                                    gravisLogo = <Logo />,
+                                    gravisLogoText,
+                                    providedLogoLink
+                                  }) => {
   const { isXl } = useMatchBreakpoints()
   const isMobile = isXl === false
   const [isPushed, setIsPushed] = useState(!isMobile)
@@ -307,6 +308,7 @@ const Menu: React.FC<NavProps> = ({
           links={links}
           gravisLogo={gravisLogo}
           gravisLogoText={gravisLogoText}
+          providedLogoLink={providedLogoLink}
           togglePush={() => setIsPushed((prevState: boolean) => !prevState)}
         />
         <Inner isPushed={isPushed} showMenu={showMenu}>

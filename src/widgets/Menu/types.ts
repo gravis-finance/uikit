@@ -96,4 +96,5 @@ export interface NavProps extends PanelProps {
   networkSwitchItemCallback?: (chainId: string) => void
   gravisLogo?: ReactNode
   gravisLogoText?: string
+  providedLogoLink?: string
 }
