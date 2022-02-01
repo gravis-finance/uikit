@@ -20,6 +20,7 @@ interface Props extends PanelProps, PushedProps {
   togglePush?: () => void
   gravisLogo?: ReactNode
   gravisLogoText?: string
+  providedLogoLink?: string
 }
 
 const Icons = IconModule as unknown as { [key: string]: React.FC<SvgProps> }
@@ -46,31 +47,31 @@ interface StyledIconProps {
 }
 
 const StyledIcon = styled.div`
-   {
-    height: 40px;
-    width: 40px;
-    display: flex;
-    position: absolute;
-    right: -14px;
-    top: 44%;
-    transition: background-color 150ms ease-in-out;
-    box-sizing: content-box;
-  }
+{
+  height: 40px;
+  width: 40px;
+  display: flex;
+  position: absolute;
+  right: -14px;
+  top: 44%;
+  transition: background-color 150ms ease-in-out;
+  box-sizing: content-box;
+}
   > * {
     margin: auto;
     transition: transform 200ms ease-in-out;
   }
   ${(props: StyledIconProps) =>
-    props.reverse
-      ? `> svg *:last-child {
+          props.reverse
+                  ? `> svg *:last-child {
     transform: rotate(180deg) translate(-44px, -135px);
   }`
-      : ''}
+                  : ''}
 `
 
 const StyledLinksPanel = styled.div<{ isPushed?: boolean }>`
   padding: 18px;
- 
+
   > div:not(:last-child) {
     margin-bottom: 16px;
   }
@@ -79,37 +80,37 @@ const StyledLinksPanel = styled.div<{ isPushed?: boolean }>`
       margin-bottom: 0;
     }
   }
-  
+
   ${({ theme }) => theme.mediaQueries.nav} {
-      padding: 25px 18px;
-      ${({ isPushed }) => (!isPushed ? 'padding: 25px 21px;' : '')}
+    padding: 25px 18px;
+    ${({ isPushed }) => (!isPushed ? 'padding: 25px 21px;' : '')}
+  }
+  @media screen and (max-width: 967px) {
+    overflow-y: scroll;
+    ::-webkit-scrollbar {
+      -webkit-appearance: none;
+      width: 0;
+      height: 0;
     }
-    @media screen and (max-width: 967px) {
-        overflow-y: scroll;
-        ::-webkit-scrollbar {
-            -webkit-appearance: none;
-            width: 0;
-            height: 0;
-        }
-        scrollbar-width: none;
-        margin-top: 40px;
-      > div:not(:last-child) {
-        border-bottom: 1px solid #313131;
-        border-radius: 0;
-      }
-      > div > a {
-        font-weight: 500;
-      }
-      > div > div:first-child {
-        font-weight: 500;
-      }
+    scrollbar-width: none;
+    margin-top: 40px;
+    > div:not(:last-child) {
+      border-bottom: 1px solid #313131;
+      border-radius: 0;
+    }
+    > div > a {
+      font-weight: 500;
+    }
+    > div > div:first-child {
+      font-weight: 500;
     }
   }
-  
-  @media screen and (max-height: 650px) {
-    ${({ isPushed }) =>
-    !isPushed
-      ? `
+}
+
+@media screen and (max-height: 650px) {
+  ${({ isPushed }) =>
+          !isPushed
+                  ? `
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -128,8 +129,8 @@ const StyledLinksPanel = styled.div<{ isPushed?: boolean }>`
         }
       }
     `
-      : ''}
-  }
+                  : ''}
+}
 `
 
 const StyledLogoIcon = styled.div`
@@ -145,7 +146,7 @@ const SpinnerContainer = styled.div`
   justify-content: center;
 `
 
-const PanelBody: React.FC<Props> = ({ isPushed, pushNav, isMobile, links, togglePush, isDark, gravisLogo, gravisLogoText}) => {
+const PanelBody: React.FC<Props> = ({ isPushed, pushNav, isMobile, links, togglePush, isDark, gravisLogo, gravisLogoText, providedLogoLink }) => {
   const location = useLocation()
   const t = useTranslation()
 
@@ -166,7 +167,7 @@ const PanelBody: React.FC<Props> = ({ isPushed, pushNav, isMobile, links, toggle
   return (
     <Container>
       <StyledLogoIcon>
-        <Logo isDark={isDark} href={homeLink?.href ?? '/'} isPushed={isPushed} gravisLogo={gravisLogo} gravisLogoText={gravisLogoText}/>
+        <Logo isDark={isDark} href={providedLogoLink ? providedLogoLink : homeLink?.href ?? '/'} isPushed={isPushed} gravisLogo={gravisLogo} gravisLogoText={gravisLogoText}/>
       </StyledLogoIcon>
       <MenuButton aria-label="Toggle menu" onClick={togglePush}>
         {isPushed ? (
