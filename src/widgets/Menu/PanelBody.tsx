@@ -18,6 +18,7 @@ import { ChipContainer, SubitemsChipContainer } from './Chip'
 interface Props extends PanelProps, PushedProps {
   isMobile?: boolean
   togglePush?: () => void
+  providedLogoLink?: string
 }
 
 const Icons = IconModule as unknown as { [key: string]: React.FC<SvgProps> }
@@ -143,7 +144,7 @@ const SpinnerContainer = styled.div`
   justify-content: center;
 `
 
-const PanelBody: React.FC<Props> = ({ isPushed, pushNav, isMobile, links, togglePush, isDark }) => {
+const PanelBody: React.FC<Props> = ({ isPushed, pushNav, isMobile, links, togglePush, isDark, providedLogoLink }) => {
   const location = useLocation()
   const t = useTranslation()
 
@@ -164,7 +165,7 @@ const PanelBody: React.FC<Props> = ({ isPushed, pushNav, isMobile, links, toggle
   return (
     <Container>
       <StyledLogoIcon>
-        <Logo isDark={isDark} href={homeLink?.href ?? '/'} isPushed={isPushed} />
+        <Logo isDark={isDark} href={providedLogoLink ? providedLogoLink : homeLink?.href ?? '/'} isPushed={isPushed} />
       </StyledLogoIcon>
       <MenuButton aria-label="Toggle menu" onClick={togglePush}>
         {isPushed ? (

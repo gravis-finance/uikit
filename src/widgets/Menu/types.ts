@@ -93,4 +93,5 @@ export interface NavProps extends PanelProps {
   disableEthereum?: boolean
   bscAndPoly?: boolean
   networkSwitchItemCallback?: (chainId: string) => void
+  providedLogoLink?: string
 }

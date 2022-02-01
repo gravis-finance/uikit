@@ -223,7 +223,8 @@ const Menu: React.FC<NavProps> = ({
   subscribePushEvent,
   disableEthereum,
   bscAndPoly,
-                                    networkSwitchItemCallback
+                                    networkSwitchItemCallback,
+                                    providedLogoLink
 }) => {
   const { isXl } = useMatchBreakpoints()
   const isMobile = isXl === false
@@ -301,6 +302,7 @@ const Menu: React.FC<NavProps> = ({
           toggleTheme={toggleTheme}
           pushNav={setIsPushed}
           links={links}
+          providedLogoLink={providedLogoLink}
           togglePush={() => setIsPushed((prevState: boolean) => !prevState)}
         />
         <Inner isPushed={isPushed} showMenu={showMenu}>
