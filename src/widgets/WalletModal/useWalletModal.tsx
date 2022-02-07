@@ -21,14 +21,11 @@ const useWalletModal = (
   explorerLink?: string,
   onTransactionHistoryHandler?: void,
   balanceHook?: void,
-  onSelectConnectModal?: () => void
+  onSelectConnectModal?: () => void,
+  gmartProfileLink?: string
 ): ReturnType => {
   const [onPresentConnectModal] = useModal(
-    <ConnectModal
-      onSelect={onSelectConnectModal}
-      isProduction={isProduction}
-      login={login}
-    />
+    <ConnectModal onSelect={onSelectConnectModal} isProduction={isProduction} login={login} />
   )
   const [onPresentAccountModal] = useModal(
     <AccountModal
@@ -41,6 +38,7 @@ const useWalletModal = (
       networkName={getNetworkLabel()}
       onTransactionHistoryHandler={onTransactionHistoryHandler}
       balanceHook={balanceHook}
+      gmartProfileLink={gmartProfileLink}
     />
   )
   // useEffect(()=>{

@@ -75,10 +75,11 @@ export { default as BinanceNetworkIcon } from './Icons/BinanceNetwork'
 export { default as PolygonNetworkIcon } from './Icons/PolygonNetwork'
 export { default as HuobiNetworkIcon } from './Icons/HuobiNetwork'
 export { default as EthereumNetworkIcon } from './Icons/EthereumNetwork'
-export { default as DocumentIcon } from "./Icons/Document"
-export { default as PadlockIcon } from "./Icons/Padlock"
-export { default as GRVXIcon } from "./Icons/GRVX"
-export { default as InputCopyIcon } from "./Icons/InputCopy"
+export { default as DocumentIcon } from './Icons/Document'
+export { default as PadlockIcon } from './Icons/Padlock'
+export { default as GRVXIcon } from './Icons/GRVX'
+export { default as InputCopyIcon } from './Icons/InputCopy'
+export { default as GmartIcon } from './Icons/GmartIcon'
 
 export { default as Svg } from './Svg'
 export type { SvgProps } from './types'

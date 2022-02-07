@@ -7,8 +7,9 @@ import { AddIcon } from '../../components/Svg'
 import NetworkSwitch from './NetworkSwitch'
 import Flex from '../../components/Flex/Flex'
 import { networks as NETWORKS } from '../WalletModal/config'
+import { AccountModalProps } from '../WalletModal/AccountModal'
 
-interface Props {
+export type UserBlockProps = {
   networks?: typeof NETWORKS
   isProduction: boolean
   account?: string
@@ -28,7 +29,7 @@ interface Props {
   disableEthereum?: boolean
   bscAndPoly?: boolean
   networkSwitchItemCallback?: (chainId: string) => void
-}
+} & Pick<AccountModalProps, 'gmartProfileLink'>
 
 const StyledConnectButton = styled.div`
   margin-right: 10px;
@@ -53,7 +54,7 @@ const StyledFlex = styled(Flex)`
   }
 `
 
-const UserBlock: React.FC<Props> = (props) => {
+const UserBlock: React.FC<UserBlockProps> = (props) => {
   const {
     networks,
     isProduction,
@@ -67,7 +68,8 @@ const UserBlock: React.FC<Props> = (props) => {
     onTransactionHistoryHandler,
     balanceHook,
     networkSwitchVisible,
-    networkSwitchItemCallback
+    networkSwitchItemCallback,
+    gmartProfileLink,
   } = props
 
   const { onPresentConnectModal, onPresentAccountModal } = useWalletModal(
@@ -80,12 +82,20 @@ const UserBlock: React.FC<Props> = (props) => {
     explorerLink,
     onTransactionHistoryHandler,
     balanceHook,
+    undefined,
+    gmartProfileLink
   )
   const accountEllipsis = account ? `${account.substring(0, 4)}...${account.substring(account.length - 4)}` : null
 
   return (
     <StyledFlex alignItems="center" style={{ pointerEvents: 'all' }}>
-      {networkSwitchVisible && <NetworkSwitch networks={networks} isProduction={isProduction} networkSwitchItemCallback={networkSwitchItemCallback} />}
+      {networkSwitchVisible && (
+        <NetworkSwitch
+          networks={networks}
+          isProduction={isProduction}
+          networkSwitchItemCallback={networkSwitchItemCallback}
+        />
+      )}
       {account ? (
         <Button
           size="md"

@@ -17,11 +17,12 @@ import {
   MaticIcon,
   ModalBackgroundIcon,
   ModalBackgroundIconMobile,
-  TransactionHistoryIcon
+  TransactionHistoryIcon,
+  GmartIcon,
 } from '../../components/Svg'
 import { ConnectorNames } from './types'
 
-interface Props {
+export type AccountModalProps = {
   account: string
   logout: () => void
   onDismiss?: () => void
@@ -33,6 +34,7 @@ interface Props {
   balance?: string
   onTransactionHistoryHandler?: any
   balanceHook?: any
+  gmartProfileLink?: string
 }
 
 const StyledBackGround = styled.div<{ image?: string; mobileImage?: string }>`
@@ -128,9 +130,7 @@ const StyledInfoFlex = styled(Flex)`
 `
 
 const StyledFlexContainer = styled(StyledFlex)`
-  > button:not(:last-child) {
-    margin-right: 16px;
-  }
+  grid-column-gap: 16px;
 `
 
 const IconContainer = styled.div`
@@ -152,22 +152,21 @@ const IconContainer = styled.div`
 const svgString = encodeURIComponent(renderToStaticMarkup(<ModalBackgroundIcon />))
 const svgStringMobile = encodeURIComponent(renderToStaticMarkup(<ModalBackgroundIconMobile />))
 
-
-
 const getAccountIcon = () => {
   const connectorId = localStorage.getItem('connectorId')
 
-  if(connectorId)
-    if(Object.entries(ConnectorNames).find(name=>name[1] === connectorId)) {
-      const foundWalletConfig = Object.entries(walletsConfig).find(configName=>configName[1].connectorId === connectorId)
-      if (foundWalletConfig)
-        return foundWalletConfig[1]
-      }
+  if (connectorId)
+    if (Object.entries(ConnectorNames).find((name) => name[1] === connectorId)) {
+      const foundWalletConfig = Object.entries(walletsConfig).find(
+        (configName) => configName[1].connectorId === connectorId
+      )
+      if (foundWalletConfig) return foundWalletConfig[1]
+    }
 
   return walletsConfig.metamask
 }
 
-const AccountModal: React.FC<Props> = ({
+const AccountModal: React.FC<AccountModalProps> = ({
   account,
   logout,
   onDismiss = () => null,
@@ -178,6 +177,9 @@ const AccountModal: React.FC<Props> = ({
   networkName = 'binanceSmartChain',
   onTransactionHistoryHandler,
   balanceHook,
+  gmartProfileLink = process.env.REACT_APP_GMART_URL
+    ? `${process.env.REACT_APP_GMART_URL}${process.env.REACT_APP_GMART_URL !== '/' ? '/' : ''}profile`
+    : '',
 }) => {
   const [currentBalance, setBalance] = useState(balance)
 
@@ -231,13 +233,19 @@ const AccountModal: React.FC<Props> = ({
             <BSCScanIcon mr={16} />
           ) : explorerName.includes('Heco') ? (
             <HecoIcon mr={16} />
-          ) : explorerName.includes('Ether') ?
+          ) : explorerName.includes('Ether') ? (
             <Ether mr={12} />
-            : (
+          ) : (
             <MaticIcon mr={16} />
           )}
           {t(explorerName)}
         </StyledButton>
+        {!!gmartProfileLink && (
+          <StyledButton size="md" variant="dark" forwardedAs="a" href={`${gmartProfileLink}/${account}`}>
+            <GmartIcon size="1.5em" mr="1rem" />
+            {t('Gmart profile')}
+          </StyledButton>
+        )}
         {onTransactionHistoryHandler && (
           <StyledButton
             size="md"

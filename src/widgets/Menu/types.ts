@@ -1,5 +1,6 @@
 import { ReactNode } from 'react'
 import { Login } from '../WalletModal/types'
+import { UserBlockProps } from './UserBlock'
 import { networks as NETWORKS } from '../WalletModal/config'
 
 export interface LangType {
@@ -68,7 +69,7 @@ export interface PanelProps {
   links: Array<MenuEntry>
 }
 
-export interface NavProps extends PanelProps {
+export interface NavProps extends PanelProps, Pick<UserBlockProps, 'gmartProfileLink'> {
   networks?: typeof NETWORKS
   isProduction?: boolean
   account?: string
