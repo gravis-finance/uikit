@@ -21,6 +21,7 @@ import {
   GmartIcon,
 } from '../../components/Svg'
 import { ConnectorNames } from './types'
+import { getNetworkId } from '../../util/getNetworkId'
 
 export type AccountModalProps = {
   account: string
@@ -178,7 +179,7 @@ const AccountModal: React.FC<AccountModalProps> = ({
   onTransactionHistoryHandler,
   balanceHook,
   gmartProfileLink = process.env.REACT_APP_GMART_URL
-    ? `${process.env.REACT_APP_GMART_URL}${process.env.REACT_APP_GMART_URL !== '/' ? '/' : ''}profile`
+    ? `${process.env.REACT_APP_GMART_URL}${process.env.REACT_APP_GMART_URL !== '/' ? '/' : ''}profile/my`
     : '',
 }) => {
   const [currentBalance, setBalance] = useState(balance)
@@ -241,7 +242,7 @@ const AccountModal: React.FC<AccountModalProps> = ({
           {t(explorerName)}
         </StyledButton>
         {!!gmartProfileLink && (
-          <StyledButton size="md" variant="dark" forwardedAs="a" href={`${gmartProfileLink}/${account}`}>
+          <StyledButton size="md" variant="dark" forwardedAs="a" href={`${gmartProfileLink}?network=${getNetworkId()}`}>
             <GmartIcon size="1.5em" mr="1rem" />
             {t('Gmart profile')}
           </StyledButton>
