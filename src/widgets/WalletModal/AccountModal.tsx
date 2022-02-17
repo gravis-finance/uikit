@@ -22,6 +22,7 @@ import {
 } from '../../components/Svg'
 import { ConnectorNames } from './types'
 import { getNetworkId } from '../../util/getNetworkId'
+import { ProfileAvatar, ProfileName, EditProfileLink } from '../Profile'
 
 export type AccountModalProps = {
   account: string
@@ -194,13 +195,24 @@ const AccountModal: React.FC<AccountModalProps> = ({
   const { icon: Icon } = getAccountIcon()
 
   return (
-    <Modal title={t('account')} onDismiss={onDismiss} styledModalContent={{ padding: '0 24px 32px 24px' }}>
+    <Modal
+      title={
+        <Flex alignItems="center" gridGap="1rem">
+          <ProfileName account={account}>{t('account')}</ProfileName>
+          <EditProfileLink fontSize="0.9em" />
+        </Flex>
+      }
+      onDismiss={onDismiss}
+      styledModalContent={{ padding: '0 24px 32px 24px' }}
+    >
       <StyledBackGround
         image={`url("data:image/svg+xml,${svgString}")`}
         mobileImage={`url("data:image/svg+xml,${svgStringMobile}")`}
       >
         <StyledInfo>
-          <DefaultAvatar width="80px" height="80px" />
+          <ProfileAvatar account={account} size="80px">
+            <DefaultAvatar width="80px" height="80px" />
+          </ProfileAvatar>
           <StyledFlex>
             <StyledInfoFlex flexDirection="column" marginLeft={43}>
               <Text color="rgba(255, 255, 255, 0.5)" fontSize="14px">
@@ -225,7 +237,7 @@ const AccountModal: React.FC<AccountModalProps> = ({
         <IconContainer>
           <Icon width={18} height={18} />
         </IconContainer>
-        <StyledInput value={account} />
+        <StyledInput defaultValue={account} readOnly />
         <CopyButton textToCopy={account} />
       </StyledInputContainer>
       <StyledFlexContainer mt="16px" justifyContent="space-between" buttonsList>
