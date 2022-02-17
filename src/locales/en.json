@@ -21,7 +21,7 @@
     "hangar": "Hangar",
     "home": "Home",
     "craft": "Craft",
-    "trade": "Gswap Exchange",
+    "trade": "Exchange",
     "liquidity": "Pool",
     "migrate": "Migrate",
     "analytics": {
@@ -47,7 +47,11 @@
     "farming": "Farming",
     "staking": "GRVX Staking",
     "farms": "Farms",
-    "audit": "Audit"
+    "audit": "Audit",
+    "buyNFT": "Buy NFT",
+    "sellNFT": "Sell NFT",
+    "sendNFT": "Send NFT",
+    "Collections": "Collections"
   },
   "swap": "Swap",
   "networkSwitchingError": "Network switching error",
@@ -78,5 +82,8 @@
   "Privacy Policy": "Privacy Policy",
   "I read and accept": "I read and accept",
   "Accept": "Accept",
-  "and": "and"
+  "and": "and",
+  "buyNFT": "Buy NFT",
+  "sellNFT": "Sell NFT",
+  "sendNFT": "Send NFT"
 }
