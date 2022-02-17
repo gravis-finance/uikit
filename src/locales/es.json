@@ -21,7 +21,7 @@
     "hangar": "Hangar",
     "home": "Inicio",
     "craft": "Construir",
-    "trade": "Gswap Intercambio",
+    "trade": "Intercambio",
     "liquidity": "Fondo de liquidez",
     "migrate": "Migrar",
     "analytics": {
@@ -47,7 +47,11 @@
     "farming": "Farmeo",
     "staking": "GRVX Staking",
     "farms": "farmeo",
-    "audit": "Auditoría"
+    "audit": "Auditoría",
+    "buyNFT": "Comprar NFT",
+    "sellNFT": "Vender NFT",
+    "sendNFT": "Enviar NFT",
+    "Collections": "Collections"
   },
   "swap": "Intercambiar",
   "networkSwitchingError": "Error de conmutación de red",
@@ -78,5 +82,8 @@
   "Privacy Policy": "Política de Privacidad",
   "I read and accept": "Lo he leído y lo acepto",
   "Accept": "Aceptar",
-  "and": "y"
+  "and": "y",
+  "buyNFT": "Comprar NFT",
+  "sellNFT": "Vender NFT",
+  "sendNFT": "Enviar NFT"
 }

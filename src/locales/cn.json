@@ -21,7 +21,7 @@
     "hangar": "机库",
     "home": "主页",
     "craft": "太空船",
-    "trade": "Gswap 兑换",
+    "trade": "兑换",
     "liquidity": "池",
     "migrate": "迁移",
     "analytics": {
@@ -47,7 +47,11 @@
     "farming": "挖矿",
     "staking": "GRVX Staking",
     "farms": "挖矿",
-    "audit": "审核"
+    "audit": "审核",
+    "buyNFT": "购买NFT",
+    "sellNFT": "卖掉NFT",
+    "sendNFT": "发送NFT",
+    "Collections": "Collections"
   },
   "swap": "兑换",
   "networkSwitchingError": "网络切换错误",
@@ -78,5 +82,8 @@
   "Privacy Policy": "隐私政策",
   "I read and accept": "我已阅读并接受",
   "Accept": "接受",
-  "and": "和"
+  "and": "和",
+  "buyNFT": "购买NFT",
+  "sellNFT": "卖掉NFT",
+  "sendNFT": "发送NFT"
 }

@@ -21,7 +21,7 @@
     "hangar": "Ангар",
     "home": "Главная",
     "craft": "Craft",
-    "trade": "Gswap Биржа",
+    "trade": "Биржа",
     "liquidity": "Пул",
     "migrate": "Мигрировать",
     "analytics": {
@@ -47,7 +47,11 @@
     "farming": "Фарминг",
     "staking": "GRVX Staking",
     "farms": "Фермы",
-    "audit": "Audit"
+    "audit": "Audit",
+    "buyNFT": "Купить NFT",
+    "sellNFT": "Продать NFT",
+    "sendNFT": "Отправить NFT",
+    "Collections": "Collections"
   },
   "swap": "Обменять",
   "networkSwitchingError": "Ошибка переключения сети",
@@ -74,5 +78,8 @@
   "Terms of Use": "Условия Использования",
   "Privacy Policy": "Политика Конфиденциальности",
   "Accept": "Принять",
-  "and": "и"
+  "and": "и",
+  "buyNFT": "Купить NFT",
+  "sellNFT": "Продать NFT",
+  "sendNFT": "Отправить NFT"
 }

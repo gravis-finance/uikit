@@ -21,7 +21,7 @@
     "hangar": "格納庫",
     "home": "ホーム",
     "craft": "クラフト",
-    "trade": "Gswap 交換",
+    "trade": "交換",
     "liquidity": "プール",
     "migrate": "移行",
     "analytics": {
@@ -47,7 +47,11 @@
     "farming": "ファーミング",
     "staking": "GRVX Staking",
     "farms": "ファーム",
-    "audit": "監査"
+    "audit": "監査",
+    "buyNFT": "NFTを購入",
+    "sellNFT": "NFTを売る",
+    "sendNFT": "NFTの送信",
+    "Collections": "Collections"
   },
   "swap": "スワップ",
   "networkSwitchingError": "ネットワーク切り替えエラー",
@@ -78,5 +82,8 @@
   "Privacy Policy": "プライバシーポリシー",
   "I read and accept": "読んで、 同意しました",
   "Accept": "受け入れる",
-  "and": "と"
+  "and": "と",
+  "buyNFT": "NFTを購入",
+  "sellNFT": "NFTを売る",
+  "sendNFT": "NFTの送信"
 }
