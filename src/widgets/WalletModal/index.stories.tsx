@@ -21,7 +21,7 @@ export const Wallet: React.FC = () => {
     false,
     () => null,
     () => null,
-    '0xbdda50183d817c3289f895a4472eb475967dc980',
+    '0xBbA33901Db9Ce3B18578799bde301Ef02CF5D263',
     '',
     '',
     '',

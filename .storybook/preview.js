@@ -1,33 +1,36 @@
-import React from "react";
-import { withThemesProvider } from "themeprovider-storybook";
-import light from "../src/theme/light";
-import dark from "../src/theme/dark";
-import ResetCSS from "../src/ResetCSS";
-import { ModalProvider } from "../src/widgets/Modal";
-import "typeface-inter";
+import React from 'react'
+import { withThemesProvider } from 'themeprovider-storybook'
+import light from '../src/theme/light'
+import dark from '../src/theme/dark'
+import ResetCSS from '../src/ResetCSS'
+import { ModalProvider } from '../src/widgets/Modal'
+import { QueryProvider } from '../src/QueryProvider'
+import 'typeface-inter'
 
 const globalDecorator = (StoryFn) => (
-  <ModalProvider>
-    <ResetCSS />
-    <StoryFn />
-  </ModalProvider>
-);
+  <QueryProvider>
+    <ModalProvider>
+      <ResetCSS />
+      <StoryFn />
+    </ModalProvider>
+  </QueryProvider>
+)
 
 export const parameters = {
-  actions: { argTypesRegex: "^on[A-Z].*" },
-};
+  actions: { argTypesRegex: '^on[A-Z].*' },
+}
 
 const themes = [
   {
-    name: "Light",
+    name: 'Light',
     backgroundColor: light.colors.background,
     ...light,
   },
   {
-    name: "Dark",
+    name: 'Dark',
     backgroundColor: dark.colors.background,
     ...dark,
   },
-];
+]
 
-export const decorators = [globalDecorator, withThemesProvider(themes)];
+export const decorators = [globalDecorator, withThemesProvider(themes)]

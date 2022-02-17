@@ -80,6 +80,7 @@ export { default as PadlockIcon } from './Icons/Padlock'
 export { default as GRVXIcon } from './Icons/GRVX'
 export { default as InputCopyIcon } from './Icons/InputCopy'
 export { default as GmartIcon } from './Icons/GmartIcon'
+export { default as EditIcon } from './Icons/EditIcon'
 
 export { default as Svg } from './Svg'
 export type { SvgProps } from './types'
