@@ -26,6 +26,7 @@ import { getDefaultLanguage } from '../..'
 import GravisTokenPrice from './GravisTokenPrice'
 import { TokenConfig } from '../../config/tokenPrice'
 import CookiePlaceholder from '../../components/CookiePlaceholder'
+import useGetMenuLinks from '../../util/useGetMenuLinks'
 
 const Wrapper = styled.div`
   position: relative;
@@ -261,6 +262,8 @@ const Menu: React.FC<NavProps> = ({
     // eslint-disable-next-line
   }, [customLanguage])
 
+  const parsedLinks = useGetMenuLinks(links)
+
   return (
     <Wrapper>
       <StyledNav showMenu={showMenu}>
@@ -305,7 +308,7 @@ const Menu: React.FC<NavProps> = ({
           isDark={isDark}
           toggleTheme={toggleTheme}
           pushNav={setIsPushed}
-          links={links}
+          links={parsedLinks}
           gravisLogo={gravisLogo}
           gravisLogoText={gravisLogoText}
           providedLogoLink={providedLogoLink}
