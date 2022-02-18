@@ -51,3 +51,4 @@ export * from './constants'
 
 export * from './config/networks'
 export * from './config/tokenPrice'
+export * from './QueryProvider'

@@ -1,5 +1,6 @@
 import React from 'react'
-import { Modal, useModal } from '.'
+import { Story } from '@storybook/react'
+import { Modal, ModalContainer, useModal } from '.'
 import { InjectedProps } from './types'
 import Button from '../../components/Button/Button'
 import Heading from '../../components/Heading/Heading'
@@ -68,4 +69,16 @@ export const WithBackButton: React.FC = () => {
   const [onPresent1] = useModal(<BackButtonModal title="Modal with no X" />, false)
 
   return <Button onClick={onPresent1}>Only Back Button</Button>
+}
+
+export const ModalContainerStory: Story = ({ ...args }) => {
+  return (
+    <ModalContainer {...args}>
+      <CustomModal title="Modal Container" />
+    </ModalContainer>
+  )
+}
+ModalContainerStory.storyName = 'ModalContainer'
+ModalContainerStory.argTypes = {
+  open: { control: { type: 'boolean' } },
 }
