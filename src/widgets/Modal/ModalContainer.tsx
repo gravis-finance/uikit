@@ -22,7 +22,7 @@ export const ModalOverlay = styled.div<{ fixed?: boolean }>`
   right: 0;
   background-color: rgba(106, 106, 108, 0.8);
   overflow: auto;
-  z-index: 10;
+  z-index: 99;
 `
 
 const ModalWrapper = styled.div`
