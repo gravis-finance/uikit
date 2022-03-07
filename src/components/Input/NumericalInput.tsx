@@ -1,10 +1,11 @@
 /* eslint-disable */
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import styled, { CSSProperties } from 'styled-components'
 import Input from './Input'
 import { NumericalArrow } from '../Svg'
 import { Button } from '../Button'
 import { useTranslation } from 'react-multi-lang'
+import useOnClickOutside from '../../hooks/useOnClickOutside'
 
 interface Props {
   value?: number
@@ -108,34 +109,23 @@ const NumericalInput: React.FC<Props> = ({
   ...props
 }) => {
   const [isFocused, setIsFocused] = useState(false)
-  const [mustBlur, setMustBlur] = useState(false)
+  const inputContainerRef = useRef<HTMLInputElement>(null)
 
   const onFocusHandler = () => {
     setIsFocused(true)
   }
 
   // @ts-ignore
-  const onBlurHandler = (event) => {
-    if (!mustBlur) {
-      event.preventDefault()
-      event?.target?.focus()
-    } else {
-      event?.target?.blur()
-      setIsFocused(false)
-      setMustBlur(false)
-    }
+  const onClickHandler = () => {
+    setIsFocused(false)
+    // @ts-ignore
+    inputRef?.current?.blur()
   }
 
-  // @ts-ignore
-  const onClickHandler = (event) => {
-    if (!event.target.closest(InputContainer)) {
-      setMustBlur(true)
-      // @ts-ignore
-      inputRef?.current?.blur()
-    }
-  }
+  useOnClickOutside(inputContainerRef, onClickHandler)
 
   const onArrowClickHandler = (direction: string) => {
+    if (inputRef?.current) inputRef?.current.focus()
     // @ts-ignore
     const inputElement: any = inputRef.current
     if (direction === 'up') {
@@ -173,16 +163,8 @@ const NumericalInput: React.FC<Props> = ({
 
   const t = useTranslation()
 
-  useEffect(() => {
-    document.addEventListener('click', onClickHandler)
-
-    return () => {
-      document.removeEventListener('click', onClickHandler)
-    }
-  })
-
   return (
-    <InputContainer style={containerStyle}>
+    <InputContainer ref={inputContainerRef} style={containerStyle}>
       {labelPlaceholder && <LabelPlaceholder>{labelPlaceholder}</LabelPlaceholder>}
       {balancePlaceholder && <BalancePlaceholder title={balanceTitle}>{balancePlaceholder}</BalancePlaceholder>}
       <Input
@@ -192,7 +174,6 @@ const NumericalInput: React.FC<Props> = ({
         style={{ height: inputHeight }}
         onFocus={onFocusHandler}
         onKeyPress={onKeyPressHandler}
-        onBlur={onBlurHandler}
         onChange={onUserInput}
         {...props}
       />

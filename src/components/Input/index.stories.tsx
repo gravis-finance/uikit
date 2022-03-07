@@ -44,14 +44,17 @@ export const Default: React.FC = () => {
 }
 
 export const Numerical: React.FC = () => {
-  const inputRef = useRef<HTMLInputElement>(null)
+  const inputRef0 = useRef<HTMLInputElement>(null)
+  const inputRef1 = useRef<HTMLInputElement>(null)
+  const inputRef2 = useRef<HTMLInputElement>(null)
   const onClick = () => {
     // console.log(inputRef.current.value)
   }
   return (
     <div>
-      <NumericalInput inputRef={inputRef} onMaxButtonHandler={onClick} />
-      {/* <NumericalInput /> */}
+      <NumericalInput minAmount={0} maxAmount={100} inputRef={inputRef0} onMaxButtonHandler={onClick} />
+      <NumericalInput minAmount={0} maxAmount={100} inputRef={inputRef1} onMaxButtonHandler={onClick} />
+      <NumericalInput minAmount={0} maxAmount={100} inputRef={inputRef2} onMaxButtonHandler={onClick} />
       {/* <Button onClick={onClick}>Click</Button> */}
     </div>
   )
