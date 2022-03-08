@@ -45,7 +45,7 @@ const LinksContainer = styled.div`
   z-index: 3;
   border-radius: 8px;
   width: 150px;
-  left: -70px;
+  left: -65px;
   opacity: 0;
   pointer-events: none;
   transition: opacity 200ms ease-in-out;
@@ -81,7 +81,7 @@ const LinksContainer = styled.div`
     transform: rotate(45deg);
     background: #3d3d3d;
     bottom: -6px;
-    left: 75px;
+    left: 69px;
   }
 
   ::after {
