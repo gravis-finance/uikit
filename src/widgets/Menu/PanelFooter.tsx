@@ -7,6 +7,7 @@ import Link from '../../components/Link/Link'
 import * as IconModule from './icons'
 import { socials } from './config'
 import { PanelProps, PushedProps } from './types'
+import TelegramLinks from "../../components/TelegramLinks";
 
 interface Props extends PanelProps, PushedProps {}
 
@@ -51,7 +52,7 @@ const StyledExternalLink = styled(Link)`
   margin-bottom: 25px;
   svg * {
     fill: #929292;
-    transition: fill 300ms ease-in-out;
+    transition: fill 100ms ease-in-out;
   }
   :hover {
     svg * {
@@ -78,6 +79,8 @@ const PanelFooter: React.FC<Props> = ({ isPushed }) => {
           {socials.map((social) => {
             const Icon = Icons[social.icon]
             const iconProps = { width: '16px', color: 'textSubtle', style: { cursor: 'pointer' } }
+              if(social.label === 'Telegram')
+                  return <TelegramLinks />
             return (
               <StyledExternalLink external key={social.label} href={filterHref(social.href)} aria-label={social.label}>
                 <Icon {...iconProps} />
