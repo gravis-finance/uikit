@@ -51,7 +51,8 @@
     "buyNFT": "NFTを購入",
     "sellNFT": "NFTを売る",
     "sendNFT": "NFTの送信",
-    "Collections": "Collections"
+    "Collections": "Collections",
+    "missions": "ミッション"
   },
   "swap": "スワップ",
   "networkSwitchingError": "ネットワーク切り替えエラー",

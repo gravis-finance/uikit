@@ -51,7 +51,8 @@
     "buyNFT": "Mua NFT",
     "sellNFT": "Bán NFT",
     "sendNFT": "Gửi NFT",
-    "Collections": "Collections"
+    "Collections": "Collections",
+    "missions": "Nhiệm vụ"
   },
   "swap": "Đổi mạng",
   "networkSwitchingError": "Lỗi chuyển đổi mạng",
