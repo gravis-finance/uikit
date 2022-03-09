@@ -51,7 +51,8 @@
     "buyNFT": "Купить NFT",
     "sellNFT": "Продать NFT",
     "sendNFT": "Отправить NFT",
-    "Collections": "Collections"
+    "Collections": "Collections",
+    "missions": "Миссии"
   },
   "swap": "Обменять",
   "networkSwitchingError": "Ошибка переключения сети",

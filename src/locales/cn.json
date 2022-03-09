@@ -51,7 +51,8 @@
     "buyNFT": "购买NFT",
     "sellNFT": "卖掉NFT",
     "sendNFT": "发送NFT",
-    "Collections": "Collections"
+    "Collections": "Collections",
+    "missions": "使命"
   },
   "swap": "兑换",
   "networkSwitchingError": "网络切换错误",
