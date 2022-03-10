@@ -14,6 +14,7 @@ import {
 } from '../../widgets/Menu/icons'
 import { Text } from '../Text'
 import { Flex } from '../Flex'
+import { GravisDarkIcon } from '../Svg'
 
 const Container = styled.div`
   position: relative;
@@ -148,6 +149,15 @@ const TelegramLinks = () => {
     <Container>
       <TelegramIcon />
       <LinksContainer>
+        <Flex alignItems="center" as="a" href="https://t.me/Gravis_Finance_News" target="_blank">
+          <GravisDarkIcon width={24} height={24} />
+          <Text ml="8px" color="rgba(255, 255, 255, 0.5)">
+            Channel
+          </Text>
+        </Flex>
+        <Text ml="8px" p="8px 0 2px 0">
+          Chats:
+        </Text>
         {links.map((link) => (
           <Flex alignItems="center" as="a" href={link.href} target="_blank">
             {link.icon}

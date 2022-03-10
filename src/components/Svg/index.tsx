@@ -84,6 +84,7 @@ export { default as EditIcon } from './Icons/EditIcon'
 export { default as MetamaskEmptyIcon } from './Icons/MetamaskEmpty'
 export { default as BinanceWhiteIcon } from './Icons/BinanceWhite'
 export { default as PolygonWhiteIcon } from './Icons/PolygonWhite'
+export { default as GravisDarkIcon } from './Icons/GravisDark'
 
 export { default as Svg } from './Svg'
 export type { SvgProps } from './types'
