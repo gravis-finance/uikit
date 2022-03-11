@@ -1,7 +1,7 @@
 import { ButtonTheme, variants } from './types'
 import { lightColors, darkColors } from '../../theme/colors'
 
-const { PRIMARY, SECONDARY, TERTIARY, TEXT, DANGER, SUBTLE, SUCCESS, DEFAULT, DARK, LIGHT } = variants
+const { PRIMARY, SECONDARY, TERTIARY, TEXT, DANGER, SUBTLE, SUCCESS, DEFAULT, DARK, LIGHT, BLUE, DARKENED } = variants
 
 export const light: ButtonTheme = {
   [PRIMARY]: {
@@ -115,6 +115,26 @@ export const light: ButtonTheme = {
     boxShadowActive: 'none',
     color: '#000',
   },
+  [BLUE]: {
+    background: '#17ACFF',
+    backgroundActive: `#17ACFF`, // 70% opacity
+    backgroundHover: `#17ACFF`, // 85% opacity
+    border: '2px solid transparent',
+    borderColorHover: 'transparent',
+    boxShadow: 'none',
+    boxShadowActive: 'none',
+    color: '#fff',
+  },
+  [DARKENED]: {
+    background: 'rgba(255, 255, 255, 0.1)',
+    backgroundActive: `rgba(255, 255, 255, 0.1)`, // 70% opacity
+    backgroundHover: `rgba(255, 255, 255, 0.1)`, // 85% opacity
+    border: '2px solid transparent',
+    borderColorHover: 'transparent',
+    boxShadow: 'none',
+    boxShadowActive: 'none',
+    color: '#fff',
+  },
 }
 
 export const dark: ButtonTheme = {
@@ -151,6 +171,12 @@ export const dark: ButtonTheme = {
     ...light.default,
   },
   [LIGHT]: {
+    ...light.default,
+  },
+  [BLUE]: {
+    ...light.default,
+  },
+  [DARKENED]: {
     ...light.default,
   },
 }

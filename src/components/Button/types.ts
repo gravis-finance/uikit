@@ -23,6 +23,8 @@ export const variants = {
   DEFAULT: 'default',
   DARK: 'dark',
   LIGHT: 'light',
+  BLUE: 'blue',
+  DARKENED: 'darkened',
 } as const
 
 export type Sizes = typeof sizes[keyof typeof sizes]
