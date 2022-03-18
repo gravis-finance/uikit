@@ -108,7 +108,7 @@ export const light: ButtonTheme = {
   [LIGHT]: {
     background: 'white',
     backgroundActive: `white`, // 70% opacity
-    backgroundHover: `white`, // 85% opacity
+    backgroundHover: `#dadada`, // 85% opacity
     border: '2px solid transparent',
     borderColorHover: 'transparent',
     boxShadow: 'none',
@@ -118,7 +118,7 @@ export const light: ButtonTheme = {
   [BLUE]: {
     background: '#17ACFF',
     backgroundActive: `#17ACFF`, // 70% opacity
-    backgroundHover: `#17ACFF`, // 85% opacity
+    backgroundHover: `#0b86d0`, // 85% opacity
     border: '2px solid transparent',
     borderColorHover: 'transparent',
     boxShadow: 'none',
@@ -128,7 +128,7 @@ export const light: ButtonTheme = {
   [DARKENED]: {
     background: 'rgba(255, 255, 255, 0.1)',
     backgroundActive: `rgba(255, 255, 255, 0.1)`, // 70% opacity
-    backgroundHover: `rgba(255, 255, 255, 0.1)`, // 85% opacity
+    backgroundHover: `rgba(255, 255, 255, 0.2)`, // 85% opacity
     border: '2px solid transparent',
     borderColorHover: 'transparent',
     boxShadow: 'none',
