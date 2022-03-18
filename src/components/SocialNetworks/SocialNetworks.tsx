@@ -37,7 +37,7 @@ const SocialNetworks: React.FC = () => {
       <LinkItem href={`${getCurrentLanguage() === 'jp' ? 'https://t.me/gravis_finance_jp' : 'https://t.me/Gravis_Finance_En'}`} target="_blank" rel="noopener  noreferrer">
         <TelegramIcon />
       </LinkItem>
-      <LinkItem href="https://twitter.com/gravis_finance" target="_blank" rel="noopener  noreferrer">
+      <LinkItem href="https://twitter.com/gammarosigma" target="_blank" rel="noopener  noreferrer">
         <TwitterIcon />
       </LinkItem>
       <LinkItem href="https://gravis-finance.medium.com/" target="_blank" rel="noopener  noreferrer">
