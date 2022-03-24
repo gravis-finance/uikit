@@ -52,7 +52,8 @@
     "sellNFT": "Sell NFT",
     "sendNFT": "Send NFT",
     "Collections": "Collections",
-    "missions": "Missions"
+    "missions": "Missions",
+    "assets": "Assets"
   },
   "swap": "Swap",
   "networkSwitchingError": "Network switching error",

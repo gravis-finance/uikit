@@ -52,7 +52,8 @@
     "sellNFT": "卖掉NFT",
     "sendNFT": "发送NFT",
     "Collections": "Collections",
-    "missions": "使命"
+    "missions": "使命",
+    "assets": "Assets"
   },
   "swap": "兑换",
   "networkSwitchingError": "网络切换错误",

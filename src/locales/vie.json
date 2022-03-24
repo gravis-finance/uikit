@@ -52,7 +52,8 @@
     "sellNFT": "Bán NFT",
     "sendNFT": "Gửi NFT",
     "Collections": "Collections",
-    "missions": "Nhiệm vụ"
+    "missions": "Nhiệm vụ",
+    "assets": "Assets"
   },
   "swap": "Đổi mạng",
   "networkSwitchingError": "Lỗi chuyển đổi mạng",
