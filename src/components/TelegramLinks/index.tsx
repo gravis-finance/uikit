@@ -18,6 +18,7 @@ import { GravisDarkIcon } from '../Svg'
 
 const Container = styled.div`
   position: relative;
+  margin-bottom: 25px;
 
   > svg * {
     fill: #929292;
@@ -144,9 +145,9 @@ const links = [
   },
 ]
 
-const TelegramLinks = () => {
+const TelegramLinks = ({ setIsPushed }) => {
   return (
-    <Container>
+    <Container onMouseOver={() => setIsPushed(true)}>
       <TelegramIcon />
       <LinksContainer>
         <Flex alignItems="center" as="a" href="https://t.me/Gravis_Finance_News" target="_blank">

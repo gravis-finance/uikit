@@ -7,7 +7,7 @@ import Link from '../../components/Link/Link'
 import * as IconModule from './icons'
 import { socials } from './config'
 import { PanelProps, PushedProps } from './types'
-import TelegramLinks from "../../components/TelegramLinks";
+import TelegramLinks from '../../components/TelegramLinks'
 
 interface Props extends PanelProps, PushedProps {}
 
@@ -62,7 +62,7 @@ const StyledExternalLink = styled(Link)`
   }
 `
 
-const PanelFooter: React.FC<Props> = ({ isPushed }) => {
+const PanelFooter: React.FC<Props> = ({ isPushed, pushNav }) => {
   // eslint-disable-next-line consistent-return
   const filterHref = (href: string) => {
     if (href.includes('t.me')) {
@@ -79,8 +79,7 @@ const PanelFooter: React.FC<Props> = ({ isPushed }) => {
           {socials.map((social) => {
             const Icon = Icons[social.icon]
             const iconProps = { width: '16px', color: 'textSubtle', style: { cursor: 'pointer' } }
-              if(social.label === 'Telegram')
-                  return <TelegramLinks />
+            if (social.label === 'Telegram') return <TelegramLinks setIsPushed={pushNav} />
             return (
               <StyledExternalLink external key={social.label} href={filterHref(social.href)} aria-label={social.label}>
                 <Icon {...iconProps} />
