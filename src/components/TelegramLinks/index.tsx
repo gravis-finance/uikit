@@ -145,7 +145,11 @@ const links = [
   },
 ]
 
-const TelegramLinks = ({ setIsPushed }) => {
+type Props = {
+  seIsPushed: (state: boolean) => void
+}
+
+const TelegramLinks: React.FC<Props> = ({ setIsPushed }) => {
   return (
     <Container onMouseOver={() => setIsPushed(true)}>
       <TelegramIcon />
