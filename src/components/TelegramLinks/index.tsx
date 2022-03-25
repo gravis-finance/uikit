@@ -146,12 +146,12 @@ const links = [
 ]
 
 type Props = {
-  seIsPushed: (state: boolean) => void
+  pushNav: (isPushed: boolean) => void
 }
 
-const TelegramLinks: React.FC<Props> = ({ setIsPushed }) => {
+const TelegramLinks: React.FC<Props> = ({ pushNav }) => {
   return (
-    <Container onMouseOver={() => setIsPushed(true)}>
+    <Container onMouseOver={() => pushNav(true)}>
       <TelegramIcon />
       <LinksContainer>
         <Flex alignItems="center" as="a" href="https://t.me/Gravis_Finance_News" target="_blank">

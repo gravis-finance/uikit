@@ -79,7 +79,7 @@ const PanelFooter: React.FC<Props> = ({ isPushed, pushNav }) => {
           {socials.map((social) => {
             const Icon = Icons[social.icon]
             const iconProps = { width: '16px', color: 'textSubtle', style: { cursor: 'pointer' } }
-            if (social.label === 'Telegram') return <TelegramLinks setIsPushed={pushNav} />
+            if (social.label === 'Telegram') return <TelegramLinks pushNav={pushNav} />
             return (
               <StyledExternalLink external key={social.label} href={filterHref(social.href)} aria-label={social.label}>
                 <Icon {...iconProps} />
