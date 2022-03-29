@@ -82,7 +82,7 @@ const NumberButtons: React.FC<Props> = ({ minValue = 1, maxValue = 50, callback 
 
   return (
     <Wrapper>
-      <CircleButton disabled={count === 0} onClick={() => onClickHandler(true)}>
+      <CircleButton disabled={count === minValue} onClick={() => onClickHandler(true)}>
         <MinusIcon />
       </CircleButton>
       <Value>{count}</Value>
