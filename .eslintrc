@@ -1,7 +1,7 @@
 {
   "extends": "@pancakeswap-libs/eslint-config-pancake",
   "rules": {
-   "@typescript-eslint/explicit-module-boundary-types": 0,
+    "@typescript-eslint/explicit-module-boundary-types": 0,
     "@typescript-eslint/no-explicit-any": "off",
     "no-plusplus": 0,
     "react/no-array-index-key": 0,
@@ -14,7 +14,6 @@
     "no-nested-ternary": 0,
     "default-case": 0,
     "react/require-default-props": 0,
-    "react/no-unused-prop-types": 0,
     "spaced-comment": 0
   }
 }

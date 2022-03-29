@@ -1,12 +1,10 @@
 import React, { ReactNode } from 'react'
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
-import { LogoIcon } from '../../components/Svg'
 import Flex from '../../components/Flex/Flex'
 import { Text } from '../../components/Text'
 
 interface Props {
-  isDark: boolean
   href: string
   isPushed?: boolean
   gravisLogo?: ReactNode
@@ -40,19 +38,13 @@ const LogoText = styled(Text)`
   letter-spacing: 1px;
 `
 
-const StyledLogoIcon = styled(LogoIcon)`
-  &.desktop-icon {
-    width: 41px;
-  }
-`
-
 const StyledFlex = styled(Flex)`
   @media screen and (max-width: 968px) {
     display: none;
   }
 `
 
-const Logo: React.FC<Props> = ({ isDark, href, isPushed, gravisLogo, gravisLogoText }) => {
+const Logo: React.FC<Props> = ({ href, isPushed, gravisLogo, gravisLogoText }) => {
   const isAbsoluteUrl = href.startsWith('http')
   const innerLogo = <>{gravisLogo}</>
 

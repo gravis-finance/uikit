@@ -24,10 +24,6 @@ export type UserBlockProps = {
   onTransactionHistoryHandler?: any
   balanceHook?: any
   networkSwitchVisible?: boolean
-  bscOnly?: boolean
-  ethereum?: boolean
-  disableEthereum?: boolean
-  bscAndPoly?: boolean
   networkSwitchItemCallback?: (chainId: string) => void
 } & Pick<AccountModalProps, 'gmartProfileLink'>
 

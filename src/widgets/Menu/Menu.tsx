@@ -3,16 +3,13 @@ import styled from 'styled-components'
 import { setDefaultLanguage, setLanguage, setTranslations } from 'react-multi-lang'
 import Overlay from '../../components/Overlay/Overlay'
 import { Flex } from '../../components/Flex'
-import { Text } from '../../components/Text'
 import { useMatchBreakpoints } from '../../hooks'
 import Panel from './Panel'
 import UserBlock from './UserBlock'
 import { NavProps } from './types'
 import { MENU_HEIGHT, SIDEBAR_WIDTH_FULL, SIDEBAR_WIDTH_REDUCED } from './config'
-import { LogoIcon as LogoWithText } from './icons'
 import MenuButton from './MenuButton'
 import { BurgerIcon, CloseIcon } from '../../components/Svg'
-// import BetaIcon from '../../components/Svg/Icons/Beta'
 import Logo from '../../components/Svg/Icons/Logo'
 import en from '../../locales/en.json'
 import jp from '../../locales/jp.json'
@@ -88,7 +85,6 @@ const MobileOnlyOverlay = styled(Overlay)`
 `
 
 const StyledIcon = styled.div<{ reverse?: boolean }>`
-{
   margin-left: 20px;
   cursor: pointer;
   outline: none;
@@ -101,11 +97,10 @@ const StyledIcon = styled.div<{ reverse?: boolean }>`
   box-sizing: border-box;
   box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.4), -4px -4px 12px rgba(255, 255, 255, 0.05);
   border-radius: 34px;
-}
 
   :hover {
     background: linear-gradient(90.28deg, #242424 0%, #202020 100%), linear-gradient(90.28deg, #292929 0%, #242424 100%),
-    #303030;
+      #303030;
   }
 
   @media screen and (max-width: 968px) {
@@ -150,29 +145,6 @@ const StyledLogoWithoutText = styled.div`
   }
 `
 
-const StyledBetaIcon = styled.div<{ isPushed?: boolean }>`
-  display: flex;
-  align-items: center;
-  margin-left: -20px;
-  ${({ isPushed }) => isPushed && 'margin-left: 152px;'}
-
-  @media screen and (max-width: 968px) {
-  position: relative;
-  margin-left: 8px;
-  > div {
-    display: none;
-  }
-  :hover {
-    > div {
-      display: block;
-    }
-  }
-}
-  @media screen and (max-width: 575px) {
-    margin-left: 20px;
-  }
-`
-
 const LanguageContainer = styled.div<{ isPushed?: boolean }>`
   display: flex;
   align-items: center;
@@ -181,9 +153,9 @@ const LanguageContainer = styled.div<{ isPushed?: boolean }>`
   ${({ isPushed }) => isPushed && 'margin-left: 152px;'}
 
   @media screen and (max-width: 968px) {
-  position: relative;
-  margin-left: 16px;
-}
+    position: relative;
+    margin-left: 16px;
+  }
   @media screen and (max-width: 575px) {
     margin-left: 20px;
   }
@@ -205,36 +177,33 @@ setTranslations({ en, jp, cn, ru, es, vie })
 setDefaultLanguage('en')
 
 const Menu: React.FC<NavProps> = ({
-                                    networks,
-                                    isProduction,
-                                    account,
-                                    login,
-                                    logout,
-                                    isDark,
-                                    toggleTheme,
-                                    links,
-                                    loginBlockVisible = true,
-                                    buttonTitle = 'Connect',
-                                    options,
-                                    children,
-                                    balance,
-                                    explorerName,
-                                    explorerLink,
-                                    onTransactionHistoryHandler,
-                                    balanceHook = defaultBalanceHook,
-                                    setSelectedLanguage = defaultSetSelectedLanguage,
-                                    customLanguage,
-                                    networkSwitchVisible = true,
-                                    bscOnly,
-                                    ethereum,
-                                    subscribePushEvent,
-                                    disableEthereum,
-                                    bscAndPoly,
-                                    networkSwitchItemCallback,
-                                    gravisLogo = <Logo />,
-                                    gravisLogoText,
-                                    providedLogoLink
-                                  }) => {
+  networks,
+  isProduction,
+  account,
+  login,
+  logout,
+  isDark,
+  toggleTheme,
+  links,
+  loginBlockVisible = true,
+  buttonTitle = 'Connect',
+  options,
+  children,
+  balance,
+  explorerName,
+  explorerLink,
+  onTransactionHistoryHandler,
+  balanceHook = defaultBalanceHook,
+  setSelectedLanguage = defaultSetSelectedLanguage,
+  customLanguage,
+  networkSwitchVisible = true,
+  subscribePushEvent,
+  networkSwitchItemCallback,
+  gravisLogo = <Logo />,
+  gravisLogoText,
+  providedLogoLink,
+  isShowMenuPanel = true,
+}) => {
   const { isXl } = useMatchBreakpoints()
   const isMobile = isXl === false
   const [isPushed, setIsPushed] = useState(!isMobile)
@@ -290,10 +259,6 @@ const Menu: React.FC<NavProps> = ({
               onTransactionHistoryHandler={onTransactionHistoryHandler}
               balanceHook={balanceHook}
               networkSwitchVisible={networkSwitchVisible}
-              bscOnly={bscOnly}
-              ethereum={ethereum}
-              disableEthereum={disableEthereum}
-              bscAndPoly={bscAndPoly}
               networkSwitchItemCallback={networkSwitchItemCallback}
               {...options}
             />
@@ -301,37 +266,49 @@ const Menu: React.FC<NavProps> = ({
         </Flex>
       </StyledNav>
       <BodyWrapper>
-        <Panel
-          isPushed={isPushed}
-          isMobile={isMobile}
-          showMenu={showMenu}
-          isDark={isDark}
-          toggleTheme={toggleTheme}
-          pushNav={setIsPushed}
-          links={parsedLinks}
-          gravisLogo={gravisLogo}
-          gravisLogoText={gravisLogoText}
-          providedLogoLink={providedLogoLink}
-          togglePush={() => setIsPushed((prevState: boolean) => !prevState)}
-        />
-        <Inner isPushed={isPushed} showMenu={showMenu}>
-          {children}
-        </Inner>
+        {isShowMenuPanel ? (
+          <>
+            <Panel
+              isPushed={isPushed}
+              isMobile={isMobile}
+              showMenu={showMenu}
+              isDark={isDark}
+              toggleTheme={toggleTheme}
+              pushNav={setIsPushed}
+              links={parsedLinks}
+              gravisLogo={gravisLogo}
+              gravisLogoText={gravisLogoText}
+              providedLogoLink={providedLogoLink}
+              togglePush={() => setIsPushed((prevState: boolean) => !prevState)}
+            />
+            <Inner isPushed={isPushed} showMenu={showMenu}>
+              {children}
+            </Inner>
+          </>
+        ) : (
+          children
+        )}
+
         <CookiePlaceholder isPushed={isPushed} />
-        <MobileOnlyOverlay show={isPushed} onClick={() => setIsPushed(false)} role="presentation" />
+        {isShowMenuPanel ? (
+          <MobileOnlyOverlay show={isPushed} onClick={() => setIsPushed(false)} role="presentation" />
+        ) : null}
       </BodyWrapper>
       {/* HERE */}
-      <MenuButton aria-label="Toggle menu" onClick={() => setIsPushed((prevState: boolean) => !prevState)} mobile>
-        {isPushed ? (
-          <StyledIcon>
-            <CloseIcon color="primary" width="24" height="24" />
-          </StyledIcon>
-        ) : (
-          <StyledIcon>
-            <BurgerIcon width="24" height="24" />
-          </StyledIcon>
-        )}
-      </MenuButton>
+      {isShowMenuPanel ? (
+        <MenuButton aria-label="Toggle menu" onClick={() => setIsPushed((prevState: boolean) => !prevState)} mobile>
+          {isPushed ? (
+            <StyledIcon>
+              <CloseIcon color="primary" width="24" height="24" />
+            </StyledIcon>
+          ) : (
+            <StyledIcon>
+              <BurgerIcon width="24" height="24" />
+            </StyledIcon>
+          )}
+        </MenuButton>
+      ) : null}
+
       {/* position: fixed; */}
     </Wrapper>
   )

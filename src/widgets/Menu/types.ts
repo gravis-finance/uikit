@@ -1,6 +1,6 @@
 import { ReactNode } from 'react'
 import { Login } from '../WalletModal/types'
-import { UserBlockProps } from './UserBlock'
+import type { UserBlockProps } from './UserBlock'
 import { networks as NETWORKS } from '../WalletModal/config'
 
 export interface LangType {
@@ -82,20 +82,14 @@ export interface NavProps extends PanelProps, Pick<UserBlockProps, 'gmartProfile
   explorerName?: string
   explorerLink?: string
   onTransactionHistoryHandler?: any
-  betaText?: string
-  betaLink?: string
   balanceHook?: any
-  withoutHeader?: boolean
   setSelectedLanguage?: (name: string) => void
   customLanguage?: string
   networkSwitchVisible?: boolean
-  bscOnly?: boolean
-  ethereum?: boolean
   subscribePushEvent?: (isPushed: boolean) => void
-  disableEthereum?: boolean
-  bscAndPoly?: boolean
   networkSwitchItemCallback?: (chainId: string) => void
   gravisLogo?: ReactNode
   gravisLogoText?: string
   providedLogoLink?: string
+  isShowMenuPanel?: boolean
 }

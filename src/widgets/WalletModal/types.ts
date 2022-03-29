@@ -15,8 +15,8 @@ export interface WalletsConfig {
   icon: FC<SvgProps>
   connectorId: ConnectorNames
   connection: {
-    disabled: boolean,
-    errorModalProps?: any,
+    disabled: boolean
+    errorModalProps?: any
     errorModal: any
   }
 }
@@ -25,6 +25,6 @@ export interface NetworksConfig {
   title: string
   label: string
   chainId: string
-  icon: FC<SvgProps>,
+  icon: FC<SvgProps>
   wallets: WalletsConfig[]
 }
