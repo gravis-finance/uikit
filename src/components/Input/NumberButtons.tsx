@@ -34,6 +34,9 @@ const CircleButton = styled.div<{ disabled: boolean }>`
           box-shadow: none;
           color: rgba(255, 255, 255, 0.4);
           cursor: default;
+          svg {
+            filter: contrast(0.5);
+          }
         `
       : css`
           :hover {
