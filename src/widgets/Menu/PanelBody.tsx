@@ -47,26 +47,26 @@ interface StyledIconProps {
 }
 
 const StyledIcon = styled.div`
-{
-  height: 40px;
-  width: 40px;
-  display: flex;
-  position: absolute;
-  right: -14px;
-  top: 44%;
-  transition: background-color 150ms ease-in-out;
-  box-sizing: content-box;
-}
+   {
+    height: 40px;
+    width: 40px;
+    display: flex;
+    position: absolute;
+    right: -14px;
+    top: 44%;
+    transition: background-color 150ms ease-in-out;
+    box-sizing: content-box;
+  }
   > * {
     margin: auto;
     transition: transform 200ms ease-in-out;
   }
   ${(props: StyledIconProps) =>
-          props.reverse
-                  ? `> svg *:last-child {
+    props.reverse
+      ? `> svg *:last-child {
     transform: rotate(180deg) translate(-44px, -135px);
   }`
-                  : ''}
+      : ''}
 `
 
 const StyledLinksPanel = styled.div<{ isPushed?: boolean }>`
@@ -109,8 +109,8 @@ const StyledLinksPanel = styled.div<{ isPushed?: boolean }>`
 
 @media screen and (max-height: 650px) {
   ${({ isPushed }) =>
-          !isPushed
-                  ? `
+    !isPushed
+      ? `
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -129,7 +129,7 @@ const StyledLinksPanel = styled.div<{ isPushed?: boolean }>`
         }
       }
     `
-                  : ''}
+      : ''}
 }
 `
 
@@ -146,7 +146,17 @@ const SpinnerContainer = styled.div`
   justify-content: center;
 `
 
-const PanelBody: React.FC<Props> = ({ isPushed, pushNav, isMobile, links, togglePush, isDark, gravisLogo, gravisLogoText, providedLogoLink }) => {
+const PanelBody: React.FC<Props> = ({
+  isPushed,
+  pushNav,
+  isMobile,
+  links,
+  togglePush,
+  isDark,
+  gravisLogo,
+  gravisLogoText,
+  providedLogoLink,
+}) => {
   const location = useLocation()
   const t = useTranslation()
 
@@ -161,13 +171,18 @@ const PanelBody: React.FC<Props> = ({ isPushed, pushNav, isMobile, links, toggle
     'InfoIcon',
     'BigBangIcon',
     'AsteroidMiningIcon',
-    'NFTFarmingIcon'
+    'NFTFarmingIcon',
   ]
 
   return (
     <Container>
       <StyledLogoIcon>
-        <Logo isDark={isDark} href={providedLogoLink ? providedLogoLink : homeLink?.href ?? '/'} isPushed={isPushed} gravisLogo={gravisLogo} gravisLogoText={gravisLogoText}/>
+        <Logo
+          href={providedLogoLink ? providedLogoLink : homeLink?.href ?? '/'}
+          isPushed={isPushed}
+          gravisLogo={gravisLogo}
+          gravisLogoText={gravisLogoText}
+        />
       </StyledLogoIcon>
       <MenuButton aria-label="Toggle menu" onClick={togglePush}>
         {isPushed ? (
