@@ -41,7 +41,7 @@ const Container = styled.div`
   flex-direction: column;
 `
 
-const WalletExtensionInstallModal: React.FC<{ onDismiss?: any, installLink: string, connect: any }> = ({
+const WalletExtensionInstallModal: React.FC<{ onDismiss?: any; installLink: string; connect: any }> = ({
   installLink,
   connect,
   onDismiss = () => null,
@@ -68,21 +68,17 @@ const WalletExtensionInstallModal: React.FC<{ onDismiss?: any, installLink: stri
       <Container>
         <ErrorIcon width={150} height={150} />
         <Text mt="20px">
-          {t('If you want to connect with this wallet you should install extension for your browser or use Wallet Connect')}.
+          {t(
+            'If you want to connect with this wallet you should install extension for your browser or use Wallet Connect'
+          )}
+          .
         </Text>
         <CopyContainer>
-          <Button
-            mr="20px"
-            data-id="connect-button"
-            onClick={onConnect}
-          >
+          <Button mr="20px" data-id="connect-button" onClick={onConnect}>
             {t('Connect with Wallet Connect')}
             <WalletConnectIcon width="20px" color="primary" ml="10px" />
           </Button>
-          <Button
-            data-id="install-button"
-            onClick={onInstall}
-          >
+          <Button data-id="install-button" onClick={onInstall}>
             {t('Install')}
             <AscendingIcon width="20px" color="primary" ml="10px" />
           </Button>
