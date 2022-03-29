@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 import { AddButton, MinusIcon } from '../Svg'
 
 const Wrapper = styled.div`
@@ -9,30 +9,41 @@ const Wrapper = styled.div`
   justify-content: space-between;
 `
 
-const CircleButton = styled.div`
+const CircleButton = styled.div<{ disabled: boolean }>`
   width: 32px;
   height: 32px;
   border-radius: 100%;
   background: #292929;
-  border: 1px solid #2E2E2E;
+  border: 1px solid #2e2e2e;
   box-sizing: border-box;
   box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.4), -4px -4px 12px rgba(255, 255, 255, 0.05);
   display: flex;
   transition: background 200ms ease-in-out;
   cursor: pointer;
   user-select: none;
-  
+
   > svg {
     margin: auto;
   }
-  
-  :hover {
-    background: #242424;
-  }
-  
-  :active {
-    background: #1c1c1c;
-  }
+
+  ${({ disabled }) =>
+    disabled
+      ? css`
+          background: #303030;
+          border-color: #303030;
+          box-shadow: none;
+          color: rgba(255, 255, 255, 0.4);
+          cursor: default;
+        `
+      : css`
+          :hover {
+            background: #242424;
+          }
+
+          :active {
+            background: #1c1c1c;
+          }
+        `}
 `
 
 const Value = styled.div`
@@ -50,7 +61,6 @@ interface Props {
 }
 
 const NumberButtons: React.FC<Props> = ({ minValue = 1, maxValue = 50, callback }) => {
-
   const [count, setCount] = useState<number>(1)
 
   const onClickHandler = (minus: boolean) => {
@@ -69,13 +79,11 @@ const NumberButtons: React.FC<Props> = ({ minValue = 1, maxValue = 50, callback 
 
   return (
     <Wrapper>
-      <CircleButton onClick={() => onClickHandler(true)}>
+      <CircleButton disabled={count === 0} onClick={() => onClickHandler(true)}>
         <MinusIcon />
       </CircleButton>
-      <Value>
-        {count}
-      </Value>
-      <CircleButton onClick={() => onClickHandler(false)}>
+      <Value>{count}</Value>
+      <CircleButton disabled={count === maxValue} onClick={() => onClickHandler(false)}>
         <AddButton />
       </CircleButton>
     </Wrapper>

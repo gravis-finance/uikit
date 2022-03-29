@@ -67,7 +67,7 @@ export const PlusMinusButtons: React.FC = () => {
   }
   return (
     <div>
-      <NumberButtons />
+      <NumberButtons minValue={0} maxValue={10} />
       {/* <NumericalInput /> */}
       {/* <Button onClick={onClick}>Click</Button> */}
     </div>
