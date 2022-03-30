@@ -1,4 +1,5 @@
 import { EnglishIcon, JapaneseIcon, ChineseIcon, RussianIcon, SpanishIcon, VietnameseIcon } from './icons'
+import { socialNetworksLinks, SocialNetworksType } from '../../constants'
 
 export const links = [
   {
@@ -89,27 +90,27 @@ export const socials = [
   {
     label: 'GitHub',
     icon: 'GitHubIcon',
-    href: 'https://github.com/gravis-finance',
+    href: socialNetworksLinks[SocialNetworksType.GITHUB],
   },
   {
     label: 'Telegram',
     icon: 'TelegramIcon',
-    href: 'https://t.me/Gravis_Finance_En',
+    href: socialNetworksLinks[SocialNetworksType.TELEGRAM],
   },
   {
     label: 'Twitter',
     icon: 'TwitterIcon',
-    href: 'https://twitter.com/gammarosigma',
+    href: socialNetworksLinks[SocialNetworksType.TWITTER],
   },
   {
     label: 'Medium',
     icon: 'MediumIcon',
-    href: 'https://gravis-finance.medium.com/',
+    href: socialNetworksLinks[SocialNetworksType.MEDIUM],
   },
   {
     label: 'Discord',
     icon: 'DiscordIcon',
-    href: 'https://discord.gg/GravisFinance',
+    href: socialNetworksLinks[SocialNetworksType.DISCORD],
   },
 ]
 
