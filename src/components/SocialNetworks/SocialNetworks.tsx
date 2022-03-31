@@ -3,6 +3,7 @@ import styled from 'styled-components'
 
 import { GithubIcon, TelegramIcon, TwitterIcon, MediumIcon, DiscordIcon } from './social-icons'
 import { getCurrentLanguage } from '../../util/getCurrentLanguage'
+import { socialNetworksLinks, SocialNetworksType } from '../../constants'
 
 const StyledWrapper = styled.div`
   margin-top: 20px;
@@ -31,19 +32,19 @@ const LinkItem = styled.a`
 const SocialNetworks: React.FC = () => {
   return (
     <StyledWrapper>
-      <LinkItem href="https://github.com/gravis-finance" target="_blank" rel="noopener  noreferrer">
+      <LinkItem href={socialNetworksLinks[SocialNetworksType.GITHUB]} target="_blank" rel="noopener  noreferrer">
         <GithubIcon />
       </LinkItem>
       <LinkItem href={`${getCurrentLanguage() === 'jp' ? 'https://t.me/gravis_finance_jp' : 'https://t.me/Gravis_Finance_En'}`} target="_blank" rel="noopener  noreferrer">
         <TelegramIcon />
       </LinkItem>
-      <LinkItem href="https://twitter.com/gammarosigma" target="_blank" rel="noopener  noreferrer">
+      <LinkItem href={socialNetworksLinks[SocialNetworksType.TWITTER]} target="_blank" rel="noopener  noreferrer">
         <TwitterIcon />
       </LinkItem>
-      <LinkItem href="https://gravis-finance.medium.com/" target="_blank" rel="noopener  noreferrer">
+      <LinkItem href={socialNetworksLinks[SocialNetworksType.MEDIUM]} target="_blank" rel="noopener  noreferrer">
         <MediumIcon />
       </LinkItem>
-      <LinkItem href="https://discord.gg/GravisFinance" target="_blank" rel="noopener  noreferrer" style={{ padding: '16px 13.5px 12px 13.5px' }}>
+      <LinkItem href={socialNetworksLinks[SocialNetworksType.DISCORD]} target="_blank" rel="noopener  noreferrer" style={{ padding: '16px 13.5px 12px 13.5px' }}>
         <DiscordIcon/>
       </LinkItem>
     </StyledWrapper>
