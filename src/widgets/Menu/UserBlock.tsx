@@ -1,5 +1,5 @@
 import React from 'react'
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 import Button from '../../components/Button/Button'
 import { useWalletModal } from '../WalletModal'
 import { Login } from '../WalletModal/types'
@@ -25,10 +25,16 @@ export type UserBlockProps = {
   balanceHook?: any
   networkSwitchVisible?: boolean
   networkSwitchItemCallback?: (chainId: string) => void
+  isShowMenuPanel: boolean
 } & Pick<AccountModalProps, 'gmartProfileLink'>
 
-const StyledConnectButton = styled.div`
-  margin-right: 10px;
+const StyledConnectButton = styled.div<{ isShowMenuPanel: boolean }>`
+  ${({ isShowMenuPanel }) =>
+    isShowMenuPanel
+      ? css`
+          margin-right: 10px;
+        `
+      : ''}
 `
 
 const StyledAddIcon = styled.div`
@@ -42,12 +48,17 @@ const StyledButtonTitle = styled.div`
   font-size: 14px;
 `
 
-const StyledFlex = styled(Flex)`
-  @media screen and (max-width: 968px) {
-    > *:last-child {
-      margin-right: 60px;
-    }
-  }
+const StyledFlex = styled(Flex)<{ isShowMenuPanel: boolean }>`
+  ${({ isShowMenuPanel }) =>
+    isShowMenuPanel
+      ? css`
+          @media screen and (max-width: 968px) {
+            > *:last-child {
+              margin-right: 60px;
+            }
+          }
+        `
+      : ''}
 `
 
 const UserBlock: React.FC<UserBlockProps> = (props) => {
@@ -66,6 +77,7 @@ const UserBlock: React.FC<UserBlockProps> = (props) => {
     networkSwitchVisible,
     networkSwitchItemCallback,
     gmartProfileLink,
+    isShowMenuPanel,
   } = props
 
   const { onPresentConnectModal, onPresentAccountModal } = useWalletModal(
@@ -84,7 +96,7 @@ const UserBlock: React.FC<UserBlockProps> = (props) => {
   const accountEllipsis = account ? `${account.substring(0, 4)}...${account.substring(account.length - 4)}` : null
 
   return (
-    <StyledFlex alignItems="center" style={{ pointerEvents: 'all' }}>
+    <StyledFlex isShowMenuPanel={isShowMenuPanel} alignItems="center" style={{ pointerEvents: 'all' }}>
       {networkSwitchVisible && (
         <NetworkSwitch
           networks={networks}
@@ -103,7 +115,7 @@ const UserBlock: React.FC<UserBlockProps> = (props) => {
           {accountEllipsis}
         </Button>
       ) : (
-        <StyledConnectButton>
+        <StyledConnectButton isShowMenuPanel={isShowMenuPanel}>
           <Button
             size="md"
             onClick={() => {
