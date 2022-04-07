@@ -42,7 +42,7 @@ const Container = styled.div`
 
 const LinksContainer = styled.div`
   position: absolute;
-  bottom: 50px;
+  bottom: 40px;
   background-color: #3d3d3d;
   z-index: 3;
   border-radius: 8px;
@@ -89,11 +89,11 @@ const LinksContainer = styled.div`
   ::after {
     content: '';
     position: absolute;
-    height: 24px;
+    height: 64px;
     z-index: 2;
-    width: 80px;
-    bottom: -24px;
-    left: 40px;
+    width: 90px;
+    bottom: -64px;
+    left: 30px;
   }
 `
 
