@@ -4,7 +4,7 @@ import { Button } from '../Button'
 import { cookiesAcceptedParam } from '../../constants'
 import { useTranslation } from 'react-multi-lang'
 
-const Wrapper = styled.div<{ isPushed: boolean, isHidden: boolean }>`
+const Wrapper = styled.div<{ isPushed: boolean; isHidden: boolean }>`
   position: fixed;
   z-index: 123;
   bottom: 20px;
@@ -12,10 +12,13 @@ const Wrapper = styled.div<{ isPushed: boolean, isHidden: boolean }>`
   width: 100%;
   background: linear-gradient(90.28deg, #292929 0%, #242424 100%);
   border-radius: 12px;
-  ${({ isPushed }) => isPushed ? `
+  ${({ isPushed }) =>
+    isPushed
+      ? `
     margin-left: 278px;
     width: calc(100% - 298px);
-  ` : `
+  `
+      : `
     margin-left: 108px;
     width: calc(100% - 128px);
   `}
@@ -24,32 +27,38 @@ const Wrapper = styled.div<{ isPushed: boolean, isHidden: boolean }>`
   padding: 24px;
   align-items: center;
   transition: visibility 300ms ease-in-out, opacity 300ms ease-in-out;
-  
+
   @media screen and (max-width: 968px) {
     margin-left: 20px;
-    ${({ isPushed }) => isPushed ? `
+    ${({ isPushed }) =>
+      isPushed
+        ? `
     width: calc(100% - 348px);
-  ` : `
+  `
+        : `
     width: calc(100% - 40px);
   `}
   }
-  
+
   @media screen and (max-width: 890px) {
     flex-direction: column;
     > div {
       margin-bottom: 12px;
     }
   }
-  
+
   @media screen and (max-width: 685px) {
     margin: 0;
     width: 100%;
   }
-  
-  ${({ isHidden }) => isHidden ? `
+
+  ${({ isHidden }) =>
+    isHidden
+      ? `
     visibility: hidden;
     opacity: 0;
-  ` : ''}
+  `
+      : ''}
 `
 
 const Info = styled.div`
@@ -71,11 +80,11 @@ const Description = styled.div`
 `
 
 const Link = styled.a`
-  color: #009CE1;
+  color: #009ce1;
   transition: color 200ms ease-in-out;
   display: inline-block;
   cursor: pointer;
-  
+
   :hover {
     color: white;
   }
@@ -86,7 +95,6 @@ interface Props {
 }
 
 const CookiePlaceholder: React.FC<Props> = ({ isPushed }) => {
-
   const [isHidden, setIsHidden] = useState(true)
 
   const getLocalStorageCookiesAccepted = () => {
@@ -99,10 +107,9 @@ const CookiePlaceholder: React.FC<Props> = ({ isPushed }) => {
   }
 
   useEffect(() => {
-    if(getLocalStorageCookiesAccepted()) {
+    if (getLocalStorageCookiesAccepted()) {
       setIsHidden(true)
-    }
-    else setIsHidden(false)
+    } else setIsHidden(false)
   }, [])
 
   const t = useTranslation()
@@ -111,7 +118,12 @@ const CookiePlaceholder: React.FC<Props> = ({ isPushed }) => {
     <Wrapper isPushed={isPushed} isHidden={isHidden}>
       <Info>
         <Title>{t('This website uses cookies')}</Title>
-        <Description>{t('cookiesDescription')} <Link href="https://en.wikipedia.org/wiki/HTTP_cookie" target="_blank">{t('Learn more')}</Link></Description>
+        <Description>
+          {t('cookiesDescription')}{' '}
+          <Link href="https://en.wikipedia.org/wiki/HTTP_cookie" target="_blank">
+            {t('Learn more')}
+          </Link>
+        </Description>
       </Info>
       <Button variant="primary" style={{ whiteSpace: 'pre', marginLeft: 16 }} onClick={acceptCookies}>
         {t('Accept all and close')}

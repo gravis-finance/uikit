@@ -76,7 +76,7 @@
   "MaticInfo": "Просмотр на Matic",
   "transactionHistory": "История транзакций",
   "disconnect": "Отключить",
-  "Learn More": "Подробнее",
+  "Learn more": "Подробнее",
   "Terms of Use": "Условия Использования",
   "Privacy Policy": "Политика Конфиденциальности",
   "Accept": "Принять",
@@ -85,5 +85,6 @@
   "sellNFT": "Продать NFT",
   "sendNFT": "Отправить NFT",
   "cookiesDescription": "Мы используем файлы cookie и аналогичные технологии на нашем веб-сайте и обрабатываем личные данные о вас, такие как ваш IP-адрес. Мы также передаем эти данные третьим лицам.",
-  "This website uses cookies": "Этот веб-сайт использует файлы cookie"
+  "This website uses cookies": "Этот веб-сайт использует файлы cookie",
+  "Accept all and close": "Принять все и закрыть"
 }
