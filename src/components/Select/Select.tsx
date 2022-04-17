@@ -97,7 +97,7 @@ const UnstyledSelect: React.FC<SelectProps> = React.forwardRef((props, ref: any)
     defaultValue = '',
     onChange,
     InputComponent = 'input',
-    ButtonComponent = 'button',
+    ButtonComponent = 'div',
     children,
     inputProps,
     inputRef,
