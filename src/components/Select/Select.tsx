@@ -192,6 +192,7 @@ const UnstyledSelect: React.FC<SelectProps> = React.forwardRef((props, ref: any)
         disabled={disabled}
         {...inputProps}
         {...restProps}
+        tabIndex={-1}
       />
       <SelectButton as={ButtonComponent} onMouseDown={toggleOptions} disabled={disabled}>
         {display}
