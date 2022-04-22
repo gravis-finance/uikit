@@ -3,15 +3,13 @@ stages:
     - publish
 build:
     stage: build
-    image: node:12-buster
+    image: node:18-bullseye
     tags: &b_runner
         - builder
         - docker-executor
     script:
-        # - yarn install
-        # - yarn build
-        - npm install
-        - npm build
+        - yarn install
+        - yarn build
     artifacts:
         expire_in: 1 week
         paths:
