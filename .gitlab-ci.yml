@@ -8,8 +8,10 @@ build:
         - builder
         - docker-executor
     script:
-        - yarn install
-        - yarn build
+        # - yarn install
+        # - yarn build
+        - npm install
+        - npm build
     artifacts:
         expire_in: 1 week
         paths:
