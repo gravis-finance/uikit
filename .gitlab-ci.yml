@@ -3,7 +3,7 @@ stages:
     - publish
 build:
     stage: build
-    image: node:18-bullseye
+    image: node:14-bullseye
     tags: &b_runner
         - builder
         - docker-executor
