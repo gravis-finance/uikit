@@ -1,5 +1,6 @@
 import React from 'react'
 
+import { NetworksConfigObject, networksName } from '../../config/networks'
 import Button from '../../components/Button/Button'
 import Flex from '../../components/Flex/Flex'
 import useWalletModal from './useWalletModal'
@@ -9,14 +10,9 @@ export default {
   argTypes: {},
 }
 
+NetworksConfigObject.networks = [networksName.BINANCE, networksName.POLYGON, networksName.HUOBI, networksName.AURORA]
+
 export const Wallet: React.FC = () => {
-  function later() {
-    return new Promise((resolve) => {
-      setTimeout(() => {
-        resolve(100)
-      }, 3000)
-    })
-  }
   const { onPresentConnectModal, onPresentAccountModal } = useWalletModal(
     false,
     () => null,

@@ -44,17 +44,13 @@ const NetworkSwitchError: React.FC<Props> = ({
   changeNetwork,
   ethereum = false,
   disableEthereum,
-  networkSwitchItemCallback
+  networkSwitchItemCallback,
 }) => {
   const handleClick = () => {
     if (changeNetwork) changeNetwork()
   }
 
   const t = useTranslation()
-
-  // const networkSwitchItemCallback = (item: string): void => {
-  //   console.log('item', item)
-  // }
 
   return (
     <Modal title={t('networkSwitchingError')} onDismiss={onDismiss} hideCloseButton>
