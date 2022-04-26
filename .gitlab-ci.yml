@@ -1,24 +1,25 @@
 stages:
-    - build
-    - publish
+  - build
+  - publish
 build:
-    stage: build
-    image: node:12-buster
-    tags: &b_runner
-        - builder
-        - docker-executor
-    script:
-        - yarn install
-        - yarn build
-    artifacts:
-        expire_in: 1 week
-        paths:
-            - dist
+  stage: build
+  image: node:14-buster
+  tags: &b_runner
+    - builder
+    - docker-executor
+  script:
+    - yarn install
+    - yarn build
+  artifacts:
+    expire_in: 1 week
+    paths:
+      - dist
 npm:
-    stage: publish
-    only:
-        - master
-    tags: *b_runner
-    script:
-        - npm publish --access public
-    when: on_success
+  stage: publish
+  only:
+    - master
+  tags: *b_runner
+  script:
+    - npm config set '//registry.npmjs.org/:_authToken' "${NPM_TOKEN}"
+    - npm publish --access public
+  when: on_success

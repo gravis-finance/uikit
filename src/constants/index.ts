@@ -26,7 +26,7 @@ export enum SocialNetworksType {
   TELEGRAM = 'telegram',
   TWITTER = 'twitter',
   MEDIUM = 'medium',
-  DISCORD = 'discord'
+  DISCORD = 'discord',
 }
 
 export const socialNetworksLinks = {
@@ -34,5 +34,5 @@ export const socialNetworksLinks = {
   [SocialNetworksType.TELEGRAM]: 'https://t.me/Gravis_Finance_News',
   [SocialNetworksType.TWITTER]: 'https://twitter.com/GravisFi',
   [SocialNetworksType.MEDIUM]: 'https://medium.com/gravis-finance',
-  [SocialNetworksType.DISCORD]: 'https://discord.gg/GravisFinance',
+  [SocialNetworksType.DISCORD]: 'https://discord.io/GravisFinance',
 }

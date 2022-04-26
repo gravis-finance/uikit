@@ -49,15 +49,15 @@ const StyledPoint = styled.div`
   }
 `
 
-const StyledFlex = styled(Flex) <{ hecoOnly?: boolean }>`
+const StyledFlex = styled(Flex)<{ hecoOnly?: boolean }>`
   margin-left: ${({ hecoOnly }) => (hecoOnly ? '0' : '60px')};
   flex-wrap: wrap;
+  gap: 16px;
+
   > * {
     width: 72px;
   }
-  > *:not(:last-child) {
-    margin-right: 16px;
-  }
+
   @media screen and (max-width: 800px) {
     margin-left: 18px;
     margin-left: ${({ hecoOnly }) => (hecoOnly ? '0' : '18px')};
@@ -72,7 +72,7 @@ const StyledFlexPoint = styled(Flex)`
   }
 `
 
-const StyledWalletFlex = styled(StyledFlex) <{ hecoOnly?: boolean }>`
+const StyledWalletFlex = styled(StyledFlex)<{ hecoOnly?: boolean }>`
   > div:last-child {
     margin-right: ${({ hecoOnly }) => (hecoOnly ? '0' : '64px')};
     margin: ${({ hecoOnly }) => (hecoOnly ? 'auto' : '')};
@@ -83,11 +83,7 @@ const StyledLink = styled(Link)`
   display: inline;
 `
 
-const ConnectModal: React.FC<Props> = ({
-  onSelect = () => null,
-  login,
-  onDismiss = () => null,
-}) => {
+const ConnectModal: React.FC<Props> = ({ onSelect = () => null, login, onDismiss = () => null }) => {
   const { networks } = NetworksConfigObject
   const [termsChecked, setTermsChecked] = useState(false)
   const id: string = getNetworkId()
@@ -147,17 +143,16 @@ const ConnectModal: React.FC<Props> = ({
           <Text style={{ fontSize: '14px', color: '#fff', marginLeft: '16px' }}>{t('chooseNetwork')}</Text>
         </StyledFlexPoint>
         <StyledFlex>
-          {networks
-            .map((entry: any) => (
-              <NetworkSelector
-                disabled={!termsChecked}
-                key={entry.title}
-                chainId={entry.chainId}
-                selected={termsChecked ? entry.title === selectedNetwork : undefined}
-                networkConfig={entry}
-                setSelectedNetwork={setSelectedNetwork}
-              />
-            ))}
+          {networks.map((entry: any) => (
+            <NetworkSelector
+              disabled={!termsChecked}
+              key={entry.title}
+              chainId={entry.chainId}
+              selected={termsChecked ? entry.title === selectedNetwork : undefined}
+              networkConfig={entry}
+              setSelectedNetwork={setSelectedNetwork}
+            />
+          ))}
         </StyledFlex>
         <StyledFlexPoint alignItems="center" marginTop="30px" marginBottom="5px">
           <StyledPoint>

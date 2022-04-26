@@ -10,6 +10,7 @@ import Binance from './icons/Binance'
 import Huobi from './icons/Huobi'
 import Polygon from './icons/Polygon'
 import Ethereum from './icons/Ethereum'
+import Aurora from './icons/Aurora'
 import { WalletsConfig, ConnectorNames, NetworksConfig } from './types'
 import IsNotSafariModal from './IsNotSafariModal'
 import IncorrectBrowserModal from './IncorrectBrowserModal'
@@ -145,6 +146,15 @@ export const networksConfig = {
     label: 'Ethereum',
     chainId: production ? '1' : '4',
     wallets: isMobile ? [walletsConfig.walletConnect] : [walletsConfig.metamask, walletsConfig.walletConnect],
+  },
+  aurora: {
+    title: 'Aurora',
+    icon: Aurora,
+    label: 'Aurora',
+    chainId: production ? '1313161554' : '1313161555',
+    wallets: isMobile
+      ? [walletsConfig.metamask, walletsConfig.walletConnect, walletsConfig.tokenPocket]
+      : [walletsConfig.metamask, walletsConfig.walletConnect],
   },
 }
 

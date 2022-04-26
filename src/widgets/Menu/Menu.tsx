@@ -260,6 +260,7 @@ const Menu: React.FC<NavProps> = ({
               balanceHook={balanceHook}
               networkSwitchVisible={networkSwitchVisible}
               networkSwitchItemCallback={networkSwitchItemCallback}
+              isShowMenuPanel={isShowMenuPanel}
               {...options}
             />
           )}
