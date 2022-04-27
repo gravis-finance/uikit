@@ -11,6 +11,7 @@ import { alertVariants } from '../../components/Alert'
 import { ErrorIcon, InputCopyIcon } from '../../components/Svg'
 import WalletConnectIcon from './icons/WalletConnect'
 import { walletsConfig } from '.'
+import { MetamaskIcon } from '../..'
 
 const CopyContainer = styled.div`
   width: 100%;
@@ -26,13 +27,11 @@ const CopyContainer = styled.div`
 
   @media screen and (max-width: 500px) {
     flex-direction: column;
+    grid-gap: 10px;
 
-    button {
+    button,
+    a {
       width: 100%;
-
-      :not(:first-child) {
-        margin-top: 10px;
-      }
     }
   }
 `
@@ -45,10 +44,7 @@ const Container = styled.div`
   flex-direction: column;
 `
 
-const IncorrectBrowserModal: React.FC<{ connect: any, onDismiss?: any }> = ({
-  connect,
-  onDismiss = () => null,
-}) => {
+const IncorrectBrowserModal: React.FC<{ connect: any; onDismiss?: any }> = ({ connect, onDismiss = () => null }) => {
   const t = useTranslation()
   const [toasts, setToasts] = useState<any>([])
 
@@ -65,15 +61,15 @@ const IncorrectBrowserModal: React.FC<{ connect: any, onDismiss?: any }> = ({
   }
 
   const copyToClipboard = () => {
-      const now = Date.now()
-      const toast = {
-        id: `id-${now}`,
-        title: `Copied`,
-        description: 'Page address copied to clipboard.',
-        type: alertVariants.SUCCESS,
-      }
-      setToasts([toast])
-      copy(window.location.href)
+    const now = Date.now()
+    const toast = {
+      id: `id-${now}`,
+      title: `Copied`,
+      description: 'Page address copied to clipboard.',
+      type: alertVariants.SUCCESS,
+    }
+    setToasts([toast])
+    copy(window.location.href)
   }
 
   const handleRemove = (id: string) => {
@@ -85,21 +81,26 @@ const IncorrectBrowserModal: React.FC<{ connect: any, onDismiss?: any }> = ({
       <Container>
         <ErrorIcon width={150} height={150} />
         <Text mt="20px">
-          {t('If you want to connect with this wallet you should open this page in your wallet built-in browser or use Wallet Connect')}.
+          {t(
+            'If you want to connect with this wallet you should open this page in your wallet built-in browser or use Wallet Connect'
+          )}
+          .
         </Text>
         <CopyContainer>
-          <Button
-            mr="20px"
-            data-id="connect-button"
-            onClick={onConnect}
-          >
+          <Button mr="20px" data-id="connect-button" onClick={onConnect}>
             {t('Connect with Wallet Connect')}
             <WalletConnectIcon width="20px" color="primary" ml="10px" />
           </Button>
           <Button
-            data-id="copy-button"
-            onClick={copyToClipboard}
+            as="a"
+            href={`https://metamask.app.link/dapp/${window.location.host}${window.location.pathname}${window.location.search}`}
+            target="_blank"
+            mr={20}
           >
+            {t('Metamask')}
+            <MetamaskIcon width="20px" ml="10px" />
+          </Button>
+          <Button data-id="copy-button" onClick={copyToClipboard}>
             {t('Copy page address')}
             <InputCopyIcon width="20px" color="primary" ml="10px" />
           </Button>
