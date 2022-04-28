@@ -16,6 +16,7 @@ import IsNotSafariModal from './IsNotSafariModal'
 import IncorrectBrowserModal from './IncorrectBrowserModal'
 import WalletExtensionInstallModal from './WalletExtensionInstallModal'
 import BrowserNotSupported from './BrowserNotSupported'
+import { MetamaskMobileRedirect } from './MetamaskMobileRedirect'
 
 const production = process.env.REACT_APP_NODE_ENV === 'production'
 
@@ -42,11 +43,12 @@ export const walletsConfig = {
         installLink: INSTALL_LINKS.METAMASK[browserName],
       },
       errorModal: isMobile
-        ? IncorrectBrowserModal
+        ? MetamaskMobileRedirect
         : browserName in INSTALL_LINKS.METAMASK
         ? WalletExtensionInstallModal
         : BrowserNotSupported,
     },
+    walletCardComponent: null,
   },
   trustWallet: {
     title: 'Trust Wallet',

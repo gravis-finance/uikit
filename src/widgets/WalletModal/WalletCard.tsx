@@ -35,7 +35,7 @@ const StyledButton = styled(Button)`
   }
 `
 
-const StyledFlex = styled(Flex) <{ disabled?: boolean }>`
+const StyledFlex = styled(Flex)<{ disabled?: boolean }>`
   cursor: pointer;
   > button {
     border: 1px solid transparent !important;
@@ -103,9 +103,11 @@ const WalletCard: React.FC<Props> = ({
   disabled: disabledProp,
 }) => {
   const { title, icon: Icon } = walletConfig
-  const disabled = disabledProp || !networks.some(
-    (network) => network?.title === selectedNetwork && network?.wallets.some((wallet) => wallet?.title === title)
-  )
+  const disabled =
+    disabledProp ||
+    !networks.some(
+      (network) => network?.title === selectedNetwork && network?.wallets.some((wallet) => wallet?.title === title)
+    )
   const ErrorModal = walletConfig.connection.errorModal
   const connect = (connectorId: ConnectorNames) => {
     window.localStorage.setItem(connectorLocalStorageKey, connectorId)
@@ -122,7 +124,6 @@ const WalletCard: React.FC<Props> = ({
   const onClick = () => {
     if (walletConfig.connection.disabled) {
       openModal()
-
       return
     }
     connect(walletConfig.connectorId)
