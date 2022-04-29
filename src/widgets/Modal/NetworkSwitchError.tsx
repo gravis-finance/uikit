@@ -31,9 +31,8 @@ const StyledNetworkSwitch = styled.div`
 `
 
 const StyledText = styled(Text)`
-  padding-right: 96px;
   @media screen and (max-width: 480px) {
-    padding-right: 0px;
+    padding-right: 0;
   }
 `
 

@@ -57,7 +57,7 @@
   },
   "swap": "Intercambiar",
   "networkSwitchingError": "Error de conmutación de red",
-  "differentNetworks": "We found that you have different networks\nselected in your wallet and on our site.\nPlease choose what to do.",
+  "differentNetworks": "We found that you have different networks\nselected in your wallet and on our site.",
   "pleaseChoose": "Por favor, elija qué hacer.",
   "changeNetworkInTheWallet": "Cambiar de red en la billetera",
   "orChangeNetwork": "O cambiar de red en nuestro sitio",

@@ -57,7 +57,7 @@
   },
   "swap": "Обменять",
   "networkSwitchingError": "Ошибка переключения сети",
-  "differentNetworks": "We found that you have different networks\nselected in your wallet and on our site.\nPlease choose what to do.",
+  "differentNetworks": "We found that you have different networks\nselected in your wallet and on our site.",
   "pleaseChoose": "Пожалуйста, выберите, что делать.",
   "changeNetworkInTheWallet": "Изменить сеть в кошельке",
   "orChangeNetwork": "Или изменить сеть на нашем сайте",

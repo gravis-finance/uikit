@@ -57,7 +57,7 @@
   },
   "swap": "Swap",
   "networkSwitchingError": "Network switching error",
-  "differentNetworks": "We found that you have different networks\nselected in your wallet and on our site.\nPlease choose what to do.",
+  "differentNetworks": "We found that you have different networks\nselected in your wallet and on our site.",
   "pleaseChoose": "Please choose what to do.",
   "changeNetworkInTheWallet": "Change network in the wallet",
   "orChangeNetwork": "Or change network on our site",

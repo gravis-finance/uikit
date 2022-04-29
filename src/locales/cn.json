@@ -57,7 +57,7 @@
   },
   "swap": "兑换",
   "networkSwitchingError": "网络切换错误",
-  "differentNetworks": "We found that you have different networks\nselected in your wallet and on our site.\nPlease choose what to do.",
+  "differentNetworks": "We found that you have different networks\nselected in your wallet and on our site.",
   "pleaseChoose": "请选择你想要的网络",
   "changeNetworkInTheWallet": "在钱包里换网络",
   "orChangeNetwork": "或者在我们的网站上更改网络",

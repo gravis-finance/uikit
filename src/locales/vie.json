@@ -57,7 +57,7 @@
   },
   "swap": "Đổi mạng",
   "networkSwitchingError": "Lỗi chuyển đổi mạng",
-  "differentNetworks": "We found that you have different networks\nselected in your wallet and on our site.\nPlease choose what to do.",
+  "differentNetworks": "We found that you have different networks\nselected in your wallet and on our site.",
   "pleaseChoose": "Xin hãy chọn hành động bạn muốn làm.",
   "changeNetworkInTheWallet": "Thay đổi mạng trong ví",
   "orChangeNetwork": "Hoặc thay đổi mạng trên trang web của chúng tôi",
