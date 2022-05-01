@@ -70,7 +70,7 @@ export const light: ButtonTheme = {
     borderColorHover: 'none',
     boxShadow: 'none',
     boxShadowActive: 'none',
-    color: '#FFFFFF',
+    color: 'black',
   },
   [SUCCESS]: {
     background: lightColors.success,
