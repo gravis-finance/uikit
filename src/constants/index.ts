@@ -31,7 +31,7 @@ export enum SocialNetworksType {
 
 export const socialNetworksLinks = {
   [SocialNetworksType.GITHUB]: 'https://github.com/gravis-finance',
-  [SocialNetworksType.TELEGRAM]: 'https://t.me/Gravis_Finance_News',
+  [SocialNetworksType.TELEGRAM]: 'https://t.me/Gravis_Finance_en',
   [SocialNetworksType.TWITTER]: 'https://twitter.com/GravisFi',
   [SocialNetworksType.MEDIUM]: 'https://medium.com/gravis-finance',
   [SocialNetworksType.DISCORD]: 'https://discord.io/GravisFinance',
