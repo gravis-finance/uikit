@@ -27,6 +27,8 @@ export enum SocialNetworksType {
   TWITTER = 'twitter',
   MEDIUM = 'medium',
   DISCORD = 'discord',
+  COINGECKO = 'coingecko',
+  COINMARKETCAP = 'coinmarketcap',
 }
 
 export const socialNetworksLinks = {
@@ -35,4 +37,6 @@ export const socialNetworksLinks = {
   [SocialNetworksType.TWITTER]: 'https://twitter.com/GravisFi',
   [SocialNetworksType.MEDIUM]: 'https://medium.com/gravis-finance',
   [SocialNetworksType.DISCORD]: 'https://discord.io/GravisFinance',
+  [SocialNetworksType.COINGECKO]: 'https://www.coingecko.com/en/coins/gravis-finance',
+  [SocialNetworksType.COINMARKETCAP]: 'https://coinmarketcap.com/currencies/gravis-finance/',
 }
