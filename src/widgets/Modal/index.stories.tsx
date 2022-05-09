@@ -1,10 +1,11 @@
-import React from 'react'
 import { Story } from '@storybook/react'
-import { Modal, ModalContainer, useModal } from '.'
-import { InjectedProps } from './types'
+import React from 'react'
+
 import Button from '../../components/Button/Button'
 import Heading from '../../components/Heading/Heading'
+import { Modal, ModalContainer, useModal } from '.'
 import NetworkSwitchError from './NetworkSwitchError'
+import { InjectedProps } from './types'
 
 export default {
   title: 'Widgets/Modal',

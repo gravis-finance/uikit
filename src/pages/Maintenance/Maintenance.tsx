@@ -1,9 +1,10 @@
 import React from 'react'
-import styled from 'styled-components'
 import { useTranslation } from 'react-multi-lang'
-import { Text } from '../../components/Text'
+import styled from 'styled-components'
+
 import { Heading } from '../../components/Heading'
 import { SocialNetworks } from '../../components/SocialNetworks'
+import { Text } from '../../components/Text'
 
 const StyledWrapper = styled.div`
   z-index: 100;
@@ -42,13 +43,6 @@ const InfoWrapper = styled.div`
   }
   @media screen and (max-width: 480px) {
     width: 100%;
-  }
-`
-
-const ImageWrapper = styled.div`
-  & > svg {
-    width: 100%;
-    height: auto;
   }
 `
 

@@ -1,10 +1,11 @@
 import React from 'react'
 import styled from 'styled-components'
 import { layout, LayoutProps, space, SpaceProps } from 'styled-system'
+
 import { useControlled } from '../../hooks/useControlled'
 import { ButtonBase } from '../Button'
-import { Popper } from '../Popper'
 import { ClickAwayListener } from '../ClickAwayListener'
+import { Popper } from '../Popper'
 import { Option } from './Option'
 import { SelectIcon } from './SelectIcon'
 

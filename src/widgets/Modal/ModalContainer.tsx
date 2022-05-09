@@ -1,5 +1,5 @@
-import { createPortal } from 'react-dom'
 import React from 'react'
+import { createPortal } from 'react-dom'
 import styled from 'styled-components'
 
 export type ModalProps = {

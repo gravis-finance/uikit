@@ -1,5 +1,6 @@
 import styled from 'styled-components'
 import { variant } from 'styled-system'
+
 import { Box } from '../Box'
 
 export const Typography = styled(Box)<{ variant?: 'h1' | 'link' }>`

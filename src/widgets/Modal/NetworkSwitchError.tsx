@@ -1,10 +1,11 @@
 import React from 'react'
-import styled from 'styled-components'
 import { useTranslation } from 'react-multi-lang'
+import styled from 'styled-components'
+
 import { Button } from '../../components/Button'
-import Modal from './Modal'
 import { Text } from '../../components/Text'
 import NetworkSwitch from '../Menu/NetworkSwitch'
+import Modal from './Modal'
 
 interface Props {
   onDismiss?: () => void

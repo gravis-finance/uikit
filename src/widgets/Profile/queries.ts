@@ -1,6 +1,7 @@
-import { useQuery, QueryFunctionContext } from 'react-query'
+import { QueryFunctionContext,useQuery } from 'react-query'
+
 import { profileApi } from './api'
-import { PROFILE_IMG_URL, PROFILE_API_URL } from './constants'
+import { PROFILE_API_URL,PROFILE_IMG_URL } from './constants'
 
 export type UseProfileParams = {
   account?: string | null

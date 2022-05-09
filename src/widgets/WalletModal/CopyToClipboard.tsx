@@ -1,9 +1,9 @@
+import copy from 'copy-to-clipboard'
 import React, { useState } from 'react'
 import styled from 'styled-components'
-import copy from 'copy-to-clipboard'
 
-import Text from '../../components/Text/Text'
 import { CopyIcon } from '../../components/Svg'
+import Text from '../../components/Text/Text'
 
 interface Props {
   toCopy: string

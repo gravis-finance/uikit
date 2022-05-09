@@ -1,4 +1,5 @@
 import React from 'react'
+
 import Svg from '../../../components/Svg/Svg'
 import { SvgProps } from '../../../components/Svg/types'
 
@@ -13,23 +14,23 @@ const Icon: React.FC<SvgProps> = (props) => {
       <path
         d="M9 8C9 6.34315 10.3431 5 12 5C13.6568 5 15 6.34315 15 8C15 9.65685 13.6568 11 12 11C10.3431 11 9 9.65685 9 8Z"
         stroke="#929292"
-        stroke-width="2"
+        strokeWidth="2"
         fillOpacity="0"
       />
       <path
         d="M18 7C19.1046 7 20 7.89543 20 9C20 10.1046 19.1046 11 18 11"
         stroke="#929292"
-        stroke-width="2"
-        stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
         fillOpacity="0"
       />
       <path
         d="M6 7C4.89544 7 4 7.89543 4 9C4 10.1046 4.89544 11 6 11"
         stroke="#929292"
-        stroke-width="2"
-        stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
         fillOpacity="0"
       />
       <path

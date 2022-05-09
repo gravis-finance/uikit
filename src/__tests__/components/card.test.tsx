@@ -1,6 +1,7 @@
 import React from 'react'
+
+import { Card, CardBody, CardFooter,CardHeader } from '../../components/Card'
 import { renderWithTheme } from '../../testHelpers'
-import { Card, CardBody, CardHeader, CardFooter } from '../../components/Card'
 
 it('renders correctly', () => {
   const { asFragment } = renderWithTheme(

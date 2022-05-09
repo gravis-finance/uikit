@@ -2,13 +2,13 @@ import React from 'react'
 import styled, { css } from 'styled-components'
 
 import Button from '../../components/Button/Button'
-import Text from '../../components/Text/Text'
-import { connectorLocalStorageKey, networks } from './config'
-import { Login, WalletsConfig } from './types'
 import Flex from '../../components/Flex/Flex'
 import { CheckmarkCircleIcon } from '../../components/Svg'
+import Text from '../../components/Text/Text'
 import { useModal } from '../Modal'
 import { ConnectorNames } from '.'
+import { connectorLocalStorageKey, useNetworksList } from './config'
+import { Login, WalletsConfig } from './types'
 
 interface Props {
   walletConfig: WalletsConfig
@@ -103,6 +103,7 @@ const WalletCard: React.FC<Props> = ({
   disabled: disabledProp,
 }) => {
   const { title, icon: Icon } = walletConfig
+  const networks= useNetworksList()
   const disabled =
     disabledProp ||
     !networks.some(

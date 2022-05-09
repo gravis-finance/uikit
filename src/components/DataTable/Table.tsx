@@ -1,17 +1,19 @@
-import React from 'react'
-import {
-  Table as CbTable,
-  TableProps as CbTableProps,
-  TableCell as CbTableCell,
-  TableRow as CbTableRow,
-  HeaderCell as CbHeaderCell,
-  useSortBy,
-  SortBy,
-} from 'cb-datatable'
-import { layout, LayoutProps, system, typography, TypographyProps, padding, PaddingProps } from 'styled-system'
-import styled from 'styled-components'
-import { SortIcon } from './SortIcon'
 import 'cb-datatable/styles/core.css'
+
+import {
+  HeaderCell as CbHeaderCell,
+  SortBy,
+  Table as CbTable,
+  TableCell as CbTableCell,
+  TableProps as CbTableProps,
+  TableRow as CbTableRow,
+  useSortBy,
+} from 'cb-datatable'
+import React from 'react'
+import styled from 'styled-components'
+import { layout, LayoutProps, padding, PaddingProps,system, typography, TypographyProps } from 'styled-system'
+
+import { SortIcon } from './SortIcon'
 
 const textTransform = system({
   textTransform: true,

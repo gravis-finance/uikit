@@ -1,7 +1,8 @@
-import React from 'react'
 import { Story } from '@storybook/react'
+import React from 'react'
 import styled from 'styled-components'
-import { Tooltip, TooltipTitle, TooltipArrow } from './index'
+
+import { Tooltip, TooltipArrow,TooltipTitle } from './index'
 
 export default {
   title: 'Components/Tooltip',

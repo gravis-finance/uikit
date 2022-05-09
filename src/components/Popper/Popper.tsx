@@ -1,7 +1,7 @@
-import React from 'react'
-import { usePopper } from 'react-popper'
-import { createPortal } from 'react-dom'
 import { Options, VirtualElement } from '@popperjs/core'
+import React from 'react'
+import { createPortal } from 'react-dom'
+import { usePopper } from 'react-popper'
 
 export type PopperProps = Omit<React.ComponentProps<'div'>, 'children'> & {
   container?: Element

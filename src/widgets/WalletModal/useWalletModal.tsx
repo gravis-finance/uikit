@@ -1,10 +1,10 @@
 import React from 'react'
 
-import { useModal } from '../Modal'
-import ConnectModal from './ConnectModal'
-import AccountModal from './AccountModal'
-import { Login } from './types'
 import { getNetworkLabel, getNetworkSymbol } from '../../util/getNetworkId'
+import { useModal } from '../Modal'
+import AccountModal from './AccountModal'
+import ConnectModal from './ConnectModal'
+import { Login } from './types'
 
 interface ReturnType {
   onPresentConnectModal: () => void
@@ -12,7 +12,6 @@ interface ReturnType {
 }
 
 const useWalletModal = (
-  isProduction: boolean,
   login: Login,
   logout: () => void,
   account?: string,
@@ -25,7 +24,7 @@ const useWalletModal = (
   gmartProfileLink?: string
 ): ReturnType => {
   const [onPresentConnectModal] = useModal(
-    <ConnectModal onSelect={onSelectConnectModal} isProduction={isProduction} login={login} />
+    <ConnectModal onSelect={onSelectConnectModal} login={login} />
   )
   const [onPresentAccountModal] = useModal(
     <AccountModal
@@ -41,9 +40,7 @@ const useWalletModal = (
       gmartProfileLink={gmartProfileLink}
     />
   )
-  // useEffect(()=>{
-  //   onPresentAccountModal()
-  // }, [balance])
+
   return { onPresentConnectModal, onPresentAccountModal }
 }
 

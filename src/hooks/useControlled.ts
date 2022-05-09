@@ -10,13 +10,14 @@ export const useControlled = ({ controlled, default: defaultProp, name, state = 
   if (process.env.NODE_ENV !== 'production') {
     React.useEffect(() => {
       if (isControlled !== (controlled !== undefined)) {
+        // eslint-disable-next-line no-console
         console.error(
           [
             `A component is changing the ${isControlled ? '' : 'un'}controlled ${state} state of ${name} to be ${
               isControlled ? 'un' : ''
             }controlled.`,
             'Elements should not switch from uncontrolled to controlled (or vice versa).',
-            `Decide between using a controlled or uncontrolled ${name} ` + 'element for the lifetime of the component.',
+            `Decide between using a controlled or uncontrolled ${name} element for the lifetime of the component.`,
             "The nature of the state is determined during the first render, it's considered controlled if the value is not `undefined`.",
             'More info: https://fb.me/react-controlled-components',
           ].join('\n')
@@ -28,6 +29,7 @@ export const useControlled = ({ controlled, default: defaultProp, name, state = 
 
     React.useEffect(() => {
       if (!isControlled && defaultValue !== defaultProp) {
+        // eslint-disable-next-line no-console
         console.error(
           [
             `A component is changing the default ${state} state of an uncontrolled ${name} after being initialized. ` +

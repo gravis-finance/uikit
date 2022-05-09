@@ -1,8 +1,9 @@
 import React from 'react'
-import styled from 'styled-components'
 import { Link } from 'react-router-dom'
-import { Profile } from './types'
+import styled from 'styled-components'
+
 import NoProfileAvatar from '../../components/Svg/Icons/NoProfileAvatar'
+import { Profile } from './types'
 
 interface AvatarProps {
   profile: Profile

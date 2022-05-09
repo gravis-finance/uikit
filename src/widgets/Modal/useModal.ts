@@ -1,15 +1,20 @@
 import {
+  Dispatch,
+  SetStateAction,
   useCallback,
   useContext,
-  useEffect,
-  Dispatch,
-  SetStateAction
+  useEffect
 } from 'react'
+
 import { Context } from './ModalContext'
 import { Handler } from './types'
 
-const useModal = (modal: React.ReactNode, closeOnOverlayClick = false): [Handler, Handler, Dispatch<SetStateAction<{}>>] => {
-  const { onPresent, onDismiss, setCloseOnOverlayClick, updateProps } = useContext(Context)
+const useModal = (
+  modal: React.ReactNode,
+  closeOnOverlayClick = false
+): [Handler, Handler, Dispatch<SetStateAction<Record<string, any>>>] => {
+  const { onPresent, onDismiss, setCloseOnOverlayClick, updateProps } =
+    useContext(Context)
   const onPresentCallback = useCallback(() => {
     onPresent(modal)
   }, [modal, onPresent])

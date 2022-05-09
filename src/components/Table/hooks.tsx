@@ -1,18 +1,18 @@
-import { useMemo, useReducer, useEffect, ReactNode, useCallback } from 'react'
 import noop from 'lodash/noop'
+import { ReactNode, useCallback,useEffect, useMemo, useReducer } from 'react'
 
 import {
   ColumnByNamesType,
-  ColumnType,
-  TableState,
-  TableAction,
-  DataType,
-  UseTableReturnType,
-  UseTableOptionsType,
-  RowType,
-  HeaderType,
-  HeaderRenderType,
   ColumnStateType,
+  ColumnType,
+  DataType,
+  HeaderRenderType,
+  HeaderType,
+  RowType,
+  TableAction,
+  TableState,
+  UseTableOptionsType,
+  UseTableReturnType,
 } from './types'
 import { byTextAscending, byTextDescending } from './utils'
 

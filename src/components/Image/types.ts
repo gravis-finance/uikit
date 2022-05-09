@@ -25,6 +25,6 @@ export interface TokenPairImageProps extends ContainerProps {
   variant?: Variant
   height: number
   width: number
-  primaryImageProps?: Omit<ImageProps, 'width' | 'height'>
-  secondaryImageProps?: Omit<ImageProps, 'width' | 'height'>
+  primaryImageProps?: Omit<ImageProps, 'width' | 'height' | 'src'>
+  secondaryImageProps?: Omit<ImageProps, 'width' | 'height' | 'src'>
 }

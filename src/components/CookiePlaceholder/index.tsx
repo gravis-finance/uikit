@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react'
-import styled from 'styled-components'
-import { Button } from '../Button'
-import { cookiesAcceptedParam } from '../../constants'
 import { useTranslation } from 'react-multi-lang'
+import styled from 'styled-components'
+
+import { cookiesAcceptedParam } from '../../constants'
+import { Button } from '../Button'
 
 const Wrapper = styled.div<{ isPushed: boolean; isHidden: boolean }>`
   position: fixed;

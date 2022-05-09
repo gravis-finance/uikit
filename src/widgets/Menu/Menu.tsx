@@ -1,29 +1,38 @@
 import React, { useEffect, useState } from 'react'
+import {
+  setDefaultLanguage,
+  setLanguage,
+  setTranslations
+} from 'react-multi-lang'
 import styled from 'styled-components'
-import { setDefaultLanguage, setLanguage, setTranslations } from 'react-multi-lang'
-import Overlay from '../../components/Overlay/Overlay'
+
+import { getDefaultLanguage } from '../..'
+import CookiePlaceholder from '../../components/CookiePlaceholder'
 import { Flex } from '../../components/Flex'
-import { useMatchBreakpoints } from '../../hooks'
-import Panel from './Panel'
-import UserBlock from './UserBlock'
-import { NavProps } from './types'
-import { MENU_HEIGHT, SIDEBAR_WIDTH_FULL, SIDEBAR_WIDTH_REDUCED } from './config'
-import MenuButton from './MenuButton'
+import Overlay from '../../components/Overlay/Overlay'
 import { BurgerIcon, CloseIcon } from '../../components/Svg'
 import Logo from '../../components/Svg/Icons/Logo'
-import en from '../../locales/en.json'
-import jp from '../../locales/jp.json'
-import cn from '../../locales/cn.json'
-import ru from '../../locales/ru.json'
-import es from '../../locales/es.json'
-import vie from '../../locales/vie.json'
-import { localStorageLanguageItem } from '../../constants'
-import LanguageSwitch from './LanguageSwitch'
-import { getDefaultLanguage } from '../..'
-import GravisTokenPrice from './GravisTokenPrice'
 import { TokenConfig } from '../../config/tokenPrice'
-import CookiePlaceholder from '../../components/CookiePlaceholder'
+import { localStorageLanguageItem } from '../../constants'
+import { useMatchBreakpoints } from '../../hooks'
+import cn from '../../locales/cn.json'
+import en from '../../locales/en.json'
+import es from '../../locales/es.json'
+import jp from '../../locales/jp.json'
+import ru from '../../locales/ru.json'
+import vie from '../../locales/vie.json'
 import useGetMenuLinks from '../../util/useGetMenuLinks'
+import {
+  MENU_HEIGHT,
+  SIDEBAR_WIDTH_FULL,
+  SIDEBAR_WIDTH_REDUCED
+} from './config'
+import GravisTokenPrice from './GravisTokenPrice'
+import LanguageSwitch from './LanguageSwitch'
+import MenuButton from './MenuButton'
+import Panel from './Panel'
+import { NavProps } from './types'
+import UserBlock from './UserBlock'
 
 const Wrapper = styled.div`
   position: relative;
@@ -69,8 +78,12 @@ const Inner = styled.div<{ isPushed: boolean; showMenu: boolean }>`
   max-width: 100%;
 
   ${({ theme }) => theme.mediaQueries.nav} {
-    margin-left: ${({ isPushed }) => `${isPushed ? SIDEBAR_WIDTH_FULL : SIDEBAR_WIDTH_REDUCED}px`};
-    max-width: ${({ isPushed }) => `calc(100% - ${isPushed ? SIDEBAR_WIDTH_FULL : SIDEBAR_WIDTH_REDUCED}px)`};
+    margin-left: ${({ isPushed }) =>
+      `${isPushed ? SIDEBAR_WIDTH_FULL : SIDEBAR_WIDTH_REDUCED}px`};
+    max-width: ${({ isPushed }) =>
+      `calc(100% - ${
+        isPushed ? SIDEBAR_WIDTH_FULL : SIDEBAR_WIDTH_REDUCED
+      }px)`};
   }
 `
 
@@ -95,12 +108,13 @@ const StyledIcon = styled.div<{ reverse?: boolean }>`
   background: linear-gradient(90.28deg, #292929 0%, #242424 100%);
   border: 1px solid #2e2e2e;
   box-sizing: border-box;
-  box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.4), -4px -4px 12px rgba(255, 255, 255, 0.05);
+  box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.4),
+    -4px -4px 12px rgba(255, 255, 255, 0.05);
   border-radius: 34px;
 
   :hover {
-    background: linear-gradient(90.28deg, #242424 0%, #202020 100%), linear-gradient(90.28deg, #292929 0%, #242424 100%),
-      #303030;
+    background: linear-gradient(90.28deg, #242424 0%, #202020 100%),
+      linear-gradient(90.28deg, #292929 0%, #242424 100%), #303030;
   }
 
   @media screen and (max-width: 968px) {
@@ -177,8 +191,6 @@ setTranslations({ en, jp, cn, ru, es, vie })
 setDefaultLanguage('en')
 
 const Menu: React.FC<NavProps> = ({
-  networks,
-  isProduction,
   account,
   login,
   logout,
@@ -202,12 +214,11 @@ const Menu: React.FC<NavProps> = ({
   gravisLogo = <Logo />,
   gravisLogoText,
   providedLogoLink,
-  isShowMenuPanel = true,
+  isShowMenuPanel = true
 }) => {
   const { isXl } = useMatchBreakpoints()
   const isMobile = isXl === false
   const [isPushed, setIsPushed] = useState(!isMobile)
-  // const [showMenu, setShowMenu] = useState(true)
   const showMenu = true
 
   useEffect(() => {
@@ -215,20 +226,17 @@ const Menu: React.FC<NavProps> = ({
   }, [isPushed, subscribePushEvent])
 
   useEffect(() => {
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    // @ts-ignore
-    localStorage.setItem(localStorageLanguageItem, getDefaultLanguage() ? getDefaultLanguage().toUpperCase() : 'EN')
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    // @ts-ignore
+    localStorage.setItem(
+      localStorageLanguageItem,
+      getDefaultLanguage() ? getDefaultLanguage().toUpperCase() : 'EN'
+    )
     setSelectedLanguage(getDefaultLanguage())
     setLanguage(getDefaultLanguage() as string)
     // eslint-disable-next-line
   }, [])
 
   useEffect(() => {
-    // networksConfig.networks('test')
     if (customLanguage) setLanguage(customLanguage.toLowerCase())
-    // eslint-disable-next-line
   }, [customLanguage])
 
   const parsedLinks = useGetMenuLinks(links)
@@ -247,8 +255,6 @@ const Menu: React.FC<NavProps> = ({
           {TokenConfig.showToken && <GravisTokenPrice mobile />}
           {loginBlockVisible && (
             <UserBlock
-              networks={networks}
-              isProduction={isProduction as boolean}
               account={account}
               login={login}
               logout={logout}
@@ -292,12 +298,19 @@ const Menu: React.FC<NavProps> = ({
 
         <CookiePlaceholder isPushed={isPushed} />
         {isShowMenuPanel ? (
-          <MobileOnlyOverlay show={isPushed} onClick={() => setIsPushed(false)} role="presentation" />
+          <MobileOnlyOverlay
+            show={isPushed}
+            onClick={() => setIsPushed(false)}
+            role="presentation"
+          />
         ) : null}
       </BodyWrapper>
-      {/* HERE */}
       {isShowMenuPanel ? (
-        <MenuButton aria-label="Toggle menu" onClick={() => setIsPushed((prevState: boolean) => !prevState)} mobile>
+        <MenuButton
+          aria-label="Toggle menu"
+          onClick={() => setIsPushed((prevState: boolean) => !prevState)}
+          mobile
+        >
           {isPushed ? (
             <StyledIcon>
               <CloseIcon color="primary" width="24" height="24" />
@@ -309,8 +322,6 @@ const Menu: React.FC<NavProps> = ({
           )}
         </MenuButton>
       ) : null}
-
-      {/* position: fixed; */}
     </Wrapper>
   )
 }

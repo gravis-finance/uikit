@@ -1,9 +1,10 @@
 import React from 'react'
 import styled, { CSSProperties } from 'styled-components'
-import Heading from '../../components/Heading/Heading'
-import Flex from '../../components/Flex/Flex'
-import { ArrowBackIcon, CloseIcon } from '../../components/Svg'
+
 import { IconButton } from '../../components/Button'
+import Flex from '../../components/Flex/Flex'
+import Heading from '../../components/Heading/Heading'
+import { ArrowBackIcon, CloseIcon } from '../../components/Svg'
 import { InjectedProps } from './types'
 
 interface Props extends InjectedProps {

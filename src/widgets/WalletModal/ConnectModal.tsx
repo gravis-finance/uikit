@@ -1,34 +1,27 @@
 import React, { useState } from 'react'
-import styled from 'styled-components'
 import { useTranslation } from 'react-multi-lang'
 import { useHistory } from 'react-router-dom'
+import styled from 'styled-components'
 
-import { Link } from '../../components/Link'
-import { Modal } from '../Modal'
-import WalletCard from './WalletCard'
-import { wallets } from './config'
-import { Login } from './types'
-import Flex from '../../components/Flex/Flex'
-import Text from '../../components/Text/Text'
-import NetworkSelector from './NetworkSelector'
-import switchNetwork from '../../util/switchNetwork'
-import { getNetworkId, getNetworkTitles } from '../../util/getNetworkId'
-import { Checkbox } from '../../components/Checkbox'
 import { ButtonBase } from '../../components/Button'
+import { Checkbox } from '../../components/Checkbox'
+import Flex from '../../components/Flex/Flex'
+import { Link } from '../../components/Link'
+import Text from '../../components/Text/Text'
 import { privacyAndPoliceLink, termsOfUseLink } from '../../constants'
-import { NetworksConfigObject } from '../..'
+import { getNetworkId, getNetworkTitles } from '../../util/getNetworkId'
+import switchNetwork from '../../util/switchNetwork'
+import { useWidgetsContext } from '../../WidgetsContext'
+import { Modal } from '../Modal'
+import { useNetworksList, useWalletsList } from './config'
+import NetworkSelector from './NetworkSelector'
+import { Login } from './types'
+import WalletCard from './WalletCard'
 
 interface Props {
   login: Login
   onDismiss?: () => void
   onSelect?: () => void
-  title?: string
-  isProduction?: boolean
-  hecoOnly?: boolean
-  withReload?: boolean
-  bscOnly?: boolean
-  ethereum?: boolean
-  bscAndPoly?: boolean
 }
 
 const StyledPoint = styled.div`
@@ -83,21 +76,25 @@ const StyledLink = styled(Link)`
   display: inline;
 `
 
-const ConnectModal: React.FC<Props> = ({ onSelect = () => null, login, onDismiss = () => null }) => {
-  const { networks } = NetworksConfigObject
+const ConnectModal: React.FC<Props> = ({
+  onSelect = () => null,
+  login,
+  onDismiss = () => null
+}) => {
+  const { networks } = useWidgetsContext()
+  const networksList = useNetworksList()
+  const wallets = useWalletsList()
   const [termsChecked, setTermsChecked] = useState(false)
   const id: string = getNetworkId()
   const history = useHistory()
-  const [selectedNetwork, setSelectedNetwork] = useState(
-    // bscOnly ? 'Binance' :
-    getNetworkTitles()
-  )
+  const [selectedNetwork, setSelectedNetwork] = useState(getNetworkTitles())
   const [selectedWallet, setSelectedWallet] = useState('')
   const t = useTranslation()
 
   const handleClose = () => {
     const currentChainId = localStorage.getItem('chainId')
-    if (id && currentChainId && currentChainId !== id) switchNetwork(currentChainId, false, history)
+    if (id && currentChainId && currentChainId !== id)
+      switchNetwork(currentChainId, false, history)
     onDismiss()
   }
 
@@ -119,46 +116,75 @@ const ConnectModal: React.FC<Props> = ({ onSelect = () => null, login, onDismiss
           </StyledPoint>
           <Text style={{ fontSize: '14px', color: '#fff', marginLeft: '16px' }}>
             {t('Accept')}{' '}
-            <StyledLink style={{ color: '#009CE1' }} fontSize="14px" target="_blank" href={termsOfUseLink}>
+            <StyledLink
+              style={{ color: '#009CE1' }}
+              fontSize="14px"
+              target="_blank"
+              href={termsOfUseLink}
+            >
               {t('Terms of Use')}
             </StyledLink>{' '}
             {t('and')}{' '}
-            <StyledLink style={{ color: '#009CE1' }} fontSize="14px" target="_blank" href={privacyAndPoliceLink}>
+            <StyledLink
+              style={{ color: '#009CE1' }}
+              fontSize="14px"
+              target="_blank"
+              href={privacyAndPoliceLink}
+            >
               {t('Privacy Policy')}
             </StyledLink>
           </Text>
         </StyledFlexPoint>
         <StyledFlex mt="10px">
-          <ButtonBase style={{ width: 'fit-content' }} onClick={handleTermsChange}>
+          <ButtonBase
+            style={{ width: 'fit-content' }}
+            onClick={handleTermsChange}
+          >
             <Checkbox checked={termsChecked} />
             <Text fontSize="14px" ml="10px">
               {t('I read and accept')}
             </Text>
           </ButtonBase>
         </StyledFlex>
-        <StyledFlexPoint alignItems="center" marginTop="30px" marginBottom="5px">
+        <StyledFlexPoint
+          alignItems="center"
+          marginTop="30px"
+          marginBottom="5px"
+        >
           <StyledPoint>
             <p>2</p>
           </StyledPoint>
-          <Text style={{ fontSize: '14px', color: '#fff', marginLeft: '16px' }}>{t('chooseNetwork')}</Text>
+          <Text style={{ fontSize: '14px', color: '#fff', marginLeft: '16px' }}>
+            {t('chooseNetwork')}
+          </Text>
         </StyledFlexPoint>
         <StyledFlex>
-          {networks.map((entry: any) => (
-            <NetworkSelector
-              disabled={!termsChecked}
-              key={entry.title}
-              chainId={entry.chainId}
-              selected={termsChecked ? entry.title === selectedNetwork : undefined}
-              networkConfig={entry}
-              setSelectedNetwork={setSelectedNetwork}
-            />
-          ))}
+          {networksList
+            ?.filter(({ key }) => networks?.includes(key))
+            .map((entry: any) => (
+              <NetworkSelector
+                disabled={!termsChecked}
+                key={entry.title}
+                chainId={entry.chainId}
+                selected={
+                  termsChecked ? entry.title === selectedNetwork : undefined
+                }
+                networkConfig={entry}
+                setSelectedNetwork={setSelectedNetwork}
+              />
+            ))}
         </StyledFlex>
-        <StyledFlexPoint alignItems="center" marginTop="30px" marginBottom="5px">
+        <StyledFlexPoint
+          alignItems="center"
+          marginTop="30px"
+          marginBottom="5px"
+        >
           <StyledPoint>
             <p>3</p>
           </StyledPoint>
-          <Text style={{ fontSize: '14px', color: '#fff', marginLeft: '16px' }}>{t('chooseWallet')}</Text>
+          <Text style={{ fontSize: '14px', color: '#fff', marginLeft: '16px' }}>
+            {t('chooseWallet')}
+          </Text>
         </StyledFlexPoint>
       </>
       <StyledWalletFlex>

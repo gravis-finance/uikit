@@ -1,12 +1,12 @@
-import React from 'react'
 import { Story } from '@storybook/react'
-import styled from 'styled-components'
-import { Select } from './Select'
+import React from 'react'
+
 import { Option } from './Option'
+import { Select } from './Select'
 
 export default {
   title: 'Components/Select',
-  component: Select,
+  component: Select
 }
 
 export const Template: Story = (args) => (

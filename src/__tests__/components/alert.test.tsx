@@ -1,6 +1,7 @@
 import React from 'react'
-import { renderWithTheme } from '../../testHelpers'
+
 import { Alert } from '../../components/Alert'
+import { renderWithTheme } from '../../testHelpers'
 
 it('renders correctly', () => {
   const { asFragment } = renderWithTheme(<Alert title="Alert title">Description</Alert>)

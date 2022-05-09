@@ -1,6 +1,7 @@
 import React from 'react'
-import { renderWithTheme } from '../../testHelpers'
+
 import Button from '../../components/Button/Button'
+import { renderWithTheme } from '../../testHelpers'
 
 it('renders correctly', () => {
   const { asFragment } = renderWithTheme(<Button>Submit</Button>)

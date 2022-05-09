@@ -1,19 +1,20 @@
 import React, { ReactNode } from 'react'
-import styled from 'styled-components'
-import { useLocation } from 'react-router-dom'
 import { useTranslation } from 'react-multi-lang'
+import { useLocation } from 'react-router-dom'
+import styled from 'styled-components'
+
+import { Spinner } from '../../components/Spinner'
 import { SvgProps } from '../../components/Svg'
-import * as IconModule from './icons'
+import { Tooltip } from '../../components/Tooltip'
 import Accordion from './Accordion'
-import { MenuEntry, LinkLabel } from './MenuEntry'
-import MenuLink from './MenuLink'
-import { PanelProps, PushedProps } from './types'
-import MenuButton from './MenuButton'
+import { ChipContainer, SubitemsChipContainer } from './Chip'
+import * as IconModule from './icons'
 import { HamburgerCloseIcon } from './icons'
 import Logo from './Logo'
-import { Tooltip } from '../../components/Tooltip'
-import { Spinner } from '../../components/Spinner'
-import { ChipContainer, SubitemsChipContainer } from './Chip'
+import MenuButton from './MenuButton'
+import { LinkLabel, MenuEntry } from './MenuEntry'
+import MenuLink from './MenuLink'
+import { PanelProps, PushedProps } from './types'
 
 interface Props extends PanelProps, PushedProps {
   isMobile?: boolean
@@ -47,16 +48,14 @@ interface StyledIconProps {
 }
 
 const StyledIcon = styled.div`
-   {
-    height: 40px;
-    width: 40px;
-    display: flex;
-    position: absolute;
-    right: -14px;
-    top: 44%;
-    transition: background-color 150ms ease-in-out;
-    box-sizing: content-box;
-  }
+  height: 40px;
+  width: 40px;
+  display: flex;
+  position: absolute;
+  right: -14px;
+  top: 44%;
+  transition: background-color 150ms ease-in-out;
+  box-sizing: content-box;
   > * {
     margin: auto;
     transition: transform 200ms ease-in-out;
@@ -105,12 +104,11 @@ const StyledLinksPanel = styled.div<{ isPushed?: boolean }>`
       font-weight: 500;
     }
   }
-}
 
-@media screen and (max-height: 650px) {
-  ${({ isPushed }) =>
-    !isPushed
-      ? `
+  @media screen and (max-height: 650px) {
+    ${({ isPushed }) =>
+      !isPushed
+        ? `
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -129,8 +127,8 @@ const StyledLinksPanel = styled.div<{ isPushed?: boolean }>`
         }
       }
     `
-      : ''}
-}
+        : ''}
+  }
 `
 
 const StyledLogoIcon = styled.div`
@@ -152,10 +150,9 @@ const PanelBody: React.FC<Props> = ({
   isMobile,
   links,
   togglePush,
-  isDark,
   gravisLogo,
   gravisLogoText,
-  providedLogoLink,
+  providedLogoLink
 }) => {
   const location = useLocation()
   const t = useTranslation()
@@ -171,14 +168,14 @@ const PanelBody: React.FC<Props> = ({
     'InfoIcon',
     'BigBangIcon',
     'AsteroidMiningIcon',
-    'NFTFarmingIcon',
+    'NFTFarmingIcon'
   ]
 
   return (
     <Container>
       <StyledLogoIcon>
         <Logo
-          href={providedLogoLink ? providedLogoLink : homeLink?.href ?? '/'}
+          href={providedLogoLink || (homeLink?.href ?? '/')}
           isPushed={isPushed}
           gravisLogo={gravisLogo}
           gravisLogoText={gravisLogoText}
@@ -202,12 +199,19 @@ const PanelBody: React.FC<Props> = ({
             .map((entry) => {
               const Icon = Icons[entry.icon]
               const iconElement = <Icon width="24px" mr="10px" />
-              const calloutClass = entry.calloutClass ? entry.calloutClass : undefined
+              const calloutClass = entry.calloutClass
+                ? entry.calloutClass
+                : undefined
               const title = !isPushed ? entry.label : ''
 
               if (entry.items) {
-                const itemsMatchIndex = entry.items.findIndex((item) => item.href === location.pathname)
-                const initialOpenState = entry.initialOpenState === true ? entry.initialOpenState : itemsMatchIndex >= 0
+                const itemsMatchIndex = entry.items.findIndex(
+                  (item) => item.href === location.pathname
+                )
+                const initialOpenState =
+                  entry.initialOpenState === true
+                    ? entry.initialOpenState
+                    : itemsMatchIndex >= 0
 
                 return (
                   <Tooltip placement="left" title={title} key={entry.label}>
@@ -230,11 +234,17 @@ const PanelBody: React.FC<Props> = ({
                             isactive={item.href === location.pathname}
                             onClick={handleClick}
                           >
-                            <MenuLink href={item.href} target={item.external ? '_blank' : ''}>
+                            <MenuLink
+                              href={item.href}
+                              target={item.external ? '_blank' : ''}
+                            >
                               {item.label}
                             </MenuLink>
                             {item.chip && (
-                              <SubitemsChipContainer animation={item.chip.animation} color={item.chip.color}>
+                              <SubitemsChipContainer
+                                animation={item.chip.animation}
+                                color={item.chip.color}
+                              >
                                 {t(item.chip.title)}
                               </SubitemsChipContainer>
                             )}
@@ -253,10 +263,18 @@ const PanelBody: React.FC<Props> = ({
                     isPushed={isPushed}
                     single
                   >
-                    <MenuLink href={entry.href} onClick={handleClick} target={entry.external ? '_blank' : ''}>
+                    <MenuLink
+                      href={entry.href}
+                      onClick={handleClick}
+                      target={entry.external ? '_blank' : ''}
+                    >
                       {iconElement}
                       <LinkLabel isPushed={isPushed}>{entry.label}</LinkLabel>
-                      {entry.chip && <ChipContainer color={entry.chip.color}>{t(entry.chip.title)}</ChipContainer>}
+                      {entry.chip && (
+                        <ChipContainer color={entry.chip.color}>
+                          {t(entry.chip.title)}
+                        </ChipContainer>
+                      )}
                     </MenuLink>
                   </MenuEntry>
                 </Tooltip>

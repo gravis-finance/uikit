@@ -1,6 +1,7 @@
-import React from 'react'
 import noop from 'lodash/noop'
+import React from 'react'
 import { BrowserRouter } from 'react-router-dom'
+
 import { renderWithTheme } from '../../testHelpers'
 import { Menu, menuConfig } from '../../widgets/Menu'
 

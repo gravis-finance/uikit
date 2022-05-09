@@ -2,17 +2,18 @@ import styled from 'styled-components'
 import {
   background,
   border,
+  color,
+  compose,
+  display,
+  flexbox,
+  grid,
   layout,
   position,
   space,
-  typography,
-  color,
-  flexbox,
-  grid,
-  display,
-  compose,
   system,
+  typography,
 } from 'styled-system'
+
 import { BoxProps } from './types'
 
 const textTransform = system({

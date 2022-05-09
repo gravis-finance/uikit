@@ -1,8 +1,9 @@
 import React from 'react'
 import styled from 'styled-components'
+
+import { SIDEBAR_WIDTH_FULL, SIDEBAR_WIDTH_REDUCED } from './config'
 import PanelBody from './PanelBody'
 import PanelFooter from './PanelFooter'
-import { SIDEBAR_WIDTH_REDUCED, SIDEBAR_WIDTH_FULL } from './config'
 import { PanelProps, PushedProps } from './types'
 
 interface Props extends PanelProps, PushedProps {
@@ -23,7 +24,8 @@ const StyledPanel = styled.div<{ isPushed: boolean; showMenu: boolean }>`
   flex-shrink: 0;
   height: 100vh;
   transition: padding-top 0.2s, width 0.2s;
-  border-right: ${({ isPushed }) => (isPushed ? '2px solid rgba(133, 133, 133, 0.1)' : 0)};
+  border-right: ${({ isPushed }) =>
+    isPushed ? '2px solid rgba(133, 133, 133, 0.1)' : 0};
   z-index: 11;
   overflow: ${({ isPushed }) => (isPushed ? 'initial' : 'initial')};
   transform: translate3d(0, 0, 0);
@@ -35,13 +37,13 @@ const StyledPanel = styled.div<{ isPushed: boolean; showMenu: boolean }>`
   ${({ theme }) => theme.mediaQueries.nav} {
     border-right: none;
     overflow: hidden;
-    width: ${({ isPushed }) => `${isPushed ? SIDEBAR_WIDTH_FULL : SIDEBAR_WIDTH_REDUCED}px`};
+    width: ${({ isPushed }) =>
+      `${isPushed ? SIDEBAR_WIDTH_FULL : SIDEBAR_WIDTH_REDUCED}px`};
     top: 0;
     left: 0;
     padding-top: 28px;
   }
   @media screen and (max-width: 968px) {
-    // height: calc(100vh - 80px);
     top: 0;
   }
 

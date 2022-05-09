@@ -1,6 +1,7 @@
 import React, { ReactNode } from 'react'
-import styled from 'styled-components'
 import { Link } from 'react-router-dom'
+import styled from 'styled-components'
+
 import Flex from '../../components/Flex/Flex'
 import { Text } from '../../components/Text'
 

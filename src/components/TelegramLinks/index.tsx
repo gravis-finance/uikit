@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
+
 import {
   ChineseIcon,
   EnglishIcon,
@@ -12,9 +13,9 @@ import {
   TurkishIcon,
   VietnameseIcon,
 } from '../../widgets/Menu/icons'
-import { Text } from '../Text'
 import { Flex } from '../Flex'
 import { GravisDarkIcon } from '../Svg'
+import { Text } from '../Text'
 
 const Container = styled.div`
   position: relative;

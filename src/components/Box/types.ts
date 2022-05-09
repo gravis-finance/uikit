@@ -2,14 +2,14 @@ import { HTMLAttributes } from 'react'
 import {
   BackgroundProps,
   BorderProps,
-  LayoutProps,
-  PositionProps,
-  SpaceProps,
   ColorProps,
-  TypographyProps,
   DisplayProps,
   FlexboxProps,
   GridProps,
+  LayoutProps,
+  PositionProps,
+  SpaceProps,
+  TypographyProps,
 } from 'styled-system'
 
 export interface BoxProps

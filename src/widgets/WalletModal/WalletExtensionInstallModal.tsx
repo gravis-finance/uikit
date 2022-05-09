@@ -3,11 +3,11 @@ import { useTranslation } from 'react-multi-lang'
 import styled from 'styled-components'
 
 import { Button } from '../..'
-import { Modal, useModal } from '../Modal'
+import { AscendingIcon, ErrorIcon } from '../../components/Svg'
 import { Text } from '../../components/Text'
-import { ErrorIcon, AscendingIcon } from '../../components/Svg'
+import { Modal, useModal } from '../Modal'
+import { useWalletsConfig } from '.'
 import WalletConnectIcon from './icons/WalletConnect'
-import { walletsConfig } from '.'
 
 const CopyContainer = styled.div`
   width: 100%;
@@ -41,12 +41,13 @@ const Container = styled.div`
   flex-direction: column;
 `
 
-const WalletExtensionInstallModal: React.FC<{ onDismiss?: any; installLink: string; connect: any }> = ({
-  installLink,
-  connect,
-  onDismiss = () => null,
-}) => {
+const WalletExtensionInstallModal: React.FC<{
+  onDismiss?: any
+  installLink: string
+  connect: any
+}> = ({ installLink, connect, onDismiss = () => null }) => {
   const t = useTranslation()
+  const walletsConfig = useWalletsConfig()
   const ErrorModal = walletsConfig.walletConnect.connection.errorModal
   const [openModal] = useModal(<ErrorModal />)
 
@@ -64,7 +65,10 @@ const WalletExtensionInstallModal: React.FC<{ onDismiss?: any; installLink: stri
   }
 
   return (
-    <Modal title={t('You do not have extension for your wallet')} onDismiss={onDismiss}>
+    <Modal
+      title={t('You do not have extension for your wallet')}
+      onDismiss={onDismiss}
+    >
       <Container>
         <ErrorIcon width={150} height={150} />
         <Text mt="20px">

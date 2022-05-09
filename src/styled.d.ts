@@ -1,4 +1,5 @@
 import 'styled-components'
+
 import { GravisTheme } from './theme'
 
 declare module 'styled-components' {

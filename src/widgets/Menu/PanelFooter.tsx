@@ -1,13 +1,14 @@
 import React from 'react'
-import styled from 'styled-components'
 import { getLanguage } from 'react-multi-lang'
-import { SvgProps } from '../../components/Svg'
+import styled from 'styled-components'
+
 import Flex from '../../components/Flex/Flex'
 import Link from '../../components/Link/Link'
-import * as IconModule from './icons'
-import { socials } from './config'
-import { PanelProps, PushedProps } from './types'
+import { SvgProps } from '../../components/Svg'
 import TelegramLinks from '../../components/TelegramLinks'
+import { socials } from './config'
+import * as IconModule from './icons'
+import { PanelProps, PushedProps } from './types'
 
 interface Props extends PanelProps, PushedProps {}
 
@@ -18,10 +19,6 @@ const Container = styled.div<{ isPushed?: boolean }>`
   padding: 8px 4px;
 
   @media screen and (max-width: 967px) {
-    // position: absolute;
-    // bottom: 90px;
-    // left: ${({ isPushed }) => (!isPushed ? '100px' : '-10px')};
-    // width: 70%;
     position: relative;
     ${({ isPushed }) => (!isPushed ? 'display: none;' : '')}
   }
@@ -75,13 +72,27 @@ const PanelFooter: React.FC<Props> = ({ isPushed, pushNav }) => {
   return (
     <Container isPushed={isPushed}>
       <SocialEntry>
-        <Flex flexWrap="wrap" justifyContent="space-evenly" style={{ width: '100%' }}>
+        <Flex
+          flexWrap="wrap"
+          justifyContent="space-evenly"
+          style={{ width: '100%' }}
+        >
           {socials.map((social) => {
             const Icon = Icons[social.icon]
-            const iconProps = { width: '16px', color: 'textSubtle', style: { cursor: 'pointer' } }
-            if (social.label === 'Telegram') return <TelegramLinks pushNav={pushNav} />
+            const iconProps = {
+              width: '16px',
+              color: 'textSubtle',
+              style: { cursor: 'pointer' }
+            }
+            if (social.label === 'Telegram')
+              return <TelegramLinks pushNav={pushNav} />
             return (
-              <StyledExternalLink external key={social.label} href={filterHref(social.href)} aria-label={social.label}>
+              <StyledExternalLink
+                external
+                key={social.label}
+                href={filterHref(social.href)}
+                aria-label={social.label}
+              >
                 <Icon {...iconProps} />
               </StyledExternalLink>
             )

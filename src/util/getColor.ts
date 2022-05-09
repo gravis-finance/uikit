@@ -1,4 +1,5 @@
 import { DefaultTheme } from 'styled-components'
+
 import getThemeValue from './getThemeValue'
 
 const getColor = (color: string, theme: DefaultTheme): string => {

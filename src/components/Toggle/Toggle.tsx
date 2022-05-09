@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
+
 import { ToggleProps } from './types'
 
 const Container = styled.div<{ width?: number }>`

@@ -1,10 +1,11 @@
 import React from 'react'
+
 import Svg from '../../../components/Svg/Svg'
 import { SvgProps } from '../../../components/Svg/types'
 
 const Icon: React.FC<SvgProps> = (props) => {
   return (
-    <svg id="Layer_1" data-name="Layer 1" viewBox="0 0 512 512" {...props}>
+    <Svg id="Layer_1" data-name="Layer 1" viewBox="0 0 512 512" {...props}>
       <circle cx="256" cy="256" r="256" fill="#f0f0f0" />
       <path d="M256,0V256L75,437a255.2,255.2,0,0,0,181,75c141.38,0,256-114.62,256-256S256,0,256,0Z" fill="#d80027" />
       <path d="M256,0A255.2,255.2,0,0,0,75,75L256,256H512C512,114.62,397.38,0,256,0Z" fill="#0052b4" />
@@ -24,7 +25,7 @@ const Icon: React.FC<SvgProps> = (props) => {
         points="216.67 232.59 206.26 247.14 189.22 241.74 199.84 256.13 189.43 270.67 206.4 265.02 217.01 279.4 216.88 261.53 233.85 255.87 216.8 250.47 216.67 232.59"
         fill="#ffda44"
       />
-    </svg>
+    </Svg>
   )
 }
 

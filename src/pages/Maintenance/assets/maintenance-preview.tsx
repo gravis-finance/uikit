@@ -1,4 +1,5 @@
 import React from 'react'
+
 import { SvgProps } from '../../../components/Svg/types'
 
 const Icon: React.FC<SvgProps> = () => {

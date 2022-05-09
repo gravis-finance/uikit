@@ -1,14 +1,15 @@
 /* eslint-disable import/no-named-as-default */
-import React from 'react'
-import styled from 'styled-components'
-import { BrowserRouter, Link } from 'react-router-dom'
 import capitalize from 'lodash/capitalize'
+import React from 'react'
+import { BrowserRouter, Link } from 'react-router-dom'
+import styled from 'styled-components'
+
 import Flex from '../Flex/Flex'
-import { LogoIcon, AddIcon, AutoRenewIcon, CloseIcon } from '../Svg'
+import { AddIcon, AutoRenewIcon, CloseIcon,LogoIcon } from '../Svg'
 import Button from './Button'
+import CopyButton from './CopyButton'
 import IconButton from './IconButton'
 import { variants } from './types'
-import CopyButton from './CopyButton'
 
 const Row = styled(Flex)`
   margin-bottom: 32px;

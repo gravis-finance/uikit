@@ -1,28 +1,29 @@
 import React, { useEffect, useState } from 'react'
-import styled from 'styled-components'
-import { useTranslation } from 'react-multi-lang'
 import { renderToStaticMarkup } from 'react-dom/server'
+import { useTranslation } from 'react-multi-lang'
+import styled from 'styled-components'
+
 import Button from '../../components/Button/Button'
-import Text from '../../components/Text/Text'
-import Flex from '../../components/Flex/Flex'
-import { Modal } from '../Modal'
-import { connectorLocalStorageKey, walletsConfig } from './config'
 import CopyButton from '../../components/Button/CopyButton'
-import DefaultAvatar from '../../components/Svg/Icons/DefaultAvatar'
+import Flex from '../../components/Flex/Flex'
 import {
   BSCScanIcon,
   Ether,
   ExitIcon,
+  GmartIcon,
   HecoIcon,
   MaticIcon,
   ModalBackgroundIcon,
   ModalBackgroundIconMobile,
-  TransactionHistoryIcon,
-  GmartIcon,
+  TransactionHistoryIcon
 } from '../../components/Svg'
-import { ConnectorNames } from './types'
+import DefaultAvatar from '../../components/Svg/Icons/DefaultAvatar'
+import Text from '../../components/Text/Text'
 import { getNetworkId } from '../../util/getNetworkId'
-import { ProfileAvatar, ProfileName, EditProfileLink } from '../Profile'
+import { Modal } from '../Modal'
+import { EditProfileLink, ProfileAvatar, ProfileName } from '../Profile'
+import { connectorLocalStorageKey, useWalletsConfig } from './config'
+import { ConnectorNames } from './types'
 
 export type AccountModalProps = {
   account: string
@@ -30,7 +31,6 @@ export type AccountModalProps = {
   onDismiss?: () => void
   explorerName?: string
   explorerLink?: string
-  tokenAmount?: string
   tokenSymbol?: string
   networkName?: string
   balance?: string
@@ -147,20 +147,23 @@ const IconContainer = styled.div`
   display: flex;
   justify-content: center;
 `
-// <LinkExternal small href={`https://bscscan.com/address/${account}`} mr="16px">
-// {explorerName}
-// </LinkExternal>
 
-const svgString = encodeURIComponent(renderToStaticMarkup(<ModalBackgroundIcon />))
-const svgStringMobile = encodeURIComponent(renderToStaticMarkup(<ModalBackgroundIconMobile />))
+const svgString = encodeURIComponent(
+  renderToStaticMarkup(<ModalBackgroundIcon />)
+)
+const svgStringMobile = encodeURIComponent(
+  renderToStaticMarkup(<ModalBackgroundIconMobile />)
+)
 
-const getAccountIcon = () => {
+const getAccountIcon = (walletsConfig: any) => {
   const connectorId = localStorage.getItem('connectorId')
 
   if (connectorId)
-    if (Object.entries(ConnectorNames).find((name) => name[1] === connectorId)) {
+    if (
+      Object.entries(ConnectorNames).find((name) => name[1] === connectorId)
+    ) {
       const foundWalletConfig = Object.entries(walletsConfig).find(
-        (configName) => configName[1].connectorId === connectorId
+        (configName: any) => configName[1].connectorId === connectorId
       )
       if (foundWalletConfig) return foundWalletConfig[1]
     }
@@ -180,19 +183,22 @@ const AccountModal: React.FC<AccountModalProps> = ({
   onTransactionHistoryHandler,
   balanceHook,
   gmartProfileLink = process.env.REACT_APP_GMART_URL
-    ? `${process.env.REACT_APP_GMART_URL}${process.env.REACT_APP_GMART_URL !== '/' ? '/' : ''}profile/my`
-    : '',
+    ? `${process.env.REACT_APP_GMART_URL}${
+        process.env.REACT_APP_GMART_URL !== '/' ? '/' : ''
+      }profile/my`
+    : ''
 }) => {
   const [currentBalance, setBalance] = useState(balance)
 
-  getAccountIcon()
+  const walletsConfig = useWalletsConfig()
   useEffect(() => {
-    if (balanceHook) balanceHook().then((result?: any) => setBalance(result?.toSignificant(6)))
+    if (balanceHook)
+      balanceHook().then((result?: any) => setBalance(result?.toSignificant(6)))
   }, [balanceHook])
 
   const t = useTranslation()
 
-  const { icon: Icon } = getAccountIcon()
+  const { icon: Icon } = getAccountIcon(walletsConfig)
 
   return (
     <Modal
@@ -219,7 +225,11 @@ const AccountModal: React.FC<AccountModalProps> = ({
                 {t('balanceTitle')}
               </Text>
               <Text color="white" style={{ marginTop: '6px' }}>
-                {!currentBalance ? <p>Loading balance...</p> : `${currentBalance} ${tokenSymbol}`}
+                {!currentBalance ? (
+                  <p>{t('Loading balance...')}</p>
+                ) : (
+                  `${currentBalance} ${tokenSymbol}`
+                )}
               </Text>
             </StyledInfoFlex>
             <StyledInfoFlex flexDirection="column" marginLeft={47}>
@@ -241,7 +251,12 @@ const AccountModal: React.FC<AccountModalProps> = ({
         <CopyButton textToCopy={account} />
       </StyledInputContainer>
       <StyledFlexContainer mt="16px" justifyContent="space-between" buttonsList>
-        <StyledButton size="md" variant="dark" onClick={() => window.open(explorerLink)} data-id="scan-button">
+        <StyledButton
+          size="md"
+          variant="dark"
+          onClick={() => window.open(explorerLink)}
+          data-id="scan-button"
+        >
           {explorerName.includes('Bsc') ? (
             <BSCScanIcon mr={16} />
           ) : explorerName.includes('Heco') ? (
@@ -254,7 +269,12 @@ const AccountModal: React.FC<AccountModalProps> = ({
           {t(explorerName)}
         </StyledButton>
         {!!gmartProfileLink && (
-          <StyledButton size="md" variant="dark" forwardedAs="a" href={`${gmartProfileLink}?network=${getNetworkId()}`}>
+          <StyledButton
+            size="md"
+            variant="dark"
+            forwardedAs="a"
+            href={`${gmartProfileLink}?network=${getNetworkId()}`}
+          >
             <GmartIcon size="1.5em" mr="1rem" />
             {t('Gmart profile')}
           </StyledButton>

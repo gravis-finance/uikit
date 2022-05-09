@@ -1,6 +1,7 @@
-import React, { ReactNode } from 'react'
 import { render, RenderResult } from '@testing-library/react'
+import React, { ReactNode } from 'react'
 import { ThemeProvider } from 'styled-components'
+
 import { light } from './theme'
 
 /* eslint-disable import/prefer-default-export */

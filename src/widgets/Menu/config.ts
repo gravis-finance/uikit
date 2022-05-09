@@ -1,5 +1,5 @@
-import { EnglishIcon, JapaneseIcon, ChineseIcon, RussianIcon, SpanishIcon, VietnameseIcon } from './icons'
 import { socialNetworksLinks, SocialNetworksType } from '../../constants'
+import { ChineseIcon, EnglishIcon, JapaneseIcon, RussianIcon, SpanishIcon, VietnameseIcon } from './icons'
 
 export const links = [
   {

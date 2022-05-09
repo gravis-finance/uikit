@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+
 import { OverlayProps } from './types'
 
 const Overlay = styled.div.attrs({ role: 'presentation' })<OverlayProps>`

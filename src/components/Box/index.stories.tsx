@@ -1,8 +1,9 @@
-import React from 'react'
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { Story } from '@storybook/react'
-import Box from './Box'
+import React from 'react'
+
 import { Link } from '../Link'
+import Box from './Box'
 
 export default {
   title: 'Components/Primitives',

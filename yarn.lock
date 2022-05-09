@@ -1722,10 +1722,10 @@
     eslint-plugin-react "^7.21.5"
     eslint-plugin-react-hooks "^4.0.0"
 
-"@gravis.finance/sdk@^1.0.19":
-  version "1.0.19"
-  resolved "https://registry.yarnpkg.com/@gravis.finance/sdk/-/sdk-1.0.19.tgz#4cc329c02dafffa34ea8aedd94678fd45e379fcc"
-  integrity sha512-+7iVGcoguqju5+P/Ht167xJxILjj0ph6swr32yiidcQvQbFJ/DiplBNCgHneLhdkvwwod6xSsazMtsZR3T2RkA==
+"@gravis.finance/sdk@^1.0.20":
+  version "1.0.20"
+  resolved "https://registry.yarnpkg.com/@gravis.finance/sdk/-/sdk-1.0.20.tgz#5906f1566116ce642eb58a6e233467777d4c19ee"
+  integrity sha512-WFYfBznIq36JYKNoQDo1aFutzjBkW5EdZrYoR9ga75EiEz78qy7MwVTv+B1lph6I+s9M1LsXLZ4R2jVy98Q4aQ==
   dependencies:
     "@pancakeswap-libs/pancake-swap-core" "^0.1.0"
     big.js "^5.2.2"
@@ -8796,6 +8796,11 @@ eslint-plugin-react@^7.21.5:
     resolve "^2.0.0-next.3"
     semver "^6.3.0"
     string.prototype.matchall "^4.0.6"
+
+eslint-plugin-simple-import-sort@^7.0.0:
+  version "7.0.0"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-simple-import-sort/-/eslint-plugin-simple-import-sort-7.0.0.tgz#a1dad262f46d2184a90095a60c66fef74727f0f8"
+  integrity sha512-U3vEDB5zhYPNfxT5TYR7u01dboFZp+HNpnGhkDB2g/2E4wZ/g1Q9Ton8UwCLfRV9yAKyYqDh62oHOamvkFxsvw==
 
 eslint-scope@^4.0.3:
   version "4.0.3"

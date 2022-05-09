@@ -1,7 +1,7 @@
-import React, { useState } from 'react'
-import styled from 'styled-components'
-import { useTranslation } from 'react-multi-lang'
 import copy from 'copy-to-clipboard'
+import React, { useState } from 'react'
+import { useTranslation } from 'react-multi-lang'
+import styled from 'styled-components'
 
 import InputCopy from '../Svg/Icons/InputCopy'
 

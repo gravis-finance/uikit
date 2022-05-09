@@ -5,7 +5,10 @@ import styled, { keyframes } from 'styled-components'
 import { Popper } from '../Popper'
 import useControlled from './useControlled'
 
-export type TooltipProps = Omit<React.ComponentProps<typeof Popper>, 'anchorEl' | 'children' | 'title'> & {
+export type TooltipProps = Omit<
+  React.ComponentProps<typeof Popper>,
+  'anchorEl' | 'children' | 'title'
+> & {
   children: React.ReactElement
   title?: React.ReactChild
   interactive?: boolean
@@ -125,7 +128,7 @@ const TooltipInner: React.FC<TooltipProps> = (props) => {
   const touchTimer: any = React.useRef()
   const [openState, setOpenState] = useControlled({
     controlled: openProp,
-    default: false,
+    default: false
   })
   const open = title !== '' && !!childNode && (openState || forceOpen)
 
@@ -135,10 +138,10 @@ const TooltipInner: React.FC<TooltipProps> = (props) => {
         name: 'arrow',
         enabled: Boolean(arrowRef),
         options: {
-          element: arrowRef,
-        },
+          element: arrowRef
+        }
       },
-      ...(modifiersProp ?? []),
+      ...(modifiersProp ?? [])
     ]
   }, [arrowRef, modifiersProp])
 
@@ -162,7 +165,7 @@ const TooltipInner: React.FC<TooltipProps> = (props) => {
             'A disabled element does not fire events.',
             "Tooltip needs to listen to the child element's events to display the title.",
             '',
-            'Add a simple wrapper element, such as a `span`.',
+            'Add a simple wrapper element, such as a `span`.'
           ].join('\n')
         )
       }
@@ -172,7 +175,8 @@ const TooltipInner: React.FC<TooltipProps> = (props) => {
   const prevUserSelect = React.useRef()
   const stopTouchInteraction = React.useCallback(() => {
     if (prevUserSelect.current !== undefined) {
-       (document.body.style as any).WebkitUserSelect = prevUserSelect.current
+      const bodyStyle: any = document.body.style
+      bodyStyle.WebkitUserSelect = prevUserSelect.current
       prevUserSelect.current = undefined
     }
     clearTimeout(touchTimer.current)
@@ -256,11 +260,12 @@ const TooltipInner: React.FC<TooltipProps> = (props) => {
     event.persist()
 
     prevUserSelect.current = (document.body.style as any).WebkitUserSelect
-      // Prevent iOS text selection on long-tap.
-      ; (document.body.style as any).WebkitUserSelect = 'none'
+    const bodyStyle: any = document.body.style
+    // Prevent iOS text selection on long-tap.
+    bodyStyle.WebkitUserSelect = 'none'
 
     touchTimer.current = setTimeout(() => {
-       (document.body.style as any).WebkitUserSelect = prevUserSelect.current
+      bodyStyle.WebkitUserSelect = prevUserSelect.current
       handleEnter(event)
     }, enterTouchDelay)
   }
@@ -282,7 +287,7 @@ const TooltipInner: React.FC<TooltipProps> = (props) => {
     ...children.props,
     onTouchStart: detectTouchStart,
     'aria-label': typeof title === 'string' ? title : null,
-    ref: setChildNode,
+    ref: setChildNode
   }
 
   if (process.env.NODE_ENV !== 'production') {
@@ -295,7 +300,7 @@ const TooltipInner: React.FC<TooltipProps> = (props) => {
         console.error(
           [
             'The `children` component of the Tooltip is not forwarding its props correctly.',
-            'Please make sure that props are spread on the same element that the ref is applied to.',
+            'Please make sure that props are spread on the same element that the ref is applied to.'
           ].join('\n')
         )
       }
@@ -310,8 +315,14 @@ const TooltipInner: React.FC<TooltipProps> = (props) => {
   }
 
   if (!disableHoverListener) {
-    childrenProps.onMouseOver = composeEventHandler(handleMouseOver, childrenProps.onMouseOver)
-    childrenProps.onMouseLeave = composeEventHandler(handleMouseLeave, childrenProps.onMouseLeave)
+    childrenProps.onMouseOver = composeEventHandler(
+      handleMouseOver,
+      childrenProps.onMouseOver
+    )
+    childrenProps.onMouseLeave = composeEventHandler(
+      handleMouseLeave,
+      childrenProps.onMouseLeave
+    )
 
     if (!disableInteractive) {
       interactiveWrapperListeners.onMouseOver = handleMouseOver
@@ -325,7 +336,7 @@ const TooltipInner: React.FC<TooltipProps> = (props) => {
       console.error(
         [
           'You have provided a `title` prop to the child of <Tooltip />.',
-          `Remove this title prop \`${children.props.title}\` or the Tooltip component.`,
+          `Remove this title prop \`${children.props.title}\` or the Tooltip component.`
         ].join('\n')
       )
     }
@@ -344,7 +355,10 @@ const TooltipInner: React.FC<TooltipProps> = (props) => {
         anchorEl={childNode}
       >
         {({ styles, attributes }) => (
-          <div data-placement={attributes.popper?.['data-popper-placement']} className={className}>
+          <div
+            data-placement={attributes.popper?.['data-popper-placement']}
+            className={className}
+          >
             <TooltipTitle>{title}</TooltipTitle>
             <TooltipArrow
               ref={setArrowRef}
@@ -362,7 +376,7 @@ const TooltipInner: React.FC<TooltipProps> = (props) => {
 TooltipInner.defaultProps = {
   enterDelay: 100,
   leaveDelay: 0,
-  placement: 'auto',
+  placement: 'auto'
 }
 
 const Tooltip = styled(TooltipInner)`

@@ -1,10 +1,11 @@
 import React from 'react'
 import { useTranslation } from 'react-multi-lang'
 import styled from 'styled-components'
+
 import { Button } from '../../components/Button'
-import { Text } from '../../components/Text'
 import { Heading } from '../../components/Heading'
 import { SocialNetworks } from '../../components/SocialNetworks'
+import { Text } from '../../components/Text'
 // import NotfoundPreview from './assets/notfound-preview'
 // import CloudRight from './assets/background-cloud-right'
 // import CloudLeft from './assets/background-cloud-left'

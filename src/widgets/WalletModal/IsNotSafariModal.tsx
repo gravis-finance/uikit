@@ -1,14 +1,14 @@
+import copy from 'copy-to-clipboard'
 import React, { useState } from 'react'
 import { useTranslation } from 'react-multi-lang'
 import styled from 'styled-components'
-import copy from 'copy-to-clipboard'
 
 import { Button } from '../..'
-import { Modal } from '../Modal'
-import { Text } from '../../components/Text'
-import { ToastContainer } from '../Toast'
 import { alertVariants } from '../../components/Alert'
 import { ErrorIcon, InputCopyIcon } from '../../components/Svg'
+import { Text } from '../../components/Text'
+import { Modal } from '../Modal'
+import { ToastContainer } from '../Toast'
 
 const CopyContainer = styled.div`
   width: 100%;

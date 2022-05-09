@@ -1,6 +1,7 @@
 import React from 'react'
-import { renderWithTheme } from '../../testHelpers'
+
 import { Spinner } from '../../components/Spinner'
+import { renderWithTheme } from '../../testHelpers'
 
 it('renders correctly', () => {
   const { asFragment } = renderWithTheme(<Spinner />)

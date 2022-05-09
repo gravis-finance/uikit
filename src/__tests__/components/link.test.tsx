@@ -1,6 +1,7 @@
 import React from 'react'
-import { renderWithTheme } from '../../testHelpers'
+
 import { Link, LinkExternal } from '../../components/Link'
+import { renderWithTheme } from '../../testHelpers'
 
 it('renders link correctly', () => {
   const { asFragment } = renderWithTheme(<Link href="https://gravis.finance">Link</Link>)

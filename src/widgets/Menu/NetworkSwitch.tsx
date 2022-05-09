@@ -1,15 +1,27 @@
-import React, { useEffect, useState } from 'react'
-import styled from 'styled-components'
+import React, {
+  ComponentProps,
+  FC,
+  useEffect,
+  useMemo,
+  useRef,
+  useState
+} from 'react'
 import { useHistory } from 'react-router-dom'
-import { Popper } from '../../components/Popper'
-import { NetworksConfig } from '../WalletModal/types'
-import { networks as NETWORKS } from '../WalletModal/config'
-import { ArrowDropDownIcon } from '../../components/Svg'
-import switchNetwork from '../../util/switchNetwork'
-import { getNetworkTitles } from '../../util/getNetworkId'
-import { NetworksConfigObject } from '../..'
+import styled from 'styled-components'
 
-const StyledDropDown = styled.div<{ $showOptions?: boolean; $toggleMobile?: boolean; $asIcon?: boolean }>`
+import { Popper } from '../../components/Popper'
+import { ArrowDropDownIcon } from '../../components/Svg'
+import { getNetworkTitles } from '../../util/getNetworkId'
+import switchNetwork from '../../util/switchNetwork'
+import { useWidgetsContext } from '../../WidgetsContext'
+import { useNetworksList } from '../WalletModal'
+import { NetworksConfig } from '../WalletModal/types'
+
+const StyledDropDown = styled.div<{
+  $showOptions?: boolean
+  $toggleMobile?: boolean
+  $asIcon?: boolean
+}>`
   width: 165px;
   box-sizing: border-box;
   height: 48px;
@@ -21,10 +33,13 @@ const StyledDropDown = styled.div<{ $showOptions?: boolean; $toggleMobile?: bool
       ? 'linear-gradient(90.28deg, #292929 0%, #242424 100%), #262626'
       : 'linear-gradient(90.28deg, #242424 0%, #202020 100%), linear-gradient(90.28deg, #292929 0%, #242424 100%), #303030'};
   border: 1px solid #2e2e2e;
-  box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.4), -4px -4px 12px rgba(255, 255, 255, 0.05);
-  border-radius: ${({ $showOptions }) => ($showOptions ? '6px 6px 0 0' : '55px')};
+  box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.4),
+    -4px -4px 12px rgba(255, 255, 255, 0.05);
+  border-radius: ${({ $showOptions }) =>
+    $showOptions ? '6px 6px 0 0' : '55px'};
   user-select: none;
-  transition: background-color 200ms ease-in-out, color 200ms ease-in-out, border-radius 100ms ease-in-out;
+  transition: background-color 200ms ease-in-out, color 200ms ease-in-out,
+    border-radius 100ms ease-in-out;
 
   > svg * {
     transition: stroke 200ms ease-in-out, opacity 200ms ease-in-out;
@@ -35,8 +50,8 @@ const StyledDropDown = styled.div<{ $showOptions?: boolean; $toggleMobile?: bool
   }
 
   :hover {
-    background: linear-gradient(90.28deg, #242424 0%, #202020 100%), linear-gradient(90.28deg, #292929 0%, #242424 100%),
-      #303030;
+    background: linear-gradient(90.28deg, #242424 0%, #202020 100%),
+      linear-gradient(90.28deg, #292929 0%, #242424 100%), #303030;
     > * {
       color: white;
     }
@@ -81,7 +96,11 @@ const StyledDropDown = styled.div<{ $showOptions?: boolean; $toggleMobile?: bool
       : ''}
 `
 
-const StyledSelectedOption = styled.p<{ $showOptions?: boolean; $toggleMobile?: boolean; $asIcon?: boolean }>`
+const StyledSelectedOption = styled.p<{
+  $showOptions?: boolean
+  $toggleMobile?: boolean
+  $asIcon?: boolean
+}>`
   position: absolute;
   padding-left: 47px;
   margin-top: 17px;
@@ -99,7 +118,10 @@ const StyledSelectedOption = styled.p<{ $showOptions?: boolean; $toggleMobile?: 
   `}
 `
 
-const StyledOptionsContainer = styled(Popper)<{ $toggleMobile?: boolean; $asIcon?: boolean }>`
+const StyledOptionsContainer = styled(Popper)<{
+  $toggleMobile?: boolean
+  $asIcon?: boolean
+}>`
   box-sizing: border-box;
   position: relative;
   background: linear-gradient(90.28deg, #292929 0%, #242424 100%);
@@ -133,13 +155,17 @@ const StyledOption = styled.div`
 
   :hover {
     background: linear-gradient(90.28deg, #242424 0%, #1f1f1f 100%);
-    box-shadow: inset 0px -1px 0px rgba(129, 129, 129, 0.15), inset 0px 4px 25px rgba(0, 0, 0, 0.25);
+    box-shadow: inset 0px -1px 0px rgba(129, 129, 129, 0.15),
+      inset 0px 4px 25px rgba(0, 0, 0, 0.25);
     border-radius: 5px;
     color: #fff;
   }
 `
 
-const StyledIconContainer = styled.div<{ $toggleMobile?: boolean; $asIcon?: boolean }>`
+const StyledIconContainer = styled.div<{
+  $toggleMobile?: boolean
+  $asIcon?: boolean
+}>`
   position: absolute;
   top: 12px;
   left: 14px;
@@ -162,34 +188,40 @@ const StyledIconContainer = styled.div<{ $toggleMobile?: boolean; $asIcon?: bool
       : ''}
 `
 
-const StyledArrowDropDownIcon = styled(ArrowDropDownIcon)<{ reversed?: boolean }>`
+const StyledArrowDropDownIcon = styled(ArrowDropDownIcon)<{
+  reversed?: boolean
+}>`
   transition: transform 200ms;
   ${({ reversed }) => (reversed ? 'transform: rotate(180deg);' : '')}
 `
 
 type Props = {
-  isProduction?: boolean
   toggleMobile?: boolean
   asIcon?: boolean
   withReload?: boolean
-  networks?: typeof NETWORKS
   networkSwitchItemCallback?: (chainId: string) => void
-} & React.ComponentProps<typeof StyledDropDown>
+} & ComponentProps<typeof StyledDropDown>
 
-const NetworkSwitch: React.FC<Props> = ({
-  isProduction,
+const NetworkSwitch: FC<Props> = ({
   toggleMobile = true,
   asIcon,
   withReload = false,
-  networks = NetworksConfigObject.networks,
   networkSwitchItemCallback,
   ...restProps
 }) => {
   const history = useHistory()
-  const container = React.useRef<HTMLDivElement>()
-  const optionsContainer = React.useRef<HTMLDivElement>()
+  const { networks } = useWidgetsContext()
+  const networkList = useNetworksList()
+  const preparedNetworks = useMemo(
+    () => networkList.filter(({ key }) => networks.includes(key)),
+    [networkList, networks]
+  )
+  const container = useRef<HTMLDivElement>()
+  const optionsContainer = useRef<HTMLDivElement>()
   const [anchorEl, setAnchorEl] = useState<HTMLDivElement | null>(null)
-  const [selectedOption, setSelectedOption] = useState(getNetworkTitles() || networks[0].title)
+  const [selectedOption, setSelectedOption] = useState(
+    getNetworkTitles() || preparedNetworks[0].title
+  )
   const showOptions = !!anchorEl
 
   const handleClick = (item: NetworksConfig) => {
@@ -201,8 +233,11 @@ const NetworkSwitch: React.FC<Props> = ({
 
   useEffect(() => {
     const network = new URLSearchParams(history?.location.search).get('network')
-    if (network) setSelectedOption(networks.find((item) => item.chainId === network)?.title)
-  }, [history?.location, networks])
+    if (network)
+      setSelectedOption(
+        preparedNetworks.find((item) => item.chainId === network)?.title
+      )
+  }, [history?.location, preparedNetworks])
 
   useEffect(() => {
     const onClickHandler = (event: any) => {
@@ -220,13 +255,20 @@ const NetworkSwitch: React.FC<Props> = ({
     return () => document.removeEventListener('mousedown', onClickHandler)
   }, [showOptions, optionsContainer])
 
-  const { icon: Icon } = networks[networks.findIndex((network: any) => network.title === selectedOption)]
+  const { icon: Icon } =
+    preparedNetworks[
+      preparedNetworks.findIndex(
+        (network: any) => network.title === selectedOption
+      )
+    ]
 
   return (
     <StyledDropDown
       {...restProps}
       id="network-switch-dropdown"
-      onClick={(event: { currentTarget: HTMLDivElement }) => setAnchorEl(anchorEl ? null : event.currentTarget)}
+      onClick={(event: { currentTarget: HTMLDivElement }) =>
+        setAnchorEl(anchorEl ? null : event.currentTarget)
+      }
       $showOptions={showOptions}
       $toggleMobile={toggleMobile}
       $asIcon={asIcon}
@@ -235,10 +277,24 @@ const NetworkSwitch: React.FC<Props> = ({
       <StyledIconContainer $toggleMobile={toggleMobile} $asIcon={asIcon}>
         <Icon />
       </StyledIconContainer>
-      <StyledSelectedOption $showOptions={showOptions} $toggleMobile={toggleMobile} $asIcon={asIcon}>
-        {networks[networks.findIndex((network: any) => network.title === selectedOption)].label}
+      <StyledSelectedOption
+        $showOptions={showOptions}
+        $toggleMobile={toggleMobile}
+        $asIcon={asIcon}
+      >
+        {
+          preparedNetworks[
+            preparedNetworks.findIndex(
+              (network: any) => network.title === selectedOption
+            )
+          ].label
+        }
       </StyledSelectedOption>
-      {!showOptions ? <StyledArrowDropDownIcon /> : <StyledArrowDropDownIcon reversed />}
+      {!showOptions ? (
+        <StyledArrowDropDownIcon />
+      ) : (
+        <StyledArrowDropDownIcon reversed />
+      )}
       <StyledOptionsContainer
         $toggleMobile={toggleMobile}
         $asIcon={asIcon}
@@ -248,13 +304,16 @@ const NetworkSwitch: React.FC<Props> = ({
         inheritWidth
         ref={optionsContainer}
       >
-        {networks
-          .map((item: any) => (
-            <StyledOption key={item.title} onClick={() => handleClick(item)} id={`${item.label}-switch-option`}>
-              <item.icon />
-              {item.label}
-            </StyledOption>
-          ))}
+        {preparedNetworks.map((item: any) => (
+          <StyledOption
+            key={item.title}
+            onClick={() => handleClick(item)}
+            id={`${item.label}-switch-option`}
+          >
+            <item.icon />
+            {item.label}
+          </StyledOption>
+        ))}
       </StyledOptionsContainer>
     </StyledDropDown>
   )

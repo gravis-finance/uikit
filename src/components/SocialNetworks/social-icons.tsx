@@ -1,4 +1,5 @@
 import React from 'react'
+
 import { SvgProps } from '../Svg/types'
 
 export const GithubIcon: React.FC<SvgProps> = () => (

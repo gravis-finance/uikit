@@ -1,6 +1,6 @@
 import { localStorageLanguageItem, urlSearchLanguageParam } from '../constants'
-import { getDefaultLanguage } from './getDefaultLanguage'
 import { availableLanguages } from '../widgets/Menu/config'
+import { getDefaultLanguage } from './getDefaultLanguage'
 
 // eslint-disable-next-line import/prefer-default-export
 export const getLanguageSearchParam = () => {

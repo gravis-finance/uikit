@@ -1,5 +1,6 @@
-import React from 'react'
 import { Column as CbColumn, ColumnProps as CbColumnProps } from 'cb-datatable'
+import React from 'react'
+
 import { TableCell } from './Table'
 
 // concat Column component props with extended TableCell component

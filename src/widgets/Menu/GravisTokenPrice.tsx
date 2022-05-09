@@ -1,7 +1,8 @@
 import React from 'react'
 import styled from 'styled-components'
-import { Flex } from '../../components/Flex'
+
 import { Button, GRVXIcon, TokenConfig } from '../..'
+import { Flex } from '../../components/Flex'
 
 const StyledFlex = styled(Flex)<{ mobile?: boolean }>`
   margin-right: 16px;

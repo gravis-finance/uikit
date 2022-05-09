@@ -1,15 +1,15 @@
 import styled from 'styled-components'
 import {
-  space,
-  SpaceProps,
-  layout,
-  LayoutProps,
-  typography,
-  TypographyProps,
   color,
   ColorProps,
+  layout,
+  LayoutProps,
   position,
   PositionProps,
+  space,
+  SpaceProps,
+  typography,
+  TypographyProps,
 } from 'styled-system'
 
 const ButtonBase = styled.button<SpaceProps & LayoutProps & TypographyProps & ColorProps & PositionProps>`

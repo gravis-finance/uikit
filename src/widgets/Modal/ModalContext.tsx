@@ -1,5 +1,6 @@
 import React, { createContext, useEffect, useState } from 'react'
 import styled from 'styled-components'
+
 import Overlay from '../../components/Overlay/Overlay'
 import { Handler } from './types'
 
@@ -7,7 +8,7 @@ interface ModalsContext {
   onPresent: (node: React.ReactNode, key?: string) => void
   onDismiss: Handler
   setCloseOnOverlayClick: React.Dispatch<React.SetStateAction<boolean>>
-  updateProps: React.Dispatch<React.SetStateAction<{}>>
+  updateProps: React.Dispatch<React.SetStateAction<Record<string, any>>>
 }
 
 const ModalWrapper = styled.div`
@@ -27,7 +28,7 @@ export const Context = createContext<ModalsContext>({
   onPresent: () => null,
   onDismiss: () => null,
   setCloseOnOverlayClick: () => true,
-  updateProps: () => null,
+  updateProps: () => null
 })
 
 const ModalProvider: React.FC = ({ children }) => {
@@ -63,7 +64,7 @@ const ModalProvider: React.FC = ({ children }) => {
         onPresent: handlePresent,
         onDismiss: handleDismiss,
         setCloseOnOverlayClick,
-        updateProps: setProps,
+        updateProps: setProps
       }}
     >
       {isOpen && (
@@ -72,7 +73,7 @@ const ModalProvider: React.FC = ({ children }) => {
           {React.isValidElement(modalNode) &&
             React.cloneElement(modalNode, {
               onDismiss: handleDismiss,
-              ...props,
+              ...props
             })}
         </ModalWrapper>
       )}

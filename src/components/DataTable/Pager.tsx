@@ -1,8 +1,9 @@
-import React from 'react'
 import { usePagination } from 'cb-datatable'
+import React from 'react'
 import styled from 'styled-components'
-import { ButtonBase } from '../Button'
+
 import { Box } from '../Box'
+import { ButtonBase } from '../Button'
 
 export type PagerProps = {
   page?: number

@@ -1,9 +1,9 @@
 import React from 'react'
 import styled from 'styled-components'
 
-import { GithubIcon, TelegramIcon, TwitterIcon, MediumIcon, DiscordIcon } from './social-icons'
-import { getCurrentLanguage } from '../../util/getCurrentLanguage'
 import { socialNetworksLinks, SocialNetworksType } from '../../constants'
+import { getCurrentLanguage } from '../../util/getCurrentLanguage'
+import { DiscordIcon,GithubIcon, MediumIcon, TelegramIcon, TwitterIcon } from './social-icons'
 
 const StyledWrapper = styled.div`
   margin-top: 20px;

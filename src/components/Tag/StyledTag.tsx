@@ -1,4 +1,5 @@
 import styled, { DefaultTheme } from 'styled-components'
+
 import getColor from '../../util/getColor'
 import { TagProps } from './types'
 

@@ -1,13 +1,14 @@
 import React from 'react'
-import styled, { css } from 'styled-components'
 import { useHistory } from 'react-router-dom'
-import { CheckmarkCircleIcon } from '../../components/Svg'
-import Flex from '../../components/Flex/Flex'
-import Text from '../../components/Text/Text'
+import styled, { css } from 'styled-components'
+
 import Button from '../../components/Button/Button'
-import { NetworksConfig } from './types'
-import switchNetwork from '../../util/switchNetwork'
+import Flex from '../../components/Flex/Flex'
+import { CheckmarkCircleIcon } from '../../components/Svg'
+import Text from '../../components/Text/Text'
 import { getNetworkId } from '../../util/getNetworkId'
+import switchNetwork from '../../util/switchNetwork'
+import { NetworksConfig } from './types'
 
 const StyledNetworkSelector = styled(Button)`
   position: relative;

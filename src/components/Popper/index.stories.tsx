@@ -1,5 +1,6 @@
-import React, { MouseEventHandler } from 'react'
 import { Story } from '@storybook/react'
+import React, { MouseEventHandler } from 'react'
+
 import { Popper } from './index'
 
 export default {

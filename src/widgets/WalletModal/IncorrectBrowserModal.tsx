@@ -1,17 +1,16 @@
+import copy from 'copy-to-clipboard'
 import React, { useState } from 'react'
 import { useTranslation } from 'react-multi-lang'
 import styled from 'styled-components'
-import copy from 'copy-to-clipboard'
 
-import { Button } from '../..'
-import { Modal, useModal } from '../Modal'
-import { Text } from '../../components/Text'
-import { ToastContainer } from '../Toast'
 import { alertVariants } from '../../components/Alert'
-import { ErrorIcon, InputCopyIcon } from '../../components/Svg'
+import { Button } from '../../components/Button'
+import { ErrorIcon, InputCopyIcon, MetamaskIcon } from '../../components/Svg'
+import { Text } from '../../components/Text'
+import { Modal, useModal } from '../Modal'
+import { ToastContainer } from '../Toast'
+import { useWalletsConfig } from '.'
 import WalletConnectIcon from './icons/WalletConnect'
-import { walletsConfig } from '.'
-import { MetamaskIcon } from '../..'
 
 const CopyContainer = styled.div`
   width: 100%;
@@ -44,9 +43,13 @@ const Container = styled.div`
   flex-direction: column;
 `
 
-const IncorrectBrowserModal: React.FC<{ connect: any; onDismiss?: any }> = ({ connect, onDismiss = () => null }) => {
+const IncorrectBrowserModal: React.FC<{ connect: any; onDismiss?: any }> = ({
+  connect,
+  onDismiss = () => null
+}) => {
   const t = useTranslation()
   const [toasts, setToasts] = useState<any>([])
+  const walletsConfig = useWalletsConfig()
 
   const ErrorModal = walletsConfig.walletConnect.connection.errorModal
   const [openModal] = useModal(<ErrorModal />)
@@ -66,14 +69,16 @@ const IncorrectBrowserModal: React.FC<{ connect: any; onDismiss?: any }> = ({ co
       id: `id-${now}`,
       title: `Copied`,
       description: 'Page address copied to clipboard.',
-      type: alertVariants.SUCCESS,
+      type: alertVariants.SUCCESS
     }
     setToasts([toast])
     copy(window.location.href)
   }
 
   const handleRemove = (id: string) => {
-    setToasts((prevToasts: any) => prevToasts.filter((prevToast: any) => prevToast.id !== id))
+    setToasts((prevToasts: any) =>
+      prevToasts.filter((prevToast: any) => prevToast.id !== id)
+    )
   }
 
   return (

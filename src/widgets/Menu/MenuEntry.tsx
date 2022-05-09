@@ -1,4 +1,5 @@
-import styled, { keyframes, DefaultTheme } from 'styled-components'
+import styled, { DefaultTheme,keyframes } from 'styled-components'
+
 import { MENU_ENTRY_HEIGHT } from './config'
 
 export interface Props {
@@ -244,4 +245,4 @@ MenuEntry.defaultProps = {
   role: 'button',
 }
 
-export { MenuEntry, LinkLabel }
+export { LinkLabel,MenuEntry }

@@ -1,4 +1,5 @@
 import { ChainId } from '@gravis.finance/sdk'
+
 import { comparedNetworksIds } from '../constants'
 
 const NetworkLabels = {
@@ -12,6 +13,8 @@ const NetworkLabels = {
   [ChainId.ETHEREUMTESTNET]: 'Ethereum',
   [ChainId.AURORAMAINNET]: 'Aurora',
   [ChainId.AURORATESTNET]: 'Aurora',
+  [ChainId.NEARMAINNET]: 'Near',
+  [ChainId.NEARTESTNET]: 'Near'
 }
 
 export const NetworkSymbols: { [chainId in ChainId]: string } = {
@@ -25,6 +28,8 @@ export const NetworkSymbols: { [chainId in ChainId]: string } = {
   [ChainId.ETHEREUMTESTNET]: 'Ethereum',
   [ChainId.AURORAMAINNET]: 'Ethereum',
   [ChainId.AURORATESTNET]: 'Ethereum',
+  [ChainId.NEARMAINNET]: 'Near',
+  [ChainId.NEARTESTNET]: 'Near'
 }
 
 export const NetworkTitles: { [chainId in ChainId]: string } = {
@@ -38,6 +43,8 @@ export const NetworkTitles: { [chainId in ChainId]: string } = {
   [ChainId.ETHEREUMTESTNET]: 'Ethereum',
   [ChainId.AURORAMAINNET]: 'Aurora',
   [ChainId.AURORATESTNET]: 'Aurora',
+  [ChainId.NEARMAINNET]: 'Near',
+  [ChainId.NEARTESTNET]: 'Near'
 }
 
 const networkLocalStorageKey = 'network'
@@ -74,7 +81,8 @@ export const getNetworkForAnalytics: any = (networkChainId: number) => {
   let networkName = ''
 
   comparedNetworksIds.map((network) => {
-    if (network.networks.find((networkId) => networkId === networkChainId)) networkName = network.name
+    if (network.networks.find((networkId) => networkId === networkChainId))
+      networkName = network.name
     return null
   })
   return networkName

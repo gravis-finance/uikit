@@ -1,8 +1,9 @@
 import { useMemo } from 'react'
 import { useTranslation } from 'react-multi-lang'
-import { getNetworkId, getNetworkTitles } from './getNetworkId'
+
 import { urlSearchLanguageParam } from '../constants'
 import { MenuEntry } from '../widgets/Menu'
+import { getNetworkId, getNetworkTitles } from './getNetworkId'
 
 const useGetMenuLinks = (menuLinks: MenuEntry[]): MenuEntry[] => {
   const t = useTranslation()

@@ -1,11 +1,12 @@
 import React from 'react'
 import styled, { DefaultTheme } from 'styled-components'
-import ErrorIcon from '../Svg/Icons/Error'
-import PopupSuccessIcon from '../Svg/Icons/PopupSuccess'
-import InfoIcon from '../Svg/Icons/Info'
-import { Text } from '../Text'
-import { CloseIcon } from '../Svg'
+
 import { Flex } from '../Flex'
+import { CloseIcon } from '../Svg'
+import ErrorIcon from '../Svg/Icons/Error'
+import InfoIcon from '../Svg/Icons/Info'
+import PopupSuccessIcon from '../Svg/Icons/PopupSuccess'
+import { Text } from '../Text'
 import { AlertProps, variants } from './types'
 
 interface ThemedIconLabel {

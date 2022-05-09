@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react'
-import styled from 'styled-components'
 import { useTranslation } from 'react-multi-lang'
-import { MENU_ENTRY_HEIGHT } from './config'
-import { MenuEntry, LinkLabel } from './MenuEntry'
-import { PushedProps, ChipProps } from './types'
+import styled from 'styled-components'
+
 import { ArrowDropDownIcon } from '../../components/Svg'
 import { ChipContainer } from './Chip'
+import { MENU_ENTRY_HEIGHT } from './config'
+import { LinkLabel,MenuEntry } from './MenuEntry'
+import { ChipProps,PushedProps } from './types'
 
 interface Props extends PushedProps {
   label: string

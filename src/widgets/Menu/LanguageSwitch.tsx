@@ -1,10 +1,11 @@
 import React, { FC, useEffect, useState } from 'react'
-import styled from 'styled-components'
 import { setLanguage } from 'react-multi-lang'
+import styled from 'styled-components'
+
 import { ArrowDropDownIcon, SvgProps } from '../../components/Svg'
-import { availableLanguages } from './config'
 import { localStorageLanguageItem } from '../../constants'
 import { getDefaultLanguage } from '../../util/getDefaultLanguage'
+import { availableLanguages } from './config'
 
 const StyledDropDown = styled.div<{ showOptions?: boolean; toggleMobile?: boolean }>`
   width: 117px;
