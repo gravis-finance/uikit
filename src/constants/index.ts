@@ -28,13 +28,21 @@ export enum SocialNetworksType {
   TELEGRAM = 'telegram',
   TWITTER = 'twitter',
   MEDIUM = 'medium',
-  DISCORD = 'discord'
+  DISCORD = 'discord',
+  COINGECKO = 'coingecko',
+  COINMARKETCAP = 'coinmarketcap',
+  EMAIL = 'email'
 }
 
 export const socialNetworksLinks = {
   [SocialNetworksType.GITHUB]: 'https://github.com/gravis-finance',
-  [SocialNetworksType.TELEGRAM]: 'https://t.me/Gravis_Finance_News',
+  [SocialNetworksType.TELEGRAM]: 'https://t.me/Gravis_Finance_en',
   [SocialNetworksType.TWITTER]: 'https://twitter.com/GravisFi',
   [SocialNetworksType.MEDIUM]: 'https://medium.com/gravis-finance',
-  [SocialNetworksType.DISCORD]: 'https://discord.io/GravisFinance'
+  [SocialNetworksType.DISCORD]: 'https://discord.io/GravisFinance',
+  [SocialNetworksType.COINGECKO]:
+    'https://www.coingecko.com/en/coins/gravis-finance',
+  [SocialNetworksType.COINMARKETCAP]:
+    'https://coinmarketcap.com/currencies/gravis-finance/',
+  [SocialNetworksType.EMAIL]: 'mailto: info@gravis.finance'
 }

@@ -61,7 +61,7 @@ export const links = [
         label: 'Sale',
         href: 'https://public.gravis.finance/sale',
       },
-    ]
+    ],
   },
   {
     label: 'More',
@@ -87,6 +87,16 @@ export const links = [
 ]
 
 export const socials = [
+  {
+    label: 'CoinGecko',
+    icon: 'CoinGecko',
+    href: socialNetworksLinks[SocialNetworksType.COINGECKO],
+  },
+  {
+    label: 'CoinMarketCap',
+    icon: 'CoinMarketCap',
+    href: socialNetworksLinks[SocialNetworksType.COINMARKETCAP],
+  },
   {
     label: 'GitHub',
     icon: 'GitHubIcon',
