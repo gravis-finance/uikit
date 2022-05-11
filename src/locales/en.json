@@ -53,7 +53,9 @@
     "sendNFT": "Send NFT",
     "Collections": "Collections",
     "missions": "Missions",
-    "assets": "Assets"
+    "assets": "Assets",
+    "autofarming": "Autofarming",
+    "autofarms": "Autofarms"
   },
   "swap": "Swap",
   "networkSwitchingError": "Network switching error",
