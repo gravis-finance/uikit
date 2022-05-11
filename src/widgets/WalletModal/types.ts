@@ -9,7 +9,7 @@ export enum ConnectorNames {
   Near = 'near'
 }
 
-export type Login = (connectorId: Partial<ConnectorNames>) => void
+export type Login = <T = ConnectorNames>(connectorId: T) => void
 
 export interface WalletsConfig {
   title: string
