@@ -6,10 +6,10 @@ export enum ConnectorNames {
   Injected = 'injected',
   WalletConnect = 'walletconnect',
   BSC = 'bsc',
-  Near = 'near',
+  Near = 'near'
 }
 
-export type Login = (connectorId: ConnectorNames) => void
+export type Login = (connectorId: Partial<ConnectorNames>) => void
 
 export interface WalletsConfig {
   title: string
