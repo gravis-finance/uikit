@@ -21,6 +21,7 @@ export type TooltipProps = Omit<
   id?: string
   disableHoverListener?: boolean
   disableTouchListener?: boolean
+  PopperComponent?: React.ElementType<typeof Popper>
 }
 
 const composeEventHandler = (handler: any, eventHandler: any) => {
@@ -116,6 +117,7 @@ const TooltipInner: React.FC<TooltipProps> = (props) => {
     disableHoverListener = false,
     disableTouchListener = false,
     className,
+    PopperComponent = StyledPopper,
     ...popperProps
   } = props
   const [childNode, setChildNode] = React.useState<any>()
@@ -345,7 +347,7 @@ const TooltipInner: React.FC<TooltipProps> = (props) => {
   return (
     <>
       {React.cloneElement(children, childrenProps)}
-      <StyledPopper
+      <PopperComponent
         placement={placement}
         open={open}
         id={id}
@@ -368,7 +370,7 @@ const TooltipInner: React.FC<TooltipProps> = (props) => {
             />
           </div>
         )}
-      </StyledPopper>
+      </PopperComponent>
     </>
   )
 }

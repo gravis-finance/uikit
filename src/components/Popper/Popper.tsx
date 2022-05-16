@@ -10,8 +10,11 @@ export type PopperProps = Omit<React.ComponentProps<'div'>, 'children'> & {
   placement?: Options['placement']
   anchorEl?: null | VirtualElement | Element
   modifiers?: Options['modifiers']
-  children?: React.ReactNode | ((props: ReturnType<typeof usePopper>) => React.ReactNode)
+  children?:
+    | React.ReactNode
+    | ((props: ReturnType<typeof usePopper>) => React.ReactNode)
   inheritWidth?: boolean
+  style?: React.CSSProperties
 }
 
 const Popper = React.forwardRef((props: PopperProps, ref) => {
@@ -24,6 +27,7 @@ const Popper = React.forwardRef((props: PopperProps, ref) => {
     children,
     modifiers: modifiersProp,
     inheritWidth,
+    style,
     ...restProps
   } = props
   const [popperElement, setPopperElement] = React.useState<any>()
@@ -40,7 +44,7 @@ const Popper = React.forwardRef((props: PopperProps, ref) => {
           state.styles.popper.minWidth = `${state.rects.reference.width}px`
         },
         phase: 'beforeWrite',
-        requires: ['computeStyles'],
+        requires: ['computeStyles']
       })
     }
     if (modifiersProp?.length) {
@@ -55,7 +59,13 @@ const Popper = React.forwardRef((props: PopperProps, ref) => {
   if (!open) return null
 
   const popperContent = (
-    <div ref={setPopperElement} role="tooltip" style={styles.popper} {...attributes.popper} {...restProps}>
+    <div
+      ref={setPopperElement}
+      role="tooltip"
+      style={{ ...styles.popper, ...style }}
+      {...attributes.popper}
+      {...restProps}
+    >
       {typeof children === 'function' ? children(popper) : children}
     </div>
   )
