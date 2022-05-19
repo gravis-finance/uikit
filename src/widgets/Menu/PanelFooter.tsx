@@ -85,7 +85,7 @@ const PanelFooter: React.FC<Props> = ({ isPushed, pushNav }) => {
               style: { cursor: 'pointer' }
             }
             if (social.label === 'Telegram')
-              return <TelegramLinks pushNav={pushNav} />
+              return <TelegramLinks pushNav={pushNav} key={social.label} />
             return (
               <StyledExternalLink
                 external

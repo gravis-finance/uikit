@@ -11,7 +11,7 @@ import {
   SpanishIcon,
   TelegramIcon,
   TurkishIcon,
-  VietnameseIcon,
+  VietnameseIcon
 } from '../../widgets/Menu/icons'
 import { Flex } from '../Flex'
 import { GravisDarkIcon } from '../Svg'
@@ -102,48 +102,48 @@ const links = [
   {
     label: 'English',
     href: 'https://t.me/Gravis_Finance_En',
-    icon: <EnglishIcon />,
+    icon: <EnglishIcon />
   },
   {
     label: 'Русский',
     href: 'https://t.me/Gravis_Finance_Ru',
-    icon: <RussianIcon />,
+    icon: <RussianIcon />
   },
   {
     label: 'Philippines',
     href: 'https://t.me/Gravis_Finance_PH',
-    icon: <PhilippinesIcon width={24} height={24} />,
+    icon: <PhilippinesIcon width={24} height={24} />
   },
   {
     label: 'Tiếng Việt',
     href: 'https://t.me/Gravisfinance_vn',
-    icon: <VietnameseIcon width={24} height={24} />,
+    icon: <VietnameseIcon width={24} height={24} />
   },
   {
     label: '中文',
     href: 'https://t.me/Gravis_Finance_CN',
-    icon: <ChineseIcon width={24} height={24} />,
+    icon: <ChineseIcon width={24} height={24} />
   },
   {
     label: '日本語',
     href: 'https://t.me/Gravis_Finance_JP',
-    icon: <JapaneseIcon width={24} height={24} />,
+    icon: <JapaneseIcon width={24} height={24} />
   },
   {
     label: 'Español',
     href: 'https://t.me/Gravis_Finance_ES',
-    icon: <SpanishIcon width={24} height={24} />,
+    icon: <SpanishIcon width={24} height={24} />
   },
   {
     label: 'Türkçe',
     href: 'https://t.me/GravisFinanceTR',
-    icon: <TurkishIcon width={24} height={24} />,
+    icon: <TurkishIcon width={24} height={24} />
   },
   {
     label: 'Indonesian',
     href: 'https://t.me/gravisfinanceindonesia',
-    icon: <IndonesiaIcon width={24} height={24} />,
-  },
+    icon: <IndonesiaIcon width={24} height={24} />
+  }
 ]
 
 type Props = {
@@ -155,7 +155,12 @@ const TelegramLinks: React.FC<Props> = ({ pushNav }) => {
     <Container onMouseOver={() => pushNav(true)}>
       <TelegramIcon />
       <LinksContainer>
-        <Flex alignItems="center" as="a" href="https://t.me/Gravis_Finance_News" target="_blank">
+        <Flex
+          alignItems="center"
+          as="a"
+          href="https://t.me/Gravis_Finance_News"
+          target="_blank"
+        >
           <GravisDarkIcon width={24} height={24} />
           <Text ml="8px" color="rgba(255, 255, 255, 0.5)">
             Channel
@@ -165,7 +170,13 @@ const TelegramLinks: React.FC<Props> = ({ pushNav }) => {
           Chats:
         </Text>
         {links.map((link) => (
-          <Flex alignItems="center" as="a" href={link.href} target="_blank">
+          <Flex
+            alignItems="center"
+            as="a"
+            href={link.href}
+            target="_blank"
+            key={link.label}
+          >
             {link.icon}
             <Text ml="8px" color="rgba(255, 255, 255, 0.5)">
               {link.label}
