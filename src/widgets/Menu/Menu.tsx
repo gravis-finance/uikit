@@ -1,9 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import {
-  setDefaultLanguage,
-  setLanguage,
-  setTranslations
-} from 'react-multi-lang'
+import { setLanguage } from 'react-multi-lang'
 import styled from 'styled-components'
 
 import { getDefaultLanguage } from '../..'
@@ -15,12 +11,6 @@ import Logo from '../../components/Svg/Icons/Logo'
 import { TokenConfig } from '../../config/tokenPrice'
 import { localStorageLanguageItem } from '../../constants'
 import { useMatchBreakpoints } from '../../hooks'
-import cn from '../../locales/cn.json'
-import en from '../../locales/en.json'
-import es from '../../locales/es.json'
-import jp from '../../locales/jp.json'
-import ru from '../../locales/ru.json'
-import vie from '../../locales/vie.json'
 import useGetMenuLinks from '../../util/useGetMenuLinks'
 import {
   MENU_HEIGHT,
@@ -186,9 +176,6 @@ function defaultBalanceHook() {
 const defaultSetSelectedLanguage = (name: string) => {
   setLanguage(name.toLowerCase())
 }
-
-setTranslations({ en, jp, cn, ru, es, vie })
-setDefaultLanguage('en')
 
 const Menu: React.FC<NavProps> = ({
   account,
