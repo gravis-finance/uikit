@@ -12,7 +12,9 @@ const EXPLORER_PREFIXES: { [chainId in ChainId]: string } = {
   [ChainId.AURORAMAINNET]: '',
   [ChainId.AURORATESTNET]: 'testnet.',
   [ChainId.NEARMAINNET]: 'explorer.',
-  [ChainId.NEARTESTNET]: 'explorer.testnet.'
+  [ChainId.NEARTESTNET]: 'explorer.testnet.',
+  [ChainId.SOLANAMAINNET]: '',
+  [ChainId.SOLANATESTNET]: ''
 }
 
 const EXPLORER_URLS: { [chainId in ChainId]: string } = {
@@ -27,7 +29,9 @@ const EXPLORER_URLS: { [chainId in ChainId]: string } = {
   [ChainId.AURORAMAINNET]: 'aurorascan.dev',
   [ChainId.AURORATESTNET]: 'aurorascan.dev',
   [ChainId.NEARMAINNET]: 'near.org',
-  [ChainId.NEARTESTNET]: 'near.org'
+  [ChainId.NEARTESTNET]: 'near.org',
+  [ChainId.SOLANAMAINNET]: 'solscan.io',
+  [ChainId.SOLANATESTNET]: 'solscan.io'
 }
 
 const EXPLORER_NAMES: { [chainId in ChainId]: string } = {
@@ -42,7 +46,9 @@ const EXPLORER_NAMES: { [chainId in ChainId]: string } = {
   [ChainId.AURORAMAINNET]: 'AuroraScan',
   [ChainId.AURORATESTNET]: 'AuroraScan',
   [ChainId.NEARMAINNET]: 'Near Explorer',
-  [ChainId.NEARTESTNET]: 'Near Explorer'
+  [ChainId.NEARTESTNET]: 'Near Explorer',
+  [ChainId.SOLANAMAINNET]: 'SolanaScan',
+  [ChainId.SOLANATESTNET]: 'SolanaScan'
 }
 
 export const getExplorerName = (chainId?: ChainId) => {
@@ -69,7 +75,9 @@ const EXPLORER_ROUTES = {
     [ChainId.AURORAMAINNET]: 'transaction',
     [ChainId.AURORATESTNET]: 'transaction',
     [ChainId.NEARMAINNET]: 'transactions',
-    [ChainId.NEARTESTNET]: 'transactions'
+    [ChainId.NEARTESTNET]: 'transactions',
+    [ChainId.SOLANAMAINNET]: 'tx',
+    [ChainId.SOLANATESTNET]: 'tx'
   },
   [ROUTES.ADDRESS]: {
     [ChainId.MAINNET]: 'address',
@@ -83,7 +91,9 @@ const EXPLORER_ROUTES = {
     [ChainId.AURORAMAINNET]: 'address',
     [ChainId.AURORATESTNET]: 'address',
     [ChainId.NEARMAINNET]: 'accounts',
-    [ChainId.NEARTESTNET]: 'accounts'
+    [ChainId.NEARTESTNET]: 'accounts',
+    [ChainId.SOLANAMAINNET]: 'account',
+    [ChainId.SOLANATESTNET]: 'account'
   },
   [ROUTES.TOKEN]: {
     [ChainId.MAINNET]: 'token',
@@ -97,8 +107,27 @@ const EXPLORER_ROUTES = {
     [ChainId.AURORAMAINNET]: 'token',
     [ChainId.AURORATESTNET]: 'token',
     [ChainId.NEARMAINNET]: 'token',
-    [ChainId.NEARTESTNET]: 'token'
+    [ChainId.NEARTESTNET]: 'token',
+    [ChainId.SOLANAMAINNET]: 'token',
+    [ChainId.SOLANATESTNET]: 'token'
   }
+}
+
+const URL_PARAMS = {
+  [ChainId.MAINNET]: {},
+  [ChainId.BSCTESTNET]: {},
+  [ChainId.HECOMAINNET]: {},
+  [ChainId.HECOTESTNET]: {},
+  [ChainId.MATICMAINNET]: {},
+  [ChainId.MATICTESTNET]: {},
+  [ChainId.ETHEREUMMAINNET]: {},
+  [ChainId.ETHEREUMTESTNET]: {},
+  [ChainId.AURORAMAINNET]: {},
+  [ChainId.AURORATESTNET]: {},
+  [ChainId.NEARMAINNET]: {},
+  [ChainId.NEARTESTNET]: {},
+  [ChainId.SOLANAMAINNET]: {},
+  [ChainId.SOLANATESTNET]: { cluster: 'testnet' }
 }
 
 export function getExplorerLink(
@@ -111,17 +140,28 @@ export function getExplorerLink(
   const prefix = `https://${
     EXPLORER_PREFIXES[chainId] || EXPLORER_PREFIXES[ChainId.MAINNET]
   }${url}`
+  const urlParams = new URLSearchParams()
+  Object.entries(URL_PARAMS[chainId]).forEach(([key, value]) => {
+    urlParams.set(key, value)
+  })
+  const urlParamsString = urlParams.toString() ? `?${urlParams.toString()}` : ''
 
   switch (type) {
     case 'transaction': {
-      return `${prefix}/${EXPLORER_ROUTES[ROUTES.TRANSACTION][chainId]}/${data}`
+      return `${prefix}/${
+        EXPLORER_ROUTES[ROUTES.TRANSACTION][chainId]
+      }/${data}${urlParamsString}`
     }
     case 'token': {
-      return `${prefix}/${EXPLORER_ROUTES[ROUTES.TOKEN][chainId]}/${data}`
+      return `${prefix}/${
+        EXPLORER_ROUTES[ROUTES.TOKEN][chainId]
+      }/${data}${urlParamsString}`
     }
     case 'address':
     default: {
-      return `${prefix}/${EXPLORER_ROUTES[ROUTES.ADDRESS][chainId]}/${data}`
+      return `${prefix}/${
+        EXPLORER_ROUTES[ROUTES.ADDRESS][chainId]
+      }/${data}${urlParamsString}`
     }
   }
 }

@@ -14,7 +14,9 @@ const NetworkLabels = {
   [ChainId.AURORAMAINNET]: 'Aurora',
   [ChainId.AURORATESTNET]: 'Aurora',
   [ChainId.NEARMAINNET]: 'Near',
-  [ChainId.NEARTESTNET]: 'Near'
+  [ChainId.NEARTESTNET]: 'Near',
+  [ChainId.SOLANAMAINNET]: 'Solana',
+  [ChainId.SOLANATESTNET]: 'Solana'
 }
 
 export const NetworkSymbols: { [chainId in ChainId]: string } = {
@@ -29,7 +31,9 @@ export const NetworkSymbols: { [chainId in ChainId]: string } = {
   [ChainId.AURORAMAINNET]: 'Ethereum',
   [ChainId.AURORATESTNET]: 'Ethereum',
   [ChainId.NEARMAINNET]: 'Near',
-  [ChainId.NEARTESTNET]: 'Near'
+  [ChainId.NEARTESTNET]: 'Near',
+  [ChainId.SOLANAMAINNET]: 'Solana',
+  [ChainId.SOLANATESTNET]: 'Solana'
 }
 
 export const NetworkTitles: { [chainId in ChainId]: string } = {
@@ -44,7 +48,9 @@ export const NetworkTitles: { [chainId in ChainId]: string } = {
   [ChainId.AURORAMAINNET]: 'Aurora',
   [ChainId.AURORATESTNET]: 'Aurora',
   [ChainId.NEARMAINNET]: 'Near',
-  [ChainId.NEARTESTNET]: 'Near'
+  [ChainId.NEARTESTNET]: 'Near',
+  [ChainId.SOLANAMAINNET]: 'Solana',
+  [ChainId.SOLANATESTNET]: 'Solana'
 }
 
 const networkLocalStorageKey = 'network'

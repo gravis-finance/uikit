@@ -5,7 +5,8 @@ import {
   BrowserTypes,
   isMobile,
   osName,
-  OsTypes} from 'react-device-detect'
+  OsTypes
+} from 'react-device-detect'
 
 import { NETWORK_NAMES } from '../../config/networks'
 import { useWidgetsContext } from '../../WidgetsContext'
@@ -17,8 +18,10 @@ import Ethereum from './icons/Ethereum'
 import Huobi from './icons/Huobi'
 import Metamask from './icons/Metamask'
 import Near from './icons/Near'
+import Phantom from './icons/Phantom'
 import Polygon from './icons/Polygon'
 import SafePal from './icons/SafePal'
+import Solana from './icons/Solana'
 import TokenPocket from './icons/TokenPocket'
 import TrustWallet from './icons/TrustWallet'
 import WalletConnect from './icons/WalletConnect'
@@ -138,6 +141,17 @@ const WALLETS_CONFIG_BUILDER = ({ chainId }: { chainId?: ChainId }) => ({
         : false,
       errorModal: IncorrectBrowserModal
     }
+  },
+  phantom: {
+    title: 'Phantom',
+    icon: Phantom,
+    connectorId: ConnectorNames.Phantom,
+    connection: {
+      disabled: chainId
+        ? ![ChainId.SOLANAMAINNET, ChainId.SOLANATESTNET].includes(chainId)
+        : false,
+      errorModal: IncorrectBrowserModal
+    }
   }
 })
 
@@ -225,6 +239,13 @@ export const NETWORKS_CONFIG_BUILDER = ({
         wallets: isMobile
           ? [walletsConfig.nearWallet]
           : [walletsConfig.nearWallet]
+      },
+      [NETWORK_NAMES.SOLANA]: {
+        title: 'Solana',
+        icon: Solana,
+        label: 'Solana',
+        chainId: production ? ChainId.SOLANAMAINNET : ChainId.SOLANATESTNET,
+        wallets: isMobile ? [walletsConfig.phantom] : [walletsConfig.phantom]
       }
     }).map(([key, value]) => [
       key,

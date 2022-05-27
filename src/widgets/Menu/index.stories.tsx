@@ -96,7 +96,11 @@ export const Connected: React.FC = () => {
   return (
     <BrowserRouter>
       <WidgetsProvider
-        networks={[NETWORK_NAMES.NEAR, NETWORK_NAMES.BINANCE]}
+        networks={[
+          NETWORK_NAMES.NEAR,
+          NETWORK_NAMES.BINANCE,
+          NETWORK_NAMES.SOLANA
+        ]}
         chainId={ChainId.MAINNET}
       >
         <Menu

@@ -5,4 +5,5 @@ export enum NETWORK_NAMES {
   ETHEREUM = 'ethereum',
   AURORA = 'aurora',
   NEAR = 'near',
+  SOLANA = 'solana'
 }

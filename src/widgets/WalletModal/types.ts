@@ -6,7 +6,8 @@ export enum ConnectorNames {
   Injected = 'injected',
   WalletConnect = 'walletconnect',
   BSC = 'bsc',
-  Near = 'near'
+  Near = 'near',
+  Phantom = 'phantom'
 }
 
 export type Login = (connectorId: string) => void
