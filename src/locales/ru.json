@@ -53,7 +53,8 @@
     "sendNFT": "Отправить NFT",
     "Collections": "Collections",
     "missions": "Миссии",
-    "assets": "Ассеты"
+    "assets": "Ассеты",
+    "autofarming": "Автофарминг"
   },
   "swap": "Обменять",
   "networkSwitchingError": "Ошибка переключения сети",
