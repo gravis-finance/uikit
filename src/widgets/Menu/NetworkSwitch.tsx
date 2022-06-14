@@ -265,6 +265,7 @@ const NetworkSwitch: FC<Props> = ({
   return (
     <StyledDropDown
       {...restProps}
+      data-id="network-switch-dropdown"
       id="network-switch-dropdown"
       onClick={(event: { currentTarget: HTMLDivElement }) =>
         setAnchorEl(anchorEl ? null : event.currentTarget)
@@ -308,7 +309,7 @@ const NetworkSwitch: FC<Props> = ({
           <StyledOption
             key={item.title}
             onClick={() => handleClick(item)}
-            id={`${item.label}-switch-option`}
+            id={`${item.label.toLowerCase()}`}
           >
             <item.icon />
             {item.label}

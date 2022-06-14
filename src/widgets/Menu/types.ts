@@ -41,6 +41,7 @@ export interface MenuSubEntry {
   calloutClass?: string
   external?: boolean
   chip?: SubChipProps
+  data?: string
 }
 
 export interface MenuEntry {
@@ -53,6 +54,7 @@ export interface MenuEntry {
   initialOpenState?: boolean
   external?: boolean
   chip?: ChipProps
+  data?: string
 }
 
 export interface ModalOptions {

@@ -14,11 +14,13 @@ interface Props extends InjectedProps {
   onBack?: () => void
   bodyPadding?: string
   styledModalContent?: any
+  dataId?: string
 }
 
 const StyledModal = styled.div`
   background: #1c1c1c;
-  box-shadow: 0px 20px 36px -8px rgba(14, 14, 44, 0.1), 0px 1px 1px rgba(0, 0, 0, 0.05);
+  box-shadow: 0px 20px 36px -8px rgba(14, 14, 44, 0.1),
+    0px 1px 1px rgba(0, 0, 0, 0.05);
   border-radius: 6px;
   width: 100%;
   z-index: ${({ theme }) => theme.zIndices.modal};
@@ -56,12 +58,12 @@ const StyledHeading = styled(Heading)`
 `
 
 const StyledIconButton = styled(IconButton)`
-   > svg * {
-     transition: stroke 200ms ease-in-out;
-   }
+  > svg * {
+    transition: stroke 200ms ease-in-out;
+  }
   :hover {
     background: transparent !important;
-    
+
     > svg * {
       stroke: white;
     }
@@ -77,24 +79,41 @@ const Modal: React.FC<Props> = ({
   hideCloseButton = false,
   bodyPadding = '24px',
   styledModalContent,
+  dataId
 }) => (
-  <StyledModal style={style}>
+  <StyledModal data-id={dataId} style={style}>
     <ModalHeader>
       <ModalTitle hideCloseButton={hideCloseButton}>
         {onBack && (
-          <StyledIconButton variant="text" onClick={onBack} area-label="go back" mr="8px">
+          <StyledIconButton
+            variant="text"
+            onClick={onBack}
+            area-label="go back"
+            data-id="go-back-button"
+            mr="8px"
+          >
             <ArrowBackIcon color="primary" />
           </StyledIconButton>
         )}
         <StyledHeading>{title}</StyledHeading>
       </ModalTitle>
       {!hideCloseButton && (
-        <IconButton buttonType="close" buttonSize="40px" onClick={onDismiss} aria-label="Close the dialog">
+        <IconButton
+          buttonType="close"
+          buttonSize="40px"
+          onClick={onDismiss}
+          data-id="close-button"
+          aria-label="Close the dialog"
+        >
           <CloseIcon />
         </IconButton>
       )}
     </ModalHeader>
-    <ModalContent p={bodyPadding} flexDirection="column" style={styledModalContent}>
+    <ModalContent
+      p={bodyPadding}
+      flexDirection="column"
+      style={styledModalContent}
+    >
       {children}
     </ModalContent>
   </StyledModal>

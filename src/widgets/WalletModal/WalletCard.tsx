@@ -100,14 +100,16 @@ const WalletCard: React.FC<Props> = ({
   setSelectedWallet,
   selectedNetwork,
   withReload = false,
-  disabled: disabledProp,
+  disabled: disabledProp
 }) => {
   const { title, icon: Icon } = walletConfig
-  const networks= useNetworksList()
+  const networks = useNetworksList()
   const disabled =
     disabledProp ||
     !networks.some(
-      (network) => network?.title === selectedNetwork && network?.wallets.some((wallet) => wallet?.title === title)
+      (network) =>
+        network?.title === selectedNetwork &&
+        network?.wallets.some((wallet) => wallet?.title === title)
     )
   const ErrorModal = walletConfig.connection.errorModal
   const connect = (connectorId: ConnectorNames) => {
@@ -120,7 +122,12 @@ const WalletCard: React.FC<Props> = ({
         window.location.reload()
       }, 1000)
   }
-  const [openModal] = useModal(<ErrorModal connect={connect} {...walletConfig.connection.errorModalProps} />)
+  const [openModal] = useModal(
+    <ErrorModal
+      connect={connect}
+      {...walletConfig.connection.errorModalProps}
+    />
+  )
 
   const onClick = () => {
     if (walletConfig.connection.disabled) {
@@ -131,7 +138,13 @@ const WalletCard: React.FC<Props> = ({
   }
 
   return (
-    <StyledFlex flexDirection="column" alignItems="center" disabled={disabled} onClick={onClick}>
+    <StyledFlex
+      data-id={`${title.split(' ').join('-').toLowerCase()}`}
+      flexDirection="column"
+      alignItems="center"
+      disabled={disabled}
+      onClick={onClick}
+    >
       <StyledButton
         fullwidth
         variant="tertiary"
@@ -141,7 +154,12 @@ const WalletCard: React.FC<Props> = ({
         <Icon width="32px" />
         {selected && <StyledCheckMarkInCircle />}
       </StyledButton>
-      <Text color="rgba(255, 255, 255, 0.5)" fontSize="11px" mt="8px" style={{ textAlign: 'center' }}>
+      <Text
+        color="rgba(255, 255, 255, 0.5)"
+        fontSize="11px"
+        mt="8px"
+        style={{ textAlign: 'center' }}
+      >
         {title}
       </Text>
     </StyledFlex>

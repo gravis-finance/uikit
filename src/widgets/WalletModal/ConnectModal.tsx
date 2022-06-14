@@ -108,13 +108,20 @@ const ConnectModal: React.FC<Props> = ({
   }
 
   return (
-    <Modal title={t('connectToWallet')} onDismiss={handleClose}>
+    <Modal
+      dataId="connect-modal"
+      title={t('connectToWallet')}
+      onDismiss={handleClose}
+    >
       <>
         <StyledFlexPoint alignItems="center" marginBottom="5px">
           <StyledPoint>
             <p>1</p>
           </StyledPoint>
-          <Text style={{ fontSize: '14px', color: '#fff', marginLeft: '16px' }}>
+          <Text
+            data-id="accept-block"
+            style={{ fontSize: '14px', color: '#fff', marginLeft: '16px' }}
+          >
             {t('Accept')}{' '}
             <StyledLink
               style={{ color: '#009CE1' }}
@@ -137,6 +144,7 @@ const ConnectModal: React.FC<Props> = ({
         </StyledFlexPoint>
         <StyledFlex mt="10px">
           <ButtonBase
+            data-id="read-and-accept-button"
             style={{ width: 'fit-content' }}
             onClick={handleTermsChange}
           >
@@ -158,7 +166,7 @@ const ConnectModal: React.FC<Props> = ({
             {t('chooseNetwork')}
           </Text>
         </StyledFlexPoint>
-        <StyledFlex>
+        <StyledFlex data-id="network-list">
           {networksList
             ?.filter(({ key }) => networks?.includes(key))
             .map((entry: any) => (
@@ -187,7 +195,7 @@ const ConnectModal: React.FC<Props> = ({
           </Text>
         </StyledFlexPoint>
       </>
-      <StyledWalletFlex>
+      <StyledWalletFlex data-id="wallet-list">
         {wallets.map((entry) => (
           <WalletCard
             disabled={!termsChecked}

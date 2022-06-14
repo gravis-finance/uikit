@@ -82,7 +82,11 @@ const IncorrectBrowserModal: React.FC<{ connect: any; onDismiss?: any }> = ({
   }
 
   return (
-    <Modal title={t('Incorrect browser')} onDismiss={onDismiss}>
+    <Modal
+      data-id="incorrect-browser-modal"
+      title={t('Incorrect browser')}
+      onDismiss={onDismiss}
+    >
       <Container>
         <ErrorIcon width={150} height={150} />
         <Text mt="20px">
@@ -92,11 +96,16 @@ const IncorrectBrowserModal: React.FC<{ connect: any; onDismiss?: any }> = ({
           .
         </Text>
         <CopyContainer>
-          <Button mr="20px" data-id="connect-button" onClick={onConnect}>
+          <Button
+            mr="20px"
+            data-id="connect-with-walletconnect-button"
+            onClick={onConnect}
+          >
             {t('Connect with Wallet Connect')}
             <WalletConnectIcon width="20px" color="primary" ml="10px" />
           </Button>
           <Button
+            data-id="metamask-button"
             as="a"
             href={`https://metamask.app.link/dapp/${window.location.host}${window.location.pathname}${window.location.search}`}
             target="_blank"
@@ -105,7 +114,7 @@ const IncorrectBrowserModal: React.FC<{ connect: any; onDismiss?: any }> = ({
             {t('Metamask')}
             <MetamaskIcon width="20px" ml="10px" />
           </Button>
-          <Button data-id="copy-button" onClick={copyToClipboard}>
+          <Button data-id="copy-page-address-button" onClick={copyToClipboard}>
             {t('Copy page address')}
             <InputCopyIcon width="20px" color="primary" ml="10px" />
           </Button>

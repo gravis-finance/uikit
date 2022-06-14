@@ -7,7 +7,10 @@ import { localStorageLanguageItem } from '../../constants'
 import { getDefaultLanguage } from '../../util/getDefaultLanguage'
 import { availableLanguages } from './config'
 
-const StyledDropDown = styled.div<{ showOptions?: boolean; toggleMobile?: boolean }>`
+const StyledDropDown = styled.div<{
+  showOptions?: boolean
+  toggleMobile?: boolean
+}>`
   width: 117px;
   box-sizing: border-box;
   height: 48px;
@@ -19,11 +22,13 @@ const StyledDropDown = styled.div<{ showOptions?: boolean; toggleMobile?: boolea
       ? 'linear-gradient(90.28deg, #292929 0%, #242424 100%), #262626'
       : 'linear-gradient(90.28deg, #242424 0%, #202020 100%), linear-gradient(90.28deg, #292929 0%, #242424 100%), #303030'};
   border: 1px solid #2e2e2e;
-  box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.4), -4px -4px 12px rgba(255, 255, 255, 0.05);
+  box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.4),
+    -4px -4px 12px rgba(255, 255, 255, 0.05);
   border-radius: ${({ showOptions }) => (showOptions ? '6px 6px 0 0' : '55px')};
   user-select: none;
 
-  transition: background-color 200ms ease-in-out, color 200ms ease-in-out, border-radius 100ms ease-in-out;
+  transition: background-color 200ms ease-in-out, color 200ms ease-in-out,
+    border-radius 100ms ease-in-out;
 
   > svg * {
     transition: stroke 200ms ease-in-out, opacity 200ms ease-in-out;
@@ -34,8 +39,8 @@ const StyledDropDown = styled.div<{ showOptions?: boolean; toggleMobile?: boolea
   }
 
   :hover {
-    background: linear-gradient(90.28deg, #242424 0%, #202020 100%), linear-gradient(90.28deg, #292929 0%, #242424 100%),
-      #303030;
+    background: linear-gradient(90.28deg, #242424 0%, #202020 100%),
+      linear-gradient(90.28deg, #292929 0%, #242424 100%), #303030;
     > * {
       color: white;
     }
@@ -67,7 +72,10 @@ const StyledDropDown = styled.div<{ showOptions?: boolean; toggleMobile?: boolea
       : ''}
 `
 
-const StyledSelectedOption = styled.p<{ showOptions?: boolean; toggleMobile?: boolean }>`
+const StyledSelectedOption = styled.p<{
+  showOptions?: boolean
+  toggleMobile?: boolean
+}>`
   position: absolute;
   padding-left: 47px;
   margin-top: 17px;
@@ -125,7 +133,8 @@ const StyledOption = styled.div`
 
   :hover {
     background: linear-gradient(90.28deg, #242424 0%, #1f1f1f 100%);
-    box-shadow: inset 0px -1px 0px rgba(129, 129, 129, 0.15), inset 0px 4px 25px rgba(0, 0, 0, 0.25);
+    box-shadow: inset 0px -1px 0px rgba(129, 129, 129, 0.15),
+      inset 0px 4px 25px rgba(0, 0, 0, 0.25);
     border-radius: 5px;
     color: #fff;
   }
@@ -152,7 +161,9 @@ const StyledIconContainer = styled.div<{ toggleMobile?: boolean }>`
       : ''}
 `
 
-const StyledArrowDropDownIcon = styled(ArrowDropDownIcon)<{ reversed?: boolean }>`
+const StyledArrowDropDownIcon = styled(ArrowDropDownIcon)<{
+  reversed?: boolean
+}>`
   transition: transform 200ms;
   ${({ reversed }) => (reversed ? 'transform: rotate(180deg);' : '')}
 `
@@ -167,12 +178,21 @@ interface languageType {
   icon: FC<SvgProps>
 }
 
-const LanguageSwitch: React.FC<Props> = ({ toggleMobile = true, setSelectedLanguage }) => {
+const LanguageSwitch: React.FC<Props> = ({
+  toggleMobile = true,
+  setSelectedLanguage
+}) => {
   const [showOptions, setShowOptions] = useState(false)
-  const [selectedOption, setSelectedOption] = useState<languageType>(availableLanguages[0])
+  const [selectedOption, setSelectedOption] = useState<languageType>(
+    availableLanguages[0]
+  )
 
   const handleClick = (name: string) => {
-    setSelectedOption(availableLanguages.find((language) => language.name === name) as languageType)
+    setSelectedOption(
+      availableLanguages.find(
+        (language) => language.name === name
+      ) as languageType
+    )
     localStorage.setItem(localStorageLanguageItem, name)
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore
@@ -191,8 +211,12 @@ const LanguageSwitch: React.FC<Props> = ({ toggleMobile = true, setSelectedLangu
 
   useEffect(() => {
     setSelectedOption(
-      availableLanguages.find((language) => language.name === getDefaultLanguage()?.toUpperCase())
-        ? (availableLanguages.find((language) => language.name === getDefaultLanguage()?.toUpperCase()) as languageType)
+      availableLanguages.find(
+        (language) => language.name === getDefaultLanguage()?.toUpperCase()
+      )
+        ? (availableLanguages.find(
+            (language) => language.name === getDefaultLanguage()?.toUpperCase()
+          ) as languageType)
         : availableLanguages[0]
     )
   }, [])
@@ -207,14 +231,25 @@ const LanguageSwitch: React.FC<Props> = ({ toggleMobile = true, setSelectedLangu
       <StyledIconContainer toggleMobile={toggleMobile}>
         <selectedOption.icon />
       </StyledIconContainer>
-      <StyledSelectedOption showOptions={showOptions} toggleMobile={toggleMobile}>
+      <StyledSelectedOption
+        showOptions={showOptions}
+        toggleMobile={toggleMobile}
+      >
         {selectedOption.name}
       </StyledSelectedOption>
-      {!showOptions ? <StyledArrowDropDownIcon /> : <StyledArrowDropDownIcon reversed />}
+      {!showOptions ? (
+        <StyledArrowDropDownIcon />
+      ) : (
+        <StyledArrowDropDownIcon reversed />
+      )}
       {showOptions && (
         <StyledOptionsContainer toggleMobile={toggleMobile}>
           {availableLanguages.map((language) => (
-            <StyledOption id="en-switch-option" onClick={() => handleClick(language.name)} key={language.name}>
+            <StyledOption
+              data-id={`${language.name.toLowerCase()}-switch-option`}
+              onClick={() => handleClick(language.name)}
+              key={language.name}
+            >
               <language.icon width={24} height={24} />
               {language.name}
             </StyledOption>

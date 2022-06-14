@@ -27,7 +27,7 @@ const Container = styled.div`
 `
 
 const IsNotSafariModal: React.FC<{ onDismiss?: any }> = ({
-  onDismiss = () => null,
+  onDismiss = () => null
 }) => {
   const t = useTranslation()
   const [toasts, setToasts] = useState<any>([])
@@ -38,29 +38,38 @@ const IsNotSafariModal: React.FC<{ onDismiss?: any }> = ({
       id: `id-${now}`,
       title: `Copied`,
       description: 'Page address copied to clipboard.',
-      type: alertVariants.SUCCESS,
+      type: alertVariants.SUCCESS
     }
     setToasts([toast])
     copy(window.location.href)
   }
 
   const handleRemove = (id: string) => {
-    setToasts((prevToasts: any) => prevToasts.filter((prevToast: any) => prevToast.id !== id))
+    setToasts((prevToasts: any) =>
+      prevToasts.filter((prevToast: any) => prevToast.id !== id)
+    )
   }
 
   return (
-    <Modal title={t('Incorrect browser')} onDismiss={onDismiss}>
+    <Modal
+      data-id="incorrect-browser-modal"
+      title={t('Incorrect browser')}
+      onDismiss={onDismiss}
+    >
       <Container>
         <ErrorIcon width={150} height={150} />
         <Text mt="20px">
-          {t(`Sorry, due to Apple restrictions you can't open other apps from a browser other than Safari`)}.{' '}
-          {t(`Please open this page in Safari or in your wallet's built-in browser`)}.
+          {t(
+            `Sorry, due to Apple restrictions you can't open other apps from a browser other than Safari`
+          )}
+          .{' '}
+          {t(
+            `Please open this page in Safari or in your wallet's built-in browser`
+          )}
+          .
         </Text>
         <CopyContainer>
-          <Button
-            data-id="copy-button"
-            onClick={copyToClipboard}
-          >
+          <Button data-id="copy-page-address-button" onClick={copyToClipboard}>
             {t('Copy page address')}
             <InputCopyIcon width="20px" color="primary" ml="10px" />
           </Button>

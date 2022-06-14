@@ -66,6 +66,7 @@ const WalletExtensionInstallModal: React.FC<{
 
   return (
     <Modal
+      data-id="wallet-extension-install-modal"
       title={t('You do not have extension for your wallet')}
       onDismiss={onDismiss}
     >

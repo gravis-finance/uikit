@@ -8,5 +8,14 @@ type AvatarProps = React.ComponentProps<typeof Box> & {
 
 export const Avatar = React.memo(({ src, ...boxProps }: AvatarProps) => {
   if (!src) return null
-  return <Box as="img" src={src} borderRadius="50%" size={95} {...boxProps} />
+  return (
+    <Box
+      data-id="avatar"
+      as="img"
+      src={src}
+      borderRadius="50%"
+      size={95}
+      {...boxProps}
+    />
+  )
 })

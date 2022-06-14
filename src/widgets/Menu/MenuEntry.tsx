@@ -1,4 +1,4 @@
-import styled, { DefaultTheme,keyframes } from 'styled-components'
+import styled, { DefaultTheme, keyframes } from 'styled-components'
 
 import { MENU_ENTRY_HEIGHT } from './config'
 
@@ -10,6 +10,7 @@ export interface Props {
   isPushed?: boolean
   single?: boolean
   blink?: boolean
+  ariaLabel?: string
 }
 
 const rainbowAnimation = keyframes`
@@ -23,25 +24,30 @@ const rainbowAnimation = keyframes`
 `
 
 const LinkLabel = styled.div<{ isPushed: boolean }>`
-  color: ${({ isPushed, theme }) => (isPushed ? theme.colors.textSubtle : 'transparent !important')};
+  color: ${({ isPushed, theme }) =>
+    isPushed ? theme.colors.textSubtle : 'transparent !important'};
   transition: color 0.4s;
   flex-grow: 1;
   font-size: 14px;
 `
 
-const MenuEntry = styled.div<Props>`
+const MenuEntry = styled.div.attrs(({ ariaLabel }: Props) => ({
+  'aria-label': ariaLabel
+}))<Props>`
   cursor: pointer;
   display: flex;
   align-items: center;
   height: ${MENU_ENTRY_HEIGHT}px;
   padding: ${({ secondary }) => (secondary ? '0 32px' : '0 22px 0 18px')};
   font-size: ${({ secondary }) => (secondary ? '14px' : '16px')};
-  ${({ isPushed }) => (!isPushed ? `padding: 0 12px 0 10.3px; width: ${MENU_ENTRY_HEIGHT}px` : '')}
+  ${({ isPushed }) =>
+    !isPushed ? `padding: 0 12px 0 10.3px; width: ${MENU_ENTRY_HEIGHT}px` : ''}
 
   background: linear-gradient(90.28deg, #292929 0%, #242424 100%), #303030;
   border: 1px solid #2e2e2e;
   box-sizing: border-box;
-  box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.4), -4px -4px 12px rgba(255, 255, 255, 0.05);
+  box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.4),
+    -4px -4px 12px rgba(255, 255, 255, 0.05);
   border-radius: 52px;
   user-select: none;
   white-space: pre;
@@ -50,7 +56,8 @@ const MenuEntry = styled.div<Props>`
     background: linear-gradient(90.28deg, #242424 0%, #202020 100%);
     border: 1px solid #2e2e2e;
     box-sizing: border-box;
-    box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.4), -4px -4px 12px rgba(255, 255, 255, 0.05);
+    box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.4),
+      -4px -4px 12px rgba(255, 255, 255, 0.05);
     border-radius: 52px;
 
     > svg:last-child * {
@@ -63,7 +70,8 @@ const MenuEntry = styled.div<Props>`
   }
   &:active {
     background: linear-gradient(90.28deg, #242424 0%, #1f1f1f 100%), #212121;
-    box-shadow: inset 0px -1px 0px rgba(129, 129, 129, 0.15), inset 0px 4px 25px rgba(0, 0, 0, 0.25);
+    box-shadow: inset 0px -1px 0px rgba(129, 129, 129, 0.15),
+      inset 0px 4px 25px rgba(0, 0, 0, 0.25);
     border-radius: 52px;
   }
 
@@ -112,7 +120,8 @@ const MenuEntry = styled.div<Props>`
 
   svg * {
     // stroke: #909090;
-    transition: fill 200ms ease-in-out, stroke 200ms ease-in-out, opacity 200ms ease-in-out;
+    transition: fill 200ms ease-in-out, stroke 200ms ease-in-out,
+      opacity 200ms ease-in-out;
   }
 
   div {
@@ -217,7 +226,8 @@ const MenuEntry = styled.div<Props>`
     border-radius: 0;
     box-shadow: none;
     border: none !important;
-    border-bottom: ${({ single }) => (single ? '1px solid #313131' : '')} !important;
+    border-bottom: ${({ single }) =>
+      single ? '1px solid #313131' : ''} !important;
     background: transparent;
 
     :hover {
@@ -242,7 +252,7 @@ const MenuEntry = styled.div<Props>`
 MenuEntry.defaultProps = {
   secondary: false,
   isactive: false,
-  role: 'button',
+  role: 'button'
 }
 
-export { LinkLabel,MenuEntry }
+export { LinkLabel, MenuEntry }

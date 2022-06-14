@@ -12,16 +12,19 @@ const StyledButton = styled(ButtonBase)`
   }
 `
 
-export const EditProfileLink = React.memo((props: React.ComponentProps<typeof ButtonBase>) => {
-  return (
-    <StyledButton
-      as="a"
-      href={getUrl(process.env.REACT_APP_GMART_URL, 'profile/my/edit')}
-      p="1rem"
-      m="-1rem"
-      {...props}
-    >
-      <EditIcon color="currentColor" />
-    </StyledButton>
-  )
-})
+export const EditProfileLink = React.memo(
+  (props: React.ComponentProps<typeof ButtonBase>) => {
+    return (
+      <StyledButton
+        data-id="edit-profile-link"
+        as="a"
+        href={getUrl(process.env.REACT_APP_GMART_URL, 'profile/my/edit')}
+        p="1rem"
+        m="-1rem"
+        {...props}
+      >
+        <EditIcon color="currentColor" />
+      </StyledButton>
+    )
+  }
+)

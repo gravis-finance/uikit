@@ -92,6 +92,7 @@ const UserBlock: React.FC<UserBlockProps> = (props) => {
 
   return (
     <StyledFlex
+      data-id="user-block"
       isShowMenuPanel={isShowMenuPanel}
       alignItems="center"
       style={{ pointerEvents: 'all' }}

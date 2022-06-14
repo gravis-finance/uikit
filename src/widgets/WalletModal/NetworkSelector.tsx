@@ -32,7 +32,7 @@ const StyledCheckMarkInCircle = styled(CheckmarkCircleIcon)`
   height: 16px;
 `
 
-const StyledFlex = styled(Flex) <{ disabled?: boolean }>`
+const StyledFlex = styled(Flex)<{ disabled?: boolean }>`
   > div {
     transition: color 200ms ease-in-out;
   }
@@ -104,12 +104,23 @@ const NetworkSelector: React.FC<Props> = ({
   }
 
   return (
-    <StyledFlex disabled={disabled} flexDirection="column" alignItems="center" onClick={handleClick}>
+    <StyledFlex
+      data-id={`${title.split(' ').join('-').toLowerCase()}`}
+      disabled={disabled}
+      flexDirection="column"
+      alignItems="center"
+      onClick={handleClick}
+    >
       <StyledNetworkSelector>
         {selected && <StyledCheckMarkInCircle />}
         <Icon />
       </StyledNetworkSelector>
-      <Text color="rgba(255, 255, 255, 0.5)" fontSize="11px" mt="8px" style={{ userSelect: 'none' }}>
+      <Text
+        color="rgba(255, 255, 255, 0.5)"
+        fontSize="11px"
+        mt="8px"
+        style={{ userSelect: 'none' }}
+      >
         {title}
       </Text>
     </StyledFlex>

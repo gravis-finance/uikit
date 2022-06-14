@@ -172,7 +172,7 @@ const PanelBody: React.FC<Props> = ({
   ]
 
   return (
-    <Container>
+    <Container data-id="panel-body">
       <StyledLogoIcon>
         <Logo
           href={providedLogoLink || (homeLink?.href ?? '/')}
@@ -225,6 +225,11 @@ const PanelBody: React.FC<Props> = ({
                       className={calloutClass}
                       blink={entry.blink}
                       chip={entry.chip}
+                      ariaLabel={entry.label}
+                      data-id={`${entry.data
+                        ?.toLowerCase()
+                        .split(' ')
+                        .join('-')}-menu-item`}
                     >
                       {isPushed &&
                         entry.items.map((item) => (
@@ -233,6 +238,11 @@ const PanelBody: React.FC<Props> = ({
                             secondary
                             isactive={item.href === location.pathname}
                             onClick={handleClick}
+                            ariaLabel={item.label}
+                            data-id={`${item.data
+                              ?.toLowerCase()
+                              .split(' ')
+                              .join('-')}-menu-item`}
                           >
                             <MenuLink
                               href={item.href}
@@ -262,6 +272,11 @@ const PanelBody: React.FC<Props> = ({
                     fillStroke={fillStokeIcons.includes(entry.icon)}
                     isPushed={isPushed}
                     single
+                    ariaLabel={entry.label}
+                    data-id={`${entry.data
+                      ?.toLowerCase()
+                      .split(' ')
+                      .join('-')}-menu-item`}
                   >
                     <MenuLink
                       href={entry.href}

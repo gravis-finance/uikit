@@ -54,7 +54,8 @@ const withHandlerSpacing = 32 + 12 + 8 // button size + inner spacing + handler 
 const Details = styled.div<{ hasHandler: boolean }>`
   flex: 1;
   padding-bottom: 12px;
-  padding-right: ${({ hasHandler }) => (hasHandler ? `${withHandlerSpacing}px` : '12px')};
+  padding-right: ${({ hasHandler }) =>
+    hasHandler ? `${withHandlerSpacing}px` : '12px'};
   padding-top: 22px;
 `
 
@@ -69,7 +70,8 @@ const StyledAlert = styled(Flex)`
   position: relative;
   background-color: #353535;
   border-radius: 6px;
-  box-shadow: 0px 20px 36px -8px rgba(14, 14, 44, 0.1), 0px 1px 1px rgba(0, 0, 0, 0.05);
+  box-shadow: 0px 20px 36px -8px rgba(14, 14, 44, 0.1),
+    0px 1px 1px rgba(0, 0, 0, 0.05);
 `
 
 const StyledIconContainer = styled.div`
@@ -95,7 +97,8 @@ const StyledClose = styled.div`
     cursor: pointer;
     background: linear-gradient(90.28deg, #242424 0%, #202020 100%);
     box-sizing: border-box;
-    box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.4), -4px -4px 12px rgba(255, 255, 255, 0.05);
+    box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.4),
+      -4px -4px 12px rgba(255, 255, 255, 0.05);
   }
 `
 
@@ -103,12 +106,12 @@ const Alert: React.FC<AlertProps> = ({ title, children, variant, onClick }) => {
   const Icon = getIcon(variant)
 
   return (
-    <StyledAlert>
+    <StyledAlert data-id="alert-block">
       <IconLabel variant={variant} hasDescription={!!children} />
       <StyledIconContainer>
         <Icon color="currentColor" width="48px" />
       </StyledIconContainer>
-      <Details hasHandler={!!onClick}>
+      <Details data-id="details-block" hasHandler={!!onClick}>
         <Text bold>{title}</Text>
         {typeof children === 'string' ? (
           <Text as="p" style={{ color: 'rgba(255, 255, 255, 0.5)' }}>
@@ -121,7 +124,7 @@ const Alert: React.FC<AlertProps> = ({ title, children, variant, onClick }) => {
       {onClick && (
         // eslint-disable-next-line @typescript-eslint/ban-ts-comment
         // @ts-ignore
-        <CloseHandler onClick={onClick}>
+        <CloseHandler data-id="close-button" onClick={onClick}>
           <StyledClose>
             <CloseIcon width="24px" color="currentColor" />
           </StyledClose>

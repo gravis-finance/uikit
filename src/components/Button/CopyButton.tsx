@@ -9,7 +9,7 @@ export type CopyButtonType = {
   textToCopy: string
 }
 
-const StyledInputCopy = styled(InputCopy) <{ isCopyTriggered?: boolean }>`
+const StyledInputCopy = styled(InputCopy)<{ isCopyTriggered?: boolean }>`
   cursor: pointer;
 
   > * {
@@ -65,7 +65,7 @@ const CopyButton: React.FC<CopyButtonType> = ({ textToCopy }) => {
   }
 
   return (
-    <CopyContainer>
+    <CopyContainer data-id="copy-button" aria-label="Copy button">
       <StyledInputCopy
         data-id="copy-button"
         height="24px"

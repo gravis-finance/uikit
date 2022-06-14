@@ -45,12 +45,17 @@ const StyledFlex = styled(Flex)`
   }
 `
 
-const Logo: React.FC<Props> = ({ href, isPushed, gravisLogo, gravisLogoText }) => {
+const Logo: React.FC<Props> = ({
+  href,
+  isPushed,
+  gravisLogo,
+  gravisLogoText
+}) => {
   const isAbsoluteUrl = href.startsWith('http')
   const innerLogo = <>{gravisLogo}</>
 
   return (
-    <Flex>
+    <Flex data-id="logo-container">
       {isAbsoluteUrl ? (
         <StyledLink as="a" href={href} aria-label="gravis home page">
           <Flex>

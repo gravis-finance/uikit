@@ -294,6 +294,7 @@ const Menu: React.FC<NavProps> = ({
       </BodyWrapper>
       {isShowMenuPanel ? (
         <MenuButton
+          data-id="toggle-menu-button"
           aria-label="Toggle menu"
           onClick={() => setIsPushed((prevState: boolean) => !prevState)}
           mobile

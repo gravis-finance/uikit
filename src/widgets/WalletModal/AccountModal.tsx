@@ -202,6 +202,7 @@ const AccountModal: React.FC<AccountModalProps> = ({
 
   return (
     <Modal
+      dataId="account-modal"
       title={
         <Flex alignItems="center" gridGap="1rem">
           <ProfileName account={account}>{t('account')}</ProfileName>
@@ -247,7 +248,13 @@ const AccountModal: React.FC<AccountModalProps> = ({
         <IconContainer>
           <Icon width={18} height={18} />
         </IconContainer>
-        <StyledInput defaultValue={account} readOnly />
+        <StyledInput
+          id="account-address"
+          data-id="account-address"
+          aria-label="Account address"
+          defaultValue={account}
+          readOnly
+        />
         <CopyButton textToCopy={account} />
       </StyledInputContainer>
       <StyledFlexContainer mt="16px" justifyContent="space-between" buttonsList>
@@ -274,6 +281,7 @@ const AccountModal: React.FC<AccountModalProps> = ({
             variant="dark"
             forwardedAs="a"
             href={`${gmartProfileLink}?network=${getNetworkId()}`}
+            data-id="gmart-profile-button"
           >
             <GmartIcon size="1.5em" mr="1rem" />
             {t('Gmart profile')}
@@ -293,6 +301,7 @@ const AccountModal: React.FC<AccountModalProps> = ({
         <StyledButton
           size="md"
           variant="dark"
+          data-id="disconnect-button"
           onClick={() => {
             logout()
             window.localStorage.removeItem(connectorLocalStorageKey)

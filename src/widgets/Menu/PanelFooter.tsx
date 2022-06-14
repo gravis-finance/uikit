@@ -92,6 +92,7 @@ const PanelFooter: React.FC<Props> = ({ isPushed, pushNav }) => {
                 key={social.label}
                 href={filterHref(social.href)}
                 aria-label={social.label}
+                data-id={`${social.label.toLowerCase()}-socials-menu-item`}
               >
                 <Icon {...iconProps} />
               </StyledExternalLink>

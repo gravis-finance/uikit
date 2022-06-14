@@ -5,8 +5,8 @@ import styled from 'styled-components'
 import { ArrowDropDownIcon } from '../../components/Svg'
 import { ChipContainer } from './Chip'
 import { MENU_ENTRY_HEIGHT } from './config'
-import { LinkLabel,MenuEntry } from './MenuEntry'
-import { ChipProps,PushedProps } from './types'
+import { LinkLabel, MenuEntry } from './MenuEntry'
+import { ChipProps, PushedProps } from './types'
 
 interface Props extends PushedProps {
   label: string
@@ -16,16 +16,26 @@ interface Props extends PushedProps {
   blink?: boolean
   chip?: ChipProps
   fillStroke?: boolean
+  ariaLabel?: string
 }
 
-const Container = styled.div<{ isOpen: boolean; fillStroke?: boolean; isPushed?: boolean }>`
+const Container = styled.div.attrs(({ ariaLabel }: any) => ({
+  'aria-label': ariaLabel
+}))<{
+  isOpen: boolean
+  fillStroke?: boolean
+  isPushed?: boolean
+  ariaLabel?: string
+}>`
   display: flex;
   flex-direction: column;
   // Safari fix
   flex-shrink: 0;
   border-radius: 6px;
   ${({ isOpen, isPushed }) =>
-    isOpen && isPushed ? 'box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.4), -4px -4px 12px rgba(255, 255, 255, 0.05);' : ''}
+    isOpen && isPushed
+      ? 'box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.4), -4px -4px 12px rgba(255, 255, 255, 0.05);'
+      : ''}
   > div:first-child {
     ${({ isOpen, isPushed }) =>
       isOpen && isPushed
@@ -51,7 +61,8 @@ const Container = styled.div<{ isOpen: boolean; fillStroke?: boolean; isPushed?:
     background: transparent;
   }
   div:first-child > svg:first-child * {
-    ${({ isOpen, fillStroke }) => (isOpen ? (fillStroke ? 'stroke: #FFFFFF' : `fill: #FFFFFF;`) : '')}
+    ${({ isOpen, fillStroke }) =>
+      isOpen ? (fillStroke ? 'stroke: #FFFFFF' : `fill: #FFFFFF;`) : ''}
   }
 
   // @media screen and (max-width: 968px) {
@@ -78,14 +89,19 @@ const Container = styled.div<{ isOpen: boolean; fillStroke?: boolean; isPushed?:
       : ''}
 `
 
-const AccordionContent = styled.div<{ isOpen: boolean; isPushed: boolean; maxHeight: number }>`
+const AccordionContent = styled.div<{
+  isOpen: boolean
+  isPushed: boolean
+  maxHeight: number
+}>`
   max-height: ${({ isOpen, maxHeight }) => (isOpen ? `${maxHeight}px` : 0)};
   transition: max-height 0.3s ease-out, border-radius 300ms ease-in-out;
   overflow: hidden;
   border-radius: 0 0 6px 6px;
-  background: linear-gradient(90.28deg, #242424 0%, #202020 100%), linear-gradient(90.28deg, #292929 0%, #242424 100%),
-    #303030;
-  ${({ isOpen }) => (isOpen ? `border: 1px solid #2E2E2E; border-top: none;` : '')}
+  background: linear-gradient(90.28deg, #242424 0%, #202020 100%),
+    linear-gradient(90.28deg, #292929 0%, #242424 100%), #303030;
+  ${({ isOpen }) =>
+    isOpen ? `border: 1px solid #2E2E2E; border-top: none;` : ''}
   box-sizing: border-box;
 
   @media screen and (max-width: 967px) {
@@ -133,7 +149,19 @@ const StyledArrowDropDown = styled(ArrowDropDownIcon)<{ isOpen?: boolean }>`
 
 const Accordion: React.FC<Props> = React.forwardRef(
   (
-    { fillStroke, label, icon, isPushed, pushNav, initialOpenState = false, children, className, blink, chip, ...restProps },
+    {
+      fillStroke,
+      label,
+      icon,
+      isPushed,
+      pushNav,
+      initialOpenState = false,
+      children,
+      className,
+      blink,
+      chip,
+      ...restProps
+    },
     ref: any
   ) => {
     const [isOpen, setIsOpen] = useState(initialOpenState)
