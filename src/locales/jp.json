@@ -53,7 +53,8 @@
     "sendNFT": "NFTの送信",
     "Collections": "Collections",
     "missions": "ミッション",
-    "assets": "Assets"
+    "assets": "Assets",
+    "autofarming": "Autofarming"
   },
   "swap": "スワップ",
   "networkSwitchingError": "ネットワーク切り替えエラー",

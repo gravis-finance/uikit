@@ -53,7 +53,8 @@
     "sendNFT": "Enviar NFT",
     "Collections": "Collections",
     "missions": "Mision",
-    "assets": "Assets"
+    "assets": "Assets",
+    "autofarming": "Autofarming"
   },
   "swap": "Intercambiar",
   "networkSwitchingError": "Error de conmutación de red",

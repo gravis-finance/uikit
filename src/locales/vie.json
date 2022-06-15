@@ -53,7 +53,8 @@
     "sendNFT": "Gửi NFT",
     "Collections": "Collections",
     "missions": "Nhiệm vụ",
-    "assets": "Assets"
+    "assets": "Assets",
+    "autofarming": "Autofarming"
   },
   "swap": "Đổi mạng",
   "networkSwitchingError": "Lỗi chuyển đổi mạng",

@@ -53,7 +53,8 @@
     "sendNFT": "发送NFT",
     "Collections": "Collections",
     "missions": "使命",
-    "assets": "Assets"
+    "assets": "Assets",
+    "autofarming": "Autofarming"
   },
   "swap": "兑换",
   "networkSwitchingError": "网络切换错误",
