@@ -21,6 +21,7 @@ export * from './components/Tag'
 export * from './components/Text'
 export * from './components/Toggle'
 export * from './components/Tooltip'
+export * from './components/ClickAwayListener'
 
 // Hooks
 export * from './hooks'
