@@ -9,7 +9,9 @@ import { Popper } from '../Popper'
 import { Option } from './Option'
 import { SelectIcon } from './SelectIcon'
 
-export type SelectProps = {
+export type SelectProps<
+  ButtonComponent extends typeof ButtonBase = typeof ButtonBase
+> = {
   className?: string
   IconComponent?: React.ElementType
   LabelComponent?: React.ElementType
@@ -17,6 +19,7 @@ export type SelectProps = {
   InputComponent?: React.ElementType
   ButtonComponent?: React.ElementType
   OptionsComponent?: React.ElementType
+  buttonProps?: React.ComponentProps<ButtonComponent>
   inputProps?: any
   inputRef?: any
   onToggle?: (state: boolean) => void
@@ -108,6 +111,7 @@ export const UnstyledSelect: React.FC<SelectProps> = React.forwardRef(
       renderValue,
       label,
       disabled,
+      buttonProps,
       ...restProps
     } = props
     const [value, setValue] = useControlled({
@@ -197,14 +201,15 @@ export const UnstyledSelect: React.FC<SelectProps> = React.forwardRef(
           onChange={handleChange}
           ref={inputRef}
           disabled={disabled}
+          tabIndex={-1}
           {...inputProps}
           {...restProps}
-          tabIndex={-1}
         />
         <SelectButton
           as={ButtonComponent}
           onMouseDown={toggleOptions}
           disabled={disabled}
+          {...buttonProps}
         >
           {display}
         </SelectButton>
