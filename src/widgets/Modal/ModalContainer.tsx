@@ -55,13 +55,33 @@ export const ModalContainer = React.memo((props: ModalProps) => {
     open,
     disablePortal,
     container = document.body,
-    fixed = true,
+    fixed = true
   } = props
+
+  React.useEffect(() => {
+    if (open) {
+      const scrollbarWidth =
+        window.innerWidth - document.documentElement.clientWidth
+
+      document.body.style.overflow = 'hidden'
+      if (scrollbarWidth) {
+        document.body.style.paddingRight = `${scrollbarWidth}px`
+      }
+    }
+
+    return () => {
+      document.body.style.overflow = ''
+      document.body.style.paddingRight = ''
+    }
+  }, [open])
 
   const content = open ? (
     <Overlay fixed={fixed} onClick={onOverlayClick}>
       <ModalWrapper>
-        <Root className={className} onClick={onOverlayClick ? onModalClick : undefined}>
+        <Root
+          className={className}
+          onClick={onOverlayClick ? onModalClick : undefined}
+        >
           {children}
         </Root>
       </ModalWrapper>
