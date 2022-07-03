@@ -2,6 +2,7 @@ import { Options, VirtualElement } from '@popperjs/core'
 import React from 'react'
 import { createPortal } from 'react-dom'
 import { usePopper } from 'react-popper'
+import { useScrollLock } from '../../hooks/useScrollLock'
 
 export type PopperProps = Omit<React.ComponentProps<'div'>, 'children'> & {
   container?: Element
@@ -55,22 +56,7 @@ const Popper = React.forwardRef((props: PopperProps, ref) => {
     return popperModifiers
   }, [inheritWidth, modifiersProp])
 
-  React.useEffect(() => {
-    if (open && !disableScrollLock) {
-      const scrollbarWidth =
-        window.innerWidth - document.documentElement.clientWidth
-
-      document.body.style.overflow = 'hidden'
-      if (scrollbarWidth) {
-        document.body.style.paddingRight = `${scrollbarWidth}px`
-      }
-    }
-
-    return () => {
-      document.body.style.overflow = ''
-      document.body.style.paddingRight = ''
-    }
-  }, [open, disableScrollLock])
+  useScrollLock({ open, disableScrollLock })
 
   const popper = usePopper(anchorEl, popperElement, { placement, modifiers })
   const { styles, attributes } = popper

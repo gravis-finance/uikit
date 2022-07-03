@@ -1,6 +1,7 @@
 import React from 'react'
 import { createPortal } from 'react-dom'
 import styled from 'styled-components'
+import { useScrollLock } from '../../hooks/useScrollLock'
 
 export type ModalProps = {
   className?: string
@@ -58,22 +59,7 @@ export const ModalContainer = React.memo((props: ModalProps) => {
     fixed = true
   } = props
 
-  React.useEffect(() => {
-    if (open) {
-      const scrollbarWidth =
-        window.innerWidth - document.documentElement.clientWidth
-
-      document.body.style.overflow = 'hidden'
-      if (scrollbarWidth) {
-        document.body.style.paddingRight = `${scrollbarWidth}px`
-      }
-    }
-
-    return () => {
-      document.body.style.overflow = ''
-      document.body.style.paddingRight = ''
-    }
-  }, [open])
+  useScrollLock({ open })
 
   const content = open ? (
     <Overlay fixed={fixed} onClick={onOverlayClick}>
