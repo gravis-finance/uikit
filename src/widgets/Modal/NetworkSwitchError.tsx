@@ -44,7 +44,7 @@ const NetworkSwitchError: React.FC<Props> = ({
   changeNetwork,
   ethereum = false,
   disableEthereum,
-  networkSwitchItemCallback,
+  networkSwitchItemCallback
 }) => {
   const handleClick = () => {
     if (changeNetwork) changeNetwork()
@@ -53,8 +53,15 @@ const NetworkSwitchError: React.FC<Props> = ({
   const t = useTranslation()
 
   return (
-    <Modal title={t('networkSwitchingError')} onDismiss={onDismiss} hideCloseButton>
-      <StyledText style={{ marginTop: '-6px', marginBottom: '24px', maxWidth: '430px' }}>
+    <Modal
+      title={t('networkSwitchingError')}
+      onDismiss={onDismiss}
+      hideCloseButton
+      dataId="network-switching-error-modal"
+    >
+      <StyledText
+        style={{ marginTop: '-6px', marginBottom: '24px', maxWidth: '430px' }}
+      >
         {t('differentNetworks')}
         {isSupportedChain ? (
           <>
@@ -71,7 +78,9 @@ const NetworkSwitchError: React.FC<Props> = ({
       </Button>
       {isSupportedChain && (
         <>
-          <Text style={{ marginTop: '36px', marginBottom: '24px' }}>{t('orChangeNetwork')}</Text>
+          <Text style={{ marginTop: '36px', marginBottom: '24px' }}>
+            {t('orChangeNetwork')}
+          </Text>
           <StyledNetworkSwitch>
             <NetworkSwitch
               isProduction={isProduction}
