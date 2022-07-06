@@ -8,7 +8,7 @@ const LazyLottie = lazy(() => import('react-lottie-player' as any))
 const Spinner: React.FC<SpinnerProps> = ({ size } = { size: 128 }) => {
   return (
     <Suspense fallback={null}>
-      <LazyLottie style={{width: size}} loop animationData={spinnerConfig} play />
+      <LazyLottie style={{width: size}} loop animationData={spinnerConfig} play data-id="gravis-spinner"/>
     </Suspense>
   )
 }
