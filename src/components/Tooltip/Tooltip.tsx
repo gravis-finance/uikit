@@ -352,6 +352,7 @@ const TooltipInner: React.FC<TooltipProps> = (props) => {
         open={open}
         id={id}
         modifiers={modifiers}
+        disableScrollLock
         {...interactiveWrapperListeners}
         {...popperProps}
         anchorEl={childNode}

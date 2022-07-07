@@ -224,6 +224,7 @@ export const UnstyledSelect: React.FC<SelectProps> = React.forwardRef(
             inheritWidth
             container={container}
             disablePortal={disablePortal}
+            disableScrollLock
           >
             {options}
           </OptionsComponent>

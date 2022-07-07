@@ -45,6 +45,11 @@ const Popper = React.forwardRef((props: PopperProps, ref) => {
         fn: ({ state }) => {
           // eslint-disable-next-line
           state.styles.popper.minWidth = `${state.rects.reference.width}px`
+          if (!disableScrollLock) {
+            state.styles.popper.maxHeight = `${
+              window.innerHeight - state.rects.reference.y
+            }px`
+          }
         },
         phase: 'beforeWrite',
         requires: ['computeStyles']
@@ -54,7 +59,7 @@ const Popper = React.forwardRef((props: PopperProps, ref) => {
       popperModifiers.push(...modifiersProp)
     }
     return popperModifiers
-  }, [inheritWidth, modifiersProp])
+  }, [inheritWidth, modifiersProp, disableScrollLock])
 
   useScrollLock({ open, disableScrollLock })
 
