@@ -9,7 +9,10 @@ export type ClickAwayListenerProps = {
 export const ClickAwayListener: React.FC<ClickAwayListenerProps> = (props) => {
   const { onClickAway, mouseEvent = 'onClick', children } = props
   const childrenRef = React.useRef()
-  const eventName = React.useMemo(() => mouseEvent.substring(2).toLowerCase(), [mouseEvent])
+  const eventName = React.useMemo(
+    () => mouseEvent.substring(2).toLowerCase(),
+    [mouseEvent]
+  )
 
   const childrenPropsHandler = React.useCallback(
     (event) => {
@@ -26,7 +29,7 @@ export const ClickAwayListener: React.FC<ClickAwayListenerProps> = (props) => {
 
   const childrenProps = {
     ref: childrenRef,
-    [mouseEvent]: childrenPropsHandler,
+    [mouseEvent]: childrenPropsHandler
   }
 
   const clickAwayListener = React.useCallback(
@@ -43,7 +46,9 @@ export const ClickAwayListener: React.FC<ClickAwayListenerProps> = (props) => {
 
   React.useEffect(() => {
     if (eventName) {
-      document.addEventListener(eventName, clickAwayListener)
+      window.setTimeout(() => {
+        document.addEventListener(eventName, clickAwayListener)
+      }, 0)
 
       return () => {
         document.removeEventListener(eventName, clickAwayListener)
@@ -57,5 +62,5 @@ export const ClickAwayListener: React.FC<ClickAwayListenerProps> = (props) => {
 }
 
 ClickAwayListener.defaultProps = {
-  mouseEvent: 'onClick',
+  mouseEvent: 'onClick'
 }
