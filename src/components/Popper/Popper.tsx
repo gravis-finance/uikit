@@ -48,8 +48,7 @@ const Popper = React.forwardRef((props: PopperProps, ref) => {
           if (!disableScrollLock) {
             state.styles.popper.maxHeight = `${
               window.innerHeight -
-              ((state.modifiersData.popperOffsets?.y ?? 0) - window.scrollY) -
-              20
+              ((state.modifiersData.popperOffsets?.y ?? 0) - window.scrollY)
             }px`
           }
         },
