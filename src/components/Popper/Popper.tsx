@@ -17,6 +17,7 @@ export type PopperProps = Omit<React.ComponentProps<'div'>, 'children'> & {
   inheritWidth?: boolean
   style?: React.CSSProperties
   disableScrollLock?: boolean
+  strategy?: Options['strategy']
 }
 
 const Popper = React.forwardRef((props: PopperProps, ref) => {
@@ -31,6 +32,7 @@ const Popper = React.forwardRef((props: PopperProps, ref) => {
     inheritWidth,
     style,
     disableScrollLock,
+    strategy,
     ...restProps
   } = props
   const [popperElement, setPopperElement] = React.useState<any>()
@@ -64,7 +66,11 @@ const Popper = React.forwardRef((props: PopperProps, ref) => {
 
   useScrollLock({ open, disableScrollLock })
 
-  const popper = usePopper(anchorEl, popperElement, { placement, modifiers })
+  const popper = usePopper(anchorEl, popperElement, {
+    placement,
+    modifiers,
+    strategy
+  })
   const { styles, attributes } = popper
 
   if (!open) return null
