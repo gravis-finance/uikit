@@ -15,6 +15,8 @@ interface Props extends InjectedProps {
   bodyPadding?: string
   styledModalContent?: any
   dataId?: string
+  dismissCallback?: () => void | null
+  onDismiss: (func?: ()=>void) => void
 }
 
 const StyledModal = styled.div`
@@ -80,21 +82,28 @@ const Modal: React.FC<Props> = ({
   bodyPadding = '24px',
   styledModalContent,
   dataId,
-  dismissCallback
+  dismissCallback=null
 }) => {
   const dismiss = () => {
-    onDismiss(dismissCallback)
+    if(dismissCallback)
+      onDismiss(dismissCallback)
+    else onDismiss()
   }
 
   const wrappedChildren = React.Children.map(
     children,
     child => {
+      if (!React.isValidElement(child)) {
+        return child
+      }
       const type = child.type === 'p' ? 'span' : child.type
       if (child.props && child.props.children) {
         return React.cloneElement(
           {
             ...child,
             type,
+            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+            // @ts-ignore
             onClick: dismiss
           },
           {

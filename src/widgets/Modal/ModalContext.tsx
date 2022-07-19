@@ -43,7 +43,7 @@ const ModalProvider: React.FC = ({ children }) => {
   }, [])
 
   const handleDismiss = React.useCallback((dismissCallback?: () => void) => {
-    if(dismissCallback)
+    if(dismissCallback && typeof dismissCallback === 'function')
       dismissCallback()
     setModalNode(undefined)
     setIsOpen(false)

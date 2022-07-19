@@ -19,10 +19,9 @@ interface CustomModalProps extends InjectedProps {
 }
 
 const CustomModal: React.FC<CustomModalProps> = ({ title, onDismiss }) => {
-  const dismissCallback = () => console.log('here')
+  const dismissCallback = () => console.log('callback')
   return (
-
-    <Modal title={title} onDismiss={onDismiss}>
+    <Modal title={title} onDismiss={onDismiss} dismissCallback={dismissCallback}>
     <Heading>{title}</Heading>
   <Button onClick={onDismiss}>This button Close nothing</Button>
 </Modal>
