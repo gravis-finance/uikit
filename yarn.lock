@@ -5482,10 +5482,10 @@ case-sensitive-paths-webpack-plugin@^2.3.0:
   resolved "https://registry.yarnpkg.com/case-sensitive-paths-webpack-plugin/-/case-sensitive-paths-webpack-plugin-2.4.0.tgz#db64066c6422eed2e08cc14b986ca43796dbc6d4"
   integrity sha512-roIFONhcxog0JSSWbvVAh3OocukmSgpqOH6YpMkCvav/ySIV3JKg4Dc8vYtQjYi/UxpNE36r/9v+VqTQqgkYmw==
 
-cb-datatable@^4.0.15:
-  version "4.0.16"
-  resolved "https://registry.yarnpkg.com/cb-datatable/-/cb-datatable-4.0.16.tgz#179d930f8c88367b97c4ae52415e78737c5519b1"
-  integrity sha512-imh2XhYbfWARA7e7BTWW46CXjFTn3CdxOvu/Q35hMXxszkgkYQwWEhm2n5sal0qQbFFONH5hd1Z76qFqbWTkAg==
+cb-datatable@^4.0.17:
+  version "4.0.17"
+  resolved "https://registry.yarnpkg.com/cb-datatable/-/cb-datatable-4.0.17.tgz#1880adc7cb206a7f7d3470cc15a5640a287febe9"
+  integrity sha512-pNpvOvrhl6lnnu+dFHThxNQs12cTz0doLYEYEr9ovvR93HP58hnfSg37Z7FuAMdXMe9Bav7ETWhb0urTpb/4mA==
   dependencies:
     "@types/react-is" "^17.0.2"
     clsx "^1.1.1"
