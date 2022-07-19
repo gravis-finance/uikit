@@ -79,44 +79,79 @@ const Modal: React.FC<Props> = ({
   hideCloseButton = false,
   bodyPadding = '24px',
   styledModalContent,
-  dataId
-}) => (
-  <StyledModal data-id={dataId} style={style}>
-    <ModalHeader>
-      <ModalTitle hideCloseButton={hideCloseButton}>
-        {onBack && (
-          <StyledIconButton
-            variant="text"
-            onClick={onBack}
-            area-label="go back"
-            data-id="go-back-button"
-            mr="8px"
+  dataId,
+  dismissCallback
+}) => {
+  const dismiss = () => {
+    onDismiss(dismissCallback)
+  }
+
+  const wrappedChildren = React.Children.map(
+    children,
+    child => {
+      const type = child.type === 'p' ? 'span' : child.type
+      if (child.props && child.props.children) {
+        return React.cloneElement(
+          {
+            ...child,
+            type,
+            onClick: dismiss
+          },
+          {
+            ...child.props,
+            // Wrap grandchildren too
+            onClick: dismiss,
+            children: (
+              <>
+                {child.props.children}
+              </>
+            )
+          }
+        )
+      }
+      return child
+    }
+  )
+
+  return (
+    <StyledModal data-id={dataId} style={style}>
+      <ModalHeader>
+        <ModalTitle hideCloseButton={hideCloseButton}>
+          {onBack && (
+            <StyledIconButton
+              variant="text"
+              onClick={onBack}
+              area-label="go back"
+              data-id="go-back-button"
+              mr="8px"
+            >
+              <ArrowBackIcon color="primary" />
+            </StyledIconButton>
+          )}
+          <StyledHeading>{title}</StyledHeading>
+        </ModalTitle>
+        {!hideCloseButton && (
+          <IconButton
+            buttonType="close"
+            buttonSize="40px"
+            onClick={dismiss}
+            data-id="close-button"
+            aria-label="Close the dialog"
           >
-            <ArrowBackIcon color="primary" />
-          </StyledIconButton>
+            <CloseIcon />
+          </IconButton>
         )}
-        <StyledHeading>{title}</StyledHeading>
-      </ModalTitle>
-      {!hideCloseButton && (
-        <IconButton
-          buttonType="close"
-          buttonSize="40px"
-          onClick={onDismiss}
-          data-id="close-button"
-          aria-label="Close the dialog"
-        >
-          <CloseIcon />
-        </IconButton>
-      )}
-    </ModalHeader>
-    <ModalContent
-      p={bodyPadding}
-      flexDirection="column"
-      style={styledModalContent}
-    >
-      {children}
-    </ModalContent>
-  </StyledModal>
-)
+      </ModalHeader>
+      <ModalContent
+        p={bodyPadding}
+        flexDirection="column"
+        style={styledModalContent}
+      >
+        {dismissCallback ? wrappedChildren : children}
+        {/*{children}*/}
+      </ModalContent>
+    </StyledModal>
+  )
+}
 
 export default Modal
