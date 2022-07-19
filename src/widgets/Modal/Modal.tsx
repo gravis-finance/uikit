@@ -16,7 +16,7 @@ interface Props extends InjectedProps {
   styledModalContent?: any
   dataId?: string
   dismissCallback?: () => void | null
-  onDismiss: (func?: ()=>void) => void | (() => void) | undefined
+  onDismiss?: (func?: ()=>void) => void | ((() => void) | undefined) | undefined
 }
 
 const StyledModal = styled.div`
@@ -85,9 +85,10 @@ const Modal: React.FC<Props> = ({
   dismissCallback=null
 }) => {
   const dismiss = () => {
-    if(dismissCallback)
-      onDismiss(dismissCallback)
-    else onDismiss()
+    if(onDismiss)
+      if(dismissCallback)
+        onDismiss(dismissCallback)
+      else onDismiss()
   }
 
   const wrappedChildren = React.Children.map(
