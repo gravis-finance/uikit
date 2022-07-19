@@ -16,7 +16,7 @@ interface Props extends InjectedProps {
   styledModalContent?: any
   dataId?: string
   dismissCallback?: () => void | null
-  onDismiss: (func?: ()=>void) => void
+  onDismiss: (func?: ()=>void) => void | (() => void) | undefined
 }
 
 const StyledModal = styled.div`
