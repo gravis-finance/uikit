@@ -133,8 +133,6 @@ export const UnstyledSelect: React.FC<SelectProps> = React.forwardRef(
 
     const toggleOptions = React.useCallback(
       (event?: any) => {
-        event?.stopPropagation()
-        event?.preventDefault()
         const newAnchorEl = anchorEl ? null : event?.currentTarget
         setAnchorEl(newAnchorEl)
         if (onToggle) {
