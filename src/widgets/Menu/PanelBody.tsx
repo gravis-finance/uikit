@@ -213,6 +213,7 @@ const PanelBody: React.FC<Props> = ({
                     ? entry.initialOpenState
                     : itemsMatchIndex >= 0
 
+                console.log('entry.items', entry.items)
                 return (
                   <Tooltip placement="left" title={title} key={entry.label}>
                     <Accordion
@@ -239,7 +240,7 @@ const PanelBody: React.FC<Props> = ({
                             isactive={item.href === location.pathname}
                             onClick={handleClick}
                             ariaLabel={item.label}
-                            data-id={`${item.data
+                            data-id={`${item.label
                               ?.toLowerCase()
                               .split(' ')
                               .join('-')}-menu-item`}
