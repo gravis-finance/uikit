@@ -97,6 +97,7 @@ interface Props {
 
 const CookiePlaceholder: React.FC<Props> = ({ isPushed }) => {
   const [isHidden, setIsHidden] = useState(true)
+  const [disableDiplay, setDisableDisplay] = useState(false)
 
   const getLocalStorageCookiesAccepted = () => {
     return localStorage.getItem(cookiesAcceptedParam)
@@ -105,15 +106,22 @@ const CookiePlaceholder: React.FC<Props> = ({ isPushed }) => {
   const acceptCookies = () => {
     localStorage.setItem(cookiesAcceptedParam, 'true')
     setIsHidden(true)
+    setTimeout(() => setDisableDisplay(true), 300)
   }
 
   useEffect(() => {
     if (getLocalStorageCookiesAccepted()) {
       setIsHidden(true)
-    } else setIsHidden(false)
+      setDisableDisplay(true)
+    } else {
+      setIsHidden(false)
+      setDisableDisplay(false)
+    }
   }, [])
 
   const t = useTranslation()
+
+  if (disableDiplay) return <></>
 
   return (
     <Wrapper isPushed={isPushed} isHidden={isHidden}>
@@ -121,12 +129,19 @@ const CookiePlaceholder: React.FC<Props> = ({ isPushed }) => {
         <Title>{t('This website uses cookies')}</Title>
         <Description>
           {t('cookiesDescription')}{' '}
-          <Link href="https://en.wikipedia.org/wiki/HTTP_cookie" target="_blank">
+          <Link
+            href="https://en.wikipedia.org/wiki/HTTP_cookie"
+            target="_blank"
+          >
             {t('Learn more')}
           </Link>
         </Description>
       </Info>
-      <Button variant="primary" style={{ whiteSpace: 'pre', marginLeft: 16 }} onClick={acceptCookies}>
+      <Button
+        variant="primary"
+        style={{ whiteSpace: 'pre', marginLeft: 16 }}
+        onClick={acceptCookies}
+      >
         {t('Accept all and close')}
       </Button>
     </Wrapper>
