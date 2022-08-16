@@ -27,7 +27,7 @@ const useGetMenuLinks = (menuLinks: MenuEntry[]): MenuEntry[] => {
         newLink.label = t(newLink.label)
         newLink.href = `${
           newLink.href
-        }?network=${chainId}&${urlSearchLanguageParam}=${t('language')}`
+        }?network=${chainId}`
         if (newLink.items) {
           newLink.items = newLink.items.map((item) => {
             const newItem = { ...item }
@@ -36,13 +36,11 @@ const useGetMenuLinks = (menuLinks: MenuEntry[]): MenuEntry[] => {
               if (newItem.label === t('mainMenu.analytics.analytics'))
                 newItem.href = `${
                   newItem.href
-                }?network=${getNetworkTitles()?.toLowerCase()}&${urlSearchLanguageParam}=${t(
-                  'language'
-                )}`
+                }?network=${getNetworkTitles()?.toLowerCase()}}`
               else
                 newItem.href = `${
                   newItem.href
-                }?network=${chainId}&${urlSearchLanguageParam}=${t('language')}`
+                }?network=${chainId}`
             }
             return newItem
           })
